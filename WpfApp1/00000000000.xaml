@@ -1,0 +1,108 @@
+﻿<Window x:Class="WpfApp1._00000000000"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="_00000000000" Height="600" Width="1024">
+    <Grid>
+        <!-- En üste dayalı Grid -->
+        <Grid x:Name="TopGrid" VerticalAlignment="Top" Margin="0,-30,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Background="LightGray" Grid.Row="0" Width="1024" Height="30">
+                <TextBlock Text="Popup içeriği burada" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+            <Button x:Name="TogglePopupButton" Width="30" Height="16" Background="#DAE2E7" 
+                    HorizontalAlignment="Center" Grid.Row="1" Margin="0,1,0,0" Click="TogglePopupButton_Click">
+                <TextBlock Text="↓" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+        </Grid>
+
+        
+        <!-- On of butonu -->       
+        <!-- Sağ taraftan çıkan Grid -->
+        <Grid x:Name="RightGrid" Width="341" Height="448" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,54,-325,0">
+            <!-- Grid içeriği -->
+            <Border Background="LightBlue" BorderBrush="Black" BorderThickness="2" Margin="16,0,0,0">
+                <Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,9,244,405">
+                            <Canvas x:Name="canvas1" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse1"/>
+                            </Canvas>
+                        </Border>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,59,244,355">
+                            <Canvas x:Name="canvas2" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse2"/>
+                            </Canvas>
+                        </Border>
+                    </Grid>
+                    <Grid>
+                            <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,109,244,305">
+                            <Canvas x:Name="canvas3" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse3"/>
+                            </Canvas>
+                        </Border>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,159,244,255">
+                            <Canvas x:Name="canvas4" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse4"/>
+                            </Canvas>
+                        </Border>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,209,244,205">
+                            <Canvas x:Name="canvas5" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse5"/>
+                            </Canvas>
+                        </Border>
+                    </Grid>
+
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,259,244,155">
+                            <Canvas x:Name="canvas6" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse6"/>
+                            </Canvas>
+                        </Border>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,309,244,105">
+                            <Canvas x:Name="canvas7" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse7"/>
+                            </Canvas>
+                        </Border>
+                    </Grid>
+
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,359,244,55">
+                            <Canvas x:Name="canvas8" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse8"/>
+                            </Canvas>
+                        </Border>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,409,244,05">
+                            <Canvas x:Name="canvas9" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse9"/>
+                            </Canvas>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Buton, Grid içine taşındı -->
+            <Button x:Name="ToggleRightGridButton" Width="16" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,209,0,0" Click="ToggleRightGridButton_Click">
+                <TextBlock Text="←" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

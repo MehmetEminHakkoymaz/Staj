@@ -1,0 +1,124 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1024"
+        Background="#E7ECEF">
+    <Window.Resources>
+        <!-- Mevcut stil tanımlarınız -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="5">
+                            <!-- Yuvarlak köşeler için CornerRadius değeri -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="204"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="95"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Column="0" BorderBrush="#D6D6D6" BorderThickness="2" Width="204" Height="505" VerticalAlignment="Top">
+            <StackPanel Width="200" Height="501" VerticalAlignment="Top">
+                <Button Content="FAVOURITES" Height="64" Width="204" Click="Favourites_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
+                <Button Content="MAIN" Height="64" Width="204" Click="Main_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
+                <Button Content="EXTENDED" Height="64" Width="204" Click="Extended_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
+                <Button Content="EXIT GAS" Height="64" Width="204" Click="Exit_Gas_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
+                <Button Content="PUMPS" Height="64" Width="204" Click="Pumps_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
+            </StackPanel>
+        </Border>
+
+        <Rectangle Grid.Column="1" Fill="#E7ECEF" Width="1" Height="505" VerticalAlignment="Top"/>
+
+        <!-- İçerik alanı -->
+        <ContentControl x:Name="contentArea" Grid.Column="2" Grid.Row="0" Width="819" Height="505" VerticalAlignment="Top"/>
+
+        <!-- Alt kısım -->
+        <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Height="95" VerticalAlignment="Center" Width="1024">
+            <Border Background="#AF0101" Margin="0,0,0,0" Height="1" VerticalAlignment="Top"/>
+            <Border Background="#E7ECEF" BorderBrush="#D6D6D6" BorderThickness="2,1.5,2,2" Margin="0,1,0,0">
+                <Grid Height="94" VerticalAlignment="Center">
+                    <!--TIME-->
+                    <TextBlock x:Name="clockTextBlock" Text="00 : 00 : 00" TextAlignment="Center" FontSize="40" FontWeight="SemiBold" Foreground="#272932"
+                        Margin="41,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="#808080" Direction="270" ShadowDepth="3" Opacity="0.4"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <!--EDIT VIEW-->
+                    <Button Width="175" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                    <Border Background="#E7ECEF" CornerRadius="5">
+                                        <Border.Effect>
+                                            <DropShadowEffect Color="#808080" Direction="270" ShadowDepth="3" BlurRadius="5"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <TextBlock Text="Edit View" FontSize="20" Foreground="#272932" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+
+                    <!--START-->
+                    <Button Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="StartButton_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                    <Border Background="#AF0101" CornerRadius="5">
+                                        <Border.Effect>
+                                            <DropShadowEffect Color="#808080" Direction="270" ShadowDepth="3" BlurRadius="5"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <TextBlock Text="START" FontSize="30" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                    <Label Content="Time" HorizontalAlignment="Left" Margin="37,4,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Regular"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Button x:Name="myButton" Width="30" Height="16" Background="#DAE2E7" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="2" Click="myButton_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    CornerRadius="0,0,5,5">
+                        <!-- Sadece alt köşeler yuvarlatılıyor -->
+                        <Grid>
+                            <Image Source="images/Down-removebg-preview.jpg" Width="23" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Popup x:Name="myPopup" Placement="Bottom" PlacementTarget="{Binding ElementName=myButton}" Width="1024" Height="30" AllowsTransparency="True" PopupAnimation="Slide">
+            <Border Background="LightGray">
+                <TextBlock Text="Popup içeriği burada" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </Popup>
+    </Grid>
+</Window>
