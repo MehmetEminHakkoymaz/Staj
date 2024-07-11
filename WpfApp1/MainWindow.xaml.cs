@@ -37,7 +37,7 @@ namespace WpfApp1
         {
             // Zamanı güncelle ve göster
             time = time.Add(TimeSpan.FromSeconds(1));
-            clockTextBlock.Text = time.ToString(@"hh\ : mm\ : ss");
+            clockTextBlock.Text = time.ToString(@"hh\:mm\:ss");
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
