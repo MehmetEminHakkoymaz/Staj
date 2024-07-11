@@ -11,7 +11,7 @@
             <Label Content="PARAMETER" VerticalAlignment="Center" Margin="63,0,0,-20" Width="122" Height="27" HorizontalAlignment="Left" Opacity="0.2" FontWeight="SemiBold" Padding="5,0,5,0" FontSize="20"/>
             <Label Content="VALUE" HorizontalAlignment="Left" Margin="248,0,0,-20" VerticalAlignment="Center" Opacity="0.2" FontWeight="SemiBold" Width="66" Height="27" Padding="0,0,0,0" FontSize="20"/>
             <Label Content="SETPOINT" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="377,0,0,-20" Width="101" Height="27" Padding="0,0,0,0" FontWeight="SemiBold" Opacity="0.2" FontSize="20"/>
-            <Label Content="FILL" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="541,0,0,-20" Width="66" Height="27" Padding="0,0,0,0" FontWeight="SemiBold" Opacity="0.2" FontSize="20"/>
+            <Label Content="FILL" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="546,0,0,-20" Width="66" Height="27" Padding="0,0,0,0" FontWeight="SemiBold" Opacity="0.2" FontSize="20"/>
             <Label Content="EMPTY" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="670,0,0,-20" Width="66" Height="27" Padding="0,0,0,0" FontWeight="SemiBold" Opacity="0.2" FontSize="20"/>
             <Border BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,3" Width="800"/>
         </Grid>
@@ -20,23 +20,140 @@
         <!-- İkinci Kısım -->
         <Border HorizontalAlignment="Center"  Height="45" VerticalAlignment="Top" Width="800" Margin="0,50,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
             <Grid>
-                <Label Content="Turbidity" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
-                <Label Content="a" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
-                <Border HorizontalAlignment="Left" Margin="361,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                <Label Content="Pump1 ← pH" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
+                <Label Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
+                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
-                
+                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Text="FILL" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Text="EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
+                </Button>
+
+
             </Grid>
         </Border>
-        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,95,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
+        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="800" Margin="0,95,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
             <Grid>
-                <Label Content="Balance" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
-                <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
-                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                <Label Content="Pump2 ← pH" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
+                <Label Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
+                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
+                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Text="FILL" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Text="EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
+                </Button>
+
+
             </Grid>
         </Border>
+
+        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="800" Margin="0,140,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
+            <Grid>
+                <Label Content="Pump3 ← Foam" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="144" Height="24" FontSize="20" Padding="0,0,0,0"/>
+                <Label Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
+                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                </Border>
+                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Text="FILL" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Text="EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
+                </Button>
+
+
+            </Grid>
+        </Border>
+
+        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="800" Margin="0,185,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
+            <Grid>
+                <Label Content="Pump4 ← pH" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
+                <Label Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
+                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                </Border>
+                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Text="FILL" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Text="EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
+                </Button>
+
+
+            </Grid>
+        </Border>
+        <Button HorizontalAlignment="Left" Margin="500,272,0,148" Width="264" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <TextBlock Text="OPEN AUTO FILL/EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
+        </Button>
 
     </Grid>
 </UserControl>

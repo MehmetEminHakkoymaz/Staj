@@ -3,6 +3,7 @@ C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\Wp
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.runtimeconfig.json
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.dll
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.pdb
+C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\00000000000.g.cs
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ExitGasControl.g.cs
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ExtendedControl.g.cs
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\FavouritesControl.g.cs
@@ -12,6 +13,7 @@ C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Pu
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1_MarkupCompile.cache
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1_MarkupCompile.lref
+C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\00000000000.baml
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ExitGasControl.baml
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ExtendedControl.baml
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\FavouritesControl.baml
@@ -28,5 +30,3 @@ C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\re
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.pdb
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.genruntimeconfig.cache
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp1.dll
-C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\00000000000.g.cs
-C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\00000000000.baml

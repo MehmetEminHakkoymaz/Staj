@@ -24,6 +24,7 @@ namespace WpfApp1
         private TimeSpan time;
         public MainWindow()
         {
+            StartClock();
             InitializeComponent();
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla güncellenir
@@ -36,7 +37,7 @@ namespace WpfApp1
         {
             // Zamanı güncelle ve göster
             time = time.Add(TimeSpan.FromSeconds(1));
-            clockTextBlock.Text = time.ToString(@"hh\:mm\:ss");
+            clockTextBlock.Text = time.ToString(@"hh\ : mm\ : ss");
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -74,38 +75,61 @@ namespace WpfApp1
             contentArea.Content = pumpsControl;
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        //ÜstMenü
+        private void TogglePopupButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!myPopup.IsOpen)
+            if (sender is Button button) // Güvenli tür dönüşümü ve null kontrolü
             {
-                // Popup'ı aç
-                myPopup.IsOpen = true;
+                Thickness targetMargin;
 
-                // Popup için bir yükseklik animasyonu oluştur (Açılış)
-                DoubleAnimation openAnimation = new DoubleAnimation
+                bool isExpanded = TopGrid.Margin.Top == 0;
+                if (isExpanded)
                 {
-                    From = 0,
-                    To = 30,
-                    Duration = TimeSpan.FromSeconds(0.5)
+                    targetMargin = new Thickness(0, -30, 0, 0);
+                    // Image kaynağını güncelle
+                    button.Tag = "pack://application:,,,/WpfApp1;component/images/Down.png";
+                }
+                else
+                {
+                    targetMargin = new Thickness(0, 0, 0, 0);
+                    // Image kaynağını güncelle
+                    button.Tag = "pack://application:,,,/WpfApp1;component/images/Up.png";
+                }
+
+                ThicknessAnimation marginAnimation = new ThicknessAnimation
+                {
+                    To = targetMargin,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    FillBehavior = FillBehavior.Stop
                 };
 
-                myPopup.BeginAnimation(Popup.HeightProperty, openAnimation);
-            }
-            else
-            {
-                // Popup için bir yükseklik animasyonu oluştur (Kapanış)
-                DoubleAnimation closeAnimation = new DoubleAnimation
+                marginAnimation.Completed += (s, args) =>
                 {
-                    From = 30,
-                    To = 0,
-                    Duration = TimeSpan.FromSeconds(0.5)
+                    TopGrid.Margin = targetMargin;
+                    // Burada artık Image kaynağını güncellemeye gerek yok, çünkü Tag özelliği ile bağlama yapıldı
                 };
 
-                // Animasyon tamamlandığında popup'ı kapat
-                closeAnimation.Completed += (s, a) => myPopup.IsOpen = false;
-
-                myPopup.BeginAnimation(Popup.HeightProperty, closeAnimation);
+                TopGrid.BeginAnimation(MarginProperty, marginAnimation);
             }
+        }
+        private Image CreateArrowImage(string imagePath)
+        {
+            return new Image
+            {
+                Source = new BitmapImage(new Uri(imagePath))
+            };
+        }
+
+        private void StartClock()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick_Now;
+            timer.Start();
+        }
+        private void Timer_Tick_Now(object sender, EventArgs e)
+        {
+            ClockTextBlock.Text = DateTime.Now.ToString("HH : mm : ss");
         }
     }
 }

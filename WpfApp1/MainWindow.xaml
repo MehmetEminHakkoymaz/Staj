@@ -7,25 +7,44 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1024"
         Background="#E7ECEF">
-    <Window.Resources>
-        <!-- Mevcut stil tanımlarınız -->
-        <Style x:Key="MyButtonStyle" TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
+    <Grid>
+        <Grid x:Name="TopGrid" VerticalAlignment="Top" Margin="0,-30,0,0" Panel.ZIndex="100">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Background="#DAE2E7" Grid.Row="0" Width="1024" Height="30" BorderThickness="0,0,0,1" BorderBrush="Black">
+                <Grid>
+                    <Button Width="28" Height="28" HorizontalAlignment="Left" Margin="0,2,0,0" Background="Transparent" BorderThickness="0">
+                        <Image Source="pack://application:,,,/images/options.png"/>
+                    </Button>
+                    <Label Content="MECHOSPHERE" Padding="5,0,5,0" FontSize="20" FontFamily="Inter" FontWeight="Regular" HorizontalAlignment="Left" Margin="41,0,0,0" Width="152" Height="24"  VerticalAlignment="Center"/>
+                    <TextBlock x:Name="ClockTextBlock" FontFamily="Inter" FontWeight="Regular" FontSize="20" Width="106" Height="24" HorizontalAlignment="Left" Margin="463,3,0,0" VerticalAlignment="Center"/>
+                    <Image Source="pack://application:,,,/images/usb.png" Width="28" Height="28" HorizontalAlignment="Right" Margin="0,-1,36,1"/>
+                    <Image Source="pack://application:,,,/images/wifi.png" Width="28" Height="28" HorizontalAlignment="Right" Margin="0,-1,2,1"/>
+                </Grid>
+            </Border>
+
+            <Button x:Name="TogglePopupButton" Grid.Row="1" Width="30" Height="16" Background="#DAE2E7" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="2" Click="TogglePopupButton_Click" Tag="pack://application:,,,/WpfApp1;component/images/Down.png">
+                <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" 
-                            BorderBrush="{TemplateBinding BorderBrush}" 
-                            BorderThickness="{TemplateBinding BorderThickness}" 
-                            CornerRadius="5">
-                            <!-- Yuvarlak köşeler için CornerRadius değeri -->
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    CornerRadius="0,0,5,5">
+                            <Grid>
+                                <Image Width="23" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Source="{Binding Path=Tag, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"/>
+                            </Grid>
                         </Border>
                     </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-    <Grid>
+                </Button.Template>
+            </Button>
+
+        </Grid>
+
+        <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="204"/>
             <ColumnDefinition Width="1"/>
@@ -100,25 +119,6 @@
                 </Grid>
             </Border>
         </Grid>
-        <Button x:Name="myButton" Width="30" Height="16" Background="#DAE2E7" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="2" Click="myButton_Click">
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}" 
-                    BorderBrush="{TemplateBinding BorderBrush}" 
-                    BorderThickness="{TemplateBinding BorderThickness}" 
-                    CornerRadius="0,0,5,5">
-                        <!-- Sadece alt köşeler yuvarlatılıyor -->
-                        <Grid>
-                            <Image Source="images/Down-removebg-preview.jpg" Width="23" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Popup x:Name="myPopup" Placement="Bottom" PlacementTarget="{Binding ElementName=myButton}" Width="1024" Height="30" AllowsTransparency="True" PopupAnimation="Slide">
-            <Border Background="LightGray">
-                <TextBlock Text="Popup içeriği burada" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-        </Popup>
+    </Grid>
     </Grid>
 </Window>

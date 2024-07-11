@@ -8,4 +8,29 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="images\Down.png" />
+    <None Remove="images\Left.png" />
+    <None Remove="images\nowifi.png" />
+    <None Remove="images\options.png" />
+    <None Remove="images\Right.png" />
+    <None Remove="images\Up.png" />
+    <None Remove="images\usb.png" />
+    <None Remove="images\wifi.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\Right.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\Down.png" />
+    <Resource Include="images\Left.png" />
+    <Resource Include="images\nowifi.png" />
+    <Resource Include="images\options.png" />
+    <Resource Include="images\Up.png" />
+    <Resource Include="images\usb.png" />
+    <Resource Include="images\wifi.png" />
+  </ItemGroup>
+
 </Project>

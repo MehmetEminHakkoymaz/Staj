@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp1
 {
@@ -20,7 +21,7 @@ namespace WpfApp1
     /// </summary>
     public partial class _00000000000 : Window
     {
-
+     
         private bool isAtRight = false; // Yuvarlağın mevcut pozisyonunu takip etmek için bir bayrak
 
         private bool isEllipseMovedRight = false;
@@ -29,81 +30,100 @@ namespace WpfApp1
         {
             InitializeComponent();
             ellipse1.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            //Saat İçin Gerekli Yapı
+            StartClock();
 
         }
+
+
+        //YUKARI AŞAĞI MENÜ İÇİN GEREKLİ YAPI
+
+
         private void TogglePopupButton_Click(object sender, RoutedEventArgs e)
         {
-            // Animasyonun hedef Margin değerini ve okun yönünü belirle
-            Thickness targetMargin;
-            string arrowDirection;
-
-            if (TopGrid.Margin.Top == 0)
+            if (sender is Button button) // Güvenli tür dönüşümü ve null kontrolü
             {
-                targetMargin = new Thickness(0, -30, 0, 0);
-                arrowDirection = "↓"; // Grid yukarı çıkınca buton aşağı ok göstersin
+                Thickness targetMargin;
+
+                bool isExpanded = TopGrid.Margin.Top == 0;
+                if (isExpanded)
+                {
+                    targetMargin = new Thickness(0, -30, 0, 0);
+                    // Image kaynağını güncelle
+                    button.Tag = "pack://application:,,,/WpfApp1;component/images/Down.png";
+                }
+                else
+                {
+                    targetMargin = new Thickness(0, 0, 0, 0);
+                    // Image kaynağını güncelle
+                    button.Tag = "pack://application:,,,/WpfApp1;component/images/Up.png";
+                }
+
+                ThicknessAnimation marginAnimation = new ThicknessAnimation
+                {
+                    To = targetMargin,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    FillBehavior = FillBehavior.Stop
+                };
+
+                marginAnimation.Completed += (s, args) =>
+                {
+                    TopGrid.Margin = targetMargin;
+                    // Burada artık Image kaynağını güncellemeye gerek yok, çünkü Tag özelliği ile bağlama yapıldı
+                };
+
+                TopGrid.BeginAnimation(MarginProperty, marginAnimation);
             }
-            else
-            {
-                targetMargin = new Thickness(0, 0, 0, 0);
-                arrowDirection = "↑"; // Grid aşağı inince buton yukarı ok göstersin
-            }
-
-            // Margin animasyonu oluştur
-            ThicknessAnimation marginAnimation = new ThicknessAnimation
-            {
-                To = targetMargin,
-                Duration = TimeSpan.FromSeconds(0.5),
-                FillBehavior = FillBehavior.Stop
-            };
-
-            // Animasyon tamamlandığında Margin'i ve okun yönünü manuel olarak ayarla
-            marginAnimation.Completed += (s, args) =>
-            {
-                TopGrid.Margin = targetMargin;
-                ((Button)sender).Content = new TextBlock { Text = arrowDirection, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
-            };
-
-            // Animasyonu Grid'e uygula
-            TopGrid.BeginAnimation(MarginProperty, marginAnimation);
         }
+        private Image CreateArrowImage(string imagePath)
+        {
+            return new Image
+            {
+                Source = new BitmapImage(new Uri(imagePath))
+            };
+        }
+
+
+
 
         private void ToggleRightGridButton_Click(object sender, RoutedEventArgs e)
         {
-            // Animasyonun hedef Margin değerini belirle
-            Thickness targetMargin;
-            string arrowDirection;
-
-            // Grid'in mevcut sağ Margin değerini kontrol et
-            if (RightGrid.Margin.Right < 0) // Grid tamamen veya kısmen gizli
+            if (sender is Button button)
             {
-                targetMargin = new Thickness(0, 54, 0, 0); // Grid'i görünür yap
-                arrowDirection = "→"; // Ok yönünü sağa çevir
+                Thickness targetMargin;
+                string targetImage;
+
+                // RightGrid'in görünürlüğünü kontrol et ve güncelle
+                if (RightGrid.Margin.Right == 0)
+                {
+                    // RightGrid'i gizle
+                    targetMargin = new Thickness(0, 54, -325, 0); // Margin değerlerini projenize göre ayarlayın
+                    targetImage = "pack://application:,,,/WpfApp1;component/images/Left.png";
+                }
+                else
+                {
+                    // RightGrid'i göster
+                    targetMargin = new Thickness(0, 54, 0, 0); // Margin değerlerini projenize göre ayarlayın
+                    targetImage = "pack://application:,,,/WpfApp1;component/images/Right.png";
+                }
+
+                ThicknessAnimation marginAnimation = new ThicknessAnimation
+                {
+                    To = targetMargin,
+                    Duration = TimeSpan.FromSeconds(0.2), // Animasyon süresi
+                    FillBehavior = FillBehavior.Stop
+                };
+
+                marginAnimation.Completed += (s, args) =>
+                {
+                    RightGrid.Margin = targetMargin; // Animasyon tamamlandığında Margin'i güncelle
+                    button.Tag = targetImage; // Butonun görselini güncelle
+                };
+
+                RightGrid.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
             }
-            else
-            {
-                targetMargin = new Thickness(0, 54, -325, 0); // Grid'i gizle
-                arrowDirection = "←"; // Ok yönünü sola çevir
-            }
-
-            // Margin animasyonu oluştur
-            ThicknessAnimation marginAnimation = new ThicknessAnimation
-            {
-                From = RightGrid.Margin,
-                To = targetMargin,
-                Duration = TimeSpan.FromSeconds(0.5),
-                FillBehavior = FillBehavior.Stop
-            };
-
-            // Animasyon tamamlandığında Margin'i ve okun yönünü manuel olarak ayarla
-            marginAnimation.Completed += (s, args) =>
-            {
-                RightGrid.Margin = targetMargin;
-                ((Button)sender).Content = new TextBlock { Text = arrowDirection, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
-            };
-
-            // Animasyonu Grid'e uygula
-            RightGrid.BeginAnimation(MarginProperty, marginAnimation);
         }
+
 
 
         private void Ellipse_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -128,5 +148,18 @@ namespace WpfApp1
             ellipse1.BeginAnimation(Canvas.LeftProperty, animation);
         }
 
+        //SAAT İÇİN GEREKLİ YAPI
+        private void StartClock()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            ClockTextBlock.Text = DateTime.Now.ToString("HH : mm : ss");
+        }
     }
 }
