@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="WpfApp1.Settings.SettingWindows.VesselType"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Settings.SettingWindows"
+             mc:Ignorable="d" 
+             d:DesignHeight="462" d:DesignWidth="724">
+    <Grid>
+        <Button Content="500 ml" Height="50" Width="300" Click="ml500_Button_Click" Background="#FFE7ECEF"
+        Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="212,118,212,294"
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Content="1 L" Height="50" Width="300" Click="L1_Button_Click" Background="#FFE7ECEF"
+        Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="212,168,212,244"
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Content="2 L" Height="50" Width="300" Click="L2_Button_Click" Background="#FFE7ECEF"
+        Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="212,218,212,194"
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Content="3 L" Height="50" Width="300" Click="L3_Button_Click" Background="#FFE7ECEF"
+        Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="212,268,212,144"
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+    </Grid>
+</UserControl>

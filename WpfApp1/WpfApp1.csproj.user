@@ -19,10 +19,37 @@
     <Compile Update="FavouritesControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Keypad\KeyPad.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MainControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="PumpsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Settings\SettingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Settings\SettingWindows\Appearance.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Settings\SettingWindows\NetworkSetting.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Settings\SettingWindows\PinSetting.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Settings\SettingWindows\ServiceMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Settings\SettingWindows\SystemInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Settings\SettingWindows\Usb.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Settings\SettingWindows\VesselType.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -39,6 +66,9 @@
     <Page Update="FavouritesControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Keypad\KeyPad.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -46,6 +76,30 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PumpsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Settings\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Settings\SettingWindows\Appearance.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Settings\SettingWindows\NetworkSetting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Settings\SettingWindows\PinSetting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Settings\SettingWindows\ServiceMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Settings\SettingWindows\SystemInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Settings\SettingWindows\Usb.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Settings\SettingWindows\VesselType.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

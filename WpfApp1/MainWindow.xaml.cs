@@ -131,5 +131,18 @@ namespace WpfApp1
         {
             ClockTextBlock.Text = DateTime.Now.ToString("HH : mm : ss");
         }
+
+        private void Settings_Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Yeni pencere örneği oluştur (namespace'i dikkate alarak)
+            var settingsWindow = new WpfApp1.Settings.SettingsWindow();
+
+            // Pencerenin boyutunu ayarla
+            settingsWindow.Width = 1024;
+            settingsWindow.Height = 600;
+
+            // Pencereyi göster
+            settingsWindow.Show();
+        }
     }
 }

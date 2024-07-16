@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\obj\Debug\net8.0-windows\
+C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\
 WpfApp1
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\App.xaml
-7191450885
+C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\App.xaml
+16709385704
 
-12-1421084306
+21174298338
 198-635017904
-00000000000.xaml;ExitGasControl.xaml;ExtendedControl.xaml;FavouritesControl.xaml;MainControl.xaml;MainWindow.xaml;PumpsControl.xaml;
+00000000000.xaml;ExitGasControl.xaml;ExtendedControl.xaml;FavouritesControl.xaml;Keypad\KeyPad.xaml;MainControl.xaml;MainWindow.xaml;PumpsControl.xaml;Settings\SettingsWindow.xaml;Settings\SettingWindows\Appearance.xaml;Settings\SettingWindows\NetworkSetting.xaml;Settings\SettingWindows\PinSetting.xaml;Settings\SettingWindows\ServiceMenu.xaml;Settings\SettingWindows\SystemInfo.xaml;Settings\SettingWindows\Usb.xaml;Settings\SettingWindows\VesselType.xaml;
 
 False
 

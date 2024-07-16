@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="WpfApp1.Settings.SettingWindows.Usb"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Settings.SettingWindows"
+             mc:Ignorable="d" 
+             d:DesignHeight="462" d:DesignWidth="724">
+    <Grid>
+        <Button Content="EXPORT DATA TO USB" Height="50" Width="500" Click="Export_Data_Button_Click" Background="#FFE7ECEF"
+        Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="112,98,112,314"
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Content="LOAD CONFIGURATION FROM USB" Height="50" Width="500" Click="Load_Config_Button_Click" Background="#FFE7ECEF"
+        Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="112,148,112,264"
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Content="UPDATE FIRMWARE" Height="50" Width="500" Click="Update_Firmware_Button_Click" Background="#FFE7ECEF"
+        Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="112,198,112,214"
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Content="UPDATE USER INTERFACE" Height="50" Width="500" Click="Update_User_Button_Click" Background="#FFE7ECEF"
+        Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="112,248,112,164"
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Content="ADD LANGUAGE" Height="50" Width="500" Click="Add_Language_Button_Click" Background="#FFE7ECEF"
+        Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="112,298,112,114"
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+    </Grid>
+</UserControl>
