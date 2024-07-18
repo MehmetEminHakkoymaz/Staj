@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:WpfApp1"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="{x:Type Control}">
+            <Setter Property="FontFamily" Value="pack://application:,,,/WpfApp1;component/Fonts/#Inter-VariableFont_slnt,wght"/>
+        </Style>
     </Application.Resources>
 </Application>

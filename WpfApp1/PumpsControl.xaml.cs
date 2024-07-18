@@ -24,5 +24,29 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox focusedTextBox = sender as TextBox;
+            if (focusedTextBox != null)
+            {
+                // TextBox'ın ebeveyninin ebeveynini bul (Grid varsayıyoruz)
+                DependencyObject parent = VisualTreeHelper.GetParent(focusedTextBox);
+                DependencyObject grandParent = parent != null ? VisualTreeHelper.GetParent(parent) : null;
+                Grid parentGrid = grandParent as Grid;
+                if (parentGrid != null)
+                {
+                    // Grid içindeki ilk Label'ı bul
+                    Label firstLabel = parentGrid.Children.OfType<Label>().FirstOrDefault();
+                    if (firstLabel != null)
+                    {
+                        // Label'ın içeriğini al
+                        string labelContent = firstLabel.Content.ToString();
+                        // KeyPad'e label içeriğini gönder
+                        KeypadPopup.IsOpen = true;
+                        KeypadControl.SetLabelContent(labelContent);
+                    }
+                }
+            }
+        }
     }
 }

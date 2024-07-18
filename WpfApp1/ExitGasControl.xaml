@@ -9,28 +9,37 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#E7ECEF">
         <Grid Height="50" VerticalAlignment="Top">
-            <Label Content="PARAMETER" VerticalAlignment="Center" Margin="85,0,0,-20" Width="122" Height="27" HorizontalAlignment="Left" Opacity="0.2" FontWeight="SemiBold" Padding="5,0,5,0" FontSize="20"/>
-            <Label Content="VALUE" HorizontalAlignment="Left" Margin="331,0,0,-20" VerticalAlignment="Center" Opacity="0.2" FontWeight="SemiBold" Width="66" Height="27" Padding="0,0,0,0" FontSize="20"/>
-            <Label Content="SETPOINT" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="561,0,0,-20" Width="101" Height="27" Padding="0,0,0,0" FontWeight="SemiBold" Opacity="0.2" FontSize="20"/>
+            <Label Content="PARAMETER" VerticalAlignment="Center" Margin="85,0,0,-20" Width="122" Height="27" HorizontalAlignment="Left" 
+                   Opacity="0.2" FontWeight="SemiBold" Padding="5,0,5,0" FontSize="20"/>
+            <Label Content="VALUE" HorizontalAlignment="Left" Margin="331,0,0,-20" VerticalAlignment="Center" Opacity="0.2" FontWeight="SemiBold" 
+                   Width="66" Height="27" Padding="0,0,0,0" FontSize="20"/>
+            <Label Content="SETPOINT" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="561,0,0,-20" Width="101" Height="27" 
+                   Padding="0,0,0,0" FontWeight="SemiBold" Opacity="0.2" FontSize="20"/>
             <Border BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,3" Width="815"/>
         </Grid>
 
         <!-- İkinci Kısım -->
-        <Border HorizontalAlignment="Center"  Height="45" VerticalAlignment="Top" Width="815" Margin="0,50,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
+        <Border HorizontalAlignment="Center"  Height="45" VerticalAlignment="Top" Width="815" Margin="0,50,0,0" BorderBrush="#FFD6D6D6" 
+                BorderThickness="2,2,2,2">
             <Grid>
-                <Label Content="Turbidity" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
+                <Label Content="Turbidity" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Center" 
+                       Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox GotFocus="TextBox_GotFocus"  TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus"  TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>
-        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,95,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
+        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,95,0,0" BorderBrush="#FFD6D6D6" 
+                BorderThickness="2,2,2,2">
             <Grid>
-                <Label Content="Balance" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
+                <Label Content="Balance" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" 
+                       Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>

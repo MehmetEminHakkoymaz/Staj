@@ -10,6 +10,21 @@
     <Compile Update="00000000000.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EditPages\EditpH.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditPages\EditpHCascade\Acid.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditPages\EditpHCascade\Base.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditPages\EditpHCascade\BaseAcid.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditPages\EditpHCascade\None.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ExitGasControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +70,21 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="00000000000.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditPages\EditpH.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditPages\EditpHCascade\Acid.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditPages\EditpHCascade\Base.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditPages\EditpHCascade\BaseAcid.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditPages\EditpHCascade\None.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ExitGasControl.xaml">

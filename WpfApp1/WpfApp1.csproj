@@ -9,17 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Inter-VariableFont_slnt,wght.ttf" />
     <None Remove="images\Down.png" />
+    <None Remove="images\editt.png" />
+    <None Remove="images\infoo.png" />
     <None Remove="images\Left.png" />
     <None Remove="images\nowifi.png" />
     <None Remove="images\options.png" />
     <None Remove="images\Right.png" />
+    <None Remove="images\target.png" />
     <None Remove="images\Up.png" />
     <None Remove="images\usb.png" />
     <None Remove="images\wifi.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\Inter-VariableFont_slnt,wght.ttf" />
+    <Resource Include="images\editt.png" />
+    <Resource Include="images\infoo.png" />
     <Resource Include="images\Right.png" />
   </ItemGroup>
 
@@ -28,6 +35,7 @@
     <Resource Include="images\Left.png" />
     <Resource Include="images\nowifi.png" />
     <Resource Include="images\options.png" />
+    <Resource Include="images\target.png" />
     <Resource Include="images\Up.png" />
     <Resource Include="images\usb.png" />
     <Resource Include="images\wifi.png" />

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1"
+             xmlns:kepad="clr-namespace:WpfApp1.Keypad"
              mc:Ignorable="d" 
              d:DesignHeight="505" d:DesignWidth="819">
 
@@ -22,7 +23,7 @@
                 <Label Content="Temperature" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>
@@ -31,7 +32,7 @@
                 <Label Content="Stirrer" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>
@@ -40,7 +41,7 @@
                 <Label Content="pH" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>
@@ -49,7 +50,7 @@
                 <Label Content="pO2" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>
@@ -58,7 +59,7 @@
                 <Label Content="Gas1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>
@@ -67,7 +68,7 @@
                 <Label Content="Gas2" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>
@@ -76,7 +77,7 @@
                 <Label Content="Gas3" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>
@@ -85,7 +86,7 @@
                 <Label Content="Gas4" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>
@@ -94,9 +95,132 @@
                 <Label Content="Foam" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
         </Border>
+        <!--<Grid x:Name="RightGrid" Width="341" Height="448" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,54,-325,0">
+            <Button Content="Yeni Buton" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50"/>
+        </Grid>-->
+        <Grid x:Name="RightGrid" Width="341" Height="448" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,-325,0">
+            <!-- Grid içeriği -->
+            <Border Background="#E7ECEF" BorderBrush="#D6D6D6" BorderThickness="2" Margin="16,0,0,0">
+                <Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,5,244,409">
+                            <Canvas x:Name="canvas1" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse1"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,5,21,409"/>
+                    </Grid>
+                    <Grid/>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,95,244,319">
+                            <Canvas x:Name="canvas3" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse3"
+                                         MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/target.png" Width="30" Height="30" Margin="122,95,169,319"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,95,94,319"
+                               MouseLeftButtonDown="EditpH_MouseLeftButtonDown"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,95,21,319"/>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,140,244,274">
+                            <Canvas x:Name="canvas4" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse4"
+                                         MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/target.png" Width="30" Height="30" Margin="122,140,169,274"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,140,94,274"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,140,21,274"/>
+                    </Grid>
+                    <Grid>
+                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="11,50,243,364">
+                            <Canvas x:Name="canvas2" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse2"
+                                         MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,50,21,364"/>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,185,244,229">
+                            <Canvas x:Name="canvas5" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse5"
+                                         MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,185,21,229"/>
+                    </Grid>
+
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,230,244,184">
+                            <Canvas x:Name="canvas6" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse6"
+                                         MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,230,21,184"/>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,275,244,139">
+                            <Canvas x:Name="canvas7" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse7"
+                                         MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,275,21,139"/>
+                    </Grid>
+
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,320,244,94">
+                            <Canvas x:Name="canvas8" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse8"
+                                         MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,320,21,94"/>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,365,244,49">
+                            <Canvas x:Name="canvas9" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse9"
+                                         MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,365,94,49"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,365,21,49"/>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Buton, Grid içine taşındı -->
+            <Button x:Name="ToggleRightGridButton" Width="16" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,209,0,0" Click="ToggleRightGridButton_Click" Tag="pack://application:,,,/WpfApp1;component/images/Left.png">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    CornerRadius="5,0,0,5">
+                            <Grid>
+                                <!-- RelativeSource ile Tag özelliğine bağlı olarak dinamik Image Source -->
+                                <Image Width="23" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Source="{Binding Path=Tag, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+        </Grid>
+
+        <Popup x:Name="KeypadPopup" Placement="Center" IsOpen="False">
+            <kepad:KeyPad x:Name="KeypadControl"/>
+        </Popup>
     </Grid>
 </UserControl>

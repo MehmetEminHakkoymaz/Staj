@@ -117,7 +117,7 @@
             <Label x:Name="InfoLabel" Content="Bilgi Metni" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" 
                    Margin="0,0,0,0" Opacity="0.6" FontWeight="Regular"/>
             <Border HorizontalAlignment="Left" Margin="25,35,0,375" Width="240" Height="65" CornerRadius="5" BorderBrush="#D6D6D6" BorderThickness="1">
-                <TextBox TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                <TextBox x:Name="numbers" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
             <Button Width="300" Height="50" BorderBrush="#D6D6D6" BorderThickness="1" Margin="25,120,25,305" Background="#E7ECEF"
                     Click="DeleteButton_Click">
