@@ -30,6 +30,15 @@ namespace WpfApp1.Keypad
                 // numbersTextBox ile işlem yap
             }
         }
+
+
+        private void KeyButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var value = button.Content.ToString(); // Veya seçilen değeri temsil eden başka bir özellik
+            OnValueSelected(value); // Olayı tetikle
+        }
+
         private void NumberButton_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -115,11 +124,13 @@ namespace WpfApp1.Keypad
 
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
-            var parentPopup = this.Parent as Popup;
-            if (parentPopup != null)
-            {
-                parentPopup.IsOpen = false;
-            }
+            // numbers TextBox'ın mevcut değerini kullanarak ValueSelected olayını tetikle
+            ValueSelected?.Invoke(this, numbers.Text);
+        }
+        public event EventHandler<string> ValueSelected;
+        protected virtual void OnValueSelected(string value)
+        {
+            ValueSelected?.Invoke(this, value);
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp1
 {
@@ -25,7 +26,18 @@ namespace WpfApp1
         {
             InitializeComponent();
             ellipse1.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
+            comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
+            comparisonTimer.Tick += ComparisonTimer_Tick; // Zamanlayıcı olayı
         }
+
+        private TextBox activeTextBox = null;
+
+        private TextBox currentTextBox = null;
+
+        private DispatcherTimer comparisonTimer = new DispatcherTimer();
+
+
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox focusedTextBox = sender as TextBox;
@@ -35,6 +47,7 @@ namespace WpfApp1
                 DependencyObject parent = VisualTreeHelper.GetParent(focusedTextBox);
                 DependencyObject grandParent = parent != null ? VisualTreeHelper.GetParent(parent) : null;
                 Grid parentGrid = grandParent as Grid;
+                activeTextBox = sender as TextBox; // Odaklanan TextBox'ı aktif olarak ayarla
                 if (parentGrid != null)
                 {
                     // Grid içindeki ilk Label'ı bul
@@ -48,6 +61,14 @@ namespace WpfApp1
                         KeypadControl.SetLabelContent(labelContent);
                     }
                 }
+            }
+        }
+
+        private void KeyPadControl_ValueSelected(object sender, string value)
+        {
+            if (activeTextBox != null)
+            {
+                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
             }
         }
 
@@ -89,6 +110,11 @@ namespace WpfApp1
             }
         }
 
+        private void EditpH_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var editpHWindow = new WpfApp1.EditPages.EditpH();
+            editpHWindow.Show();
+        }
 
         private void Ellipse_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -113,16 +139,122 @@ namespace WpfApp1
                 animation.Completed += (s, a) =>
                 {
                     Canvas.SetLeft(clickedEllipse, targetLeft); // Animasyon tamamlandığında yuvarlağın pozisyonunu güncelle
+
+                    if (targetLeft == maxRight)
+                    {
+                        clickedEllipse.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFAF0101")); // Sağdaysa kırmızı yap
+                    }
+                    else
+                    {
+                        clickedEllipse.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFE7ECEF")); // Soldaysa gri yap
+                    }
+
+                    // Ellipse'in rengi değiştikten sonra butonun görünürlüğünü kontrol et
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse1, conditionalButton);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse2, conditionalButtonStirrer);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse3, conditionalButtonpH);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse4, conditionalButtonpO2);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse5, conditionalButtonGas1);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse6, conditionalButtonGas2);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse7, conditionalButtonGas3);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse8, conditionalButtonGas4);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse9, conditionalButtonFoam);
+
                 };
 
                 clickedEllipse.BeginAnimation(Canvas.LeftProperty, animation);
             }
         }
-
-        private void EditpH_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var editpHWindow = new WpfApp1.EditPages.EditpH();
-            editpHWindow.Show();
+            CheckEllipsePositionAndSetButtonVisibility(ellipse1, conditionalButton);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse2, conditionalButtonStirrer);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse3, conditionalButtonpH);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse4, conditionalButtonpO2);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse5, conditionalButtonGas1);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse6, conditionalButtonGas2);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse7, conditionalButtonGas3);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse8, conditionalButtonGas4);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse9, conditionalButtonFoam);
+
+        }
+
+        private void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)
+        {
+            // Ellipse'in parent'ını Canvas olarak al
+            Canvas parentCanvas = ellipse.Parent as Canvas;
+            if (parentCanvas == null) return;
+
+            double canvasWidth = parentCanvas.ActualWidth; // Canvas'ın gerçek genişliğini kullan
+            double ellipseRightPosition = Canvas.GetLeft(ellipse) + ellipse.Width; // Ellipse'in sağ kenarının konumu
+
+            // Ellipse, Canvas'ın sağ yarısında ise butonu göster, değilse gizle
+            button.Visibility = ellipseRightPosition > canvasWidth / 2 ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void ConditionalButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Zamanlayıcıyı başlatmadan önce, tıklanan butonu belirle
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                // Tıklanan butonun Tag'inde ilişkili Grid'i saklayın (XAML'de veya başka bir yerde ayarlanmalıdır)
+                clickedButton.Tag = clickedButton.Parent as Grid;
+            }
+
+            // Zamanlayıcıyı başlat
+            comparisonTimer.Start();
+        }
+
+        private void ComparisonTimer_Tick(object sender, EventArgs e)
+        {
+            // Tüm butonları kontrol et
+            foreach (Button button in FindVisualChildren<Button>(this))
+            {
+                if (button.Tag is Grid parentGrid)
+                {
+                    // Grid içindeki ikinci Label'ı bul
+                    var secondLabel = parentGrid.Children.OfType<Label>().ElementAtOrDefault(1);
+                    // Grid içindeki TextBox'ı bul
+                    var textBox = parentGrid.Children.OfType<Border>().FirstOrDefault()?.Child as TextBox;
+
+                    if (secondLabel != null && textBox != null)
+                    {
+                        // Label ve TextBox içindeki değerleri karşılaştır
+                        if (secondLabel.Content.ToString() == textBox.Text)
+                        {
+                            // Değerler aynıysa butonun arka planını yeşil yap
+                            button.Background = new SolidColorBrush(Colors.Green);
+                        }
+                        else
+                        {
+                            // Değerler farklıysa butonun arka planını sarı yap
+                            button.Background = new SolidColorBrush(Colors.Yellow);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Yardımcı metod: Belirli bir türdeki tüm görsel çocukları bulur
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
         }
     }
 }

@@ -198,7 +198,7 @@
                 <Button Grid.Column="0" Content="CANCEL" Width="150" Height="50" Style="{StaticResource CancelStyle}" FontSize="20" 
                         Click="Cancel_Button_Click"/>
                 <Button Grid.Column="1" Content="OK" Width="150" Height="50" Style="{StaticResource OkStyle}" FontSize="20" 
-                        Foreground="White" Click="Ok_Button_Click"/>
+                        Foreground="White" Click="Ok_Button_Click" VerticalAlignment="Top"/>
             </Grid>
 
         </Grid>

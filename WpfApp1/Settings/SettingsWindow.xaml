@@ -55,7 +55,6 @@
                 </Button.Template>
                 <TextBlock Text="CANCEL" FontSize="30" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
-
         </Grid>
 
         <!-- Sol Grid -->

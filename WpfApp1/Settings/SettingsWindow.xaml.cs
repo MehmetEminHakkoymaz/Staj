@@ -46,7 +46,6 @@ namespace WpfApp1.Settings
         {
             // VesselType UserControl'ünün bir örneğini oluştur
             var vesselTypeControl = new WpfApp1.Settings.SettingWindows.VesselType();
-
             // Sağ Grid'in içeriğini temizle
             RightGrid.Children.Clear();
 
