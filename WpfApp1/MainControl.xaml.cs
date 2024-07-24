@@ -17,14 +17,14 @@ using System.Windows.Threading;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Interaction logic for MainControl.xaml
-    /// </summary>
     public partial class MainControl : UserControl
     {
-        public MainControl()
+        private MainWindow mainWindow;
+
+        public MainControl(MainWindow mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
             ellipse1.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
@@ -165,7 +165,7 @@ namespace WpfApp1
                 clickedEllipse.BeginAnimation(Canvas.LeftProperty, animation);
             }
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             CheckEllipsePositionAndSetButtonVisibility(ellipse1, conditionalButton);
             CheckEllipsePositionAndSetButtonVisibility(ellipse2, conditionalButtonStirrer);
@@ -179,7 +179,7 @@ namespace WpfApp1
 
         }
 
-        private void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)
+        public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)
         {
             // Ellipse'in parent'ını Canvas olarak al
             Canvas parentCanvas = ellipse.Parent as Canvas;
@@ -189,7 +189,15 @@ namespace WpfApp1
             double ellipseRightPosition = Canvas.GetLeft(ellipse) + ellipse.Width; // Ellipse'in sağ kenarının konumu
 
             // Ellipse, Canvas'ın sağ yarısında ise butonu göster, değilse gizle
-            button.Visibility = ellipseRightPosition > canvasWidth / 2 ? Visibility.Visible : Visibility.Collapsed;
+            //button.Visibility = ellipseRightPosition > canvasWidth / 2 ? Visibility.Visible : Visibility.Collapsed;
+            if (ellipseRightPosition > canvasWidth / 2 && mainWindow.FirstStartButton.Visibility == Visibility.Collapsed)
+            {
+                button.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                button.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void ConditionalButton_Click(object sender, RoutedEventArgs e)

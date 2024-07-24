@@ -15,23 +15,26 @@ using System.Windows.Threading;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private DispatcherTimer timer;
         private TimeSpan time;
+        private MainControl mainControl; // MainControl'ü sınıf değişkeni olarak tanımlayın
+        private ExtendedControl extendedControl; // ExtendedControl'ü sınıf değişkeni olarak tanımlayın
+        private ExitGasControl exitGasControl; // ExitGasControl'ü burada bir kez oluşturun
         public MainWindow()
         {
-            StartClock();
             InitializeComponent();
+            StartClock();
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla güncellenir
             timer.Tick += Timer_Tick;
             time = TimeSpan.Zero;
             this.Width = SystemParameters.PrimaryScreenWidth;
             this.Height = SystemParameters.PrimaryScreenHeight;
+            mainControl = new MainControl(this); // MainControl'ü burada bir kez oluşturun
+            extendedControl = new ExtendedControl(this); // ExtendedControl'ü burada bir kez oluşturun
+            exitGasControl = new ExitGasControl(this); // ExitGasControl'ü burada bir kez oluşturun
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -47,8 +50,17 @@ namespace WpfApp1
 
         private void Main_Button_Click(object sender, RoutedEventArgs e)
         {
-            MainControl mainControl = new MainControl();
             contentArea.Content = mainControl;
+        }
+
+        private void Extended_Button_Click(object sender, RoutedEventArgs e)
+        {
+            contentArea.Content = extendedControl;
+        }
+
+        private void Exit_Gas_Button_Click(object sender, RoutedEventArgs e)
+        {
+            contentArea.Content = exitGasControl;
         }
 
         private void Favourites_Button_Click(object sender, RoutedEventArgs e)
@@ -57,17 +69,6 @@ namespace WpfApp1
             contentArea.Content = favouritesControl;
         }
 
-        private void Extended_Button_Click(object sender, RoutedEventArgs e)
-        {
-            ExtendedControl extendedControl = new ExtendedControl();
-            contentArea.Content = extendedControl;
-        }
-
-        private void Exit_Gas_Button_Click(object sender, RoutedEventArgs e)
-        {
-            ExitGasControl exitGasControl = new ExitGasControl();
-            contentArea.Content = exitGasControl;
-        }
 
         private void Pumps_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -143,6 +144,28 @@ namespace WpfApp1
 
             // Pencereyi göster
             settingsWindow.Show();
+        }
+
+        private void FirstStartButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartButton.Visibility = Visibility.Visible;
+            FirstStartButton.Visibility = Visibility.Collapsed;
+
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse1, mainControl.conditionalButton);
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse2, mainControl.conditionalButtonStirrer);
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse3, mainControl.conditionalButtonpH);
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse4, mainControl.conditionalButtonpO2);
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse5, mainControl.conditionalButtonGas1);
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse6, mainControl.conditionalButtonGas2);
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse7, mainControl.conditionalButtonGas3);
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse8, mainControl.conditionalButtonGas4);
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse9, mainControl.conditionalButtonFoam);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse10, extendedControl.conditionalButtonTurbidity);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse11, extendedControl.conditionalButtonBalance);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse12, extendedControl.conditionalButtonAirFlow);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse13, extendedControl.conditionalButtonGas2Flow);
+            exitGasControl.CheckEllipsePositionAndSetButtonVisibility(exitGasControl.ellipse14, exitGasControl.conditionalButtonTurbidity);
+            exitGasControl.CheckEllipsePositionAndSetButtonVisibility(exitGasControl.ellipse15, exitGasControl.conditionalButtonBalance);
         }
     }
 }

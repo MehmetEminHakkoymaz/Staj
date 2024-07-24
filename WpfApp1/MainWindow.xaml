@@ -104,7 +104,8 @@
                         </Button>
 
                         <!--START-->
-                        <Button Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="StartButton_Click">
+                        <Button x:Name="StartButton" Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                Click="StartButton_Click" Visibility="Collapsed" Panel.ZIndex="0">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Grid>
@@ -119,6 +120,24 @@
                             </Button.Template>
                             <TextBlock Text="START" FontSize="30" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Button>
+
+                        <Button x:Name="FirstStartButton" Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                Click="FirstStartButton_Click" Panel.ZIndex="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <Border Background="#AF0101" CornerRadius="5">
+                                            <Border.Effect>
+                                                <DropShadowEffect Color="#808080" Direction="270" ShadowDepth="3" BlurRadius="5"/>
+                                            </Border.Effect>
+                                        </Border>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <TextBlock Text="START" FontSize="30" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
+
                         <Label Content="Time" HorizontalAlignment="Left" Margin="37,4,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Regular"/>
                     </Grid>
                 </Border>
