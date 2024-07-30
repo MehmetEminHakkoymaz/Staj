@@ -87,7 +87,8 @@
                             </TextBlock.Effect>
                         </TextBlock>
                         <!--EDIT VIEW-->
-                        <Button Width="175" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button Width="175" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                x:Name="EditViewButton" Click="EditView_Button_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Grid>
@@ -104,8 +105,27 @@
                         </Button>
 
                         <!--START-->
-                        <Button x:Name="StartButton" Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" 
-                                Click="StartButton_Click" Visibility="Collapsed" Panel.ZIndex="0">
+                        <Border x:Name="StartButtonContainer" Background="Transparent" MouseDown="StartButtonContainer_MouseDown">
+                            <Button x:Name="StartButton" Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                    Click="StartButton_Click" Visibility="Collapsed" Panel.ZIndex="1">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Border Background="#AF0101" CornerRadius="5">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#808080" Direction="270" ShadowDepth="3" BlurRadius="5"/>
+                                                </Border.Effect>
+                                            </Border>
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <TextBlock Text="START" FontSize="30" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Button>
+                        </Border>
+
+                        <Button x:Name="FirstStartButton" Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                Click="FirstStartButton_Click" Panel.ZIndex="2">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Grid>
@@ -121,8 +141,8 @@
                             <TextBlock Text="START" FontSize="30" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Button>
 
-                        <Button x:Name="FirstStartButton" Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" 
-                                Click="FirstStartButton_Click" Panel.ZIndex="1">
+                        <Button x:Name="StopButton" Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                Click="StopButton_Click" Panel.ZIndex="0" Visibility="Collapsed">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Grid>
@@ -135,7 +155,7 @@
                                     </Grid>
                                 </ControlTemplate>
                             </Button.Template>
-                            <TextBlock Text="START" FontSize="30" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="STOP" FontSize="30" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Button>
 
                         <Label Content="Time" HorizontalAlignment="Left" Margin="37,4,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Regular"/>

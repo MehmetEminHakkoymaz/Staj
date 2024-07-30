@@ -25,6 +25,9 @@
     <Compile Update="EditPages\EditpHCascade\None.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EditViewControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ExitGasControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,6 +88,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EditPages\EditpHCascade\None.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditViewControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ExitGasControl.xaml">

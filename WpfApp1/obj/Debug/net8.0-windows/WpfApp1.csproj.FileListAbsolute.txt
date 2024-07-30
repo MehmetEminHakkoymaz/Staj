@@ -104,6 +104,7 @@ C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Ed
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\Base.g.cs
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\BaseAcid.g.cs
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\None.g.cs
+C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\EditViewControl.g.cs
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ExitGasControl.g.cs
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ExtendedControl.g.cs
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\FavouritesControl.g.cs
@@ -131,6 +132,7 @@ C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Ed
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\Base.baml
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\BaseAcid.baml
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\None.baml
+C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\EditViewControl.baml
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ExitGasControl.baml
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ExtendedControl.baml
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\FavouritesControl.baml
