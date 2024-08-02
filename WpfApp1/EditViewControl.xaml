@@ -16,6 +16,7 @@
                           Stroke="Black" StrokeThickness="2" Fill="Transparent" Stretch="Uniform" Height="29" Width="27"/>
                 </Label.Content>
             </Label>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"  Width="250" Height="30" Opacity="0.7" x:Name="SelectedCountTextBlock" Margin="10" FontSize="20" FontWeight="Medium" />
             <Border BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,3" Width="815"/>
         </Grid>
 
@@ -28,19 +29,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="Temperature" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="Temperature" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -51,19 +40,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="Stirrer" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="Stirrer" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -74,19 +51,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="pH" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="pH" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -97,19 +62,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="pO2" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="pO2" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -120,42 +73,18 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="Gas1" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="Gas1" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
         <Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="0,300,0,0" BorderBrush="#FFD6D6D6" 
                 BorderThickness="2,2,2,2">
-            <Grid x:Name="Gas2">
+            <Grid x:Name="MainGas2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="Gas2" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="Gas2" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -166,19 +95,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="Gas3" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="Gas3" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -189,19 +106,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="Gas4" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="Gas4" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -212,19 +117,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="Foam" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="Foam" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -235,19 +128,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="Turbidty" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="Turbidty" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -258,19 +139,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="Balance" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="Balance" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -281,19 +150,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="AirFlow" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="AirFlow" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -304,19 +161,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="Gas2Flow" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="Gas2Flow" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -327,19 +172,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="ExitTurbidity" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="ExitTurbidity" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -350,21 +183,401 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Width="40" Height="40">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="CheckBox">
-                            <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                                <Grid>
-                                    <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                </CheckBox>
-                <Label Content="ExitBalance" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="5,0,0,0"/>
+                <Label Content="ExitBalance" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
+        <StackPanel x:Name="CheckBoxContainer" VerticalAlignment="Center" Margin="0,0,0,0" Width="800" Height="400">
+            <!--Temperature-->
+            <CheckBox Tag="1"  x:Name="Temperature" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,3,0,0" Width="40" Height="40"
+                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--Stirrer-->
+            <CheckBox Tag="2" x:Name="Stirrer" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
+                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--pH-->
+            <CheckBox Tag="4" x:Name="pH" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
+                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--pO2-->
+            <CheckBox Tag="8" x:Name="pO2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
+                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--Gas1-->
+            <CheckBox Tag="16" x:Name="Gas1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
+                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--Gas2-->
+            <CheckBox Tag="32" x:Name="Gas2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40" 
+                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--Gas3-->
+            <CheckBox Tag="64" x:Name="Gas3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
+                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--Gas4-->
+            <CheckBox Tag="128" x:Name="Gas4" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
+                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--Foam-->
+            <CheckBox Tag="256" x:Name="Foam" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-390,0,0" Width="40" Height="40"
+                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--Turbidity-->
+            <CheckBox Tag="512" x:Name="Turbidity" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-340,0,0" Width="40" 
+                      Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--Balance-->
+            <CheckBox Tag="1024"  x:Name="Balance"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-290,0,0" Width="40" 
+                      Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--AirFlow-->
+            <CheckBox Tag="2048" x:Name="AirFlow"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-240,0,0" Width="40" 
+                      Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--Gas2Flow-->
+            <CheckBox Tag="4096" x:Name="Gas2Flow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-190,0,0" Width="40" 
+                      Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--ExitTurbidity-->
+            <CheckBox Tag="8192" x:Name="ExitTurbidity" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-140,0,0" Width="40" 
+                      Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <!--ExitBalance-->
+            <CheckBox Tag="16384" x:Name="ExitBalance" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-90,0,0" Width="40" 
+                      Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+        </StackPanel>
     </Grid>
 </UserControl>

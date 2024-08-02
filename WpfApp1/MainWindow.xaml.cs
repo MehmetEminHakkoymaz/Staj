@@ -24,6 +24,7 @@ namespace WpfApp1
         private ExtendedControl extendedControl; // ExtendedControl'ü sınıf değişkeni olarak tanımlayın
         private ExitGasControl exitGasControl; // ExitGasControl'ü burada bir kez oluşturun
         private EditViewControl editViewControl; // EditViewControl'ü burada bir kez oluşturun
+        private FavouritesControl favouritesControl; // FavouritesControl'ü burada bir kez oluşturun
         public MainWindow()
         {
             InitializeComponent();
@@ -39,6 +40,7 @@ namespace WpfApp1
             extendedControl = new ExtendedControl(this); // ExtendedControl'ü burada bir kez oluşturun
             exitGasControl = new ExitGasControl(this); // ExitGasControl'ü burada bir kez oluşturun
             editViewControl = new EditViewControl(this); // EditViewControl'ü burada bir kez oluşturun
+            favouritesControl = new FavouritesControl(this);
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -71,7 +73,6 @@ namespace WpfApp1
 
         private void Favourites_Button_Click(object sender, RoutedEventArgs e)
         {
-            FavouritesControl favouritesControl = new FavouritesControl();
             contentArea.Content = favouritesControl;
         }
 

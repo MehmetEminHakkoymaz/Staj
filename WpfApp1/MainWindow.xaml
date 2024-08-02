@@ -105,9 +105,9 @@
                         </Button>
 
                         <!--START-->
-                        <Border x:Name="StartButtonContainer" Background="Transparent" MouseDown="StartButtonContainer_MouseDown">
-                            <Button x:Name="StartButton" Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" 
-                                    Click="StartButton_Click" Visibility="Collapsed" Panel.ZIndex="1">
+                        <Border x:Name="StartButtonContainer" Background="Transparent" MouseDown="StartButtonContainer_MouseDown"
+                                Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" >
+                            <Button x:Name="StartButton" Click="StartButton_Click" Visibility="Collapsed" Panel.ZIndex="1">
                                 <Button.Template>
                                     <ControlTemplate TargetType="{x:Type Button}">
                                         <Grid>
