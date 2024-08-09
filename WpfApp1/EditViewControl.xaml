@@ -189,24 +189,24 @@
 
         <StackPanel x:Name="CheckBoxContainer" VerticalAlignment="Center" Margin="0,0,0,0" Width="800" Height="400">
             <!--Temperature-->
-            <CheckBox Tag="1"  x:Name="Temperature" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,3,0,0" Width="40" Height="40"
-                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+            <CheckBox Tag="1" x:Name="Temperature" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,3,0,0" Width="40" Height="40"
+          Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
                         <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <Grid>
                                 <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                <Rectangle x:Name="CheckMark" Fill="Transparent" RadiusX="5" RadiusY="5" Visibility="Collapsed"/>
+                                <Path x:Name="CheckMark" Data="M 10,20 L 20,30 L 30,10" Stroke="Transparent" StrokeThickness="2" Visibility="Collapsed"/>
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -215,8 +215,8 @@
             </CheckBox>
 
             <!--Stirrer-->
-            <CheckBox Tag="2" x:Name="Stirrer" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
-                      Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+            <CheckBox Tag="2" x:Name="Stirrer" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" 
+                      Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
                         <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -228,11 +228,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -254,11 +254,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -280,11 +280,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -306,11 +306,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -332,11 +332,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -358,11 +358,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -384,11 +384,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -410,11 +410,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -436,11 +436,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -462,11 +462,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -488,11 +488,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -514,11 +514,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -540,11 +540,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -566,11 +566,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="LightGreen"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Fill" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>

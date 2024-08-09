@@ -110,6 +110,7 @@ namespace WpfApp1
             }
         }
 
+        //ÇOK ÖNEMLİ
         private void EditpH_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var editpHWindow = new WpfApp1.EditPages.EditpH();

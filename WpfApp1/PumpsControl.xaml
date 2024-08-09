@@ -20,7 +20,7 @@
 
         <!-- İkinci Kısım -->
         <Border HorizontalAlignment="Center"  Height="45" VerticalAlignment="Top" Width="800" Margin="0,50,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
-            <Grid>
+            <Grid x:Name="Pump1">
                 <Label Content="Pump1 ← pH" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -47,11 +47,22 @@
                     <TextBlock Text="EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
                 </Button>
 
+                <Button x:Name="conditionalButtonPump1" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                        Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock/>
+                </Button>
 
             </Grid>
         </Border>
         <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="800" Margin="0,95,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
-            <Grid>
+            <Grid x:Name="Pump2">
                 <Label Content="Pump2 ← pH" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -78,12 +89,23 @@
                     <TextBlock Text="EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
                 </Button>
 
+                <Button x:Name="conditionalButtonPump2" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                        Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock/>
+                </Button>
 
             </Grid>
         </Border>
 
         <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="800" Margin="0,140,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
-            <Grid>
+            <Grid x:Name="Pump3">
                 <Label Content="Pump3 ← Foam" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="144" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -110,13 +132,24 @@
                     <TextBlock Text="EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
                 </Button>
 
+                <Button x:Name="conditionalButtonPump3" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                        Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock/>
+                </Button>
 
             </Grid>
         </Border>
 
         <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="800" Margin="0,185,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
-            <Grid>
-                <Label Content="Pump4 ← pH" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
+            <Grid x:Name="Pump4">
+                <Label Content="Pump4 ← " HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="65,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
@@ -142,10 +175,22 @@
                     <TextBlock Text="EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
                 </Button>
 
+                <Button x:Name="conditionalButtonPump4" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                        Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock/>
+                </Button>
 
             </Grid>
         </Border>
-        <Button HorizontalAlignment="Left" Margin="500,272,0,148" Width="264" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+        <Button HorizontalAlignment="Left" Margin="500,272,0,148" Width="264" Height="30" BorderBrush="Gray" BorderThickness="1" 
+                Background="#DAE2E7" Click="AutoButton_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
@@ -155,6 +200,81 @@
             </Button.Template>
             <TextBlock Text="OPEN AUTO FILL/EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
         </Button>
+
+        <Grid x:Name="RightGrid" Width="341" Height="448" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,-325,0">
+            <!-- Grid içeriği -->
+            <Border Background="#E7ECEF" BorderBrush="#D6D6D6" BorderThickness="2" Margin="16,0,0,0">
+                <Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,5,244,409">
+                            <Canvas x:Name="canvas16" Width="66.87" Height="30">
+                                <Ellipse x:Name="ellipse16" Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" 
+                                         Canvas.Left="6" Canvas.Top="3" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,5,94,409"
+                               MouseLeftButtonDown="EditPump1_MouseLeftButtonDown"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,5,21,409"/>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="11,50,243,364">
+                            <Canvas x:Name="canvas17" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
+                                         x:Name="ellipse17" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,50,94,364"
+                               MouseLeftButtonDown="EditPump2_MouseLeftButtonDown"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,50,21,364"/>
+                    </Grid>
+
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,95,244,319">
+                            <Canvas x:Name="canvas18" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
+                                         x:Name="ellipse18" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/target.png" Width="30" Height="30" Margin="122,95,169,319"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,95,94,319"
+                               MouseLeftButtonDown="EditPump3_MouseLeftButtonDown"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,95,21,319"/>
+                    </Grid>
+                    <Grid>
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,140,244,274">
+                            <Canvas x:Name="canvas19" Width="66.87" Height="30">
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
+                                         x:Name="ellipse19" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                            </Canvas>
+                        </Border>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/target.png" Width="30" Height="30" Margin="122,140,169,274"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,140,94,274"
+                               MouseLeftButtonDown="EditPump4_MouseLeftButtonDown"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,140,21,274"/>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Buton, Grid içine taşındı -->
+            <Button x:Name="ToggleRightGridButton" Width="16" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,209,0,0" Click="ToggleRightGridButton_Click" Tag="pack://application:,,,/WpfApp1;component/images/Left.png">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    CornerRadius="5,0,0,5">
+                            <Grid>
+                                <!-- RelativeSource ile Tag özelliğine bağlı olarak dinamik Image Source -->
+                                <Image Width="23" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Source="{Binding Path=Tag, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+        </Grid>
 
 
         <Popup x:Name="KeypadPopup" Placement="Center" IsOpen="False">
