@@ -3,28 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\settings\\settingwindows\\appearance.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\settings\\settingwindows\\appearance.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\settings\\settingwindows\\appearance.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\settings\\settingwindows\\appearance.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\maincontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\maincontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\maincontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\maincontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\pumpscontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\pumpscontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\pumpscontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\pumpscontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\keypad\\keypad.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\keypad\\keypad.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\keypad\\keypad.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\keypad\\keypad.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\maincontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\maincontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\maincontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\maincontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,77 +54,77 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainControl.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainControl.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\MainControl.xaml.cs",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainControl.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\MainControl.xaml.cs",
-              "ViewState": "AQIAAG8AAAAAAAAAAAAkwKgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T15:24:47.046Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainControl.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainControl.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\MainControl.xaml",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainControl.xaml",
-              "RelativeToolTip": "WpfApp1\\MainControl.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-09T15:24:08.627Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Appearance.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Settings\\SettingWindows\\Appearance.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\Settings\\SettingWindows\\Appearance.xaml.cs",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Settings\\SettingWindows\\Appearance.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\Settings\\SettingWindows\\Appearance.xaml.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAAAAEEAAABMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T15:22:21.76Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Appearance.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Settings\\SettingWindows\\Appearance.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\Settings\\SettingWindows\\Appearance.xaml",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Settings\\SettingWindows\\Appearance.xaml",
-              "RelativeToolTip": "WpfApp1\\Settings\\SettingWindows\\Appearance.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-09T14:57:50.222Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAMsAAAAAAAAAAAAAwLoAAAAaAAAA",
+              "ViewState": "AQIAAO0AAAAAAAAAAAAYwBsAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T08:09:28.101Z",
+              "WhenOpened": "2024-08-12T07:57:07.446Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml",
               "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainWindow.xaml",
               "RelativeToolTip": "WpfApp1\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-09T08:09:24.999Z",
+              "WhenOpened": "2024-08-12T07:57:04.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "KeyPad.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Keypad\\KeyPad.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Keypad\\KeyPad.xaml.cs",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Keypad\\KeyPad.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Keypad\\KeyPad.xaml.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAIYAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T07:48:51.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "KeyPad.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Keypad\\KeyPad.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\Keypad\\KeyPad.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Keypad\\KeyPad.xaml",
+              "RelativeToolTip": "WpfApp1\\Keypad\\KeyPad.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-12T07:48:47.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PumpsControl.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\PumpsControl.xaml.cs",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\PumpsControl.xaml.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T07:33:41.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PumpsControl.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\PumpsControl.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml",
+              "RelativeToolTip": "WpfApp1\\PumpsControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-12T07:33:37.146Z",
               "EditorCaption": ""
             }
           ]
@@ -128,6 +136,52 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "ec2ea58f-7825-443b-bc3d-6206e4f3ff9c",
+        "Display": 1,
+        "X": 216,
+        "Y": 324,
+        "Width": 956,
+        "Height": 606,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainControl.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainControl.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\MainControl.xaml.cs",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainControl.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\MainControl.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAPgAAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-09T15:24:47.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainControl.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainControl.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\MainControl.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainControl.xaml",
+              "RelativeToolTip": "WpfApp1\\MainControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-09T15:24:08.627Z",
+              "EditorCaption": ""
             }
           ]
         }

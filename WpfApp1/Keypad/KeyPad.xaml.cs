@@ -120,12 +120,19 @@ namespace WpfApp1.Keypad
             {
                 parentPopup.IsOpen = false;
             }
+            numbers.Text = string.Empty; // TextBox'ı boşalt
         }
 
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
             // numbers TextBox'ın mevcut değerini kullanarak ValueSelected olayını tetikle
             ValueSelected?.Invoke(this, numbers.Text);
+            var parentPopup = this.Parent as Popup;
+            if (parentPopup != null)
+            {
+                parentPopup.IsOpen = false;
+            }
+            numbers.Text = string.Empty; // TextBox'ı boşalt
         }
         public event EventHandler<string> ValueSelected;
         protected virtual void OnValueSelected(string value)
