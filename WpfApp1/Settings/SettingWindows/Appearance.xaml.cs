@@ -93,6 +93,7 @@ namespace WpfApp1.Settings.SettingWindows
                         // Label'ın içeriğini al
                         string labelContent = firstLabel.Content.ToString();
                         // KeyPad'e label içeriğini gönder
+                        activeTextBox = sender as TextBox;
                         KeypadPopup.IsOpen = true;
                         KeypadControl.SetLabelContent(labelContent);
                     }

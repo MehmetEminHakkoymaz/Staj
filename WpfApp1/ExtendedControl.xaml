@@ -47,7 +47,8 @@
                 <Label Content="Balance" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="BalanceValue" Content="2" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="BalanceTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5" Tag="10,500"/>
+                    <TextBox x:Name="BalanceTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
                 <Button x:Name="conditionalButtonBalance" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                         Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -68,7 +69,8 @@
                 <Label Content="AirFlow" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="AirFlowValue" Content="1" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="AirFlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox x:Name="AirFlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
                 <Button x:Name="conditionalButtonAirFlow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                         Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -92,9 +94,8 @@
                        FontSize="20" Opacity="0.7"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" 
                         BorderThickness="1">
-                    <TextBox x:Name="Gas2FlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" 
-                             Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0" FontSize="20"
-                             Opacity="0.7" Tag="0,500"/>
+                    <TextBox x:Name="Gas2FlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
                 <Button x:Name="conditionalButtonGas2Flow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                         Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">

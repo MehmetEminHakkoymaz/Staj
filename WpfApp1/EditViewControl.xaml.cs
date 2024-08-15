@@ -56,119 +56,119 @@ namespace WpfApp1
                 if (checkBox.Name == "Temperature")
                 {
                     int value = 1;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                 }
                 else if (checkBox.Name == "Stirrer")
                 {
                     int value = 2;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "pH")
                 {
                     int value = 4;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "pO2")
                 {
                     int value = 8;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Gas1")
                 {
                     int value = 16;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Gas2")
                 {
                     int value = 32;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Gas3")
                 {
                     int value = 64;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Gas4")
                 {
                     int value = 128;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Foam")
                 {
                     int value = 256;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Turbidity")
                 {
                     int value = 512;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Balance")
                 {
                     int value = 1024;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "AirFlow")
                 {
                     int value = 2048;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Gas2Flow")
                 {
                     int value = 4096;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "ExitTurbidity")
                 {
                     int value = 8192;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "ExitBalance")
                 {
                     int value = 16384;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.AddToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
@@ -191,119 +191,119 @@ namespace WpfApp1
                 if (checkBox.Name == "Temperature")
                 {
                     int value = 1;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                 }
                 else if (checkBox.Name == "Stirrer")
                 {
                     int value = 2;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "pH")
                 {
                     int value = 4;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "pO2")
                 {
                     int value = 8;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Gas1")
                 {
                     int value = 16;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Gas2")
                 {
                     int value = 32;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Gas3")
                 {
                     int value = 64;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Gas4")
                 {
                     int value = 128;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Foam")
                 {
                     int value = 256;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Turbidity")
                 {
                     int value = 512;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Balance")
                 {
                     int value = 1024;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "AirFlow")
                 {
                     int value = 2048;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "Gas2Flow")
                 {
                     int value = 4096;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "ExitTurbidity")
                 {
                     int value = 8192;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }
                 else if (checkBox.Name == "ExitBalance")
                 {
                     int value = 16384;
-                    Debug.WriteLine($"CheckBox Checked: {value}");
-                    MessageBox.Show($"CheckBox Checked: {value}");
+                    //Debug.WriteLine($"CheckBox Checked: {value}");
+                    //MessageBox.Show($"CheckBox Checked: {value}");
                     TotalManager.Instance.SubToTotal(value);
                     //CalculateGreenCheckBoxSum();
                 }

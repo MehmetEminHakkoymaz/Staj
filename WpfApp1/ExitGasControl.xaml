@@ -26,8 +26,8 @@
                        Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="TurbidityValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="TurbidityTarget" GotFocus="TextBox_GotFocus"  TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                             TextAlignment="Center" Padding="0,5"/>
+                    <TextBox x:Name="TurbidityTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
                 <Button x:Name="conditionalButtonTurbidity" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                         Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -51,7 +51,7 @@
                 <Label x:Name="BalanceValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox x:Name="BalanceTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                             TextAlignment="Center" Padding="0,5"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
                 <Button x:Name="conditionalButtonBalance" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                         Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">

@@ -29,8 +29,8 @@
                                FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" 
                                 BorderThickness="1">
-                            <TextBox x:Name="TemperatureTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" FontSize="20"
-                                     Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0" Opacity="0.7"/>
+                            <TextBox x:Name="TemperatureTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButton" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" 
                                 VerticalAlignment="Center" 
@@ -54,7 +54,7 @@
                         <Label Content="4" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="StirrerTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                                 TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonStirrer" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -80,7 +80,7 @@
                         <Label Content="3" HorizontalAlignment="Left" Margin="101,0,0,0" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="315,6,0,5" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Grid.Column="1">
                             <TextBox x:Name="pHTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                                 TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonpH" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -102,7 +102,7 @@
                         <Label Content="2" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="pO2Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                                 TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonpO2" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -124,7 +124,7 @@
                         <Label Content="1" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="Gas1Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                                 TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas1" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -146,7 +146,7 @@
                         <Label Content="6" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="Gas2Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                                 TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas2" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -168,7 +168,7 @@
                         <Label Content="7" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="Gas3Traget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                                 TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas3" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -190,7 +190,7 @@
                         <Label Content="8" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="Gas4Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                                 TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas4" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -212,7 +212,7 @@
                         <Label Content="9" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="FoamTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                                 TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonFoam" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -233,7 +233,8 @@
                         <Label Content="Turbidity" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="TurbidityValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                            <TextBox x:Name="TurbidityTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                            <TextBox x:Name="TurbidityTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>                
                         </Border>
                         <Button x:Name="conditionalButtonTurbidity" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -255,7 +256,8 @@
                         <Label Content="Balance" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="BalanceValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                            <TextBox x:Name="BalanceTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                            <TextBox x:Name="BalanceTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>                  
                         </Border>
                         <Button x:Name="conditionalButtonBalance" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -277,7 +279,8 @@
                         <Label Content="AirFlow" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="AirFlowValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                            <TextBox x:Name="AirFlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                            <TextBox x:Name="AirFlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>          
                         </Border>
                         <Button x:Name="conditionalButtonAirFlow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -299,7 +302,8 @@
                         <Label Content="Gas2Flow" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="Gas2FlowValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                            <TextBox x:Name="Gas2FlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                            <TextBox x:Name="Gas2FlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>                 
                         </Border>
                         <Button x:Name="conditionalButtonGas2Flow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -322,8 +326,8 @@
                            Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="ExitTurbidityValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                            <TextBox x:Name="ExitTurbidityTarget" GotFocus="TextBox_GotFocus"  TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                                 TextAlignment="Center" Padding="0,5"/>
+                            <TextBox x:Name="ExitTurbidityTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonExitTurbidity" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
@@ -347,7 +351,7 @@
                         <Label x:Name="ExitBalanceValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="ExitBalanceTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                                 TextAlignment="Center" Padding="0,5"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonExitBalance" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">

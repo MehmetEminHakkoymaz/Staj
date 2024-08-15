@@ -22,7 +22,13 @@ namespace WpfApp1
         public OpenAutoWindow()
         {
             InitializeComponent();
+            KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
         }
+
+        private TextBox activeTextBox = null;
+
+        private TextBox currentTextBox = null;
+
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -42,12 +48,45 @@ namespace WpfApp1
                         // Label'ın içeriğini al
                         string labelContent = firstLabel.Content.ToString();
                         // KeyPad'e label içeriğini gönder
+                        activeTextBox = sender as TextBox;
                         KeypadPopup.IsOpen = true;
                         KeypadControl.SetLabelContent(labelContent);
                     }
                 }
             }
         }
+
+        private void KeyPadControl_ValueSelected(object sender, string value)
+        {
+            if (activeTextBox != null)
+            {
+                if (activeTextBox.Tag is string tag && ParseRange(tag, out int min, out int max))
+                {
+                    if (int.TryParse(value, out int intValue) && intValue >= min && intValue <= max)
+                    {
+                        activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
+                    }
+                    else
+                    {
+                        KeypadPopup.IsOpen = false; // Hata durumunda KeyPad'i tekrar aç
+
+                        MessageBox.Show($"Please enter a value between {min} and {max}.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+            }
+        }
+
+        private bool ParseRange(string tag, out int min, out int max)
+        {
+            var parts = tag.Split(',');
+            if (parts.Length == 2 && int.TryParse(parts[0], out min) && int.TryParse(parts[1], out max))
+            {
+                return true;
+            }
+            min = max = 0;
+            return false;
+        }
+
 
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
