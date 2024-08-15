@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -26,10 +27,16 @@ namespace WpfApp1
             InitializeComponent();
             ellipse10.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             this.mainWindow = mainWindow;
-            KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
+            KeypadControl.ValueSelected += KePadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
             comparisonTimer.Tick += ComparisonTimer_Tick; // Zamanlayıcı olayı
         }
+
+        private TextBox activeTextBox = null;
+
+        private TextBox currentTextBox = null;
+
+        private DispatcherTimer comparisonTimer = new DispatcherTimer();
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -56,19 +63,7 @@ namespace WpfApp1
             }
         }
 
-        private TextBox activeTextBox = null;
 
-        private TextBox currentTextBox = null;
-
-        private DispatcherTimer comparisonTimer = new DispatcherTimer();
-
-        private void KeyPadControl_ValueSelected(object sender, string value)
-        {
-            if (activeTextBox != null)
-            {
-                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
-            }
-        }
 
         private void ToggleRightGridButton_Click(object sender, RoutedEventArgs e)
         {
@@ -245,6 +240,37 @@ namespace WpfApp1
             }
         }
 
+
+        private void KePadControl_ValueSelected(object sender, string value)
+        {
+            if (activeTextBox != null)
+            {
+                if (activeTextBox.Tag is string tag && ParseRange(tag, out int min, out int max))
+                {
+                    if (int.TryParse(value, out int intValue) && intValue >= min && intValue <= max)
+                    {
+                        activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
+                    }
+                    else
+                    {
+                        KeypadPopup.IsOpen = false; // Hata durumunda KeyPad'i tekrar aç
+
+                        MessageBox.Show($"Please enter a value between {min} and {max}.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+            }
+        }
+
+        private bool ParseRange(string tag, out int min, out int max)
+        {
+            var parts = tag.Split(',');
+            if (parts.Length == 2 && int.TryParse(parts[0], out min) && int.TryParse(parts[1], out max))
+            {
+                return true;
+            }
+            min = max = 0;
+            return false;
+        }
 
 
     }

@@ -340,58 +340,5 @@ namespace WpfApp1
         {
             SelectedCountTextBlock.Text = $"Selected Parameters: {checkedCount}/10";
         }
-
-        //private void CalculateGreenCheckBoxSum()
-        //{
-        //    TotalManager.Instance.ResetTotal();
-        //    foreach (var child in LogicalTreeHelper.GetChildren(this).OfType<CheckBox>())
-        //    {
-        //        if (child.IsChecked == true && child.Tag is int value)
-        //        {
-        //            TotalManager.Instance.AddToTotal(value);
-        //        }
-        //    }
-        //}
-
-        //private void CalculateGreenCheckBoxSum()
-        //{
-        //    TotalManager.Instance.ResetTotal();
-        //    foreach (var child in LogicalTreeHelper.GetChildren(this).OfType<CheckBox>())
-        //    {
-        //        if (child.IsChecked == true)
-        //        {
-        //            if (child.Tag is int value || int.TryParse(child.Tag?.ToString(), out value))
-        //            {
-        //                TotalManager.Instance.AddToTotal(value);
-        //            }
-        //        }
-        //    }
-        //}
-
-
-        //private void CalculateGreenCheckBoxSum()
-        //{
-        //    TotalManager.Instance.ResetTotal();
-        //    foreach (var child in LogicalTreeHelper.GetChildren(this).OfType<CheckBox>())
-        //    {
-        //        if (child.IsChecked == true)
-        //        {
-        //            Debug.WriteLine($"CheckBox Name: {child.Name}, Tag: {child.Tag?.ToString()}");
-        //            if (child.Tag is int value || int.TryParse(child.Tag?.ToString(), out value))
-        //            {
-        //                Debug.WriteLine($"Adding to total: {value}");
-        //                TotalManager.Instance.AddToTotal(value);
-        //            }
-        //            else
-        //            {
-        //                Debug.WriteLine("Tag is not an int and cannot be converted to int.");
-        //            }
-        //        }
-        //    }
-        //}
-
-
-
-
     }
 }

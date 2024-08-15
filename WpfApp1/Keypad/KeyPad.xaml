@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfApp1.Keypad"
              mc:Ignorable="d" 
              d:DesignHeight="475" d:DesignWidth="350"
-             Background="Transparent">
+             Background="#E7ECEF">
     <UserControl.Resources>
             <Style x:Key="ButtonStyle" TargetType="Button">
                 <Setter Property="Background" Value="#E7ECEF"/>

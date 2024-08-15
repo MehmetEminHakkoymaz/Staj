@@ -21,6 +21,8 @@ namespace WpfApp1.Keypad
     /// </summary>
     public partial class KeyPad : UserControl
     {
+
+
         public KeyPad()
         {
             InitializeComponent();
