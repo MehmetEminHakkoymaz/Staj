@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfApp1.Settings.SettingWindows"
              mc:Ignorable="d" 
              d:DesignHeight="462" d:DesignWidth="724">
-    <Grid>
+    <Grid Background="#FFE7ECEF">
         <StackPanel VerticalAlignment="Center">
             <Grid Width="724" Height="60" x:Name="Version">
                 <Label Content="Version" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontWeight="Regular" Margin="40,0,0,0"/>

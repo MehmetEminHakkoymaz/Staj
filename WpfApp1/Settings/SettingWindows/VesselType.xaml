@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfApp1.Settings.SettingWindows"
              mc:Ignorable="d" 
              d:DesignHeight="462" d:DesignWidth="724">
-    <Grid>
+    <Grid Background="#FFE7ECEF">
         <Button Content="500 ml" Height="50" Width="300" Click="ml500_Button_Click" Background="#FFE7ECEF"
         Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="212,118,212,294"
         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>

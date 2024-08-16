@@ -90,7 +90,7 @@
             <Grid x:Name="Gas2Flow">
                 <Label Content="Gas2Flow" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0"
                        VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
-                <Label Content="3" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"
+                <Label x:Name="Gas2FlowValue" Content="3" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"
                        FontSize="20" Opacity="0.7"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" 
                         BorderThickness="1">

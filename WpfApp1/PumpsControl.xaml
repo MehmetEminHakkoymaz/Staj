@@ -23,7 +23,7 @@
             <Grid x:Name="Pump1">
                 <Label Content="Pump1 ← pH" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="121" 
                        Height="24" FontSize="20" Padding="0,0,0,0"/>
-                <Label x:Name="Pummp1Value" Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" 
+                <Label x:Name="Pump1Value" Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" 
                        VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox x:Name="Pump1Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 

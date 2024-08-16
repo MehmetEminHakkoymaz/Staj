@@ -7,7 +7,7 @@
              xmlns:kepad="clr-namespace:WpfApp1.Keypad"
              mc:Ignorable="d" 
              d:DesignHeight="462" d:DesignWidth="724">
-    <Grid>
+    <Grid Background="#FFE7ECEF">
         <StackPanel VerticalAlignment="Center">
             <Grid Width="724" Height="60" x:Name="ConType">
                 <Label Content="CONNECTION TYPE" FontSize="25" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
