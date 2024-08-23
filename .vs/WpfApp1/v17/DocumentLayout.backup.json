@@ -3,6 +3,34 @@
   "WorkspaceRootPath": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\exitgascontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\exitgascontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\extendedcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\extendedcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\maincontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\maincontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\settings\\settingwindows\\appearance.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\settings\\settingwindows\\appearance.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\settings\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\settings\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\settings\\settingwindows\\usb.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\settings\\settingwindows\\usb.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -37,10 +65,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\pumpscontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\pumpscontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\onedrive\\desktop\\staj\\wpfapp1\\staj\\wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,116 +87,78 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainWindow.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAEwCcAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T09:25:55.724Z",
+              "Title": "ExitGasControl.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\ExitGasControl.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\ExitGasControl.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\ExitGasControl.xaml",
+              "RelativeToolTip": "WpfApp1\\ExitGasControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-23T08:26:56.555Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "EditPump4.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump4.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump4.xaml",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump4.xaml",
-              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump4.xaml",
+              "Title": "ExtendedControl.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\ExtendedControl.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\ExtendedControl.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\ExtendedControl.xaml",
+              "RelativeToolTip": "WpfApp1\\ExtendedControl.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-22T10:50:22.742Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EditPump3.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump3.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump3.xaml",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump3.xaml",
-              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump3.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-22T10:50:21.832Z",
+              "WhenOpened": "2024-08-23T08:26:50.817Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "EditPump2.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump2.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump2.xaml",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump2.xaml",
-              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump2.xaml",
+              "Title": "MainControl.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainControl.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\MainControl.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainControl.xaml",
+              "RelativeToolTip": "WpfApp1\\MainControl.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-22T10:50:20.785Z",
+              "WhenOpened": "2024-08-23T08:22:44.609Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "EditPump1.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump1.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump1.xaml",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump1.xaml",
-              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump1.xaml",
+              "Title": "Appearance.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Settings\\SettingWindows\\Appearance.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\Settings\\SettingWindows\\Appearance.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Settings\\SettingWindows\\Appearance.xaml",
+              "RelativeToolTip": "WpfApp1\\Settings\\SettingWindows\\Appearance.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-22T10:50:17.623Z",
+              "WhenOpened": "2024-08-23T07:11:34.744Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "EditpH.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditpH.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditpH.xaml",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditpH.xaml",
-              "RelativeToolTip": "WpfApp1\\EditPages\\EditpH.xaml",
+              "Title": "SettingsWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Settings\\SettingsWindow.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\Settings\\SettingsWindow.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Settings\\SettingsWindow.xaml",
+              "RelativeToolTip": "WpfApp1\\Settings\\SettingsWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-22T10:50:07.267Z",
+              "WhenOpened": "2024-08-23T07:11:09.446Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "OpenAutoWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\OpenAutoWindow.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\OpenAutoWindow.xaml",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\OpenAutoWindow.xaml",
-              "RelativeToolTip": "WpfApp1\\OpenAutoWindow.xaml",
+              "Title": "Usb.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Settings\\SettingWindows\\Usb.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\Settings\\SettingWindows\\Usb.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\Settings\\SettingWindows\\Usb.xaml",
+              "RelativeToolTip": "WpfApp1\\Settings\\SettingWindows\\Usb.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-22T10:43:27.888Z",
+              "WhenOpened": "2024-08-23T07:10:51.648Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PumpsControl.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\PumpsControl.xaml.cs",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\PumpsControl.xaml.cs",
-              "ViewState": "AgIAAGIBAAAAAAAAAAAAwHgBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T09:22:55.35Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PumpsControl.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\PumpsControl.xaml",
-              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml",
-              "RelativeToolTip": "WpfApp1\\PumpsControl.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-22T09:20:20.275Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml",
@@ -181,6 +167,108 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-08-16T09:04:03.767Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\MainWindow.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAWwCcAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T09:25:55.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EditPump4.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump4.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump4.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump4.xaml",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump4.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-22T10:50:22.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EditPump3.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump3.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump3.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump3.xaml",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump3.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-22T10:50:21.832Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "EditPump2.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump2.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump2.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump2.xaml",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump2.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-22T10:50:20.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EditPump1.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump1.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump1.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditPump1.xaml",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-22T10:50:17.623Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EditpH.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditpH.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditpH.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\EditPages\\EditpH.xaml",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditpH.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-22T10:50:07.267Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "OpenAutoWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\OpenAutoWindow.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\OpenAutoWindow.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\OpenAutoWindow.xaml",
+              "RelativeToolTip": "WpfApp1\\OpenAutoWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-22T10:43:27.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PumpsControl.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\PumpsControl.xaml.cs",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\PumpsControl.xaml.cs",
+              "ViewState": "AgIAAGIBAAAAAAAAAAAAwHgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T09:22:55.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PumpsControl.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\PumpsControl.xaml",
+              "ToolTip": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\PumpsControl.xaml",
+              "RelativeToolTip": "WpfApp1\\PumpsControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-22T09:20:20.275Z"
             }
           ]
         },

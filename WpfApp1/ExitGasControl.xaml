@@ -24,9 +24,9 @@
             <Grid x:Name="Turbidity">
                 <Label Content="Turbidity" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Center" 
                        Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
-                <Label x:Name="TurbidityValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
+                <Label x:Name="ExitTurbidityValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="TurbidityTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                    <TextBox x:Name="ExitTurbidityTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
                 <Button x:Name="conditionalButtonTurbidity" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
@@ -48,9 +48,9 @@
             <Grid x:Name="Balance">
                 <Label Content="Balance" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" 
                        Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
-                <Label x:Name="BalanceValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
+                <Label x:Name="ExitBalanceValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="BalanceTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                    <TextBox x:Name="ExitBalanceTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
                 <Button x:Name="conditionalButtonBalance" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
