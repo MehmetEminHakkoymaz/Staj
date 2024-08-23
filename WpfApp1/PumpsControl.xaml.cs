@@ -24,6 +24,8 @@ namespace WpfApp1
     public partial class PumpsControl : UserControl
     {
         private MainWindow mainWindow;
+        private DateTime buttonPressStartTime;
+
         public PumpsControl(MainWindow mainWindow)
         {
             InitializeComponent();
@@ -275,6 +277,102 @@ namespace WpfApp1
                     }
                 }
             }
+        }
+
+        private void Pump1FillClick_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            buttonPressStartTime = DateTime.Now;
+        }
+
+        private void Pump1FillClick_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DateTime buttonPressEndTime = DateTime.Now;
+            TimeSpan pressDuration = buttonPressEndTime - buttonPressStartTime;
+            MainWindow.Pump1Fill1ButtonPressDuration = pressDuration.TotalSeconds;
+        }
+
+        private void Pump2FillClick_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            buttonPressStartTime = DateTime.Now;
+        }
+
+        private void Pump2FillClick_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DateTime buttonPressEndTime = DateTime.Now;
+            TimeSpan pressDuration = buttonPressEndTime - buttonPressStartTime;
+            MainWindow.Pump2FillButtonPressDuration = pressDuration.TotalSeconds;
+        }
+
+        private void Pump3FillClick_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            buttonPressStartTime = DateTime.Now;
+        }
+
+        private void Pump3FillClick_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DateTime buttonPressEndTime = DateTime.Now;
+            TimeSpan pressDuration = buttonPressEndTime - buttonPressStartTime;
+            MainWindow.Pump3FillButtonPressDuration = pressDuration.TotalSeconds;
+        }
+
+        private void Pump4FillClick_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            buttonPressStartTime = DateTime.Now;
+        }
+
+        private void Pump4FillClick_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DateTime buttonPressEndTime = DateTime.Now;
+            TimeSpan pressDuration = buttonPressEndTime - buttonPressStartTime;
+            MainWindow.Pump4FillButtonPressDuration = pressDuration.TotalSeconds;
+        }
+
+        private void Pump1EmptyClick_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            buttonPressStartTime = DateTime.Now;
+        }
+
+        private void Pump1EmptyClick_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DateTime buttonPressEndTime = DateTime.Now;
+            TimeSpan pressDuration = buttonPressEndTime - buttonPressStartTime;
+            MainWindow.Pump1EmptyButtonPressDuration = pressDuration.TotalSeconds;
+        }
+
+        private void Pump2EmptyClick_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            buttonPressStartTime = DateTime.Now;
+        }
+
+        private void Pump2EmptyClick_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DateTime buttonPressEndTime = DateTime.Now;
+            TimeSpan pressDuration = buttonPressEndTime - buttonPressStartTime;
+            MainWindow.Pump2EmptyButtonPressDuration = pressDuration.TotalSeconds;
+        }
+
+        private void Pump3EmptyClick_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            buttonPressStartTime = DateTime.Now;
+        }
+
+        private void Pump3EmptyClick_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DateTime buttonPressEndTime = DateTime.Now;
+            TimeSpan pressDuration = buttonPressEndTime - buttonPressStartTime;
+            MainWindow.Pump3EmptyButtonPressDuration = pressDuration.TotalSeconds;
+        }
+
+        private void Pump4EmptyClick_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            buttonPressStartTime = DateTime.Now;
+        }
+
+        private void Pump4EmptyClick_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DateTime buttonPressEndTime = DateTime.Now;
+            TimeSpan pressDuration = buttonPressEndTime - buttonPressStartTime;
+            MainWindow.Pump4EmptyButtonPressDuration = pressDuration.TotalSeconds;
         }
 
     }

@@ -26,6 +26,19 @@ namespace WpfApp1
         private EditViewControl editViewControl; // EditViewControl'ü burada bir kez oluşturun
         private FavouritesControl favouritesControl; // FavouritesControl'ü burada bir kez oluşturun
         private PumpsControl pumpsControl; // PumpsControl'ü burada bir kez oluşturun
+
+
+        // Buton basma sürelerini tutar
+        public static double Pump1Fill1ButtonPressDuration { get; set; }
+        public static double Pump2FillButtonPressDuration { get; set; }
+        public static double Pump3FillButtonPressDuration { get; set; }
+        public static double Pump4FillButtonPressDuration { get; set; }
+        public static double Pump1EmptyButtonPressDuration { get; set; }
+        public static double Pump2EmptyButtonPressDuration { get; set; }
+        public static double Pump3EmptyButtonPressDuration { get; set; }
+        public static double Pump4EmptyButtonPressDuration { get; set; }
+        public static double Pump1FillButton { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();

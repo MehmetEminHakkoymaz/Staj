@@ -73,7 +73,8 @@
                     <TextBox x:Name="Pump1Fill" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
                              BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
-                <Button HorizontalAlignment="Left" Margin="490,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                <Button HorizontalAlignment="Left" Margin="490,0,0,0" Width="127" Height="30" BorderBrush="Gray"
+                        BorderThickness="1" Background="#DAE2E7">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">

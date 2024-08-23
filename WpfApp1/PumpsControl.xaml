@@ -29,7 +29,9 @@
                     <TextBox x:Name="Pump1Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
-                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray" 
+                        BorderThickness="1" Background="#DAE2E7" MouseDown="Pump1FillClick_MouseDown"
+                        MouseUp="Pump1FillClick_MouseUp">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
@@ -39,7 +41,9 @@
                     </Button.Template>
                     <TextBlock Text="FILL" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
                 </Button>
-                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray"
+                        BorderThickness="1" Background="#DAE2E7" MouseDown="Pump1EmptyClick_MouseDown"
+                        MouseUp="Pump1EmptyClick_MouseUp">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
@@ -72,7 +76,9 @@
                     <TextBox x:Name="Pump2Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
-                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray"
+                        BorderThickness="1" Background="#DAE2E7" MouseDown="Pump2FillClick_MouseDown" 
+                        MouseUp="Pump2FillClick_MouseUp">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
@@ -82,7 +88,9 @@
                     </Button.Template>
                     <TextBlock Text="FILL" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
                 </Button>
-                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray"
+                        BorderThickness="1" Background="#DAE2E7" MouseDown="Pump2EmptyClick_MouseDown"
+                        MouseUp="Pump2EmptyClick_MouseUp">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
@@ -116,7 +124,9 @@
                     <TextBox x:Name="Pump3Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
-                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray"
+                        BorderThickness="1" Background="#DAE2E7" MouseDown="Pump3FillClick_MouseDown"
+                        MouseUp="Pump3FillClick_MouseUp">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
@@ -126,7 +136,9 @@
                     </Button.Template>
                     <TextBlock Text="FILL" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
                 </Button>
-                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray"
+                        BorderThickness="1" Background="#DAE2E7" MouseDown="Pump3EmptyClick_MouseDown"
+                        MouseUp="Pump3EmptyClick_MouseUp">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
@@ -160,7 +172,9 @@
                     <TextBox x:Name="Pump4Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
-                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                <Button HorizontalAlignment="Left" Margin="498,0,0,0" Width="127" Height="30" BorderBrush="Gray"
+                        BorderThickness="1" Background="#DAE2E7" MouseDown="Pump4FillClick_MouseDown"
+                        MouseUp="Pump4FillClick_MouseUp">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
@@ -170,7 +184,9 @@
                     </Button.Template>
                     <TextBlock Text="FILL" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
                 </Button>
-                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
+                <Button HorizontalAlignment="Left" Margin="637,0,0,0" Width="127" Height="30" BorderBrush="Gray"
+                        BorderThickness="1" Background="#DAE2E7" MouseDown="Pump4EmptyClick_MouseDown"
+                        MouseUp="Pump4EmptyClick_MouseUp">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
