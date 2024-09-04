@@ -5,8 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.EditPages.EditpHCascade"
              mc:Ignorable="d" 
-             d:DesignHeight="80" d:DesignWidth="750">
+             d:DesignHeight="80" d:DesignWidth="750" Background="#E7ECEF">
     <Grid>
-        <TextBlock>Acid</TextBlock>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0">
+            <!-- Upper TextBox with rounded top corners and red background -->
+            <Border Background="#AF0101" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="0.6" BorderThickness="1" BorderBrush="DarkGray">
+                <TextBox Background="Transparent" BorderThickness="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            </Border>
+
+            <!-- Lower TextBox with rounded bottom corners and black background -->
+            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" Opacity="1" 
+                    BorderBrush="DarkGray" BorderThickness="1">
+                <TextBox Background="Transparent" BorderThickness="0" Foreground="Black" VerticalContentAlignment="Center" 
+                         HorizontalContentAlignment="Center" Text="PID" FontSize="25" FontWeight="Regular"/>
+            </Border>
+        </StackPanel>    
     </Grid>
 </UserControl>

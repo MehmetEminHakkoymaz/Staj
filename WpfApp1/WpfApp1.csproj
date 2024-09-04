@@ -41,4 +41,8 @@
     <Resource Include="images\wifi.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ArdunioCommunication\" />
+  </ItemGroup>
+
 </Project>

@@ -261,15 +261,6 @@ namespace WpfApp1
         }
 
 
-        //private void KeyPadControl_ValueSelected(object sender, string value)
-        //{
-        //    if (activeTextBox != null)
-        //    {
-        //        activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
-        //    }
-        //}
-
-
         private void KeyPadControl_ValueSelected(object sender, string value)
         {
             if (activeTextBox != null)
