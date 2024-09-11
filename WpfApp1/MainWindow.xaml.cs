@@ -123,47 +123,78 @@ namespace WpfApp1
 
         private void LineSend(string line)
         {
-            String[] sendingWords = line.Split(',');
+            String sendingWords = "$,";
 
-            if (sendingWords[0].StartsWith("£")) 
-            {
-                mainControl.TemperatureTarget.Text = sendingWords[1];
-                mainControl.StirrerTarget.Text = sendingWords[2];
-                mainControl.pHTarget.Text = sendingWords[3];
-                mainControl.pO2Target.Text = sendingWords[4];
-                mainControl.Gas1Target.Text = sendingWords[5];
-                mainControl.Gas2Target.Text = sendingWords[6];
-                mainControl.Gas3Target.Text = sendingWords[7];
-                mainControl.Gas4Target.Text = sendingWords[8];
-                mainControl.FoamTarget.Text = sendingWords[9];
-                extendedControl.TurbidityTarget.Text = sendingWords[10];
-                extendedControl.BalanceTarget.Text = sendingWords[11];
-                extendedControl.AirFlowTarget.Text = sendingWords[12];
-                extendedControl.Gas2FlowTarget.Text = sendingWords[13];
-                exitGasControl.ExitTurbidityTarget.Text = sendingWords[14];
-                exitGasControl.ExitBalanceTarget.Text = sendingWords[15];
-                pumpsControl.Pump1Target.Text = sendingWords[16];
-                pumpsControl.Pump2Target.Text = sendingWords[17];
-                pumpsControl.Pump3Target.Text = sendingWords[18];
-                pumpsControl.Pump4Target.Text = sendingWords[19];
-                Pump1Fill1ButtonPressDuration = Convert.ToDouble(sendingWords[20]);
-                Pump2FillButtonPressDuration = Convert.ToDouble(sendingWords[21]);
-                Pump3FillButtonPressDuration = Convert.ToDouble(sendingWords[22]);
-                Pump4FillButtonPressDuration = Convert.ToDouble(sendingWords[23]);
-                Pump1EmptyButtonPressDuration = Convert.ToDouble(sendingWords[24]);
-                Pump2EmptyButtonPressDuration = Convert.ToDouble(sendingWords[25]);
-                Pump3EmptyButtonPressDuration = Convert.ToDouble(sendingWords[26]);
-                Pump4EmptyButtonPressDuration = Convert.ToDouble(sendingWords[27]);
-                openAutoWindow.Pump1Fill.Text = (sendingWords[28]);
-                openAutoWindow.Pump2Fill.Text = (sendingWords[29]);
-                openAutoWindow.Pump3Fill.Text = (sendingWords[30]);
-                openAutoWindow.Pump4Fill.Text = (sendingWords[31]);
-                openAutoWindow.Pump1Empty.Text = (sendingWords[32]);
-                openAutoWindow.Pump2Empty.Text = (sendingWords[33]);
-                openAutoWindow.Pump3Empty.Text = (sendingWords[34]);
-                openAutoWindow.Pump4Empty.Text = (sendingWords[35]);
-
-            }
+            sendingWords += mainControl.TemperatureTarget.Text;
+            sendingWords += ",";
+            sendingWords += mainControl.StirrerTarget.Text;
+            sendingWords += ",";
+            sendingWords += mainControl.pHTarget.Text;
+            sendingWords += ",";
+            sendingWords += mainControl.pO2Target.Text;
+            sendingWords += ",";
+            sendingWords += mainControl.Gas1Target.Text;
+            sendingWords += ",";
+            sendingWords += mainControl.Gas2Target.Text;
+            sendingWords += ",";
+            sendingWords += mainControl.Gas3Target.Text;
+            sendingWords += ",";
+            sendingWords += mainControl.Gas4Target.Text;
+            sendingWords += ",";
+            sendingWords += mainControl.FoamTarget.Text;
+            sendingWords += ",";
+            sendingWords += extendedControl.TurbidityTarget.Text;
+            sendingWords += ",";
+            sendingWords += extendedControl.BalanceTarget.Text;
+            sendingWords += ",";
+            sendingWords += extendedControl.AirFlowTarget.Text;
+            sendingWords += ",";
+            sendingWords += extendedControl.Gas2FlowTarget.Text;
+            sendingWords += ",";
+            sendingWords += exitGasControl.ExitTurbidityTarget.Text;
+            sendingWords += ",";
+            sendingWords += exitGasControl.ExitBalanceTarget.Text;
+            sendingWords += ",";
+            sendingWords += pumpsControl.Pump1Target.Text;
+            sendingWords += ",";
+            sendingWords += pumpsControl.Pump2Target.Text;
+            sendingWords += ",";
+            sendingWords += pumpsControl.Pump3Target.Text;
+            sendingWords += ",";
+            sendingWords += pumpsControl.Pump4Target.Text;
+            sendingWords += ",";
+            sendingWords += Convert.ToString(Pump1Fill1ButtonPressDuration);
+            sendingWords += ",";
+            sendingWords += Convert.ToString(Pump2FillButtonPressDuration);
+            sendingWords += ",";
+            sendingWords += Convert.ToString(Pump3FillButtonPressDuration);
+            sendingWords += ",";
+            sendingWords += Convert.ToString(Pump4FillButtonPressDuration);
+            sendingWords += ",";
+            sendingWords += Convert.ToString(Pump1EmptyButtonPressDuration);
+            sendingWords += ",";
+            sendingWords += Convert.ToString(Pump2EmptyButtonPressDuration);
+            sendingWords += ",";
+            sendingWords += Convert.ToString(Pump3EmptyButtonPressDuration);
+            sendingWords += ",";
+            sendingWords += Convert.ToString(Pump4EmptyButtonPressDuration);
+            sendingWords += ",";
+            sendingWords += openAutoWindow.Pump1Fill.Text;
+            sendingWords += ",";
+            sendingWords += openAutoWindow.Pump2Fill.Text;
+            sendingWords += ",";
+            sendingWords += openAutoWindow.Pump3Fill.Text;
+            sendingWords += ",";
+            sendingWords += openAutoWindow.Pump4Fill.Text;
+            sendingWords += ",";
+            sendingWords += openAutoWindow.Pump1Empty.Text;
+            sendingWords += ",";
+            sendingWords += openAutoWindow.Pump2Empty.Text;
+            sendingWords += ",";
+            sendingWords += openAutoWindow.Pump3Empty.Text;
+            sendingWords += ",";
+            sendingWords += openAutoWindow.Pump4Empty.Text;
+            sendingWords += "\n";            
         }   
 
 
