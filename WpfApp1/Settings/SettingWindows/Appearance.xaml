@@ -11,7 +11,7 @@
         <StackPanel VerticalAlignment="Center">
             <Grid Width="724" Height="50">
                 <Label Content="LANGUAGE" FontSize="25" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
-                <Label Content="EBGLISH" FontSize="25" FontWeight="Regular" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,200,0"/>
+                <Label Content="ENGLISH" FontSize="25" FontWeight="Regular" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,200,0"/>
             </Grid>
             <Grid Width="724" Height="50">
                 <Label Content="ACCEPT DATE AND TIME" FontSize="25" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>

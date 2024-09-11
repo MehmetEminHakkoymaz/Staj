@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Fonts\Inter-VariableFont_slnt,wght.ttf" />
     <Resource Include="images\editt.png" />
     <Resource Include="images\infoo.png" />
@@ -39,10 +43,6 @@
     <Resource Include="images\Up.png" />
     <Resource Include="images\usb.png" />
     <Resource Include="images\wifi.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ArdunioCommunication\" />
   </ItemGroup>
 
 </Project>

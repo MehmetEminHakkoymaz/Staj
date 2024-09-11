@@ -11,6 +11,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System;
+using System.IO.Ports;
+using System.Reflection.Emit;
+using System.Security.Cryptography.X509Certificates;
+
 
 
 namespace WpfApp1
@@ -26,6 +31,141 @@ namespace WpfApp1
         private EditViewControl editViewControl; // EditViewControl'ü burada bir kez oluşturun
         private FavouritesControl favouritesControl; // FavouritesControl'ü burada bir kez oluşturun
         private PumpsControl pumpsControl; // PumpsControl'ü burada bir kez oluşturun
+        private OpenAutoWindow openAutoWindow; // OpenAutoWindow'ü burada bir kez oluşturun
+
+        SerialPort port;
+        int incomingFlag = 0;
+        string selectedPort = "";
+        int incomingSensState = 0;
+        double incommingBatteryVal;
+
+        public void SafeAction(Action action, bool message = true)
+        {
+            try
+            {
+                action();
+            }
+            catch (Exception ex)
+            {
+                if (message)
+                {
+                    // MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Exception");
+                }
+            }
+        }
+
+        public void InitializeArduino(String listeningPort/*, int baudRate*/)
+        {
+            SafeAction(() =>
+            {
+                port = new SerialPort(listeningPort,/* baudRate*/9600);
+                port.Parity = Parity.None;
+                port.StopBits = StopBits.One;
+                port.DataBits = 8;
+                port.Handshake = Handshake.None;
+                port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+
+                port.Open();
+             
+                    if (port.IsOpen && port != null)
+                    {
+                        selectedPort = listeningPort;
+                        
+                    }
+              
+            });
+
+        }
+        private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            string line = sp.ReadLine();
+            this.Dispatcher.BeginInvoke(new LineReceivedEvent(LineReceived), line);
+        }
+        private delegate void LineReceivedEvent(string line);
+        private void LineReceived(string line)
+        {
+
+            String[] incommingWords = line.Split(',');
+
+            if (incommingWords[0].StartsWith("$"))
+            {
+                //label2.Text = line.ToString();
+                label2.Content = incommingWords[1] + " - " + incommingWords[2] + " - " + incommingWords[3] + " - " + incommingWords[4] + " - " + incommingWords[5] + " - " + 
+                    incommingWords[6] + " - " + incommingWords[7] + " - " + incommingWords[8] + " - " + incommingWords[9] + " - " + incommingWords[10] + " - " + 
+                    incommingWords[11] + " - " + incommingWords[12] + " - " + incommingWords[13] + " - " + incommingWords[14] + " - " + incommingWords[15] + " - " + 
+                    incommingWords[16] + " - " + incommingWords[17] + " - " + incommingWords[18] + " - " + incommingWords[19];
+
+                mainControl.TemperatureValue.Content = incommingWords[1];
+                mainControl.StirrerValue.Content = incommingWords[2];
+                mainControl.pHValue.Content = incommingWords[3];
+                mainControl.pO2Value.Content = incommingWords[4];
+                mainControl.Gas1Value.Content = incommingWords[5];
+                mainControl.Gas2Value.Content = incommingWords[6];
+                mainControl.Gas3Value.Content = incommingWords[7];
+                mainControl.Gas4Value.Content = incommingWords[8];
+                mainControl.FoamValue.Content = incommingWords[9];
+                extendedControl.TurbidityValue.Content = incommingWords[10];
+                extendedControl.BalanceValue.Content = incommingWords[11];
+                extendedControl.AirFlowValue.Content = incommingWords[12];
+                extendedControl.Gas2FlowValue.Content = incommingWords[13];
+                exitGasControl.ExitTurbidityValue.Content = incommingWords[14];
+                exitGasControl.ExitBalanceValue.Content = incommingWords[15];
+                pumpsControl.Pump1Value.Content = incommingWords[16];
+                pumpsControl.Pump2Value.Content = incommingWords[17];
+                pumpsControl.Pump3Value.Content = incommingWords[18];
+                pumpsControl.Pump4Value.Content = incommingWords[19];
+            }
+
+
+        }
+
+        private void LineSend(string line)
+        {
+            String[] sendingWords = line.Split(',');
+
+            if (sendingWords[0].StartsWith("£")) 
+            {
+                mainControl.TemperatureTarget.Text = sendingWords[1];
+                mainControl.StirrerTarget.Text = sendingWords[2];
+                mainControl.pHTarget.Text = sendingWords[3];
+                mainControl.pO2Target.Text = sendingWords[4];
+                mainControl.Gas1Target.Text = sendingWords[5];
+                mainControl.Gas2Target.Text = sendingWords[6];
+                mainControl.Gas3Target.Text = sendingWords[7];
+                mainControl.Gas4Target.Text = sendingWords[8];
+                mainControl.FoamTarget.Text = sendingWords[9];
+                extendedControl.TurbidityTarget.Text = sendingWords[10];
+                extendedControl.BalanceTarget.Text = sendingWords[11];
+                extendedControl.AirFlowTarget.Text = sendingWords[12];
+                extendedControl.Gas2FlowTarget.Text = sendingWords[13];
+                exitGasControl.ExitTurbidityTarget.Text = sendingWords[14];
+                exitGasControl.ExitBalanceTarget.Text = sendingWords[15];
+                pumpsControl.Pump1Target.Text = sendingWords[16];
+                pumpsControl.Pump2Target.Text = sendingWords[17];
+                pumpsControl.Pump3Target.Text = sendingWords[18];
+                pumpsControl.Pump4Target.Text = sendingWords[19];
+                Pump1Fill1ButtonPressDuration = Convert.ToDouble(sendingWords[20]);
+                Pump2FillButtonPressDuration = Convert.ToDouble(sendingWords[21]);
+                Pump3FillButtonPressDuration = Convert.ToDouble(sendingWords[22]);
+                Pump4FillButtonPressDuration = Convert.ToDouble(sendingWords[23]);
+                Pump1EmptyButtonPressDuration = Convert.ToDouble(sendingWords[24]);
+                Pump2EmptyButtonPressDuration = Convert.ToDouble(sendingWords[25]);
+                Pump3EmptyButtonPressDuration = Convert.ToDouble(sendingWords[26]);
+                Pump4EmptyButtonPressDuration = Convert.ToDouble(sendingWords[27]);
+                openAutoWindow.Pump1Fill.Text = (sendingWords[28]);
+                openAutoWindow.Pump2Fill.Text = (sendingWords[29]);
+                openAutoWindow.Pump3Fill.Text = (sendingWords[30]);
+                openAutoWindow.Pump4Fill.Text = (sendingWords[31]);
+                openAutoWindow.Pump1Empty.Text = (sendingWords[32]);
+                openAutoWindow.Pump2Empty.Text = (sendingWords[33]);
+                openAutoWindow.Pump3Empty.Text = (sendingWords[34]);
+                openAutoWindow.Pump4Empty.Text = (sendingWords[35]);
+
+            }
+        }   
+
 
 
         // Buton basma sürelerini tutar
@@ -39,11 +179,14 @@ namespace WpfApp1
         public static double Pump4EmptyButtonPressDuration { get; set; }
         public static double Pump1FillButton { get; set; }
 
+       
+
         public MainWindow()
         {
             InitializeComponent();
             InitializeTimer();
             StartClock();
+            SafeAction(() => InitializeArduino("COM4"));
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla güncellenir
             timer.Tick += Timer_Tick;
@@ -56,6 +199,7 @@ namespace WpfApp1
             editViewControl = new EditViewControl(this); // EditViewControl'ü burada bir kez oluşturun
             favouritesControl = new FavouritesControl(this);
             pumpsControl = new PumpsControl(this); // PumpsControl'ü burada bir kez oluşturun
+            openAutoWindow = new OpenAutoWindow(this); // OpenAutoWindow'ü burada bir kez oluşturun
         }
         private void Timer_Tick(object sender, EventArgs e)
         {

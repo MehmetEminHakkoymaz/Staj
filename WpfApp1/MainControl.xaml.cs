@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,6 +22,7 @@ namespace WpfApp1
     public partial class MainControl : UserControl
     {
         private MainWindow mainWindow;
+        public Label testlabel => TemperatureValue;
 
         public MainControl(MainWindow mainWindow)
         {
@@ -30,6 +32,8 @@ namespace WpfApp1
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
             comparisonTimer.Tick += ComparisonTimer_Tick; // Zamanlayıcı olayı
+           
+
         }
 
         private TextBox activeTextBox = null;
@@ -38,7 +42,7 @@ namespace WpfApp1
 
         private DispatcherTimer comparisonTimer = new DispatcherTimer();
 
-
+        
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox focusedTextBox = sender as TextBox;

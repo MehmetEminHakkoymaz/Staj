@@ -51,31 +51,32 @@ namespace WpfApp1.EditPages
             this.Close();
         }
 
-        private void contentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
-            {
-                var contentName = selectedItem.Content.ToString();
-                UserControl contentToLoad = null;
+        //private void contentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
+        //    {
+        //        var contentName = selectedItem.Content.ToString();
+        //        UserControl contentTo
+        //            = null;
 
-                switch (contentName)
-                {
-                    case "None":
-                        contentToLoad = new EditpHCascade.None();
-                        break;
-                    case "Base":
-                        contentToLoad = new EditpHCascade.Base();
-                        break;
-                    case "Acid":
-                        contentToLoad = new EditpHCascade.Acid();
-                        break;
-                    case "Base->Acid":
-                        contentToLoad = new EditpHCascade.BaseAcid();
-                        break;
-                }
+        //        switch (contentName)
+        //        {
+        //            case "None":
+        //                contentToLoad = new EditpHCascade.None();
+        //                break;
+        //            case "Base":
+        //                contentToLoad = new EditpHCascade.Base();
+        //                break;
+        //            case "Acid":
+        //                contentToLoad = new EditpHCascade.Acid();
+        //                break;
+        //            case "Base->Acid":
+        //                contentToLoad = new EditpHCascade.BaseAcid();
+        //                break;
+        //        }
 
-                contentArea.Content = contentToLoad;
-            }
-        }
+        //        contentArea.Content = contentToLoad;
+        //    }
+        //}
     }
 }

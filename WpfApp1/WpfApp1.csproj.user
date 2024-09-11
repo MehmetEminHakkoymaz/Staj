@@ -10,6 +10,9 @@
     <Compile Update="00000000000.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ArdunioCommunication\ArdunioCommunication.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EditPages\EditpH.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -88,6 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="00000000000.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ArdunioCommunication\ArdunioCommunication.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EditPages\EditpH.xaml">

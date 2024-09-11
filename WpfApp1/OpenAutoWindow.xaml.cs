@@ -19,8 +19,10 @@ namespace WpfApp1
     /// </summary>
     public partial class OpenAutoWindow : Window
     {
-        public OpenAutoWindow()
+        private MainWindow mainWindow;
+        public OpenAutoWindow(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             InitializeComponent();
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
         }
