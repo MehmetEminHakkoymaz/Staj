@@ -69,7 +69,7 @@ namespace WpfApp1
 
         private void AutoButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenAutoWindow openAutoWindow = new OpenAutoWindow();
+            OpenAutoWindow openAutoWindow = new OpenAutoWindow(mainWindow);
             openAutoWindow.Show();
         }
         private void KeyPadControl_ValueSelected(object sender, string value)

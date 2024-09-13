@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -295,7 +296,6 @@ namespace WpfApp1
             min = max = 0;
             return false;
         }
-
 
     }
 }

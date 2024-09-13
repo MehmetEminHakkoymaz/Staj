@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#E7ECEF"/>
-            <Setter Property="BorderBrush" Value="#D6D6D6"/>
+            <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
 

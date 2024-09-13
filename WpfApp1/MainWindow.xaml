@@ -67,6 +67,8 @@
                     <Button Content="EXTENDED" Height="64" Width="204" Click="Extended_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
                     <Button Content="EXIT GAS" Height="64" Width="204" Click="Exit_Gas_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
                     <Button Content="PUMPS" Height="64" Width="204" Click="Pumps_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
+                    <Button Content="Button" Click="Button_Click"/>
+                    
                 </StackPanel>
             </Border>
 
@@ -74,7 +76,6 @@
 
             <!-- İçerik alanı -->
             <ContentControl x:Name="contentArea" Grid.Column="2" Grid.Row="0" Width="819" Height="505" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="2">
-                <Label x:Name="label2"  Content="Label" HorizontalAlignment="Left" Margin="320,221,0,0" VerticalAlignment="Top"/>
             </ContentControl>
 
             <!-- Alt kısım -->
@@ -89,6 +90,9 @@
                                 <DropShadowEffect Color="#808080" Direction="270" ShadowDepth="3" Opacity="0.4"/>
                             </TextBlock.Effect>
                         </TextBlock>
+
+                        <Label x:Name="label2"  Content="Label" HorizontalAlignment="Left" Margin="320,0,0,0" VerticalAlignment="Top"/>
+
                         <!--EDIT VIEW-->
                         <Button Width="175" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"
                                 x:Name="EditViewButton" Click="EditView_Button_Click">

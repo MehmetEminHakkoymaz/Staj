@@ -39,6 +39,7 @@ namespace WpfApp1
         int incomingSensState = 0;
         double incommingBatteryVal;
 
+
         public void SafeAction(Action action, bool message = true)
         {
             try
@@ -121,9 +122,10 @@ namespace WpfApp1
 
         }
 
-        private void LineSend(string line)
+        public void LineSend(string line)
         {
             String sendingWords = "$,";
+
 
             sendingWords += mainControl.TemperatureTarget.Text;
             sendingWords += ",";
@@ -194,8 +196,26 @@ namespace WpfApp1
             sendingWords += openAutoWindow.Pump3Empty.Text;
             sendingWords += ",";
             sendingWords += openAutoWindow.Pump4Empty.Text;
-            sendingWords += "\n";            
-        }   
+            sendingWords += "\n";
+
+            label2.Content = sendingWords;
+
+            port.Write(sendingWords);
+
+
+        }
+
+        public void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                LineSend("line");
+            }           
+            else
+            {
+                MessageBox.Show("Port is not open");
+            }
+        }
 
 
 
@@ -217,7 +237,7 @@ namespace WpfApp1
             InitializeComponent();
             InitializeTimer();
             StartClock();
-            SafeAction(() => InitializeArduino("COM4"));
+            SafeAction(() => InitializeArduino("COM9"));
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla güncellenir
             timer.Tick += Timer_Tick;
