@@ -147,13 +147,6 @@
 
             <Grid Width="724" Height="60" x:Name="Ssid">
                 <Label Content="SSID" FontSize="25" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
-                <!--<ComboBox x:Name="SsidComboBox" Width="320" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="385,0,0,0">
-                    <ComboBoxItem Content="SSID 1"/>
-                    <ComboBoxItem Content="SSID 2"/>
-                    <ComboBoxItem Content="SSID 3"/>
-                    <ComboBoxItem Content="SSID 4"/>
-                </ComboBox>-->
-
                 <ComboBox x:Name="SsidComboBox" Width="320" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="385,0,0,0"/>
 
             </Grid>
