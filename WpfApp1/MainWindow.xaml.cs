@@ -251,6 +251,14 @@ namespace WpfApp1
             favouritesControl = new FavouritesControl(this);
             pumpsControl = new PumpsControl(this); // PumpsControl'ü burada bir kez oluşturun
             openAutoWindow = new OpenAutoWindow(this); // OpenAutoWindow'ü burada bir kez oluşturun
+
+            string connectionType = Properties.Settings.Default.ConnectionType;
+            string configuration = Properties.Settings.Default.Configuration;
+            string ipAddress = Properties.Settings.Default.IpAddress;
+            string subnetMask = Properties.Settings.Default.SubnetMask;
+            string ssid = Properties.Settings.Default.Ssid;
+            string password = Properties.Settings.Default.Password;
+
         }
         private void Timer_Tick(object sender, EventArgs e)
         {

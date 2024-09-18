@@ -321,11 +321,13 @@ C:\Users\mehak\OneDrive\Belgeler\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Wp
 C:\Users\mehak\OneDrive\Belgeler\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.genruntimeconfig.cache
 C:\Users\mehak\OneDrive\Belgeler\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp1.dll
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.exe
+C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.dll.config
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.deps.json
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.runtimeconfig.json
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.dll
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.pdb
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\System.IO.Ports.dll
+C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\System.Management.dll
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
@@ -333,6 +335,7 @@ C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windo
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.IO.Ports.dll
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.IO.Ports.dll
+C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.AssemblyReference.cache
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\obj\Debug\net8.0-windows\00000000000.g.cs
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\obj\Debug\net8.0-windows\ArdunioCommunication\ArdunioCommunication.g.cs
@@ -409,3 +412,4 @@ C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\obj\Debug\net8.0-windo
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.pdb
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.genruntimeconfig.cache
 C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp1.dll
+C:\Users\mehme\OneDrive\Desktop\STAJ\WpfApp1\Staj\WpfApp1\bin\Debug\net8.0-windows\ManagedWifi.dll
