@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fvzeg9guYns=",
+  "dgSpecHash": "+xJFNh7agm0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mehme\\OneDrive\\Desktop\\STAJ\\WpfApp1\\Staj\\WpfApp1\\WpfApp1.csproj",
+  "projectFilePath": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\WpfApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mehme\\.nuget\\packages\\managedwifi\\1.1.0\\managedwifi.1.1.0.nupkg.sha512",
     "C:\\Users\\mehme\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\8.0.0\\runtime.linux-arm.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
@@ -20,7 +20,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'managedwifi 1.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
+      "message": "'managedwifi 1.1.0' paketi, proje hedef çerçevesi 'net8.0-windows7.0' yerine '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
       "libraryId": "managedwifi",
       "targetGraphs": [
         "net8.0-windows7.0"

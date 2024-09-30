@@ -237,12 +237,11 @@ namespace WpfApp1
             InitializeComponent();
             InitializeTimer();
             StartClock();
-            SafeAction(() => InitializeArduino("COM9"));
+            SafeAction(() => InitializeArduino("COM3"));
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla güncellenir
             timer.Tick += Timer_Tick;
             time = TimeSpan.Zero;
-            this.Width = SystemParameters.PrimaryScreenWidth;
             this.Height = SystemParameters.PrimaryScreenHeight;
             mainControl = new MainControl(this); // MainControl'ü burada bir kez oluşturun
             extendedControl = new ExtendedControl(this); // ExtendedControl'ü burada bir kez oluşturun
