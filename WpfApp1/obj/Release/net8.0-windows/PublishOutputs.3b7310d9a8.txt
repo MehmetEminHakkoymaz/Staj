@@ -1,0 +1,17 @@
+C:\Users\mehme\Desktop\projedeneme\WpfApp1.exe
+C:\Users\mehme\Desktop\projedeneme\WpfApp1.dll
+C:\Users\mehme\Desktop\projedeneme\WpfApp1.deps.json
+C:\Users\mehme\Desktop\projedeneme\WpfApp1.runtimeconfig.json
+C:\Users\mehme\Desktop\projedeneme\WpfApp1.dll.config
+C:\Users\mehme\Desktop\projedeneme\WpfApp1.pdb
+C:\Users\mehme\Desktop\projedeneme\ManagedWifi.dll
+C:\Users\mehme\Desktop\projedeneme\System.IO.Ports.dll
+C:\Users\mehme\Desktop\projedeneme\System.Management.dll
+C:\Users\mehme\Desktop\projedeneme\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+C:\Users\mehme\Desktop\projedeneme\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+C:\Users\mehme\Desktop\projedeneme\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+C:\Users\mehme\Desktop\projedeneme\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+C:\Users\mehme\Desktop\projedeneme\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+C:\Users\mehme\Desktop\projedeneme\runtimes\unix\lib\net8.0\System.IO.Ports.dll
+C:\Users\mehme\Desktop\projedeneme\runtimes\win\lib\net8.0\System.IO.Ports.dll
+C:\Users\mehme\Desktop\projedeneme\runtimes\win\lib\net8.0\System.Management.dll

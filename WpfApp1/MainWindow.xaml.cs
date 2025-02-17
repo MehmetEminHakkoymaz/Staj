@@ -40,44 +40,44 @@ namespace WpfApp1
         double incommingBatteryVal;
 
 
-        public void SafeAction(Action action, bool message = true)
-        {
-            try
-            {
-                action();
-            }
-            catch (Exception ex)
-            {
-                if (message)
-                {
-                    // MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    MessageBox.Show(ex.Message, "Exception");
-                }
-            }
-        }
+        //public void SafeAction(Action action, bool message = true)
+        //{
+        //    try
+        //    {
+        //        action();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        if (message)
+        //        {
+        //            // MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            MessageBox.Show(ex.Message, "Exception");
+        //        }
+        //    }
+        //}
 
-        public void InitializeArduino(String listeningPort/*, int baudRate*/)
-        {
-            SafeAction(() =>
-            {
-                port = new SerialPort(listeningPort,/* baudRate*/9600);
-                port.Parity = Parity.None;
-                port.StopBits = StopBits.One;
-                port.DataBits = 8;
-                port.Handshake = Handshake.None;
-                port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+        //public void InitializeArduino(String listeningPort/*, int baudRate*/)
+        //{
+        //    SafeAction(() =>
+        //    {
+        //        port = new SerialPort(listeningPort,/* baudRate*/9600);
+        //        port.Parity = Parity.None;
+        //        port.StopBits = StopBits.One;
+        //        port.DataBits = 8;
+        //        port.Handshake = Handshake.None;
+        //        port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
-                port.Open();
+        //        port.Open();
              
-                    if (port.IsOpen && port != null)
-                    {
-                        selectedPort = listeningPort;
+        //            if (port.IsOpen && port != null)
+        //            {
+        //                selectedPort = listeningPort;
                         
-                    }
+        //            }
               
-            });
+        //    });
 
-        }
+        //}
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
@@ -237,7 +237,7 @@ namespace WpfApp1
             InitializeComponent();
             InitializeTimer();
             StartClock();
-            SafeAction(() => InitializeArduino("COM3"));
+            //SafeAction(() => InitializeArduino("COM3"));
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla güncellenir
             timer.Tick += Timer_Tick;

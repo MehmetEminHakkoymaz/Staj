@@ -1,0 +1,10 @@
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Release\net8.0-windows\linux-x64\publish\WpfApp1
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Release\net8.0-windows\linux-x64\publish\WpfApp1.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Release\net8.0-windows\linux-x64\publish\WpfApp1.deps.json
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Release\net8.0-windows\linux-x64\publish\WpfApp1.runtimeconfig.json
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Release\net8.0-windows\linux-x64\publish\WpfApp1.dll.config
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Release\net8.0-windows\linux-x64\publish\WpfApp1.pdb
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Release\net8.0-windows\linux-x64\publish\ManagedWifi.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Release\net8.0-windows\linux-x64\publish\System.IO.Ports.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Release\net8.0-windows\linux-x64\publish\System.Management.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Release\net8.0-windows\linux-x64\publish\libSystem.IO.Ports.Native.so

@@ -20,7 +20,7 @@
             </Grid>
 
             <StackPanel x:Name="GridsContainer" Orientation="Vertical" Margin="0,50,0,0">
-                <Border x:Name="Temperature" HorizontalAlignment="Center"  Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="Temperature"  Height="45" Width="819" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
                     <Grid>
                         <Label Content="Temperature" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" 
@@ -36,7 +36,7 @@
                                 VerticalAlignment="Center" 
                                 Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -59,7 +59,7 @@
                         <Button x:Name="conditionalButtonStirrer" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -85,7 +85,7 @@
                         <Button x:Name="conditionalButtonpH" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -107,7 +107,7 @@
                         <Button x:Name="conditionalButtonpO2" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -129,7 +129,7 @@
                         <Button x:Name="conditionalButtonGas1" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -151,7 +151,7 @@
                         <Button x:Name="conditionalButtonGas2" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -173,7 +173,7 @@
                         <Button x:Name="conditionalButtonGas3" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -195,7 +195,7 @@
                         <Button x:Name="conditionalButtonGas4" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -217,7 +217,7 @@
                         <Button x:Name="conditionalButtonFoam" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -234,12 +234,12 @@
                         <Label x:Name="TurbidityValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="TurbidityTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>                
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonTurbidity" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -257,12 +257,12 @@
                         <Label x:Name="BalanceValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="BalanceTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>                  
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonBalance" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -280,12 +280,12 @@
                         <Label x:Name="AirFlowValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="AirFlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>          
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonAirFlow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -303,12 +303,12 @@
                         <Label x:Name="Gas2FlowValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="Gas2FlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>                 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas2Flow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -332,7 +332,7 @@
                         <Button x:Name="conditionalButtonExitTurbidity" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -356,7 +356,7 @@
                         <Button x:Name="conditionalButtonExitBalance" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="Button">
+                                <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -371,15 +371,15 @@
             </StackPanel>
 
             <Grid x:Name="RightGrid" Width="341" Height="455" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,-325,0">
-            
-             <!--Grid içeriği--> 
-        
+
+                <!--Grid içeriği-->
+
                 <Border Background="#E7ECEF" BorderBrush="#D6D6D6" BorderThickness="2" Margin="16,0,0,0">
                     <StackPanel x:Name="EllipseContainer" Orientation="Vertical" Margin="0,0,0,0">
-                    
-                    
-             <!--1.Ellipse--> 
-        
+
+
+                        <!--1.Ellipse-->
+
                         <Grid x:Name="ElTemperature" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244.13,7.5">
                                 <Canvas x:Name="canvas1" Width="66.87" Height="30">
@@ -389,10 +389,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--2.Ellipse--> 
-        
+
+
+                        <!--2.Ellipse-->
+
                         <Grid x:Name="ElStirrer" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,5,244.13,5">
                                 <Canvas x:Name="canvas2" Width="66.87" Height="30">
@@ -402,10 +402,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,5,21,5"/>
                         </Grid>
-                    
-                    
-             <!--3.Ellipse--> 
-        
+
+
+                        <!--3.Ellipse-->
+
                         <Grid x:Name="ElpH" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas3" Width="66.87" Height="30">
@@ -418,10 +418,10 @@
                                        MouseLeftButtonDown="EditpH_MouseLeftButtonDown"/>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--4.Ellipse--> 
-        
+
+
+                        <!--4.Ellipse-->
+
                         <Grid x:Name="ElpO2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas4" Width="66.87" Height="30">
@@ -433,10 +433,10 @@
                             <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,7.5,94,7.5"/>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--5.Ellipse--> 
-        
+
+
+                        <!--5.Ellipse-->
+
                         <Grid x:Name="ElGas1" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas5" Width="66.87" Height="30">
@@ -446,10 +446,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--6.Ellipse--> 
-        
+
+
+                        <!--6.Ellipse-->
+
                         <Grid x:Name="ElGas2" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas6" Width="66.87" Height="30">
@@ -459,10 +459,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--7.Ellipse--> 
-        
+
+
+                        <!--7.Ellipse-->
+
                         <Grid x:Name="ElGas3" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas7" Width="66.87" Height="30">
@@ -472,10 +472,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--8.Ellipse--> 
-        
+
+
+                        <!--8.Ellipse-->
+
                         <Grid x:Name="ElGas4" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas8" Width="66.87" Height="30">
@@ -485,10 +485,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--9.Ellipse--> 
-        
+
+
+                        <!--9.Ellipse-->
+
                         <Grid x:Name="ElFoam" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas9" Width="66.87" Height="30">
@@ -499,10 +499,10 @@
                             <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,7.5,94,7.5"/>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--10.Ellipse--> 
-        
+
+
+                        <!--10.Ellipse-->
+
                         <Grid x:Name="ElTurbidity" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas10" Width="66.87" Height="30">
@@ -512,10 +512,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--11.Ellipse--> 
-        
+
+
+                        <!--11.Ellipse-->
+
                         <Grid x:Name="ElBalance" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas11" Width="66.87" Height="30">
@@ -524,10 +524,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--12.Ellipse--> 
-        
+
+
+                        <!--12.Ellipse-->
+
                         <Grid x:Name="ElAirFlow" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas12" Width="66.87" Height="30">
@@ -536,10 +536,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--13.Ellipse--> 
-        
+
+
+                        <!--13.Ellipse-->
+
                         <Grid x:Name="ElGas2Flow" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas13" Width="66.87" Height="30">
@@ -548,10 +548,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--14.Ellipse--> 
-        
+
+
+                        <!--14.Ellipse-->
+
                         <Grid x:Name="ElExitTurbidity" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas14" Width="66.87" Height="30">
@@ -560,10 +560,10 @@
                             </Border>
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
-                    
-                    
-             <!--15.Ellipse--> 
-        
+
+
+                        <!--15.Ellipse-->
+
                         <Grid x:Name="ElExitBalance" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
                             <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
                                 <Canvas x:Name="canvas15" Width="66.87" Height="30">
@@ -575,9 +575,9 @@
                     </StackPanel>
                 </Border>
 
-            
-             <!--Buton, Grid içine taşındı--> 
-        
+
+                <!--Buton, Grid içine taşındı-->
+
                 <Button x:Name="ToggleRightGridButton" Width="16" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,209,0,0" Click="ToggleRightGridButton_Click" Tag="pack://application:,,,/WpfApp1;component/images/Left.png">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
@@ -586,9 +586,9 @@
                         BorderThickness="{TemplateBinding BorderThickness}" 
                         CornerRadius="5,0,0,5">
                                 <Grid>
-                                
-             <!--RelativeSource ile Tag özelliğine bağlı olarak dinamik Image Source--> 
-        
+
+                                    <!--RelativeSource ile Tag özelliğine bağlı olarak dinamik Image Source-->
+
                                     <Image Width="23" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center"
                         Source="{Binding Path=Tag, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"/>
                                 </Grid>

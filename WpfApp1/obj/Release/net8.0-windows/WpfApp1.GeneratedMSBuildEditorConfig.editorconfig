@@ -11,3 +11,6 @@ build_property.RootNamespace = WpfApp1
 build_property.ProjectDir = C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
