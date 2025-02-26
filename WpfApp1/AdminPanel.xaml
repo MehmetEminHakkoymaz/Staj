@@ -1,0 +1,70 @@
+﻿<Window x:Class="WpfApp1.AdminPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="AdminPanel" Height="600" Width="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Üst Bar -->
+        <Grid Grid.Row="0" Background="#272932">
+            <Button x:Name="BackButton" 
+                    HorizontalAlignment="Left" 
+                    Width="100" 
+                    Height="40" 
+                    Margin="10,5"
+                    Click="BackButton_Click"
+                    Background="Transparent"
+                    BorderBrush="White"
+                    Foreground="White">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="←" 
+                             FontSize="20" 
+                             VerticalAlignment="Center"
+                             Margin="0,0,5,0"/>
+                    <TextBlock Text="Back" 
+                             FontSize="16" 
+                             VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <!-- Ana İçerik -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid x:Name="UsersGrid"
+                      AutoGenerateColumns="False" 
+                      Grid.Column="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Username" Binding="{Binding Username}"/>
+                    <DataGridTextColumn Header="Role" Binding="{Binding Role}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Grid.Column="1" Margin="10">
+                <TextBlock Text="Username:"/>
+                <TextBox x:Name="UsernameTextBox"/>
+                <TextBlock Text="Password:"/>
+                <PasswordBox x:Name="PasswordBox"/>
+                <TextBlock Text="Role:"/>
+                <ComboBox x:Name="RoleComboBox">
+                    <ComboBoxItem>user</ComboBoxItem>
+                    <ComboBoxItem>guest</ComboBoxItem>
+                </ComboBox>
+                <Button Content="Add User" Click="AddUser_Click" Margin="0,10"/>
+                <Button Content="Update User" Click="UpdateUser_Click" Margin="0,10"/>
+                <Button Content="Delete User" Click="DeleteUser_Click" Margin="0,10"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

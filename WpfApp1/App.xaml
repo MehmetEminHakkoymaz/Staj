@@ -2,7 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfApp1"
-             StartupUri="MainWindow.xaml">
+             StartupUri="LoginWindow.xaml">
+
+    <!--StartupUri="MainWindow.xaml">-->
     <Application.Resources>
         <Style TargetType="{x:Type Control}">
             <Setter Property="FontFamily" Value="pack://application:,,,/WpfApp1;component/Fonts/#Inter-VariableFont_slnt,wght"/>

@@ -25,6 +25,25 @@
                     </Button>
                     <Label Content="MECHOSPHERE" Padding="5,0,5,0" FontSize="20" FontFamily="Inter" FontWeight="Regular" HorizontalAlignment="Left" Margin="41,0,0,0" Width="152" Height="24"  VerticalAlignment="Center"/>
                     <TextBlock x:Name="ClockTextBlock" FontFamily="Inter" FontWeight="Regular" FontSize="20" Width="106" Height="24" HorizontalAlignment="Left" Margin="463,3,0,0" VerticalAlignment="Center"/>
+                    <Button x:Name="LogoutButton" 
+                            Content="Logout" 
+                            Click="Logout_Button_Click"
+                            Width="53"
+                            Background="Transparent"
+                            Foreground="White"
+                            BorderBrush="White"
+                            HorizontalAlignment="Left"
+                            Margin="901,0,0,0">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#C33333"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                     <Image Source="pack://application:,,,/images/usb.png" Width="28" Height="28" HorizontalAlignment="Right" Margin="0,-1,36,1"/>
                     <Image Source="pack://application:,,,/images/wifi.png" Width="28" Height="28" HorizontalAlignment="Right" Margin="0,-1,2,1"/>
                 </Grid>
@@ -67,8 +86,9 @@
                     <Button Content="EXTENDED" Height="64" Width="204" Click="Extended_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
                     <Button Content="EXIT GAS" Height="64" Width="204" Click="Exit_Gas_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
                     <Button Content="PUMPS" Height="64" Width="204" Click="Pumps_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
+                    <Button x:Name="AdminPanelButton" Content="Admin" Height="64" Width="204" Click="Admin_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
                     <Button Content="Button" Click="Button_Click"/>
-                    
+
                 </StackPanel>
             </Border>
 
@@ -129,7 +149,7 @@
                                 </Button.Template>
                                 <TextBlock Text="START" FontSize="30" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
-                        </Border>--> 
+                        </Border>-->
                         <Button x:Name="StartButton" Width="250" Height="50" Margin="0,0,34,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="StartButton_Click" Visibility="Collapsed" Panel.ZIndex="1">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">

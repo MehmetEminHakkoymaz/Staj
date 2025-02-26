@@ -15,6 +15,7 @@ using System;
 using System.IO.Ports;
 using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
+using WpfApp1.Models;
 
 
 
@@ -32,6 +33,9 @@ namespace WpfApp1
         public FavouritesControl favouritesControl; // FavouritesControl'ü burada bir kez oluşturun
         public PumpsControl pumpsControl; // PumpsControl'ü burada bir kez oluşturun
         public OpenAutoWindow openAutoWindow; // OpenAutoWindow'ü burada bir kez oluşturun
+        public AdminPanel adminPanel;
+
+        private User _currentUser;
 
         SerialPort port;
         int incomingFlag = 0;
@@ -39,6 +43,45 @@ namespace WpfApp1
         int incomingSensState = 0;
         double incommingBatteryVal;
 
+        public MainWindow(User user)
+        {
+            InitializeComponent();
+            _currentUser = user;
+
+            if (user != null) // Kullanıcı null değilse başlat
+            {
+                InitializeRoleBasedAccess();
+                InitializeTimer();
+                StartClock();
+                //SafeAction(() => InitializeArduino("COM3"));
+                timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(1);
+                timer.Tick += Timer_Tick;
+                time = TimeSpan.Zero;
+
+                this.WindowState = WindowState.Maximized;
+                this.WindowStyle = WindowStyle.None;
+                this.ResizeMode = ResizeMode.NoResize;
+                this.Topmost = true;
+
+                mainControl = new MainControl(this);
+                extendedControl = new ExtendedControl(this);
+                exitGasControl = new ExitGasControl(this);
+                editViewControl = new EditViewControl(this);
+                favouritesControl = new FavouritesControl(this);
+                pumpsControl = new PumpsControl(this);
+                openAutoWindow = new OpenAutoWindow(this);
+
+                string connectionType = Properties.Settings.Default.ConnectionType;
+                string configuration = Properties.Settings.Default.Configuration;
+                string ipAddress = Properties.Settings.Default.IpAddress;
+                string subnetMask = Properties.Settings.Default.SubnetMask;
+                string ssid = Properties.Settings.Default.Ssid;
+                string password = Properties.Settings.Default.Password;
+
+                totalWorkTime = Properties.Settings.Default.TotalWorkTime;
+            }
+        }
 
         //public void SafeAction(Action action, bool message = true)
         //{
@@ -78,6 +121,7 @@ namespace WpfApp1
         //    });
 
         //}
+
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
@@ -232,44 +276,6 @@ namespace WpfApp1
 
         private TimeSpan totalWorkTime;
 
-
-        public MainWindow()
-        {
-            InitializeComponent();
-            InitializeTimer();
-            StartClock();
-            //SafeAction(() => InitializeArduino("COM3"));
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla güncellenir
-            timer.Tick += Timer_Tick;
-            time = TimeSpan.Zero;
-
-            this.WindowState = WindowState.Maximized;
-            this.WindowStyle = WindowStyle.None;
-            this.ResizeMode = ResizeMode.NoResize;
-            this.Topmost = true;
-
-            //this.Height = SystemParameters.PrimaryScreenHeight;
-            mainControl = new MainControl(this); // MainControl'ü burada bir kez oluşturun
-            extendedControl = new ExtendedControl(this); // ExtendedControl'ü burada bir kez oluşturun
-            exitGasControl = new ExitGasControl(this); // ExitGasControl'ü burada bir kez oluşturun
-            editViewControl = new EditViewControl(this); // EditViewControl'ü burada bir kez oluşturun
-            favouritesControl = new FavouritesControl(this);
-            pumpsControl = new PumpsControl(this); // PumpsControl'ü burada bir kez oluşturun
-            openAutoWindow = new OpenAutoWindow(this); // OpenAutoWindow'ü burada bir kez oluşturun
-
-            string connectionType = Properties.Settings.Default.ConnectionType;
-            string configuration = Properties.Settings.Default.Configuration;
-            string ipAddress = Properties.Settings.Default.IpAddress;
-            string subnetMask = Properties.Settings.Default.SubnetMask;
-            string ssid = Properties.Settings.Default.Ssid;
-            string password = Properties.Settings.Default.Password;
-
-            // Kaydedilmiş toplam süreyi yükle
-            totalWorkTime = Properties.Settings.Default.TotalWorkTime;
-
-
-        }
 
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -495,6 +501,57 @@ namespace WpfApp1
             // Görünürlükleri güncelle
             StopButton.Visibility = Visibility.Collapsed;
             FirstStartButton.Visibility = Visibility.Visible;
+        }
+
+        private void Admin_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentUser.Role == "admin")
+            {
+                adminPanel = new AdminPanel(this);
+                adminPanel.Show();
+            }
+            else
+            {
+                MessageBox.Show("You do not have permission to access this page.");
+            }
+        }
+
+
+        private void InitializeRoleBasedAccess()
+        {
+            // Örnek: Admin olmayan kullanıcılar için AdminPanel butonunu gizle
+            if (_currentUser.Role != "admin")
+            {
+                AdminPanelButton.Visibility = Visibility.Collapsed;
+            }
+        }
+        public void UpdateCurrentUser(User user)
+        {
+            _currentUser = user;
+            InitializeRoleBasedAccess();
+        }
+
+        private void Logout_Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Yeni login penceresi oluştur
+            LoginWindow loginWindow = new LoginWindow();
+
+            // Mevcut pencereyi gizle
+            this.Hide();
+
+            // Login penceresini göster
+            loginWindow.Show();
+
+            // Login penceresinin Closed olayını dinle
+            loginWindow.Closed += (s, args) =>
+            {
+                if (loginWindow.LoggedInUser != null) // Başarılı giriş yapıldıysa
+                {
+                    _currentUser = loginWindow.LoggedInUser;
+                    InitializeRoleBasedAccess();
+                    this.Show();
+                }
+            };
         }
     }
 }

@@ -12,6 +12,9 @@
     <Compile Update="00000000000.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AdminPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ArdunioCommunication\ArdunioCommunication.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +58,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Keypad\KeyPad.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MainControl.xaml.cs">
