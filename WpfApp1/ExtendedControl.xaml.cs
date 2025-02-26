@@ -26,6 +26,12 @@ namespace WpfApp1
         {
             InitializeComponent();
             ellipse10.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse11.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse12.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse13.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown; 
+            ellipse16.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse17.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse18.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             this.mainWindow = mainWindow;
             KeypadControl.ValueSelected += KePadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
@@ -138,14 +144,76 @@ namespace WpfApp1
                     }
 
                     // Ellipse'in rengi değiştikten sonra butonun görünürlüğünü kontrol et
-                    CheckEllipsePositionAndSetButtonVisibility(ellipse10, conditionalButtonTurbidity);
-                    CheckEllipsePositionAndSetButtonVisibility(ellipse11, conditionalButtonBalance);
-                    CheckEllipsePositionAndSetButtonVisibility(ellipse12, conditionalButtonAirFlow);
-                    CheckEllipsePositionAndSetButtonVisibility(ellipse13, conditionalButtonGas2Flow);
+                    CheckEllipsePositionAndSetButtonVisibility(clickedEllipse, GetConditionalButton(clickedEllipse));
+
+                    // FavouritesControl'daki ilgili ellipse'i güncelle
+                    mainWindow.favouritesControl.UpdateEllipsePosition(clickedEllipse.Name, targetLeft);
+                    // FavouritesControl'daki ilgili conditionalButton'ı güncelle
+                    mainWindow.favouritesControl.UpdateConditionalButtonVisibility(clickedEllipse.Name, targetLeft);
                 };
 
                 clickedEllipse.BeginAnimation(Canvas.LeftProperty, animation);
             }
+        }
+        private Button GetConditionalButton(Ellipse ellipse)
+        {
+            return ellipse.Name switch
+            {
+                "ellipse10" => conditionalButtonTurbidity,
+                "ellipse11" => conditionalButtonBalance,
+                "ellipse12" => conditionalButtonAirFlow,
+                "ellipse13" => conditionalButtonGas2Flow,
+                "ellipse16" => conditionalButtonGas3Flow,
+                "ellipse17" => conditionalButtonGas4Flow,
+                "ellipse18" => conditionalButtonGas5Flow,
+                _ => null
+            };
+        }
+
+        public void UpdateEllipsePosition(string ellipseName, double targetLeft)
+        {
+            Ellipse targetEllipse = FindName(ellipseName) as Ellipse;
+            if (targetEllipse == null) return;
+
+            DoubleAnimation animation = new DoubleAnimation
+            {
+                To = targetLeft,
+                Duration = TimeSpan.FromSeconds(0.5),
+                FillBehavior = FillBehavior.Stop
+            };
+
+            animation.Completed += (s, a) =>
+            {
+                Canvas.SetLeft(targetEllipse, targetLeft); // Animasyon tamamlandığında yuvarlağın pozisyonunu güncelle
+
+                if (targetLeft == 6)
+                {
+                    targetEllipse.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFE7ECEF")); // Soldaysa gri yap
+                }
+                else
+                {
+                    targetEllipse.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFAF0101")); // Sağdaysa kırmızı yap
+                }
+            };
+
+            targetEllipse.BeginAnimation(Canvas.LeftProperty, animation);
+        }
+
+        public void UpdateConditionalButtonVisibility(string ellipseName, double targetLeft)
+        {
+            Ellipse targetEllipse = FindName(ellipseName) as Ellipse;
+            if (targetEllipse == null) return;
+
+            Button targetButton = GetConditionalButton(targetEllipse);
+            if (targetButton == null) return;
+
+            Canvas parentCanvas = targetEllipse.Parent as Canvas;
+            if (parentCanvas == null) return;
+
+            double canvasWidth = parentCanvas.ActualWidth;
+            double ellipseRightPosition = targetLeft + targetEllipse.Width;
+
+            targetButton.Visibility = ellipseRightPosition > canvasWidth / 2 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
@@ -154,6 +222,9 @@ namespace WpfApp1
             CheckEllipsePositionAndSetButtonVisibility(ellipse11, conditionalButtonBalance);
             CheckEllipsePositionAndSetButtonVisibility(ellipse12, conditionalButtonAirFlow);
             CheckEllipsePositionAndSetButtonVisibility(ellipse13, conditionalButtonAirFlow);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse16, conditionalButtonGas3Flow);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse17, conditionalButtonGas4Flow);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse18, conditionalButtonGas5Flow);
         }
 
         public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)

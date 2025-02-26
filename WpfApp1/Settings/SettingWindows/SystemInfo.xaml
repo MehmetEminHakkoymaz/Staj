@@ -10,11 +10,15 @@
         <StackPanel VerticalAlignment="Center">
             <Grid Width="724" Height="60" x:Name="Version">
                 <Label Content="Version" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontWeight="Regular" Margin="40,0,0,0"/>
-                <TextBlock Text="V 0.1.0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="362,0,0,0"/>
+                <TextBlock Text="V 0.1.0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="402,0,0,0"/>
             </Grid>
             <Grid Width="724" Height="60" x:Name="OperationHours">
                 <Label Content="OPERATION HOURS" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontWeight="Regular" Margin="40,0,0,0"/>
-                <TextBlock Text="h min s" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="362,0,0,0"/>
+                <TextBlock x:Name="TotalWorkHours" Text="h min s" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="402,0,0,0"/>
+            </Grid>
+            <Grid Width="724" Height="60" x:Name="ServiceTime">
+                <Label Content="Time until next maintenance:" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontWeight="Regular" Margin="40,0,0,0"/>
+                <TextBlock x:Name="ServiceTm" Text="h min s" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="402,0,0,0"/>
             </Grid>
         </StackPanel>
     </Grid>

@@ -26,6 +26,11 @@ namespace WpfApp1.EditPages
         {
             InitializeComponent();
             InitializeClock();
+            this.WindowState = WindowState.Maximized;
+            this.WindowStyle = WindowStyle.None;
+            this.ResizeMode = ResizeMode.NoResize;
+            this.Topmost = true;
+
         }
 
         private DispatcherTimer clockTimer;

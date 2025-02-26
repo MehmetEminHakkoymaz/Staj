@@ -25,13 +25,13 @@ namespace WpfApp1
         private DispatcherTimer checkButtonTimer;
         private DispatcherTimer timer;
         private TimeSpan time;
-        private MainControl mainControl; // MainControl'ü sınıf değişkeni olarak tanımlayın
-        private ExtendedControl extendedControl; // ExtendedControl'ü sınıf değişkeni olarak tanımlayın
-        private ExitGasControl exitGasControl; // ExitGasControl'ü burada bir kez oluşturun
-        private EditViewControl editViewControl; // EditViewControl'ü burada bir kez oluşturun
-        private FavouritesControl favouritesControl; // FavouritesControl'ü burada bir kez oluşturun
-        private PumpsControl pumpsControl; // PumpsControl'ü burada bir kez oluşturun
-        private OpenAutoWindow openAutoWindow; // OpenAutoWindow'ü burada bir kez oluşturun
+        public MainControl mainControl; // MainControl'ü sınıf değişkeni olarak tanımlayın
+        public ExtendedControl extendedControl; // ExtendedControl'ü sınıf değişkeni olarak tanımlayın
+        public ExitGasControl exitGasControl; // ExitGasControl'ü burada bir kez oluşturun
+        public EditViewControl editViewControl; // EditViewControl'ü burada bir kez oluşturun
+        public FavouritesControl favouritesControl; // FavouritesControl'ü burada bir kez oluşturun
+        public PumpsControl pumpsControl; // PumpsControl'ü burada bir kez oluşturun
+        public OpenAutoWindow openAutoWindow; // OpenAutoWindow'ü burada bir kez oluşturun
 
         SerialPort port;
         int incomingFlag = 0;
@@ -230,7 +230,8 @@ namespace WpfApp1
         public static double Pump4EmptyButtonPressDuration { get; set; }
         public static double Pump1FillButton { get; set; }
 
-       
+        private TimeSpan totalWorkTime;
+
 
         public MainWindow()
         {
@@ -242,7 +243,13 @@ namespace WpfApp1
             timer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla güncellenir
             timer.Tick += Timer_Tick;
             time = TimeSpan.Zero;
-            this.Height = SystemParameters.PrimaryScreenHeight;
+
+            this.WindowState = WindowState.Maximized;
+            this.WindowStyle = WindowStyle.None;
+            this.ResizeMode = ResizeMode.NoResize;
+            this.Topmost = true;
+
+            //this.Height = SystemParameters.PrimaryScreenHeight;
             mainControl = new MainControl(this); // MainControl'ü burada bir kez oluşturun
             extendedControl = new ExtendedControl(this); // ExtendedControl'ü burada bir kez oluşturun
             exitGasControl = new ExitGasControl(this); // ExitGasControl'ü burada bir kez oluşturun
@@ -258,7 +265,13 @@ namespace WpfApp1
             string ssid = Properties.Settings.Default.Ssid;
             string password = Properties.Settings.Default.Password;
 
+            // Kaydedilmiş toplam süreyi yükle
+            totalWorkTime = Properties.Settings.Default.TotalWorkTime;
+
+
         }
+
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             // Zamanı güncelle ve göster
@@ -390,28 +403,31 @@ namespace WpfApp1
             extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse11, extendedControl.conditionalButtonBalance);
             extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse12, extendedControl.conditionalButtonAirFlow);
             extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse13, extendedControl.conditionalButtonGas2Flow);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse16, extendedControl.conditionalButtonGas3Flow);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse17, extendedControl.conditionalButtonGas4Flow);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse18, extendedControl.conditionalButtonGas5Flow);
             exitGasControl.CheckEllipsePositionAndSetButtonVisibility(exitGasControl.ellipse14, exitGasControl.conditionalButtonTurbidity);
             exitGasControl.CheckEllipsePositionAndSetButtonVisibility(exitGasControl.ellipse15, exitGasControl.conditionalButtonBalance);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse16, pumpsControl.conditionalButtonPump1);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse17, pumpsControl.conditionalButtonPump2);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse18, pumpsControl.conditionalButtonPump3);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse19, pumpsControl.conditionalButtonPump4);
+            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse19, pumpsControl.conditionalButtonPump1);
+            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse20, pumpsControl.conditionalButtonPump2);
+            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse21, pumpsControl.conditionalButtonPump3);
+            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse22, pumpsControl.conditionalButtonPump4);
         }
         private void StartButton_Click(object sender, RoutedEventArgs e)
-        {
-            timer.Start();
-            StartButton.Visibility = Visibility.Collapsed;
-            StopButton.Visibility = Visibility.Visible;
-        }
-
-        private void StartButtonContainer_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (!StartButton.IsEnabled)
             {
                 MessageBox.Show("Paramaters are not same as target value.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                e.Handled = true; // Olayın daha fazla işlenmesini engelle
+                return;
             }
+
+            time = TimeSpan.Zero; // Sayacı sıfırla
+
+            timer.Start();
+            StartButton.Visibility = Visibility.Collapsed;
+            StopButton.Visibility = Visibility.Visible;
         }
+ 
 
         private bool AreVisibleButtonsGreen(params Button[] buttons)
         {
@@ -453,6 +469,9 @@ namespace WpfApp1
                 extendedControl.conditionalButtonBalance,
                 extendedControl.conditionalButtonAirFlow,
                 extendedControl.conditionalButtonGas2Flow,
+                extendedControl.conditionalButtonGas3Flow,
+                extendedControl.conditionalButtonGas4Flow,
+                extendedControl.conditionalButtonGas5Flow,
                 exitGasControl.conditionalButtonTurbidity,
                 exitGasControl.conditionalButtonBalance))
             {
@@ -463,6 +482,17 @@ namespace WpfApp1
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
+            // Timer'ı durdur
+            timer.Stop();
+
+            // Mevcut çalışma süresini toplam süreye ekle
+            totalWorkTime += time;
+
+            // Settings'e kaydet
+            Properties.Settings.Default.TotalWorkTime = totalWorkTime;
+            Properties.Settings.Default.Save();
+
+            // Görünürlükleri güncelle
             StopButton.Visibility = Visibility.Collapsed;
             FirstStartButton.Visibility = Visibility.Visible;
         }

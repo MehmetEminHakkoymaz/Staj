@@ -69,10 +69,11 @@
                     Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="0,150,0,262"/>
             <Button Content="SYSTEM INFO" Height="50" Width="300" Click="System_Info_Button_Click" Background="#FFE7ECEF" 
                     Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="0,200,0,212"/>
-            <Button Content="SERVICE MENU" Height="50" Width="300" Click="Service_Menu_Button_Click" Background="#FFE7ECEF" 
-                    Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="0,250,0,162"/>
             <Button Content="PIN SETTING" Height="50" Width="300" Click="Pin_Setting_Button_Click" Background="#FFE7ECEF" 
-                    Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="0,300,0,112"/>
+                    Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="0,250,0,162"/>
+            <!--<Button Content="SERVICE MENU" Height="50" Width="300" Click="Service_Menu_Button_Click" Background="#FFE7ECEF" 
+                    Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="0,300,0,112"/>-->
+
         </Grid>
 
         <!-- Sağ Grid -->

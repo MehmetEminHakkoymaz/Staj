@@ -20,16 +20,23 @@ namespace WpfApp1
     public partial class OpenAutoWindow : Window
     {
         private MainWindow mainWindow;
+        private TextBox activeTextBox = null;
+
         public OpenAutoWindow(MainWindow mainWindow)
         {
-            this.mainWindow = mainWindow;
             InitializeComponent();
+
+            this.WindowState = WindowState.Maximized;
+            this.WindowStyle = WindowStyle.None;
+            this.ResizeMode = ResizeMode.NoResize;
+            this.Topmost = true;
+
+            this.mainWindow = mainWindow;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
         }
 
-        private TextBox activeTextBox = null;
 
-        private TextBox currentTextBox = null;
+        //private TextBox currentTextBox = null;
 
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -58,23 +65,31 @@ namespace WpfApp1
             }
         }
 
+        //private void KeyPadControl_ValueSelected(object sender, string value)
+        //{
+        //    if (activeTextBox != null)
+        //    {
+        //        if (activeTextBox.Tag is string tag && ParseRange(tag, out int min, out int max))
+        //        {
+        //            if (int.TryParse(value, out int intValue) && intValue >= min && intValue <= max)
+        //            {
+        //                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
+        //            }
+        //            else
+        //            {
+        //                KeypadPopup.IsOpen = false; // Hata durumunda KeyPad'i tekrar aç
+
+        //                MessageBox.Show($"Please enter a value between {min} and {max}.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //            }
+        //        }
+        //    }
+        //}
+
         private void KeyPadControl_ValueSelected(object sender, string value)
         {
             if (activeTextBox != null)
             {
-                if (activeTextBox.Tag is string tag && ParseRange(tag, out int min, out int max))
-                {
-                    if (int.TryParse(value, out int intValue) && intValue >= min && intValue <= max)
-                    {
-                        activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
-                    }
-                    else
-                    {
-                        KeypadPopup.IsOpen = false; // Hata durumunda KeyPad'i tekrar aç
-
-                        MessageBox.Show($"Please enter a value between {min} and {max}.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
-                }
+                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
             }
         }
 

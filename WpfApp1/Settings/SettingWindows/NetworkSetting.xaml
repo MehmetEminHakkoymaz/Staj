@@ -60,7 +60,7 @@
             <Grid Width="724" Height="60" x:Name="Config">
                 <Label Content="CONFIGURATION" FontSize="25" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
-                    <ToggleButton x:Name="Autodhcp" Width="160" Height="50" Content="Auto(DHCP)" FontSize="20" IsChecked="True" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton x:Name="Autodhcp" Width="160" Height="50" Content="Auto(DHCP)" FontSize="20" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
                         <ToggleButton.Template>
                             <ControlTemplate TargetType="{x:Type ToggleButton}">
                                 <Grid>
@@ -81,7 +81,7 @@
                     </ToggleButton>
 
 
-                    <ToggleButton x:Name="Manual" Width="160" Height="50" Content="Manual" FontSize="20" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton x:Name="Manual" Width="160" Height="50" Content="Manual" FontSize="20" IsChecked="True" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
                         <ToggleButton.Template>
                             <ControlTemplate TargetType="{x:Type ToggleButton}">
                                 <Grid>

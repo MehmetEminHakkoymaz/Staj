@@ -20,5 +20,11 @@
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="SelectedVesselType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Profile="(Default)"&gt;L2</Value>
+    </Setting>
+    <Setting Name="TotalWorkTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

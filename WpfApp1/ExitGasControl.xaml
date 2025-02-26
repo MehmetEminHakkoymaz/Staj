@@ -22,7 +22,7 @@
         <Border HorizontalAlignment="Center"  Height="45" VerticalAlignment="Top" Width="815" Margin="0,50,0,0" BorderBrush="#FFD6D6D6" 
                 BorderThickness="2,2,2,2">
             <Grid x:Name="Turbidity">
-                <Label Content="Turbidity" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Center" 
+                <Label Content="Exit Gas O₂" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Center" 
                        Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="ExitTurbidityValue" Content="5" HorizontalAlignment="Left" Margin="356,0,0,0" VerticalAlignment="Center" 
                        FontSize="20" Opacity="0.7"/>
@@ -47,7 +47,7 @@
         <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,95,0,0" BorderBrush="#FFD6D6D6" 
                 BorderThickness="2,2,2,2">
             <Grid x:Name="Balance">
-                <Label Content="Balance" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" 
+                <Label Content="Exit Gas CO₂" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" 
                        Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="ExitBalanceValue" Content="5" HorizontalAlignment="Left" Margin="356,0,0,0" VerticalAlignment="Center" 
                        FontSize="20" Opacity="0.7"/>

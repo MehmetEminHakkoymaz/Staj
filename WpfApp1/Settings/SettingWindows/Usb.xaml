@@ -16,11 +16,11 @@
         <Button Content="UPDATE FIRMWARE" Height="50" Width="500" Click="Update_Firmware_Button_Click" Background="#FFE7ECEF"
         Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="112,198,112,214"
         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="UPDATE USER INTERFACE" Height="50" Width="500" Click="Update_User_Button_Click" Background="#FFE7ECEF"
+        <!--<Button Content="UPDATE USER INTERFACE" Height="50" Width="500" Click="Update_User_Button_Click" Background="#FFE7ECEF"
         Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="112,248,112,164"
-        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="ADD LANGUAGE" Height="50" Width="500" Click="Add_Language_Button_Click" Background="#FFE7ECEF"
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>-->
+        <!--<Button Content="ADD LANGUAGE" Height="50" Width="500" Click="Add_Language_Button_Click" Background="#FFE7ECEF"
         Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="112,298,112,114"
-        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>-->
     </Grid>
 </UserControl>

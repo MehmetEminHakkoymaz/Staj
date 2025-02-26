@@ -174,7 +174,7 @@
 
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,292,0">
-                <ToggleButton x:Name="Count" Width="200" Height="50" Content="Count" FontSize="20" IsChecked="True" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                <ToggleButton x:Name="Count" Width="200" Height="50" Content="Count" FontSize="20" IsChecked="False" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
@@ -193,7 +193,7 @@
                         </ControlTemplate>
                     </ToggleButton.Template>
                 </ToggleButton>
-                <ToggleButton x:Name="ml" Width="200" Height="50" Content="-ml" FontSize="20" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                <ToggleButton x:Name="ml" Width="200" Height="50" Content="-ml" FontSize="20" IsChecked="True" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
