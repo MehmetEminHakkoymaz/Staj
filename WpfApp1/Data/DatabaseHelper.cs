@@ -112,56 +112,76 @@ namespace WpfApp1.Data
                 {
                     connection.Open();
 
-                    // Tablo var mı kontrol et
-                    var tableExists = connection.ExecuteScalar<int>(
-                        "SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name=@tableName",
-                        new { tableName }) > 0;
+                    // Tüm kolon isimleri ile sabit bir sorgu oluştur
+                    var sql = @$"INSERT INTO {tableName} (
+                        Username, SampleButtonText, DateTime, ElapsedTime, VesselType,
+                        TemperatureValue, TemperatureTarget, StirrerValue, StirrerTarget,
+                        pHValue, pHTarget, pO2Value, pO2Target,
+                        Gas1Value, Gas1Target, Gas2Value, Gas2Target,
+                        Gas3Value, Gas3Target, Gas4Value, Gas4Target,
+                        FoamValue, FoamTarget, RedoxValue, RedoxTarget,
+                        TurbidityValue, TurbidityTarget, BalanceValue, BalanceTarget,
+                        AirFlowValue, AirFlowTarget, Gas2FlowValue, Gas2FlowTarget,
+                        Gas3FlowValue, Gas3FlowTarget, Gas4FlowValue, Gas4FlowTarget,
+                        Gas5FlowValue, Gas5FlowTarget,
+                        ExitTurbidityValue, ExitTurbidityTarget,
+                        ExitBalanceValue, ExitBalanceTarget,
+                        Pump1Value, Pump1Target, Pump2Value, Pump2Target,
+                        Pump3Value, Pump3Target, Pump4Value, Pump4Target,
+                        Pump5Value, Pump5Target, Pump6Value, Pump6Target
+                    ) VALUES (
+                        @Username, @SampleButtonText, @DateTime, @ElapsedTime, @VesselType,
+                        @TemperatureValue, @TemperatureTarget, @StirrerValue, @StirrerTarget,
+                        @pHValue, @pHTarget, @pO2Value, @pO2Target,
+                        @Gas1Value, @Gas1Target, @Gas2Value, @Gas2Target,
+                        @Gas3Value, @Gas3Target, @Gas4Value, @Gas4Target,
+                        @FoamValue, @FoamTarget, @RedoxValue, @RedoxTarget,
+                        @TurbidityValue, @TurbidityTarget, @BalanceValue, @BalanceTarget,
+                        @AirFlowValue, @AirFlowTarget, @Gas2FlowValue, @Gas2FlowTarget,
+                        @Gas3FlowValue, @Gas3FlowTarget, @Gas4FlowValue, @Gas4FlowTarget,
+                        @Gas5FlowValue, @Gas5FlowTarget,
+                        @ExitTurbidityValue, @ExitTurbidityTarget,
+                        @ExitBalanceValue, @ExitBalanceTarget,
+                        @Pump1Value, @Pump1Target, @Pump2Value, @Pump2Target,
+                        @Pump3Value, @Pump3Target, @Pump4Value, @Pump4Target,
+                        @Pump5Value, @Pump5Target, @Pump6Value, @Pump6Target
+                    )";
 
-                    if (!tableExists)
+                    // Tüm parametreler için varsayılan değerleri ayarla
+                    var parameters = new DynamicParameters();
+                    var allColumns = new[]
                     {
-                        Console.WriteLine($"Tablo bulunamadı: {tableName}");
-                        return;
+                        "Username", "SampleButtonText", "DateTime", "ElapsedTime", "VesselType",
+                        "TemperatureValue", "TemperatureTarget", "StirrerValue", "StirrerTarget",
+                        "pHValue", "pHTarget", "pO2Value", "pO2Target",
+                        "Gas1Value", "Gas1Target", "Gas2Value", "Gas2Target",
+                        "Gas3Value", "Gas3Target", "Gas4Value", "Gas4Target",
+                        "FoamValue", "FoamTarget", "RedoxValue", "RedoxTarget",
+                        "TurbidityValue", "TurbidityTarget", "BalanceValue", "BalanceTarget",
+                        "AirFlowValue", "AirFlowTarget", "Gas2FlowValue", "Gas2FlowTarget",
+                        "Gas3FlowValue", "Gas3FlowTarget", "Gas4FlowValue", "Gas4FlowTarget",
+                        "Gas5FlowValue", "Gas5FlowTarget",
+                        "ExitTurbidityValue", "ExitTurbidityTarget",
+                        "ExitBalanceValue", "ExitBalanceTarget",
+                        "Pump1Value", "Pump1Target", "Pump2Value", "Pump2Target",
+                        "Pump3Value", "Pump3Target", "Pump4Value", "Pump4Target",
+                        "Pump5Value", "Pump5Target", "Pump6Value", "Pump6Target"
+                    };
+
+                    // Tüm kolonlar için değer ata
+                    foreach (var column in allColumns)
+                    {
+                        parameters.Add($"@{column}", values.ContainsKey(column) ? values[column] : "");
                     }
 
-                    // Tablo sütunlarını al
-                    var tableColumns = connection.Query<dynamic>($"PRAGMA table_info({tableName})")
-                        .Select(row => (string)row.name)
-                        .Where(name => name != "Id") // Id sütununu hariç tut
-                        .ToList();
-
-                    // Eksik sütunlar için boş değer ekle
-                    foreach (var column in tableColumns)
-                    {
-                        if (!values.ContainsKey(column))
-                        {
-                            values[column] = "";
-                        }
-                    }
-
-                    // Sadece tabloda var olan sütunları kullan
-                    var validValues = values
-                        .Where(kvp => tableColumns.Contains(kvp.Key))
-                        .ToDictionary(kvp => kvp.Key, kvp => kvp.Value ?? "");
-
-                    var columns = string.Join(", ", validValues.Keys);
-                    var parameters = string.Join(", ", validValues.Keys.Select(k => "@" + k));
-
-                    var sql = $"INSERT INTO {tableName} ({columns}) VALUES ({parameters})";
-
-                    Console.WriteLine($"SQL Sorgusu: {sql}");
-                    Console.WriteLine("Parametre değerleri:");
-                    foreach (var kvp in validValues)
-                    {
-                        Console.WriteLine($"{kvp.Key}: {kvp.Value}");
-                    }
-
-                    var result = connection.Execute(sql, validValues);
-                    Console.WriteLine($"Etkilenen satır sayısı: {result}");
+                    // Sorguyu çalıştır
+                    var result = connection.Execute(sql, parameters);
+                    Console.WriteLine($"Affected rows: {result}");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"LogData'da hata: {ex.Message}");
+                Console.WriteLine($"Error in LogData: {ex.Message}");
                 Console.WriteLine($"Stack Trace: {ex.StackTrace}");
                 throw;
             }

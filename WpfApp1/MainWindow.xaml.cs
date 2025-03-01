@@ -459,21 +459,28 @@ namespace WpfApp1
         {
             if (!StartButton.IsEnabled)
             {
-                MessageBox.Show("Paramaters are not same as target value.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Parameters are not same as target value.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             time = TimeSpan.Zero; // Sayacı sıfırla
             timer.Start();
 
+            Console.WriteLine("StartButton clicked, checking logTimer..."); // Debug log
             // LogTimer'ı yeniden başlat
             if (logTimer != null)
             {
-                logTimer.Stop();  // Önceki timer'ı durdur
-                logTimer.Start(); // Yeniden başlat
+                Console.WriteLine("LogTimer exists, restarting..."); // Debug log
+                logTimer.Stop();
+                logTimer.Start();
 
                 // İlk veriyi hemen kaydet
+                Console.WriteLine("Attempting to log first data..."); // Debug log
                 LogTimer_Tick(null, null);
+            }
+            else
+            {
+                Console.WriteLine("LogTimer is null!"); // Debug log
             }
 
             StartButton.Visibility = Visibility.Collapsed;

@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Data;
 using WpfApp1.Models;
@@ -23,6 +24,8 @@ namespace WpfApp1
     public partial class LoginWindow : Window
     {
         private readonly UserService _userService;
+        private bool isCapsLockOn = false;
+
         public User LoggedInUser { get; private set; }
 
         public LoginWindow()
@@ -68,5 +71,6 @@ namespace WpfApp1
                 MessageBox.Show("Invalid username or password!");
             }
         }
+
     }
 }
