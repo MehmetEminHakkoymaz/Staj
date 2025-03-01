@@ -221,6 +221,18 @@
             </Grid>
         </Border>
 
+        <Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="532,150,0,0" BorderBrush="#FFD6D6D6" 
+                BorderThickness="2,2,2,2">
+            <Grid x:Name="MainRedux">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Redux" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
+            </Grid>
+        </Border>
+
+
         <StackPanel x:Name="CheckBoxContainer" VerticalAlignment="Center" Margin="0,0,0,0" Width="800" Height="400">
             <!--Temperature-->
             <CheckBox Tag="1" x:Name="Temperature" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,3,0,0" Width="40" 
@@ -638,7 +650,6 @@
                 </CheckBox.Template>
             </CheckBox>
 
-
             <!--ExitTurbidity-->
             <CheckBox Tag="8192" x:Name="ExitTurbidity" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="537,-390,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
@@ -690,8 +701,33 @@
                     </ControlTemplate>
                 </CheckBox.Template>
             </CheckBox>
-            
-            
+
+            <!--Redux-->
+            <CheckBox Tag="262144" x:Name="Redux" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="537,-290,0,0" Width="40" 
+                      Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="White" RadiusX="5" RadiusY="5"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Path x:Name="CheckMark" Data="M 10,20 L 20,30 L 30,10" Stroke="Transparent" StrokeThickness="2" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="#AF0101"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Transparent"/>
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
 
         </StackPanel>
     </Grid>

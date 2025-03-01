@@ -53,8 +53,10 @@ namespace WpfApp1
             ellipse16.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse17.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse18.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse19.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             grids = new List<Grid> 
             {
+                ElRedux,
                 ElGas5Flow,
                 ElGas4Flow,
                 ElGas3Flow,
@@ -77,6 +79,7 @@ namespace WpfApp1
 
             borders = new List<Border> 
             {
+                Redux,
                 Gas5Flow,
                 Gas4Flow,
                 Gas3Flow,
@@ -99,6 +102,7 @@ namespace WpfApp1
 
             ellipses = new List<Ellipse> 
             {
+                ellipse19,
                 ellipse18,
                 ellipse17,
                 ellipse16,
@@ -121,6 +125,7 @@ namespace WpfApp1
 
             buttons = new List<Button>
             {
+                conditionalButtonRedux,
                 conditionalButtonGas5Flow,
                 conditionalButtonGas4Flow,
                 conditionalButtonGas3Flow,
@@ -157,6 +162,7 @@ namespace WpfApp1
             {
                 checkBoxes = new List<CheckBox>
                 {
+
                     editViewControl.Temperature,
                     editViewControl.Stirrer,
                     editViewControl.pH,
@@ -174,7 +180,8 @@ namespace WpfApp1
                     editViewControl.ExitBalance,
                     editViewControl.Gas3Flow,
                     editViewControl.Gas4Flow,
-                    editViewControl.Gas5Flow
+                    editViewControl.Gas5Flow,
+                    editViewControl.Redux
                     // other properties
                 };
             }
@@ -384,6 +391,7 @@ namespace WpfApp1
                 "ellipse16" => conditionalButtonGas3Flow,
                 "ellipse17" => conditionalButtonGas4Flow,
                 "ellipse18" => conditionalButtonGas5Flow,
+                "ellipse19" => conditionalButtonRedux,
                 _ => null
             };
         }
@@ -452,6 +460,7 @@ namespace WpfApp1
             CheckEllipsePositionAndSetButtonVisibility(ellipse16, conditionalButtonGas3Flow);
             CheckEllipsePositionAndSetButtonVisibility(ellipse17, conditionalButtonGas4Flow);
             CheckEllipsePositionAndSetButtonVisibility(ellipse18, conditionalButtonGas5Flow);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse19, conditionalButtonRedux);
         }
 
         public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)

@@ -436,8 +436,28 @@
 
                     </Grid>
                 </Border>
-
-
+                <Border x:Name="Redux" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                        BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
+                    <Grid>
+                        <Label Content="Redux" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
+                        <Label x:Name="ReduxValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
+                        <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                            <TextBox x:Name="ReduxTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
+                        </Border>
+                        <Button x:Name="conditionalButtonRedux" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <TextBlock/>
+                        </Button>
+                    </Grid>
+                </Border>
             </StackPanel>
 
             <Grid x:Name="RightGrid" Width="341" Height="455" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,-325,0">
@@ -673,7 +693,15 @@
                             <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
                         </Grid>
 
-
+                        <!--19.Ellipse-->
+                        <Grid x:Name="ElRedux" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed">
+                            <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,7.5,244,7.5">
+                                <Canvas x:Name="canvas19" Width="66.87" Height="30">
+                                    <Ellipse x:Name="ellipse19" Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3"/>
+                                </Canvas>
+                            </Border>
+                            <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,7.5,21,7.5"/>
+                        </Grid>
                     </StackPanel>
                 </Border>
 

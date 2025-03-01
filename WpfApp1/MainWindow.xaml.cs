@@ -405,6 +405,7 @@ namespace WpfApp1
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse7, mainControl.conditionalButtonGas3);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse8, mainControl.conditionalButtonGas4);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse9, mainControl.conditionalButtonFoam);
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse19, mainControl.conditionalButtonRedox);
             extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse10, extendedControl.conditionalButtonTurbidity);
             extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse11, extendedControl.conditionalButtonBalance);
             extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse12, extendedControl.conditionalButtonAirFlow);
@@ -414,10 +415,10 @@ namespace WpfApp1
             extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse18, extendedControl.conditionalButtonGas5Flow);
             exitGasControl.CheckEllipsePositionAndSetButtonVisibility(exitGasControl.ellipse14, exitGasControl.conditionalButtonTurbidity);
             exitGasControl.CheckEllipsePositionAndSetButtonVisibility(exitGasControl.ellipse15, exitGasControl.conditionalButtonBalance);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse19, pumpsControl.conditionalButtonPump1);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse20, pumpsControl.conditionalButtonPump2);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse21, pumpsControl.conditionalButtonPump3);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse22, pumpsControl.conditionalButtonPump4);
+            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse20, pumpsControl.conditionalButtonPump1);
+            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse21, pumpsControl.conditionalButtonPump2);
+            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse22, pumpsControl.conditionalButtonPump3);
+            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse23, pumpsControl.conditionalButtonPump4);
         }
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {

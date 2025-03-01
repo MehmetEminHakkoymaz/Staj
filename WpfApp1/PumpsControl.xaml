@@ -323,8 +323,8 @@
                 <Grid>
                     <Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,5,244,409">
-                            <Canvas x:Name="canvas19" Width="66.87" Height="30">
-                                <Ellipse x:Name="ellipse19" Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" 
+                            <Canvas x:Name="canvas20" Width="66.87" Height="30">
+                                <Ellipse x:Name="ellipse20" Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" 
                                          Canvas.Left="6" Canvas.Top="3" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
@@ -334,9 +334,9 @@
                     </Grid>
                     <Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="11,50,243,364">
-                            <Canvas x:Name="canvas20" Width="66.87" Height="30">
+                            <Canvas x:Name="canvas21" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
-                                         x:Name="ellipse20" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                                         x:Name="ellipse21" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,50,94,364"
@@ -346,9 +346,9 @@
 
                     <Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,95,244,319">
-                            <Canvas x:Name="canvas21" Width="66.87" Height="30">
+                            <Canvas x:Name="canvas22" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
-                                         x:Name="ellipse21" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                                         x:Name="ellipse22" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/target.png" Width="30" Height="30" Margin="122,95,169,319"/>
@@ -358,9 +358,9 @@
                     </Grid>
                     <Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,140,244,274">
-                            <Canvas x:Name="canvas22" Width="66.87" Height="30">
+                            <Canvas x:Name="canvas23" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
-                                         x:Name="ellipse22" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                                         x:Name="ellipse23" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/target.png" Width="30" Height="30" Margin="122,140,169,274"/>

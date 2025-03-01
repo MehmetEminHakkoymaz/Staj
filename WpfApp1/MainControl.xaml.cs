@@ -38,6 +38,7 @@ namespace WpfApp1
             ellipse7.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse8.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse9.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse19.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
             comparisonTimer.Tick += ComparisonTimer_Tick; // Zamanlayıcı olayı
@@ -182,6 +183,7 @@ namespace WpfApp1
                 "ellipse7" => conditionalButtonGas3,
                 "ellipse8" => conditionalButtonGas4,
                 "ellipse9" => conditionalButtonFoam,
+                "ellipse19" => conditionalButtonRedox,
                 _ => null
             };
         }
@@ -242,7 +244,7 @@ namespace WpfApp1
             CheckEllipsePositionAndSetButtonVisibility(ellipse7, conditionalButtonGas3);
             CheckEllipsePositionAndSetButtonVisibility(ellipse8, conditionalButtonGas4);
             CheckEllipsePositionAndSetButtonVisibility(ellipse9, conditionalButtonFoam);
-
+            CheckEllipsePositionAndSetButtonVisibility(ellipse19, conditionalButtonRedox);
         }
 
         public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)

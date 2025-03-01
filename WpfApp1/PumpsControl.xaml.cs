@@ -176,10 +176,10 @@ namespace WpfApp1
                     }
 
                     // Ellipse'in rengi değiştikten sonra butonun görünürlüğünü kontrol et
-                    CheckEllipsePositionAndSetButtonVisibility(ellipse19, conditionalButtonPump1);
-                    CheckEllipsePositionAndSetButtonVisibility(ellipse20, conditionalButtonPump2);
-                    CheckEllipsePositionAndSetButtonVisibility(ellipse21, conditionalButtonPump3);
-                    CheckEllipsePositionAndSetButtonVisibility(ellipse22, conditionalButtonPump4);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse20, conditionalButtonPump1);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse21, conditionalButtonPump2);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse22, conditionalButtonPump3);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse23, conditionalButtonPump4);
                 };
 
                 clickedEllipse.BeginAnimation(Canvas.LeftProperty, animation);
@@ -187,10 +187,10 @@ namespace WpfApp1
         }
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            CheckEllipsePositionAndSetButtonVisibility(ellipse19, conditionalButtonPump1);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse20, conditionalButtonPump2);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse21, conditionalButtonPump3);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse22, conditionalButtonPump4);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse20, conditionalButtonPump1);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse21, conditionalButtonPump2);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse22, conditionalButtonPump3);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse23, conditionalButtonPump4);
         }
 
         public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)
