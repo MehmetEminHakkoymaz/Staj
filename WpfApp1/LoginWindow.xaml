@@ -5,16 +5,151 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="600" Width="1024">
+        Title="LoginWindow" Height="600" Width="1024"
+        Background="#E7ECEF">
+    <Window.Resources>
+        <Style x:Key="KeyboardButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3E4049"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#1A1B21"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="KeyboardSpecialButtonStyle" 
+           BasedOn="{StaticResource KeyboardButtonStyle}" 
+           TargetType="Button">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="#AF0101"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <StackPanel VerticalAlignment="Center" Margin="20">
-            <TextBlock Text="Username:"/>
-            <TextBox x:Name="UsernameTextBox" Margin="0,5"/>
-            <TextBlock Text="Password:"/>
-            <PasswordBox x:Name="PasswordBox" Margin="0,5"/>
-            <Button Content="Login" Click="LoginButton_Click" Margin="0,20"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Login Alanı -->
+        <Border Grid.Row="0" 
+                Background="White" 
+                CornerRadius="10" 
+                Margin="230,6,230,9"
+                Padding="0">
+            <StackPanel VerticalAlignment="Center" Height="230" Margin="2,0,0,0">
+                <TextBlock Text="Username:" 
+                         FontSize="18" 
+                         FontWeight="SemiBold" 
+                         Margin="0,0"/>
+                <TextBox x:Name="UsernameTextBox" 
+                        Height="40" 
+                        FontSize="16" 
+                        Padding="10,5"
+                        GotFocus="TextBox_GotFocus"/>
+
+                <TextBlock Text="Password:" 
+                         FontSize="18" 
+                         FontWeight="SemiBold" 
+                         Margin="0,0,0,0"/>
+                <PasswordBox x:Name="PasswordBox" 
+                           Height="40" 
+                           FontSize="16" 
+                           Padding="10,5"
+                           GotFocus="PasswordBox_GotFocus"/>
+
+                <Button Content="Login" 
+                        Click="LoginButton_Click" 
+                        Height="45" 
+                        FontSize="18" 
+                        FontWeight="SemiBold"
+                        Background="#272932" 
+                        Foreground="White" 
+                        Margin="0,30,0,0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- Klavye Alanı -->
+        <StackPanel Grid.Row="1" 
+                    Margin="20,0,20,20" 
+                    HorizontalAlignment="Center">
+            <WrapPanel Margin="0,5" HorizontalAlignment="Center">
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="1" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="2" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="3" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="4" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="5" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="6" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="7" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="8" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="9" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="0" Click="KeyboardButton_Click"/>
+            </WrapPanel>
+
+            <WrapPanel Margin="0,5" HorizontalAlignment="Center">
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="q" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="w" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="e" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="r" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="t" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="y" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="u" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="i" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="o" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="p" Click="KeyboardButton_Click"/>
+            </WrapPanel>
+
+            <WrapPanel Margin="0,5" HorizontalAlignment="Center">
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="a" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="s" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="d" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="f" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="g" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="h" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="j" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="k" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="l" Click="KeyboardButton_Click"/>
+            </WrapPanel>
+
+            <WrapPanel Margin="0,5" HorizontalAlignment="Center">
+                <Button Style="{StaticResource KeyboardSpecialButtonStyle}" Content="caps off" Width="100" Click="ShiftButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="z" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="x" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="c" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="v" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="b" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="n" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="m" Click="KeyboardButton_Click"/>
+                <Button Style="{StaticResource KeyboardSpecialButtonStyle}" Content="Backspace" Width="100" Click="BackspaceButton_Click"/>
+            </WrapPanel>
         </StackPanel>
     </Grid>
-    
-    
+
+    <!-- Stil Tanımlamaları -->
 </Window>

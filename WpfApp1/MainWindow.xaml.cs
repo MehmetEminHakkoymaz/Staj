@@ -143,7 +143,7 @@ namespace WpfApp1
             if (incommingWords[0].StartsWith("$"))
             {
                 //label2.Text = line.ToString();
-                label2.Content = incommingWords[1] + " - " + incommingWords[2] + " - " + incommingWords[3] + " - " + incommingWords[4] + " - " + incommingWords[5] + " - " + 
+                SampleButtonText.Text = incommingWords[1] + " - " + incommingWords[2] + " - " + incommingWords[3] + " - " + incommingWords[4] + " - " + incommingWords[5] + " - " + 
                     incommingWords[6] + " - " + incommingWords[7] + " - " + incommingWords[8] + " - " + incommingWords[9] + " - " + incommingWords[10] + " - " + 
                     incommingWords[11] + " - " + incommingWords[12] + " - " + incommingWords[13] + " - " + incommingWords[14] + " - " + incommingWords[15] + " - " + 
                     incommingWords[16] + " - " + incommingWords[17] + " - " + incommingWords[18] + " - " + incommingWords[19];
@@ -248,7 +248,7 @@ namespace WpfApp1
             sendingWords += openAutoWindow.Pump4Empty.Text;
             sendingWords += "\n";
 
-            label2.Content = sendingWords;
+            SampleButtonText.Text = sendingWords;
 
             port.Write(sendingWords);
 
@@ -487,6 +487,28 @@ namespace WpfApp1
             StopButton.Visibility = Visibility.Visible;
         }
 
+
+
+
+        //sample button oalyısı
+
+
+
+        private int sampleCount = 1;
+
+        private void SampleButton_Click(object sender, RoutedEventArgs e)
+        {
+            sampleCount++;
+            var textBlock = ((Button)sender).Content as TextBlock;
+            if (textBlock != null)
+            {
+                textBlock.Text = $"{sampleCount}.Sample";
+            }
+        }
+
+
+
+
         //DATABASE BAĞLANTISI GİRİŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞ
         //private void LogTimer_Tick(object sender, EventArgs e)
         //{
@@ -575,7 +597,7 @@ namespace WpfApp1
 
                 // Tüm alanları ekle (null olsa bile)
                 AddValue("Username", _currentUser?.Username);
-                AddValue("SampleButtonText", label2?.Content);
+                AddValue("SampleButtonText", SampleButtonText?.Text);
                 AddValue("DateTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 AddValue("ElapsedTime", clockTextBlock?.Text);
                 AddValue("VesselType", Properties.Settings.Default.SelectedVesselType);

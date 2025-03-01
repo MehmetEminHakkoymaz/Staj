@@ -87,7 +87,7 @@
                     <Button Content="EXIT GAS" Height="64" Width="204" Click="Exit_Gas_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
                     <Button Content="PUMPS" Height="64" Width="204" Click="Pumps_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
                     <Button x:Name="AdminPanelButton" Content="Admin" Height="64" Width="204" Click="Admin_Button_Click" Background="#FFE7ECEF" Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="20"/>
-                    <Button Content="Button" Click="Button_Click"/>
+                    <!--<Button Content="Button" Click="Button_Click"/>-->
 
                 </StackPanel>
             </Border>
@@ -111,7 +111,36 @@
                             </TextBlock.Effect>
                         </TextBlock>
 
-                        <Label x:Name="label2"  Content="Label" HorizontalAlignment="Left" Margin="320,0,0,0" VerticalAlignment="Top"/>
+                        <!--<Label x:Name="label2"  Content="Label" HorizontalAlignment="Left" Margin="320,0,0,0" VerticalAlignment="Top"/>-->
+                        <Button x:Name="SampleButton" 
+        Width="175" Height="50" 
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Center"
+        Margin="243,0,0,0"
+        Click="SampleButton_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <Border Background="#E7ECEF" CornerRadius="5">
+                                            <Border.Effect>
+                                                <DropShadowEffect Color="#808080" 
+                                        Direction="270" 
+                                        ShadowDepth="3" 
+                                        BlurRadius="5"/>
+                                            </Border.Effect>
+                                        </Border>
+                                        <ContentPresenter HorizontalAlignment="Center" 
+                                VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <TextBlock x:Name="SampleButtonText" 
+               Text="1.Sample" 
+               FontSize="20" 
+               Foreground="#272932" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"/>
+                        </Button>
 
                         <!--EDIT VIEW-->
                         <Button Width="175" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"

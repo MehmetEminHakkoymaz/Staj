@@ -32,12 +32,15 @@
             <Label Content="TUBE TYPE" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="33,0,0,0" FontSize="25" 
                    Opacity="1" Padding="0,0,0,0" HorizontalContentAlignment="Left" RenderTransformOrigin="0.501,0.364" />
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,292,0">
-                <ToggleButton x:Name="Di05" Width="133" Height="50" Content="Di 0.5" IsChecked="True" FontSize="20" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,95,0">
+                <!-- İlk buton -->
+                <ToggleButton x:Name="Button13" Width="100" Height="50" Content="#13" FontSize="20" IsChecked="True"
+                  Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
-                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="2,2,1,2" CornerRadius="5,0,0,5" Opacity="0.5">
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="2,2,1,2" 
+                            CornerRadius="5,0,0,5" Opacity="0.5">
                                     <Border.Background>
                                         <SolidColorBrush Color="#E7ECEF"/>
                                     </Border.Background>
@@ -53,11 +56,14 @@
                     </ToggleButton.Template>
                 </ToggleButton>
 
-                <ToggleButton x:Name="Di1" Width="133" Height="50" Content="Di 1.0" FontSize="20" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                <!-- Orta butonlar -->
+                <ToggleButton x:Name="Button14" Width="100" Height="50" Content="#14" FontSize="20" 
+                  Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
-                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,1,2" CornerRadius="0" Opacity="0.5">
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,1,2" 
+                            CornerRadius="0" Opacity="0.5">
                                     <Border.Background>
                                         <SolidColorBrush Color="#E7ECEF"/>
                                     </Border.Background>
@@ -71,14 +77,15 @@
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </ToggleButton.Template>
-
                 </ToggleButton>
 
-                <ToggleButton x:Name="Di25" Width="133" Height="50" Content="Di 2.5" FontSize="20" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                <ToggleButton x:Name="Button19" Width="100" Height="50" Content="#19" FontSize="20" 
+                  Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
-                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,2,2" CornerRadius="0,5,5,0" Opacity="0.5">
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,1,2" 
+                            CornerRadius="0" Opacity="0.5">
                                     <Border.Background>
                                         <SolidColorBrush Color="#E7ECEF"/>
                                     </Border.Background>
@@ -92,9 +99,96 @@
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </ToggleButton.Template>
-
                 </ToggleButton>
 
+                <ToggleButton x:Name="Button16" Width="100" Height="50" Content="#16" FontSize="20" 
+                  Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Grid>
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,1,2" 
+                            CornerRadius="0" Opacity="0.5">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#E7ECEF"/>
+                                    </Border.Background>
+                                </Border>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#C33333"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+
+                <ToggleButton x:Name="Button25" Width="100" Height="50" Content="#25" FontSize="20" 
+                  Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Grid>
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,1,2" 
+                            CornerRadius="0" Opacity="0.5">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#E7ECEF"/>
+                                    </Border.Background>
+                                </Border>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#C33333"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+
+                <ToggleButton x:Name="Button17" Width="100" Height="50" Content="#17" FontSize="20" 
+                  Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Grid>
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,1,2" 
+                            CornerRadius="0" Opacity="0.5">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#E7ECEF"/>
+                                    </Border.Background>
+                                </Border>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#C33333"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+
+                <!-- Son buton -->
+                <ToggleButton x:Name="Button18" Width="100" Height="50" Content="#18" FontSize="20" 
+                  Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Grid>
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,2,2" 
+                            CornerRadius="0,5,5,0" Opacity="0.5">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#E7ECEF"/>
+                                    </Border.Background>
+                                </Border>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#C33333"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
             </StackPanel>
 
 
@@ -106,7 +200,7 @@
                    Opacity="1" Padding="0,0,0,0" HorizontalContentAlignment="Left" RenderTransformOrigin="0.501,0.364" />
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,292,0">
-                <ToggleButton x:Name="BalanceFeed" Width="200" Height="50" Content="Balance Feed" FontSize="20" IsChecked="False" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                <ToggleButton x:Name="BalanceFeed" Width="200" Height="50" Content="Balance Feed" FontSize="20" IsChecked="False" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
@@ -127,7 +221,7 @@
                 </ToggleButton>
 
 
-                <ToggleButton x:Name="Feed" Width="200" Height="50" Content="Feed" FontSize="20" IsChecked="True" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                <ToggleButton x:Name="Feed" Width="200" Height="50" Content="Feed" FontSize="20" IsChecked="True" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
@@ -158,7 +252,7 @@
 
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,292,0">
-                <ToggleButton x:Name="Count" Width="200" Height="50" Content="Count" FontSize="20" IsChecked="False" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                <ToggleButton x:Name="Count" Width="200" Height="50" Content="Count" FontSize="20" IsChecked="False" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
@@ -177,7 +271,7 @@
                         </ControlTemplate>
                     </ToggleButton.Template>
                 </ToggleButton>
-                <ToggleButton x:Name="ml" Width="200" Height="50" Content="-ml" FontSize="20" IsChecked="True" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                <ToggleButton x:Name="ml" Width="200" Height="50" Content="-ml" FontSize="20" IsChecked="True" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
