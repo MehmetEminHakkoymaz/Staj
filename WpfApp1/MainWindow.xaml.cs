@@ -16,6 +16,7 @@ using System.IO.Ports;
 using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 using WpfApp1.Models;
+using WpfApp1.Data;
 
 
 
@@ -36,6 +37,11 @@ namespace WpfApp1
         public AdminPanel adminPanel;
 
         private User _currentUser;
+
+        //database bağlantısı başlangıç
+        private string currentTableName;
+        private DispatcherTimer logTimer;
+        //database bağlantısı bitiş
 
         SerialPort port;
         int incomingFlag = 0;
@@ -391,6 +397,33 @@ namespace WpfApp1
 
         private void FirstStartButton_Click(object sender, RoutedEventArgs e)
         {
+            //DATABASE BAĞLANTISI GİRİŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞ
+            // Tablo adını al
+            var dialog = new TableNameDialog();
+            if (dialog.ShowDialog() != true)
+            {
+                return;
+            }
+
+            currentTableName = dialog.TableName;
+
+            // Yeni tablo oluştur
+            DatabaseHelper.CreateProjectTable(currentTableName);
+
+            // Debug için tablo yapısını kontrol et
+            DatabaseHelper.DebugTableStructure(currentTableName);
+
+            // Log timer'ı başlat
+            logTimer = new DispatcherTimer();
+            logTimer.Interval = TimeSpan.FromMinutes(1);
+            logTimer.Tick += LogTimer_Tick;
+            logTimer.Start();
+            //DATABASE BAĞLANTISI ÇIKIŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞ
+
+
+
+
+
             FirstStartButton.Visibility = Visibility.Collapsed;
             StartButton.Visibility = Visibility.Visible;
             StartButton.Opacity = 0.5;
@@ -419,6 +452,8 @@ namespace WpfApp1
             pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse21, pumpsControl.conditionalButtonPump2);
             pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse22, pumpsControl.conditionalButtonPump3);
             pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse23, pumpsControl.conditionalButtonPump4);
+
+
         }
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
@@ -429,12 +464,181 @@ namespace WpfApp1
             }
 
             time = TimeSpan.Zero; // Sayacı sıfırla
-
             timer.Start();
+
+            // LogTimer'ı yeniden başlat
+            if (logTimer != null)
+            {
+                logTimer.Stop();  // Önceki timer'ı durdur
+                logTimer.Start(); // Yeniden başlat
+
+                // İlk veriyi hemen kaydet
+                LogTimer_Tick(null, null);
+            }
+
             StartButton.Visibility = Visibility.Collapsed;
             StopButton.Visibility = Visibility.Visible;
         }
- 
+
+        //DATABASE BAĞLANTISI GİRİŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞ
+        //private void LogTimer_Tick(object sender, EventArgs e)
+        //{
+        //    var values = new Dictionary<string, string>();
+
+        //    // Null olabilen değerleri güvenli bir şekilde ekle
+        //    void AddValue(string key, object value)
+        //    {
+        //        values[key] = value?.ToString();
+        //    }
+
+        //    AddValue("Username", _currentUser?.Username);
+        //    AddValue("SampleButtonText", label2?.Content);
+        //    AddValue("DateTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+        //    AddValue("ElapsedTime", clockTextBlock?.Text);
+        //    AddValue("VesselType", Properties.Settings.Default.SelectedVesselType);
+        //    AddValue("TemperatureValue", mainControl?.TemperatureValue?.Content);
+        //    AddValue("TemperatureTarget", mainControl?.TemperatureTarget?.Text);
+        //    AddValue("StirrerValue", mainControl?.StirrerValue?.Content);
+        //    AddValue("StirrerTarget", mainControl?.StirrerTarget?.Text);
+        //    AddValue("pHValue", mainControl?.pHValue?.Content);
+        //    AddValue("pHTarget", mainControl?.pHTarget?.Text);
+        //    AddValue("pO2Value", mainControl?.pO2Value?.Content);
+        //    AddValue("pO2Target", mainControl?.pO2Target?.Text);
+        //    AddValue("Gas1Value", mainControl?.Gas1Value?.Content);
+        //    AddValue("Gas1Target", mainControl?.Gas1Target?.Text);
+        //    AddValue("Gas2Value", mainControl?.Gas2Value?.Content);
+        //    AddValue("Gas2Target", mainControl?.Gas2Target?.Text);
+        //    AddValue("Gas3Value", mainControl?.Gas3Value?.Content);
+        //    AddValue("Gas3Target", mainControl?.Gas3Target?.Text);
+        //    AddValue("Gas4Value", mainControl?.Gas4Value?.Content);
+        //    AddValue("Gas4Target", mainControl?.Gas4Target?.Text);
+        //    AddValue("FoamValue", mainControl?.FoamValue?.Content);
+        //    AddValue("FoamTarget", mainControl?.FoamTarget?.Text);
+        //    AddValue("RedoxValue", mainControl?.RedoxValue?.Content);
+        //    AddValue("RedoxTarget", mainControl?.RedoxTarget?.Text);
+        //    AddValue("TurbidityValue", extendedControl?.TurbidityValue?.Content);
+        //    AddValue("TurbidityTarget", extendedControl?.TurbidityTarget?.Text);
+        //    AddValue("BalanceValue", extendedControl?.BalanceValue?.Content);
+        //    AddValue("BalanceTarget", extendedControl?.BalanceTarget?.Text);
+        //    AddValue("AirFlowValue", extendedControl?.AirFlowValue?.Content);
+        //    AddValue("AirFlowTarget", extendedControl?.AirFlowTarget?.Text);
+        //    AddValue("Gas2FlowValue", extendedControl?.Gas2FlowValue?.Content);
+        //    AddValue("Gas2FlowTarget", extendedControl?.Gas2FlowTarget?.Text);
+        //    AddValue("Gas3FlowValue", extendedControl?.Gas3FlowValue?.Content);
+        //    AddValue("Gas3FlowTarget", extendedControl?.Gas3FlowTarget?.Text);
+        //    AddValue("Gas4FlowValue", extendedControl?.Gas4FlowValue?.Content);
+        //    AddValue("Gas4FlowTarget", extendedControl?.Gas4FlowTarget?.Text);
+        //    AddValue("Gas5FlowValue", extendedControl?.Gas5FlowValue?.Content);
+        //    AddValue("Gas5FlowTarget", extendedControl?.Gas5FlowTarget?.Text);
+        //    AddValue("ExitTurbidityValue", exitGasControl?.ExitTurbidityValue?.Content);
+        //    AddValue("ExitTurbidityTarget", exitGasControl?.ExitTurbidityTarget?.Text);
+        //    AddValue("ExitBalanceValue", exitGasControl?.ExitBalanceValue?.Content);
+        //    AddValue("ExitBalanceTarget", exitGasControl?.ExitBalanceTarget?.Text);
+        //    AddValue("Pump1Value", pumpsControl?.Pump1Value?.Content);
+        //    AddValue("Pump1Target", pumpsControl?.Pump1Target?.Text);
+        //    AddValue("Pump2Value", pumpsControl?.Pump2Value?.Content);
+        //    AddValue("Pump2Target", pumpsControl?.Pump2Target?.Text);
+        //    AddValue("Pump3Value", pumpsControl?.Pump3Value?.Content);
+        //    AddValue("Pump3Target", pumpsControl?.Pump3Target?.Text);
+        //    AddValue("Pump4Value", pumpsControl?.Pump4Value?.Content);
+        //    AddValue("Pump4Target", pumpsControl?.Pump4Target?.Text);
+        //    AddValue("Pump5Value", pumpsControl?.Pump5Value?.Content);
+        //    AddValue("Pump5Target", pumpsControl?.Pump5Target?.Text);
+        //    AddValue("Pump6Value", pumpsControl?.Pump6Value?.Content);
+        //    AddValue("Pump6Target", pumpsControl?.Pump6Target?.Text);
+        //    DatabaseHelper.LogData(currentTableName, values);
+        //}
+        private void LogTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(currentTableName))
+                {
+                    Console.WriteLine("Tablo adı boş!");
+                    return;
+                }
+
+                var values = new Dictionary<string, string>();
+
+                // Her alan için varsayılan boş değer atayalım
+                void AddValue(string key, object value)
+                {
+                    values[key] = value?.ToString() ?? ""; // Null ise boş string ata
+                }
+
+                // Tüm alanları ekle (null olsa bile)
+                AddValue("Username", _currentUser?.Username);
+                AddValue("SampleButtonText", label2?.Content);
+                AddValue("DateTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                AddValue("ElapsedTime", clockTextBlock?.Text);
+                AddValue("VesselType", Properties.Settings.Default.SelectedVesselType);
+                AddValue("TemperatureValue", mainControl?.TemperatureValue?.Content);
+                AddValue("TemperatureTarget", mainControl?.TemperatureTarget?.Text);
+                AddValue("StirrerValue", mainControl?.StirrerValue?.Content);
+                AddValue("StirrerTarget", mainControl?.StirrerTarget?.Text);
+                AddValue("pHValue", mainControl?.pHValue?.Content);
+                AddValue("pHTarget", mainControl?.pHTarget?.Text);
+                AddValue("pO2Value", mainControl?.pO2Value?.Content);
+                AddValue("pO2Target", mainControl?.pO2Target?.Text);
+                AddValue("Gas1Value", mainControl?.Gas1Value?.Content);
+                AddValue("Gas1Target", mainControl?.Gas1Target?.Text);
+                AddValue("Gas2Value", mainControl?.Gas2Value?.Content);
+                AddValue("Gas2Target", mainControl?.Gas2Target?.Text);
+                AddValue("Gas3Value", mainControl?.Gas3Value?.Content);
+                AddValue("Gas3Target", mainControl?.Gas3Target?.Text);
+                AddValue("Gas4Value", mainControl?.Gas4Value?.Content);
+                AddValue("Gas4Target", mainControl?.Gas4Target?.Text);
+                AddValue("FoamValue", mainControl?.FoamValue?.Content);
+                AddValue("FoamTarget", mainControl?.FoamTarget?.Text);
+                AddValue("RedoxValue", mainControl?.RedoxValue?.Content);
+                AddValue("RedoxTarget", mainControl?.RedoxTarget?.Text);
+                AddValue("TurbidityValue", extendedControl?.TurbidityValue?.Content);
+                AddValue("TurbidityTarget", extendedControl?.TurbidityTarget?.Text);
+                AddValue("BalanceValue", extendedControl?.BalanceValue?.Content);
+                AddValue("BalanceTarget", extendedControl?.BalanceTarget?.Text);
+                AddValue("AirFlowValue", extendedControl?.AirFlowValue?.Content);
+                AddValue("AirFlowTarget", extendedControl?.AirFlowTarget?.Text);
+                AddValue("Gas2FlowValue", extendedControl?.Gas2FlowValue?.Content);
+                AddValue("Gas2FlowTarget", extendedControl?.Gas2FlowTarget?.Text);
+                AddValue("Gas3FlowValue", extendedControl?.Gas3FlowValue?.Content);
+                AddValue("Gas3FlowTarget", extendedControl?.Gas3FlowTarget?.Text);
+                AddValue("Gas4FlowValue", extendedControl?.Gas4FlowValue?.Content);
+                AddValue("Gas4FlowTarget", extendedControl?.Gas4FlowTarget?.Text);
+                AddValue("Gas5FlowValue", extendedControl?.Gas5FlowValue?.Content);
+                AddValue("Gas5FlowTarget", extendedControl?.Gas5FlowTarget?.Text);
+                AddValue("ExitTurbidityValue", exitGasControl?.ExitTurbidityValue?.Content);
+                AddValue("ExitTurbidityTarget", exitGasControl?.ExitTurbidityTarget?.Text);
+                AddValue("ExitBalanceValue", exitGasControl?.ExitBalanceValue?.Content);
+                AddValue("ExitBalanceTarget", exitGasControl?.ExitBalanceTarget?.Text);
+                AddValue("Pump1Value", pumpsControl?.Pump1Value?.Content);
+                AddValue("Pump1Target", pumpsControl?.Pump1Target?.Text);
+                AddValue("Pump2Value", pumpsControl?.Pump2Value?.Content);
+                AddValue("Pump2Target", pumpsControl?.Pump2Target?.Text);
+                AddValue("Pump3Value", pumpsControl?.Pump3Value?.Content);
+                AddValue("Pump3Target", pumpsControl?.Pump3Target?.Text);
+                AddValue("Pump4Value", pumpsControl?.Pump4Value?.Content);
+                AddValue("Pump4Target", pumpsControl?.Pump4Target?.Text);
+                AddValue("Pump5Value", pumpsControl?.Pump5Value?.Content);
+                AddValue("Pump5Target", pumpsControl?.Pump5Target?.Text);
+                AddValue("Pump6Value", pumpsControl?.Pump6Value?.Content);
+                AddValue("Pump6Target", pumpsControl?.Pump6Target?.Text);
+
+                Console.WriteLine($"Kayıt yapılacak tablo: {currentTableName}");
+                Console.WriteLine($"Kayıt edilecek değer sayısı: {values.Count}");
+
+                DatabaseHelper.LogData(currentTableName, values);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"LogTimer_Tick'de hata: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                MessageBox.Show($"Veri kaydı sırasında hata oluştu: {ex.Message}", "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
+
+        //DATABASE BAĞLANTISI ÇIKIŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞ
 
         private bool AreVisibleButtonsGreen(params Button[] buttons)
         {
@@ -489,8 +693,15 @@ namespace WpfApp1
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
-            // Timer'ı durdur
-            timer.Stop();
+            // Timer'ları durdur
+            timer?.Stop();
+
+            if (logTimer != null && logTimer.IsEnabled)
+            {
+                // Son bir kayıt al
+                LogTimer_Tick(null, null);
+                logTimer.Stop();
+            }
 
             // Mevcut çalışma süresini toplam süreye ekle
             totalWorkTime += time;

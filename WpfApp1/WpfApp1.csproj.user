@@ -96,6 +96,9 @@
     <Compile Update="Settings\SettingWindows\VesselType.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="TableNameDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="00000000000.xaml">
