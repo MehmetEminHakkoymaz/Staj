@@ -21,6 +21,7 @@ namespace WpfApp1.EditPages
         public event EventHandler<string> ValueSelected;
         private DispatcherTimer clockTimer;
         private Dictionary<string, (int Min, int Max)> textBoxLimits;
+        private TextBox activeTextBox = null;
 
         public EditpO2()
         {
@@ -83,39 +84,126 @@ namespace WpfApp1.EditPages
                 string content = selectedItem.Content.ToString();
                 Properties.Settings.Default.pO2SelectedCascade = content;
 
+                // Önce mevcut içeriği temizle
+                contentArea.Content = null;
+                contentArea.ContentTemplate = null;
+
                 switch (content)
                 {
                     case "None":
                         contentArea.ContentTemplate = (DataTemplate)contentArea.Resources["NoneTemplate"];
                         break;
                     case "Stirrer":
-                        contentArea.ContentTemplate = (DataTemplate)contentArea.Resources["StirrerTemplate"];
-                        LoadStirrerValues();
+                        var stirrerTemplate = (DataTemplate)contentArea.Resources["StirrerTemplate"];
+                        var stirrerContent = stirrerTemplate.LoadContent() as FrameworkElement;
+                        if (stirrerContent != null)
+                        {
+                            var textBox = FindChild<TextBox>(stirrerContent, "pO2StirrerRPM");
+                            if (textBox != null)
+                            {
+                                textBox.GotFocus += TextBox_GotFocus;
+                                textBox.Text = Properties.Settings.Default.pO2StirrerRPM.ToString();
+                            }
+                            contentArea.Content = stirrerContent;
+                        }
                         break;
                     case "TotalFlow":
-                        contentArea.ContentTemplate = (DataTemplate)contentArea.Resources["TotalFlowTemplate"];
-                        loadTotalFlowValues();
+                        var totalFlowTemplate = (DataTemplate)contentArea.Resources["TotalFlowTemplate"];
+                        var totalFlowContent = totalFlowTemplate.LoadContent() as FrameworkElement;
+                        if (totalFlowContent != null)
+                        {
+                            var textBox = FindChild<TextBox>(totalFlowContent, "pO2TotalFlowTotalFlow");
+                            if (textBox != null)
+                            {
+                                textBox.GotFocus += TextBox_GotFocus;
+                                textBox.Text = Properties.Settings.Default.pO2TotalFlowTotalFlow.ToString();
+                            }
+                            contentArea.Content = totalFlowContent;
+                        }
                         break;
                     case "GasMix":
-                        contentArea.ContentTemplate = (DataTemplate)contentArea.Resources["GasMixTemplate"];
-                        loadGasMixValues();
+                        var gasMixTemplate = (DataTemplate)contentArea.Resources["GasMixTemplate"];
+                        var gasMixContent = gasMixTemplate.LoadContent() as FrameworkElement;
+                        if (gasMixContent != null)
+                        {
+                            var textBox = FindChild<TextBox>(gasMixContent, "pO2GasMixGasMix");
+                            if (textBox != null)
+                            {
+                                textBox.GotFocus += TextBox_GotFocus;
+                                textBox.Text = Properties.Settings.Default.pO2GasMixGasMix.ToString();
+                            }
+                            contentArea.Content = gasMixContent;
+                        }
                         break;
                     case "Stirrer->TotalFlow":
-                        contentArea.ContentTemplate = (DataTemplate)contentArea.Resources["StirrerTotalFlowTemplate"];
-                        loadStirrerTotalFlowValues();
+                        var stirrerTotalFlowTemplate = (DataTemplate)contentArea.Resources["StirrerTotalFlowTemplate"];
+                        var stirrerTotalFlowContent = stirrerTotalFlowTemplate.LoadContent() as FrameworkElement;
+                        if (stirrerTotalFlowContent != null)
+                        {
+                            var rpm = FindChild<TextBox>(stirrerTotalFlowContent, "pO2StirrerTotalFlowRPM");
+                            if (rpm != null)
+                            {
+                                rpm.GotFocus += TextBox_GotFocus;
+                                rpm.Text = Properties.Settings.Default.pO2StirrerTotalFlowRPM.ToString();
+                            }
+                            var totalFlow = FindChild<TextBox>(stirrerTotalFlowContent, "pO2StirrerTotalFlowTotalFlow");
+                            if (totalFlow != null)
+                            {
+                                totalFlow.GotFocus += TextBox_GotFocus;
+                                totalFlow.Text = Properties.Settings.Default.pO2StirrerTotalFlowTotalFlow.ToString();
+                            }
+                            contentArea.Content = stirrerTotalFlowContent;
+                        }
                         break;
                     case "Stirrer->GasMix":
-                        contentArea.ContentTemplate = (DataTemplate)contentArea.Resources["StirrerGasMixTemplate"];
-                        loadStirrerGasMixValues();
+                        var stirrerGasMixTemplate = (DataTemplate)contentArea.Resources["StirrerGasMixTemplate"];
+                        var stirrerGasMixContent = stirrerGasMixTemplate.LoadContent() as FrameworkElement;
+                        if (stirrerGasMixContent != null)
+                        {
+                            var rpm = FindChild<TextBox>(stirrerGasMixContent, "pO2StirrerGasMixRPM");
+                            if (rpm != null)
+                            {
+                                rpm.GotFocus += TextBox_GotFocus;
+                                rpm.Text = Properties.Settings.Default.pO2StirrerGasMixRPM.ToString();
+                            }
+                            var gasMix = FindChild<TextBox>(stirrerGasMixContent, "pO2StirrerGasMixGasMix");
+                            if (gasMix != null)
+                            {
+                                gasMix.GotFocus += TextBox_GotFocus;
+                                gasMix.Text = Properties.Settings.Default.pO2StirrerGasMixGasMix.ToString();
+                            }
+                            contentArea.Content = stirrerGasMixContent;
+                        }
                         break;
                     case "Stirrer->TotalFlow->GasMix":
-                        contentArea.ContentTemplate = (DataTemplate)contentArea.Resources["StirrerTotalFlowGasMixTemplate"];
-                        loadStirrerTotalFlowGasMix();
+                        var stirrerTotalFlowGasMixTemplate = (DataTemplate)contentArea.Resources["StirrerTotalFlowGasMixTemplate"];
+                        var stirrerTotalFlowGasMixContent = stirrerTotalFlowGasMixTemplate.LoadContent() as FrameworkElement;
+                        if (stirrerTotalFlowGasMixContent != null)
+                        {
+                            var rpm = FindChild<TextBox>(stirrerTotalFlowGasMixContent, "pO2StirrerTotalFlowGasMixRPM");
+                            if (rpm != null)
+                            {
+                                rpm.GotFocus += TextBox_GotFocus;
+                                rpm.Text = Properties.Settings.Default.pO2StirrerTotalFlowGasMixRPM.ToString();
+                            }
+                            var totalFlow = FindChild<TextBox>(stirrerTotalFlowGasMixContent, "pO2StirrerTotalFlowGasMixTotalFlow");
+                            if (totalFlow != null)
+                            {
+                                totalFlow.GotFocus += TextBox_GotFocus;
+                                totalFlow.Text = Properties.Settings.Default.pO2StirrerTotalFlowGasMixTotalFlow.ToString();
+                            }
+                            var gasMix = FindChild<TextBox>(stirrerTotalFlowGasMixContent, "pO2StirrerTotalFlowGasMixGasMix");
+                            if (gasMix != null)
+                            {
+                                gasMix.GotFocus += TextBox_GotFocus;
+                                gasMix.Text = Properties.Settings.Default.pO2StirrerTotalFlowGasMixGasMix.ToString();
+                            }
+                            contentArea.Content = stirrerTotalFlowGasMixContent;
+                        }
                         break;
                 }
             }
         }
-
         private void LoadStirrerValues()
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
@@ -302,7 +390,6 @@ namespace WpfApp1.EditPages
             }
         }
 
-
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !int.TryParse(e.Text, out _);
@@ -382,7 +469,6 @@ namespace WpfApp1.EditPages
                     case "Stirrer->TotalFlow->GasMix":
                         SaveStirrerTotalFlowGasMix();
                         break;
-                        // Diğer case'ler...
                 }
             }
         }
@@ -413,42 +499,56 @@ namespace WpfApp1.EditPages
             return foundChild;
         }
 
-        private TextBox activeTextBox = null;
-
-        private TextBox currentTextBox = null;
-
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox focusedTextBox = sender as TextBox;
-            if (focusedTextBox != null)
+            var textBox = sender as TextBox;
+            if (textBox != null)
             {
-                // TextBox'ın ebeveyninin ebeveynini bul (Grid varsayıyoruz)
-                DependencyObject parent = VisualTreeHelper.GetParent(focusedTextBox);
-                DependencyObject grandParent = parent != null ? VisualTreeHelper.GetParent(parent) : null;
-                Grid parentGrid = grandParent as Grid;
-                activeTextBox = sender as TextBox; // Odaklanan TextBox'ı aktif olarak ayarla
-                if (parentGrid != null)
+                activeTextBox = textBox;
+
+                // Label içeriğini bulmak için parent container'ı kontrol et
+                var parent = VisualTreeHelper.GetParent(textBox);
+                while (parent != null)
                 {
-                    // Grid içindeki ilk Label'ı bul
-                    Label firstLabel = parentGrid.Children.OfType<Label>().FirstOrDefault();
-                    if (firstLabel != null)
+                    if (parent is Grid grid)
                     {
-                        // Label'ın içeriğini al
-                        string labelContent = firstLabel.Content.ToString();
-                        // KeyPad'e label içeriğini gönder
-                        activeTextBox = sender as TextBox;
-                        KeypadPopup.IsOpen = true;
-                        KeypadControl.SetLabelContent(labelContent);
+                        var label = grid.Children.OfType<Label>().FirstOrDefault();
+                        if (label != null)
+                        {
+                            KeypadPopup.IsOpen = true;
+                            KeypadControl.SetLabelContent(label.Content.ToString());
+                            break;
+                        }
                     }
+                    parent = VisualTreeHelper.GetParent(parent);
                 }
             }
         }
-
         private void KeyPadControl_ValueSelected(object sender, string value)
         {
             if (activeTextBox != null)
             {
                 activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
+            }
+        }
+
+        private void RegisterTextBoxEvents(DependencyObject parent)
+        {
+            // Verilen parent içindeki tüm TextBox'ları bul
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+
+                if (child is TextBox textBox)
+                {
+                    // TextBox'a GotFocus event'ini bağla
+                    textBox.GotFocus += TextBox_GotFocus;
+                }
+                else
+                {
+                    // Recursive olarak diğer container'ları kontrol et
+                    RegisterTextBoxEvents(child);
+                }
             }
         }
     }
