@@ -3,36 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editfoam.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editfoam.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\maincontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\maincontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\maincontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\maincontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpo2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpo2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editph.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editph.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpo2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpo2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editfoam.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editfoam.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editph.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editph.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\maincontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\maincontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editphcascade\\acid.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editphcascade\\acid.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpump3.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpump3.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpump2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpump2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpump1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpump1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpo2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpo2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpo2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpo2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editphcascade\\base.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -59,24 +83,12 @@
       "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpump2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpump1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpump1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpump1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpump1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpump4.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpump4.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpump3.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpump3.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\editpages\\editpump2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\editpages\\editpump2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A69C9001-736B-42FF-9594-C14CFCBDC8F3}|WpfApp1\\WpfApp1.csproj|c:\\users\\mehme\\documents\\github\\staj\\wpfapp1\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -116,7 +128,7 @@
         },
         {
           "DockedWidth": 191,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -125,27 +137,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MainControl.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainControl.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\MainControl.xaml.cs",
-              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainControl.xaml.cs*",
-              "RelativeToolTip": "WpfApp1\\MainControl.xaml.cs*",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAwIMAAAAJAAAAAAAAAA==",
+              "Title": "EditFoam.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditFoam.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditFoam.xaml.cs",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditFoam.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditFoam.xaml.cs",
+              "ViewState": "AgIAABABAAAAAAAAAAAAAD8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T20:11:58.014Z",
+              "WhenOpened": "2025-03-02T20:39:14.226Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EditpO2.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpO2.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditpO2.xaml.cs",
-              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpO2.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\EditPages\\EditpO2.xaml.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAIwBQAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T20:10:21.714Z",
+              "DocumentIndex": 0,
+              "Title": "Settings.settings",
+              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\Properties\\Settings.settings",
+              "RelativeDocumentMoniker": "WpfApp1\\Properties\\Settings.settings",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\Properties\\Settings.settings",
+              "RelativeToolTip": "WpfApp1\\Properties\\Settings.settings",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002767|",
+              "WhenOpened": "2025-03-02T21:05:42.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EditPump2.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump2.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump2.xaml",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump2.xaml",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump2.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-01T21:16:02.135Z",
               "EditorCaption": ""
             },
             {
@@ -154,35 +177,11 @@
               "Title": "EditpH.xaml.cs",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpH.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditpH.xaml.cs",
-              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpH.xaml.cs*",
-              "RelativeToolTip": "WpfApp1\\EditPages\\EditpH.xaml.cs*",
-              "ViewState": "AgIAACQAAAAAAAAAAAAYwCIAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpH.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditpH.xaml.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAmwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T20:01:20.353Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "EditpO2.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpO2.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditpO2.xaml",
-              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpO2.xaml",
-              "RelativeToolTip": "WpfApp1\\EditPages\\EditpO2.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-02T20:00:08.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainControl.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainControl.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\MainControl.xaml",
-              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainControl.xaml*",
-              "RelativeToolTip": "WpfApp1\\MainControl.xaml*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-02T19:58:49.86Z",
               "EditorCaption": ""
             },
             {
@@ -199,6 +198,43 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainControl.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainControl.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\MainControl.xaml",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainControl.xaml",
+              "RelativeToolTip": "WpfApp1\\MainControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-02T19:58:49.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainControl.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainControl.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\MainControl.xaml.cs",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainControl.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\MainControl.xaml.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAIwIkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T20:11:58.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EditFoam.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditFoam.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditFoam.xaml",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditFoam.xaml",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditFoam.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-02T20:38:08.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 7,
               "Title": "Acid.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpHCascade\\Acid.xaml",
@@ -211,30 +247,65 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 10,
               "Title": "EditPump1.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump1.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump1.xaml",
               "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump1.xaml",
               "RelativeToolTip": "WpfApp1\\EditPages\\EditPump1.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-01T21:02:39.737Z"
+              "WhenOpened": "2025-03-01T21:02:39.737Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "EditPump3.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump3.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump3.xaml",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump3.xaml",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump3.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-01T21:17:16.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EditpO2.xaml",
+              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpO2.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditpO2.xaml",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpO2.xaml",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditpO2.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-02T20:00:08.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EditpO2.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpO2.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditpO2.xaml.cs",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpO2.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\EditPages\\EditpO2.xaml.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwBQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T20:10:21.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "Base.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpHCascade\\Base.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditpHCascade\\Base.xaml",
               "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpHCascade\\Base.xaml",
               "RelativeToolTip": "WpfApp1\\EditPages\\EditpHCascade\\Base.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-02T19:56:57.124Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T19:56:57.124Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "LoginWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\LoginWindow.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\LoginWindow.xaml.cs",
@@ -242,36 +313,33 @@
               "RelativeToolTip": "WpfApp1\\LoginWindow.xaml.cs",
               "ViewState": "AgIAAGgAAAAAAAAAAAAswHQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T15:03:55.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-01T15:03:55.208Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 15,
               "Title": "BaseAcid.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpHCascade\\BaseAcid.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditpHCascade\\BaseAcid.xaml",
               "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpHCascade\\BaseAcid.xaml",
               "RelativeToolTip": "WpfApp1\\EditPages\\EditpHCascade\\BaseAcid.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-02T19:57:04.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T19:57:04.113Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "None.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpHCascade\\None.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditpHCascade\\None.xaml",
               "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditpHCascade\\None.xaml",
               "RelativeToolTip": "WpfApp1\\EditPages\\EditpHCascade\\None.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-02T19:57:04.986Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T19:57:04.986Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 17,
               "Title": "EditPump4.xaml.cs",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump4.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump4.xaml.cs",
@@ -279,12 +347,11 @@
               "RelativeToolTip": "WpfApp1\\EditPages\\EditPump4.xaml.cs",
               "ViewState": "AgIAAJAAAAAAAAAAAAAgwKwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T21:24:27.472Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-01T21:24:27.472Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 20,
               "Title": "EditPump1.xaml.cs",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump1.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump1.xaml.cs",
@@ -296,7 +363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 19,
               "Title": "EditPump2.xaml.cs",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump2.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump2.xaml.cs",
@@ -308,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 18,
               "Title": "EditPump3.xaml.cs",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump3.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump3.xaml.cs",
@@ -320,29 +387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "EditPump2.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump2.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump2.xaml",
-              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump2.xaml",
-              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump2.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-01T21:16:02.135Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "EditPump3.xaml",
-              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump3.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump3.xaml",
-              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump3.xaml",
-              "RelativeToolTip": "WpfApp1\\EditPages\\EditPump3.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-01T21:17:16.766Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 21,
               "Title": "EditPump4.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\EditPages\\EditPump4.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\EditPages\\EditPump4.xaml",
@@ -353,7 +398,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "LoginWindow.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\LoginWindow.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\LoginWindow.xaml",
@@ -364,7 +409,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml",
@@ -375,7 +420,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
@@ -387,7 +432,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "DatabaseHelper.cs",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\Data\\DatabaseHelper.cs",
               "RelativeDocumentMoniker": "WpfApp1\\Data\\DatabaseHelper.cs",

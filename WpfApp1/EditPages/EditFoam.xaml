@@ -1,0 +1,218 @@
+﻿<Window x:Class="WpfApp1.EditPages.EditFoam"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.EditPages"
+        mc:Ignorable="d"
+        Title="EditFoam" Height="600" Width="1024">
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,400">
+            <ToggleButton x:Name="None" Width="133" Height="50" Content="None" FontSize="20" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+                <ToggleButton.Template>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid>
+                            <Border x:Name="border" BorderBrush="Gray" BorderThickness="2,2,1,2" CornerRadius="5,0,0,5" Opacity="0.5">
+                                <Border.Background>
+                                    <SolidColorBrush Color="#E7ECEF"/>
+                                </Border.Background>
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#C33333"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </ToggleButton.Template>
+            </ToggleButton>
+
+            <ToggleButton x:Name="AntiFoam" Width="133" Height="50" Content="AntiFoam" FontSize="20" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+                <ToggleButton.Template>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid>
+                            <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,1,2" CornerRadius="0" Opacity="0.5">
+                                <Border.Background>
+                                    <SolidColorBrush Color="#E7ECEF"/>
+                                </Border.Background>
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#C33333"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </ToggleButton.Template>
+
+            </ToggleButton>
+
+            <ToggleButton x:Name="Level" Width="133" Height="50" Content="Level" FontSize="20" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+                <ToggleButton.Template>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid>
+                            <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,2,2" CornerRadius="0,5,5,0" Opacity="0.5">
+                                <Border.Background>
+                                    <SolidColorBrush Color="#E7ECEF"/>
+                                </Border.Background>
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#C33333"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </ToggleButton.Template>
+            </ToggleButton>
+        </StackPanel>
+
+        <!-- Yeni ContentControl -->
+        <ContentControl x:Name="ParametersContent" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <ContentControl.Resources>
+                <!-- AntiFoam için Template -->
+                <DataTemplate x:Key="AntiFoamTemplate">
+                    <StackPanel x:Name="AntiFoamPanel" Margin="20">
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="DOSE TIME" VerticalAlignment="Center"/>
+                            <TextBox x:Name="AntiFoamDoseTime" 
+                     Grid.Column="1" 
+                     Height="30" 
+                     Tag="0,3600" 
+                     PreviewTextInput="TextBox_PreviewTextInput" 
+                     TextChanged="TextBox_TextChanged"
+                     Text="{Binding DataContext.AntiFoamDoseTime, RelativeSource={RelativeSource AncestorType=Window}}"
+                     />
+                        </Grid>
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="WAIT TIME" VerticalAlignment="Center"/>
+                            <TextBox x:Name="AntiFoamWaitTime" 
+                     Grid.Column="1" 
+                     Height="30" 
+                     Tag="0,3600" 
+                     PreviewTextInput="TextBox_PreviewTextInput" 
+                     TextChanged="TextBox_TextChanged"
+                     Text="{Binding DataContext.AntiFoamWaitTime, RelativeSource={RelativeSource AncestorType=Window}}"
+                     />
+                        </Grid>
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="ALARM TIME" VerticalAlignment="Center"/>
+                            <TextBox x:Name="AntiFoamAlarmTime" 
+                     Grid.Column="1" 
+                     Height="30" 
+                     Tag="0,3600" 
+                     PreviewTextInput="TextBox_PreviewTextInput" 
+                     TextChanged="TextBox_TextChanged"
+                     Text="{Binding DataContext.AntiFoamAlarmTime, RelativeSource={RelativeSource AncestorType=Window}}"
+                     />
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+
+                <!-- Level için Template -->
+                <DataTemplate x:Key="LevelTemplate">
+                    <StackPanel x:Name="LevelPanel" Margin="20">
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="DOSE TIME" VerticalAlignment="Center"/>
+                            <TextBox x:Name="LevelDoseTime" 
+                     Grid.Column="1" 
+                     Height="30" 
+                     Tag="0,3600" 
+                     PreviewTextInput="TextBox_PreviewTextInput" 
+                     TextChanged="TextBox_TextChanged"
+                     Text="{Binding DataContext.LevelDoseTime, RelativeSource={RelativeSource AncestorType=Window}}"
+                     />
+                        </Grid>
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="WAIT TIME" VerticalAlignment="Center"/>
+                            <TextBox x:Name="LevelWaitTime" 
+                     Grid.Column="1" 
+                     Height="30" 
+                     Tag="0,3600" 
+                     PreviewTextInput="TextBox_PreviewTextInput" 
+                     TextChanged="TextBox_TextChanged"
+                     Text="{Binding DataContext.LevelWaitTime, RelativeSource={RelativeSource AncestorType=Window}}"
+                     />
+                        </Grid>
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="ALARM TIME" VerticalAlignment="Center"/>
+                            <TextBox x:Name="LevelAlarmTime" 
+                     Grid.Column="1" 
+                     Height="30" 
+                     Tag="0,3600" 
+                     PreviewTextInput="TextBox_PreviewTextInput" 
+                     TextChanged="TextBox_TextChanged"
+                     Text="{Binding DataContext.LevelAlarmTime, RelativeSource={RelativeSource AncestorType=Window}}"
+                     />
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+
+            </ContentControl.Resources>
+        </ContentControl>
+        
+        <Grid Height="108" VerticalAlignment="Bottom">
+            <Border Background="#AF0101" Margin="0,0,0,0" Height="1" VerticalAlignment="Top"/>
+            <Button Width="200" Height="50" Margin="0,0,80,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Ok_Button_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border Background="#AF0101" CornerRadius="5">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#808080" Direction="270" ShadowDepth="3" BlurRadius="5"/>
+                                </Border.Effect>
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Text="OK" FontSize="30" Foreground="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            <Button Width="200" Height="50" Margin="0,0,292,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Cancel_Button_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border Background="#E7ECEF" CornerRadius="5">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#808080" Direction="270" ShadowDepth="3" BlurRadius="5"/>
+                                </Border.Effect>
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Text="CANCEL" FontSize="30" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+
+        </Grid>
+
+    </Grid>
+</Window>

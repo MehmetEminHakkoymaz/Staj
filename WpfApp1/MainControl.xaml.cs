@@ -130,6 +130,12 @@ namespace WpfApp1
             var editpO2Window = new WpfApp1.EditPages.EditpO2();
             editpO2Window.Show();
         }
+
+        private void EditFoam_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var editFoamWindow = new WpfApp1.EditPages.EditFoam();
+            editFoamWindow.Show();
+        }
         private void Ellipse_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is Ellipse clickedEllipse)

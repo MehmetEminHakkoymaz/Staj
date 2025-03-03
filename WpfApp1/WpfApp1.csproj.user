@@ -18,6 +18,9 @@
     <Compile Update="ArdunioCommunication\ArdunioCommunication.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EditPages\EditFoam.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EditPages\EditpH.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

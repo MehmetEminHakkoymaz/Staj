@@ -340,7 +340,8 @@
                                          MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
-                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,365,94,49"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,365,94,49"
+                               MouseLeftButtonDown="EditFoam_MouseLeftButtonDown"/>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,365,21,49"/>
                     </Grid>
                     <Grid>

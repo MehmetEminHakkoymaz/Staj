@@ -118,5 +118,89 @@ namespace WpfApp1.Properties {
                 this["TotalWorkTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public string FoamSelectedMode {
+            get {
+                return ((string)(this["FoamSelectedMode"]));
+            }
+            set {
+                this["FoamSelectedMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AntiFoamDoseTime {
+            get {
+                return ((int)(this["AntiFoamDoseTime"]));
+            }
+            set {
+                this["AntiFoamDoseTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AntiFoamWaitTime {
+            get {
+                return ((int)(this["AntiFoamWaitTime"]));
+            }
+            set {
+                this["AntiFoamWaitTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AntiFoamAlarmTime {
+            get {
+                return ((int)(this["AntiFoamAlarmTime"]));
+            }
+            set {
+                this["AntiFoamAlarmTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LevelDoseTime {
+            get {
+                return ((int)(this["LevelDoseTime"]));
+            }
+            set {
+                this["LevelDoseTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LevelWaitTime {
+            get {
+                return ((int)(this["LevelWaitTime"]));
+            }
+            set {
+                this["LevelWaitTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LevelAlarmTime {
+            get {
+                return ((int)(this["LevelAlarmTime"]));
+            }
+            set {
+                this["LevelAlarmTime"] = value;
+            }
+        }
     }
 }
