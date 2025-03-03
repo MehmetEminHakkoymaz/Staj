@@ -83,14 +83,9 @@
                                 <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="DOSE TIME" VerticalAlignment="Center"/>
-                            <TextBox x:Name="AntiFoamDoseTime" 
-                     Grid.Column="1" 
-                     Height="30" 
-                     Tag="0,3600" 
-                     PreviewTextInput="TextBox_PreviewTextInput" 
-                     TextChanged="TextBox_TextChanged"
-                     Text="{Binding DataContext.AntiFoamDoseTime, RelativeSource={RelativeSource AncestorType=Window}}"
-                     />
+                            <TextBox x:Name="AntiFoamDoseTime" Grid.Column="1" Height="30" Tag="0,3600" 
+                                     PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged" 
+                                     Text="{Binding DataContext.AntiFoamDoseTime, RelativeSource={RelativeSource AncestorType=Window}}"/>
                         </Grid>
                         <Grid Margin="0,10">
                             <Grid.ColumnDefinitions>
@@ -98,14 +93,9 @@
                                 <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="WAIT TIME" VerticalAlignment="Center"/>
-                            <TextBox x:Name="AntiFoamWaitTime" 
-                     Grid.Column="1" 
-                     Height="30" 
-                     Tag="0,3600" 
-                     PreviewTextInput="TextBox_PreviewTextInput" 
-                     TextChanged="TextBox_TextChanged"
-                     Text="{Binding DataContext.AntiFoamWaitTime, RelativeSource={RelativeSource AncestorType=Window}}"
-                     />
+                            <TextBox x:Name="AntiFoamWaitTime" Grid.Column="1" Height="30" Tag="0,3600" 
+                                     PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged"
+                                     Text="{Binding DataContext.AntiFoamWaitTime, RelativeSource={RelativeSource AncestorType=Window}}"/>
                         </Grid>
                         <Grid Margin="0,10">
                             <Grid.ColumnDefinitions>
@@ -113,14 +103,9 @@
                                 <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="ALARM TIME" VerticalAlignment="Center"/>
-                            <TextBox x:Name="AntiFoamAlarmTime" 
-                     Grid.Column="1" 
-                     Height="30" 
-                     Tag="0,3600" 
-                     PreviewTextInput="TextBox_PreviewTextInput" 
-                     TextChanged="TextBox_TextChanged"
-                     Text="{Binding DataContext.AntiFoamAlarmTime, RelativeSource={RelativeSource AncestorType=Window}}"
-                     />
+                            <TextBox x:Name="AntiFoamAlarmTime" Grid.Column="1" Height="30" Tag="0,3600" 
+                                     PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged"
+                                     Text="{Binding DataContext.AntiFoamAlarmTime, RelativeSource={RelativeSource AncestorType=Window}}"/>
                         </Grid>
                     </StackPanel>
                 </DataTemplate>

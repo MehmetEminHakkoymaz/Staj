@@ -202,5 +202,137 @@ namespace WpfApp1.Properties {
                 this["LevelAlarmTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public string pO2SelectedCascade {
+            get {
+                return ((string)(this["pO2SelectedCascade"]));
+            }
+            set {
+                this["pO2SelectedCascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pO2StirrerRPM {
+            get {
+                return ((int)(this["pO2StirrerRPM"]));
+            }
+            set {
+                this["pO2StirrerRPM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pO2TotalFlowTotalFlow {
+            get {
+                return ((int)(this["pO2TotalFlowTotalFlow"]));
+            }
+            set {
+                this["pO2TotalFlowTotalFlow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pO2GasMixGasMix {
+            get {
+                return ((int)(this["pO2GasMixGasMix"]));
+            }
+            set {
+                this["pO2GasMixGasMix"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pO2StirrerTotalFlowRPM {
+            get {
+                return ((int)(this["pO2StirrerTotalFlowRPM"]));
+            }
+            set {
+                this["pO2StirrerTotalFlowRPM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pO2StirrerTotalFlowTotalFlow {
+            get {
+                return ((int)(this["pO2StirrerTotalFlowTotalFlow"]));
+            }
+            set {
+                this["pO2StirrerTotalFlowTotalFlow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pO2StirrerGasMixRPM {
+            get {
+                return ((int)(this["pO2StirrerGasMixRPM"]));
+            }
+            set {
+                this["pO2StirrerGasMixRPM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pO2StirrerGasMixGasMix {
+            get {
+                return ((int)(this["pO2StirrerGasMixGasMix"]));
+            }
+            set {
+                this["pO2StirrerGasMixGasMix"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pO2StirrerTotalFlowGasMixRPM {
+            get {
+                return ((int)(this["pO2StirrerTotalFlowGasMixRPM"]));
+            }
+            set {
+                this["pO2StirrerTotalFlowGasMixRPM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pO2StirrerTotalFlowGasMixTotalFlow {
+            get {
+                return ((int)(this["pO2StirrerTotalFlowGasMixTotalFlow"]));
+            }
+            set {
+                this["pO2StirrerTotalFlowGasMixTotalFlow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pO2StirrerTotalFlowGasMixGasMix {
+            get {
+                return ((int)(this["pO2StirrerTotalFlowGasMixGasMix"]));
+            }
+            set {
+                this["pO2StirrerTotalFlowGasMixGasMix"] = value;
+            }
+        }
     }
 }

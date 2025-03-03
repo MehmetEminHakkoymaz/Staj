@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.EditPages"
+        xmlns:kepad="clr-namespace:WpfApp1.Keypad"
         mc:Ignorable="d"
         Title="EditpO2" Height="600" Width="1024">
     <Grid Background="#E7ECEF">
@@ -24,7 +25,8 @@
 
         <Grid>
             <Border CornerRadius="5" Background="#FFE7ECEF" BorderBrush="Gray" BorderThickness="1" Margin="224,96,351,443" Height="45">
-                <ComboBox x:Name="contentComboBox" FontSize="15" FontWeight="Regular" Margin="1,1,1,1" Padding="0,0,0,0" VerticalContentAlignment="Center">
+                <ComboBox x:Name="contentComboBox" FontSize="25" FontWeight="Regular" Margin="1,1,1,1" Padding="0,0,0,0" 
+                          VerticalContentAlignment="Center">
                     <ComboBoxItem Content="None" FontSize="25" FontWeight="Regular"/>
                     <ComboBoxItem Content="Stirrer" FontSize="25" FontWeight="Regular"/>
                     <ComboBoxItem Content="TotalFlow" FontWeight="Regular" FontSize="25"/>
@@ -34,7 +36,213 @@
                     <ComboBoxItem Content="Stirrer->TotalFlow->GasMix" FontWeight="Regular" FontSize="25"/>
                 </ComboBox>
             </Border>
-            <ContentControl x:Name="contentArea" HorizontalAlignment="Left" Margin="224,147,0,357" Width="750" Height="80"/>
+            <ContentControl x:Name="contentArea" HorizontalAlignment="Left" Margin="224,147,0,357" Width="750" Height="80">
+                <ContentControl.Resources>
+                    <!-- None için boş template -->
+                    <DataTemplate x:Key="NoneTemplate">
+                    </DataTemplate>
+
+                    <!-- Stirrer için template -->
+                    <DataTemplate x:Key="StirrerTemplate">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Border Background="#c74d4d" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="1" 
+                                BorderThickness="1" BorderBrush="DarkGray">
+                                <Grid>
+                                    <Label Content="RPM" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
+                                    <Label Content="(0-1400)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                </Grid>
+                            </Border>
+                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
+                                Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                <TextBox x:Name="pO2StirrerRPM" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                            </Border>
+                        </StackPanel>
+                    </DataTemplate>
+
+                    <!-- Diğer template'ler buraya eklenecek -->
+                    <DataTemplate x:Key="TotalFlowTemplate">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Border Background="#c74d4d" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="1" 
+                                BorderThickness="1" BorderBrush="DarkGray">
+                                <Grid>
+                                    <Label Content="TotalFlow" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
+                                    <Label Content="(MAX 4L/m)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                </Grid>
+                            </Border>
+                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
+                                Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                <TextBox x:Name="pO2TotalFlowTotalFlow" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                            </Border>
+                        </StackPanel>
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="GasMixTemplate">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Border Background="#c74d4d" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="1" 
+                                BorderThickness="1" BorderBrush="DarkGray">
+                                <Grid>
+                                    <Label Content="GasMix" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
+                                    <Label Content="(MIN O2 %21)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                </Grid>
+                            </Border>
+                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
+                                Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                <TextBox x:Name="pO2GasMixGasMix" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                            </Border>
+                        </StackPanel>
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="StirrerTotalFlowTemplate">
+                        <Grid>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="1" 
+                                    BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="RPM" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                            FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(0-1400)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                            Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
+                                    Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="pO2StirrerTotalFlowRPM" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="1" 
+                                BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="TotalFlow" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(MAX 4L/m)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
+                                Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="pO2StirrerTotalFlowTotalFlow" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                </Border>
+                            </StackPanel>
+
+                        </Grid>
+                        
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="StirrerGasMixTemplate">
+                        <Grid>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="1" 
+                                BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="RPM" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(0-1400)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
+                                Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="pO2StirrerGasMixRPM" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="1" 
+                                BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="GasMix" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(MIN O2 %21)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
+                                Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="pO2StirrerGasMixGasMix" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                </Border>
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="StirrerTotalFlowGasMixTemplate">
+                        <Grid>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="1" 
+                                BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="RPM" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(0-1400)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
+                                Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="pO2StirrerTotalFlowGasMixRPM" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="1" 
+                                BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="TotalFlow" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(MAX 4L/m)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
+                                Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="pO2StirrerTotalFlowGasMixTotalFlow" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,5,0,0" Width="120" Height="40" Opacity="1" 
+                                BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="GasMix" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(MIN O2 %21)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
+                                Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="pO2StirrerTotalFlowGasMixGasMix" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                </Border>
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate>
+                </ContentControl.Resources>
+            </ContentControl>
         </Grid>
 
         <Border CornerRadius="10">
@@ -45,22 +253,34 @@
                 <Label Content="I" FontSize="20" Opacity="0.5" Margin="50,115,0,0" Padding="0,0,0,0" Width="8" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Label Content="I Limit" FontSize="20" Opacity="0.5" Margin="15,167,0,0" Padding="0,0,0,0" Width="57" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="115,58,495,127">
-                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0"/>
+                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                             x:Name="pO2P" GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="115,110,495,75">
-                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0"/>
+                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                             x:Name="pO2I" GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="115,162,495,23">
-                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0"/>
+                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                             x:Name="pO2ILimit" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" />
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="400,58,210,127">
-                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0"/>
+                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                             x:Name="pO2P2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" />
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="400,110,210,75">
-                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0"/>
+                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                             x:Name="pO2I2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" />
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="400,162,210,23">
-                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0"/>
+                    <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                             x:Name="pO2Ilimit2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" />
                 </Border>
                 <Button Width="150" Height="40" Content="Reset PID" FontSize="25" Opacity="0.7" Margin="581,57,19,128">
                     <Button.Background>
@@ -114,6 +334,8 @@
             </Button>
 
         </Grid>
-
+        <Popup x:Name="KeypadPopup" Placement="Center" IsOpen="False">
+            <kepad:KeyPad x:Name="KeypadControl"/>
+        </Popup>
     </Grid>
 </Window>
