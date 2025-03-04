@@ -204,6 +204,8 @@ namespace WpfApp1.EditPages
                 }
             }
         }
+
+
         private void LoadStirrerValues()
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>

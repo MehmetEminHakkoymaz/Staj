@@ -334,5 +334,65 @@ namespace WpfApp1.Properties {
                 this["pO2StirrerTotalFlowGasMixGasMix"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pHBaseBase {
+            get {
+                return ((int)(this["pHBaseBase"]));
+            }
+            set {
+                this["pHBaseBase"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pHAcidAcid {
+            get {
+                return ((int)(this["pHAcidAcid"]));
+            }
+            set {
+                this["pHAcidAcid"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pHBaseAcidBase {
+            get {
+                return ((int)(this["pHBaseAcidBase"]));
+            }
+            set {
+                this["pHBaseAcidBase"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int pHBaseAcidAcid {
+            get {
+                return ((int)(this["pHBaseAcidAcid"]));
+            }
+            set {
+                this["pHBaseAcidAcid"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public string pHSelectedCascade {
+            get {
+                return ((string)(this["pHSelectedCascade"]));
+            }
+            set {
+                this["pHSelectedCascade"] = value;
+            }
+        }
     }
 }
