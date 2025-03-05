@@ -4,10 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.EditPages"
+        xmlns:kepad="clr-namespace:WpfApp1.Keypad"
         mc:Ignorable="d"
         Title="EditFoam" Height="600" Width="1024">
-    <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,400">
+
+    <Grid Background="#E7ECEF">
+        <Border Background="#DAE2E7" Width="1024" Height="30" BorderThickness="0,0,0,1" BorderBrush="Black" VerticalAlignment="Top">
+            <Grid>
+                <Button Width="28" Height="28" HorizontalAlignment="Left" Margin="0,2,0,0" Background="Transparent" BorderThickness="0">
+                    <Image Source="pack://application:,,,/WpfApp1;component/images/options.png"/>
+                </Button>
+                <Label Content="MECHOSPHERE" Padding="5,0,5,0" FontSize="20" FontFamily="Inter" FontWeight="Regular" HorizontalAlignment="Left" 
+                       Margin="41,0,0,0" Width="152" Height="24"  VerticalAlignment="Center"/>
+                <TextBlock x:Name="ClockTextBlock" FontFamily="Inter" FontWeight="Regular" FontSize="20" Width="106" Height="24" HorizontalAlignment="Left" 
+                           Margin="463,3,0,0" VerticalAlignment="Center"/>
+                <Image Source="pack://application:,,,/WpfApp1;component/images/usb.png" Width="28" Height="28" HorizontalAlignment="Right" Margin="0,-1,36,1"/>
+                <Image Source="pack://application:,,,/WpfApp1;component/images/wifi.png" Width="28" Height="28" HorizontalAlignment="Right" Margin="0,-1,2,1"/>
+            </Grid>
+        </Border>
+        <Label Content="EDIT FOAM" Width="200" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,30,0,0" FontSize="25" FontWeight="Regular" Opacity="0.7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Rectangle  Height="1" Fill="Black" Margin="0,79,0,504" Opacity="0.3"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,100,0,400">
             <ToggleButton x:Name="None" Width="133" Height="50" Content="None" FontSize="20" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
                 <ToggleButton.Template>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -71,41 +88,57 @@
             </ToggleButton>
         </StackPanel>
 
-        <!-- Yeni ContentControl -->
-        <ContentControl x:Name="ParametersContent" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <ContentControl x:Name="ParametersContent" Margin="0,200,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
             <ContentControl.Resources>
                 <!-- AntiFoam için Template -->
                 <DataTemplate x:Key="AntiFoamTemplate">
                     <StackPanel x:Name="AntiFoamPanel" Margin="20">
-                        <Grid Margin="0,10">
+                        <Grid VerticalAlignment="Center" Margin="0,10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="DOSE TIME" VerticalAlignment="Center"/>
-                            <TextBox x:Name="AntiFoamDoseTime" Grid.Column="1" Height="30" Tag="0,3600" 
-                                     PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged" 
-                                     Text="{Binding DataContext.AntiFoamDoseTime, RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+                            <!-- TextBlock -->
+                            <TextBlock Text="DOSE TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0, 0, 29, 0"/>
+
+                            <!-- Border (TextBox) -->
+                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
+                                    BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
+                                <TextBox x:Name="AntiFoamDoseTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                 GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                            </Border>
                         </Grid>
-                        <Grid Margin="0,10">
+
+
+                        <Grid VerticalAlignment="Center" Margin="0,10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="WAIT TIME" VerticalAlignment="Center"/>
-                            <TextBox x:Name="AntiFoamWaitTime" Grid.Column="1" Height="30" Tag="0,3600" 
-                                     PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged"
-                                     Text="{Binding DataContext.AntiFoamWaitTime, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                            <TextBlock Text="WAIT TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,31,0"/>
+                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
+                                BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
+                                <TextBox x:Name="AntiFoamWaitTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"  Grid.Column="1" />
+                            </Border>
                         </Grid>
-                        <Grid Margin="0,10">
+
+
+                        <Grid VerticalAlignment="Center" Margin="0,10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="ALARM TIME" VerticalAlignment="Center"/>
-                            <TextBox x:Name="AntiFoamAlarmTime" Grid.Column="1" Height="30" Tag="0,3600" 
-                                     PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged"
-                                     Text="{Binding DataContext.AntiFoamAlarmTime, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                            <TextBlock Text="ALARM TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,20,0"/>
+                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
+                                BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
+                                <TextBox x:Name="AntiFoamAlarmTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"  Grid.Column="1" />
+                            </Border>
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
@@ -113,57 +146,52 @@
                 <!-- Level için Template -->
                 <DataTemplate x:Key="LevelTemplate">
                     <StackPanel x:Name="LevelPanel" Margin="20">
-                        <Grid Margin="0,10">
+                        <Grid VerticalAlignment="Center" Margin="0,10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="DOSE TIME" VerticalAlignment="Center"/>
-                            <TextBox x:Name="LevelDoseTime" 
-                     Grid.Column="1" 
-                     Height="30" 
-                     Tag="0,3600" 
-                     PreviewTextInput="TextBox_PreviewTextInput" 
-                     TextChanged="TextBox_TextChanged"
-                     Text="{Binding DataContext.LevelDoseTime, RelativeSource={RelativeSource AncestorType=Window}}"
-                     />
+                            <TextBlock Text="DOSE TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,29,0"/>
+                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
+                                BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
+                                <TextBox x:Name="LevelDoseTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"  Grid.Column="1" />
+                            </Border>
                         </Grid>
-                        <Grid Margin="0,10">
+                        <Grid VerticalAlignment="Center" Margin="0,10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="WAIT TIME" VerticalAlignment="Center"/>
-                            <TextBox x:Name="LevelWaitTime" 
-                     Grid.Column="1" 
-                     Height="30" 
-                     Tag="0,3600" 
-                     PreviewTextInput="TextBox_PreviewTextInput" 
-                     TextChanged="TextBox_TextChanged"
-                     Text="{Binding DataContext.LevelWaitTime, RelativeSource={RelativeSource AncestorType=Window}}"
-                     />
+                            <TextBlock Text="WAIT TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,31,0"/>
+                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
+                                BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
+                                <TextBox x:Name="LevelWaitTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Grid.Column="1" />
+                            </Border>
                         </Grid>
-                        <Grid Margin="0,10">
+                        <Grid VerticalAlignment="Center" Margin="0,10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="ALARM TIME" VerticalAlignment="Center"/>
-                            <TextBox x:Name="LevelAlarmTime" 
-                     Grid.Column="1" 
-                     Height="30" 
-                     Tag="0,3600" 
-                     PreviewTextInput="TextBox_PreviewTextInput" 
-                     TextChanged="TextBox_TextChanged"
-                     Text="{Binding DataContext.LevelAlarmTime, RelativeSource={RelativeSource AncestorType=Window}}"
-                     />
+                            <TextBlock Text="ALARM TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,20,0"/>
+                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
+                                BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
+                                <TextBox x:Name="LevelAlarmTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Grid.Column="1" />
+                            </Border>
+
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
 
             </ContentControl.Resources>
         </ContentControl>
-        
+
         <Grid Height="108" VerticalAlignment="Bottom">
             <Border Background="#AF0101" Margin="0,0,0,0" Height="1" VerticalAlignment="Top"/>
             <Button Width="200" Height="50" Margin="0,0,80,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Ok_Button_Click">
@@ -199,5 +227,8 @@
 
         </Grid>
 
+        <Popup x:Name="KeypadPopup" Placement="Center" IsOpen="False">
+            <kepad:KeyPad x:Name="KeypadControl"/>
+        </Popup>
     </Grid>
 </Window>

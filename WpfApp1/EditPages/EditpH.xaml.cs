@@ -289,7 +289,7 @@ namespace WpfApp1.EditPages
                     case "Acid":
                         SaveAcidValues();
                         break;
-                    case "BaseAcid":
+                    case "Base->Acid":
                         SaveBaseAcidValues();
                         break;
                 }

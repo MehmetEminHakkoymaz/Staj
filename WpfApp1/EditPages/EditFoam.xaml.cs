@@ -13,18 +13,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using WpfApp1;
+
 
 namespace WpfApp1.EditPages
 {
-    /// <summary>
-    /// Interaction logic for EditFoam.xaml
-    /// </summary>
+
+
     public partial class EditFoam : Window
     {
+        private TextBox activeTextBox = null;  // Sınıfın en üstüne ekleyin
+
         public EditFoam()
         {
             InitializeComponent();
             this.Loaded += EditFoam_Loaded;
+            KeypadControl.ValueSelected += KeyPadControl_ValueSelected;  // Bu satırı ekleyin
 
             this.WindowState = WindowState.Maximized;
             this.WindowStyle = WindowStyle.None;
@@ -68,15 +72,12 @@ namespace WpfApp1.EditPages
                     ParametersContent.ContentTemplate = (DataTemplate)ParametersContent.Resources["AntiFoamTemplate"];
                 }
 
-                // İçeriği oluştur
                 var content = ParametersContent.ContentTemplate.LoadContent() as FrameworkElement;
                 if (content != null)
                 {
-                    // İçeriği temizle ve yeni içeriği ata
-                    ParametersContent.Content = null;
-                    ParametersContent.Content = content;
+                    ParametersContent.Content = content;  // ContentTemplate'i ayarla
 
-                    // Visual tree oluştuktan sonra kontrolleri bul
+                    // Visual tree oluştuktan sonra kontrolleri bul ve event'leri bağla
                     Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
                     {
                         var doseTime = FindChild<TextBox>(ParametersContent, "AntiFoamDoseTime");
@@ -85,17 +86,17 @@ namespace WpfApp1.EditPages
 
                         if (doseTime != null)
                         {
-                            doseTime.Clear(); // Önce temizle
+                            doseTime.GotFocus += TextBox_GotFocus;
                             doseTime.Text = Properties.Settings.Default.AntiFoamDoseTime.ToString();
                         }
                         if (waitTime != null)
                         {
-                            waitTime.Clear(); // Önce temizle
+                            waitTime.GotFocus += TextBox_GotFocus;
                             waitTime.Text = Properties.Settings.Default.AntiFoamWaitTime.ToString();
                         }
                         if (alarmTime != null)
                         {
-                            alarmTime.Clear(); // Önce temizle
+                            alarmTime.GotFocus += TextBox_GotFocus;
                             alarmTime.Text = Properties.Settings.Default.AntiFoamAlarmTime.ToString();
                         }
                     }));
@@ -116,15 +117,12 @@ namespace WpfApp1.EditPages
                     ParametersContent.ContentTemplate = (DataTemplate)ParametersContent.Resources["LevelTemplate"];
                 }
 
-                // İçeriği oluştur
                 var content = ParametersContent.ContentTemplate.LoadContent() as FrameworkElement;
                 if (content != null)
                 {
-                    // İçeriği temizle ve yeni içeriği ata
                     ParametersContent.Content = null;
                     ParametersContent.Content = content;
 
-                    // Visual tree oluştuktan sonra kontrolleri bul
                     Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
                     {
                         var doseTime = FindChild<TextBox>(ParametersContent, "LevelDoseTime");
@@ -133,18 +131,21 @@ namespace WpfApp1.EditPages
 
                         if (doseTime != null)
                         {
-                            doseTime.Clear(); // Önce temizle
+                            doseTime.Clear();
                             doseTime.Text = Properties.Settings.Default.LevelDoseTime.ToString();
+                            doseTime.GotFocus += TextBox_GotFocus;  // Event handler'ı ekle
                         }
                         if (waitTime != null)
                         {
-                            waitTime.Clear(); // Önce temizle
+                            waitTime.Clear();
                             waitTime.Text = Properties.Settings.Default.LevelWaitTime.ToString();
+                            waitTime.GotFocus += TextBox_GotFocus;  // Event handler'ı ekle
                         }
                         if (alarmTime != null)
                         {
-                            alarmTime.Clear(); // Önce temizle
+                            alarmTime.Clear();
                             alarmTime.Text = Properties.Settings.Default.LevelAlarmTime.ToString();
+                            alarmTime.GotFocus += TextBox_GotFocus;  // Event handler'ı ekle
                         }
                     }));
                 }
@@ -402,5 +403,40 @@ namespace WpfApp1.EditPages
                 MessageBox.Show($"Error in TextBox_TextChanged: {ex.Message}");
             }
         }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox focusedTextBox = sender as TextBox;
+            if (focusedTextBox != null)
+            {
+                // TextBox'ın ebeveyninin ebeveynini bul (Grid varsayıyoruz)
+                DependencyObject parent = VisualTreeHelper.GetParent(focusedTextBox);
+                DependencyObject grandParent = parent != null ? VisualTreeHelper.GetParent(parent) : null;
+                Grid parentGrid = grandParent as Grid;
+                activeTextBox = focusedTextBox; // Aktif TextBox'ı ayarla
+
+                if (parentGrid != null)
+                {
+                    // Grid içindeki TextBlock'u bul
+                    TextBlock textBlock = parentGrid.Children.OfType<TextBlock>().FirstOrDefault();
+                    if (textBlock != null)
+                    {
+                        // KeyPad'i aç ve label'ı ayarla
+                        KeypadPopup.IsOpen = true;
+                        KeypadControl.SetLabelContent(textBlock.Text);
+                    }
+                }
+            }
+        }
+
+        private void KeyPadControl_ValueSelected(object sender, string value)
+        {
+            if (activeTextBox != null)
+            {
+                activeTextBox.Text = value;
+                KeypadPopup.IsOpen = false;  // Değer girildikten sonra popup'ı kapat
+            }
+        }
+
     }
 }
