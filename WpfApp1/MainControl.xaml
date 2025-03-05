@@ -79,6 +79,27 @@
                     <TextBox x:Name="pHTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,1000"/>
                 </Border>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,50,0" Grid.Column="1">
+                    <TextBlock x:Name="TemperatureIndicator" Text="25" FontSize="16" VerticalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsHighTemperature}" Value="True">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsWarningTemperature}" Value="True">
+                                        <Setter Property="Foreground" Value="#F6BE00"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsNormalTemperature}" Value="True">
+                                        <Setter Property="Foreground" Value="Green"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <TextBlock Text="°C" FontSize="16" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                </StackPanel>
+
                 <Button x:Name="conditionalButtonpH" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                         Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                     <Button.Template>
@@ -90,6 +111,7 @@
                     </Button.Template>
                     <TextBlock/>
                 </Button>
+
             </Grid>
         </Border>
         <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,185,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
@@ -100,6 +122,26 @@
                     <TextBox x:Name="pO2Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,1000"/>
                 </Border>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,50,0">
+                    <TextBlock x:Name="pO2TemperatureIndicator" Text="25" FontSize="16" VerticalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IspO2HighTemperature}" Value="True">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IspO2WarningTemperature}" Value="True">
+                                        <Setter Property="Foreground" Value="#F6BE00"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IspO2NormalTemperature}" Value="True">
+                                        <Setter Property="Foreground" Value="Green"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <TextBlock Text="°C" FontSize="16" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                </StackPanel>
                 <Button x:Name="conditionalButtonpO2" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                         Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                     <Button.Template>
@@ -234,6 +276,26 @@
                              Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0" FontSize="20" 
                              Opacity="0.7" Tag="0,1000"/>
                 </Border>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,50,0">
+                    <TextBlock x:Name="RedoxTemperatureIndicator" Text="25" FontSize="16" VerticalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsRedoxHighTemperature}" Value="True">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsRedoxWarningTemperature}" Value="True">
+                                        <Setter Property="Foreground" Value="#F6BE00"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsRedoxNormalTemperature}" Value="True">
+                                        <Setter Property="Foreground" Value="Green"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <TextBlock Text="°C" FontSize="16" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                </StackPanel>
                 <Button x:Name="conditionalButtonRedox" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                         Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
                     <Button.Template>

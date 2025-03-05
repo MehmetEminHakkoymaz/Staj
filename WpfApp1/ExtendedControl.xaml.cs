@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ using System.Windows.Threading;
 
 namespace WpfApp1
 {
-    public partial class ExtendedControl : UserControl
+    public partial class ExtendedControl : UserControl, INotifyPropertyChanged
     {
         private MainWindow mainWindow;
 
@@ -36,7 +37,103 @@ namespace WpfApp1
             KeypadControl.ValueSelected += KePadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
             comparisonTimer.Tick += ComparisonTimer_Tick; // Zamanlayıcı olayı
+            DataContext = this;
+            InitializeTemperatureMonitoring();
         }
+
+        private double turbidityCurrentTemperature;
+        private double maxTemperature = 37.0;
+        private double warningOffset = 10.0;
+        private DispatcherTimer temperatureTimer;
+
+        // INotifyPropertyChanged implementasyonu
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        // Turbidity için property'ler
+        private bool isTurbidityHighTemperature;
+        public bool IsTurbidityHighTemperature
+        {
+            get => isTurbidityHighTemperature;
+            set
+            {
+                isTurbidityHighTemperature = value;
+                OnPropertyChanged(nameof(IsTurbidityHighTemperature));
+            }
+        }
+
+        private bool isTurbidityWarningTemperature;
+        public bool IsTurbidityWarningTemperature
+        {
+            get => isTurbidityWarningTemperature;
+            set
+            {
+                isTurbidityWarningTemperature = value;
+                OnPropertyChanged(nameof(IsTurbidityWarningTemperature));
+            }
+        }
+
+        private bool isTurbidityNormalTemperature;
+        public bool IsTurbidityNormalTemperature
+        {
+            get => isTurbidityNormalTemperature;
+            set
+            {
+                isTurbidityNormalTemperature = value;
+                OnPropertyChanged(nameof(IsTurbidityNormalTemperature));
+            }
+        }
+
+        private void InitializeTemperatureMonitoring()
+        {
+            temperatureTimer = new DispatcherTimer();
+            temperatureTimer.Interval = TimeSpan.FromSeconds(1);
+            temperatureTimer.Tick += TemperatureTimer_Tick;
+            temperatureTimer.Start();
+        }
+
+        private void TemperatureTimer_Tick(object sender, EventArgs e)
+        {
+            // Turbidity için sıcaklık değerini al ve güncelle
+            turbidityCurrentTemperature = GetTemperatureFromSensor();
+            TurbidityTemperatureIndicator.Text = turbidityCurrentTemperature.ToString("F1");
+            UpdateTurbidityTemperatureStatus();
+        }
+
+        private double GetTemperatureFromSensor()
+        {
+            // Gerçek sensör kodunuz buraya gelecek
+            // Şimdilik test için rastgele değer üretiyoruz
+            Random rand = new Random();
+            return 20 + rand.NextDouble() * 30; // 20-50 derece arası
+        }
+
+        private void UpdateTurbidityTemperatureStatus()
+        {
+            if (turbidityCurrentTemperature >= maxTemperature)
+            {
+                IsTurbidityHighTemperature = true;
+                IsTurbidityWarningTemperature = false;
+                IsTurbidityNormalTemperature = false;
+            }
+            else if (turbidityCurrentTemperature >= (maxTemperature - warningOffset))
+            {
+                IsTurbidityHighTemperature = false;
+                IsTurbidityWarningTemperature = true;
+                IsTurbidityNormalTemperature = false;
+            }
+            else
+            {
+                IsTurbidityHighTemperature = false;
+                IsTurbidityWarningTemperature = false;
+                IsTurbidityNormalTemperature = true;
+            }
+        }
+
+
 
         private TextBox activeTextBox = null;
 

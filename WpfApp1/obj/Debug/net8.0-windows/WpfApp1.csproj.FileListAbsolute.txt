@@ -555,10 +555,6 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\AdminPanel
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\ArdunioCommunication\ArdunioCommunication.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditFoam.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpH.g.cs
-C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\Acid.g.cs
-C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\Base.g.cs
-C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\BaseAcid.g.cs
-C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\None.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpO2.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditPump1.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditPump2.g.cs
@@ -594,10 +590,6 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\AdminPanel
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\ArdunioCommunication\ArdunioCommunication.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditFoam.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpH.baml
-C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\Acid.baml
-C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\Base.baml
-C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\BaseAcid.baml
-C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpHCascade\None.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditpO2.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditPump1.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditPump2.baml
