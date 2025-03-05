@@ -20,7 +20,7 @@
 
             <Border Background="#DAE2E7" Grid.Row="0" Width="1024" Height="30" BorderThickness="0,0,0,1" BorderBrush="Black">
                 <Grid>
-                    <Button Width="28" Height="28" HorizontalAlignment="Left" Margin="0,2,0,0" Background="Transparent" BorderThickness="0" Click="Settings_Button_Click">
+                    <Button Width="28" HorizontalAlignment="Left" Margin="0,2,0,-1" Background="Transparent" BorderThickness="0" Click="Settings_Button_Click">
                         <Image Source="pack://application:,,,/images/options.png"/>
                     </Button>
                     <Label Content="MECHOSPHERE" Padding="5,0,5,0" FontSize="20" FontFamily="Inter" FontWeight="Regular" HorizontalAlignment="Left" Margin="41,0,0,0" Width="152" Height="24"  VerticalAlignment="Center"/>

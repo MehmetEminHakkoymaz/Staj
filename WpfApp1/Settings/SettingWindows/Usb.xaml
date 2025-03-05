@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="462" d:DesignWidth="724">
     <Grid Background="#FFE7ECEF">
-        <Button Content="EXPORT DATA TO USB" Height="50" Width="500" Click="Export_Data_Button_Click" Background="#FFE7ECEF"
+        <Button x:Name="ExportDataToUsb" Content="EXPORT DATA TO USB" Height="50" Width="500" Click="Export_Data_Button_Click" Background="#FFE7ECEF"
         Foreground="#FF272932" BorderBrush="#FFD6D6D6" FontSize="25" Margin="112,98,112,314"
         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Button Content="LOAD CONFIGURATION FROM USB" Height="50" Width="500" Click="Load_Config_Button_Click" Background="#FFE7ECEF"

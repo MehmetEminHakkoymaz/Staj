@@ -87,6 +87,9 @@
     <Compile Update="Settings\SettingWindows\Usb.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Settings\SettingWindows\UsbWindows\ExportDataToUsb.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Settings\SettingWindows\VesselType.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

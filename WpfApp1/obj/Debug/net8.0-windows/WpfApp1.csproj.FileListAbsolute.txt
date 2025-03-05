@@ -422,6 +422,9 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.pd
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Dapper.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\EntityFramework.SqlServer.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\EntityFramework.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\EPPlus.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\EPPlus.Interfaces.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\EPPlus.System.Drawing.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Humanizer.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\ManagedWifi.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
@@ -437,14 +440,21 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Sqlite.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyModel.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\Mono.TextTemplating.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\SQLitePCLRaw.batteries_v2.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\SQLitePCLRaw.core.dll
@@ -457,9 +467,11 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\System.Com
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\System.Composition.TypedParts.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\System.Data.SQLite.EF6.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\System.Drawing.Common.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\System.IO.Ports.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\System.Management.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\System.Security.Cryptography.Pkcs.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\es\Microsoft.CodeAnalysis.resources.dll
@@ -549,6 +561,7 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\w
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.IO.Ports.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.IO.Ports.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.AssemblyReference.cache
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\00000000000.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\AdminPanel.g.cs
@@ -578,6 +591,7 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\S
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\ServiceMenu.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\SystemInfo.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\Usb.g.cs
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\UsbWindows\ExportDataToUsb.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\VesselType.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\TableNameDialog.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\App.g.cs
@@ -613,6 +627,7 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\S
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\ServiceMenu.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\SystemInfo.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\Usb.baml
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\UsbWindows\ExportDataToUsb.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\VesselType.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\TableNameDialog.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.g.resources

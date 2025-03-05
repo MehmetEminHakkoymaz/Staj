@@ -32,7 +32,8 @@ namespace WpfApp1.Settings.SettingWindows
 
         private void Export_Data_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            var exportDataToUsb = new WpfApp1.Settings.SettingWindows.UsbWindows.ExportDataToUsb();
+            exportDataToUsb.Show();
         }
 
         private void Load_Config_Button_Click(object sender, RoutedEventArgs e)
