@@ -17,6 +17,7 @@ using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 using WpfApp1.Models;
 using WpfApp1.Data;
+using WpfApp1.Settings;
 
 
 
@@ -413,6 +414,10 @@ namespace WpfApp1
             // Debug için tablo yapısını kontrol et
             DatabaseHelper.DebugTableStructure(currentTableName);
 
+            // Sample sayacını sıfırla
+            sampleCount = 1;
+            SampleButtonText.Text = "1.Sample";
+
             // Log timer'ı başlat
             logTimer = new DispatcherTimer();
             logTimer.Interval = TimeSpan.FromMinutes(1);
@@ -429,6 +434,14 @@ namespace WpfApp1
             StartButton.Opacity = 0.5;
             StartButton.IsEnabled = false;
 
+            // Extended ve ExitGas sayfaları için ellipse pozisyonlarını sıfırla
+            ResetExtendedControlEllipses();
+            ResetExitGasControlEllipses();
+
+            // Pumps sayfası için sadece ilk 4 butonun görünürlüğünü ayarla
+            InitializePumpsButtons();
+
+            // Main sayfası kontrolleri
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse1, mainControl.conditionalButton);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse2, mainControl.conditionalButtonStirrer);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse3, mainControl.conditionalButtonpH);
@@ -439,21 +452,37 @@ namespace WpfApp1
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse8, mainControl.conditionalButtonGas4);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse9, mainControl.conditionalButtonFoam);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse19, mainControl.conditionalButtonRedox);
-            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse10, extendedControl.conditionalButtonTurbidity);
-            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse11, extendedControl.conditionalButtonBalance);
-            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse12, extendedControl.conditionalButtonAirFlow);
-            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse13, extendedControl.conditionalButtonGas2Flow);
-            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse16, extendedControl.conditionalButtonGas3Flow);
-            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse17, extendedControl.conditionalButtonGas4Flow);
-            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse18, extendedControl.conditionalButtonGas5Flow);
-            exitGasControl.CheckEllipsePositionAndSetButtonVisibility(exitGasControl.ellipse14, exitGasControl.conditionalButtonTurbidity);
-            exitGasControl.CheckEllipsePositionAndSetButtonVisibility(exitGasControl.ellipse15, exitGasControl.conditionalButtonBalance);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse20, pumpsControl.conditionalButtonPump1);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse21, pumpsControl.conditionalButtonPump2);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse22, pumpsControl.conditionalButtonPump3);
-            pumpsControl.CheckEllipsePositionAndSetButtonVisibility(pumpsControl.ellipse23, pumpsControl.conditionalButtonPump4);
+        }
 
+        // Extended sayfası için ellipse'leri sıfırlama metodu
+        private void ResetExtendedControlEllipses()
+        {
+            extendedControl.conditionalButtonAirFlow?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            extendedControl.conditionalButtonBalance?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            extendedControl.conditionalButtonGas2Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            extendedControl.conditionalButtonGas3Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            extendedControl.conditionalButtonGas4Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            extendedControl.conditionalButtonGas5Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            extendedControl.conditionalButtonTurbidity?.SetValue(VisibilityProperty, Visibility.Collapsed);
+        }
 
+        // ExitGas sayfası için ellipse'leri sıfırlama metodu
+        private void ResetExitGasControlEllipses()
+        {
+            exitGasControl.conditionalButtonBalance?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            exitGasControl.conditionalButtonTurbidity?.SetValue(VisibilityProperty, Visibility.Collapsed);
+        }
+
+        // Pumps sayfası için ilk 4 butonun görünürlüğünü ayarlama metodu
+        private void InitializePumpsButtons()
+        {
+            // İlk 4 conditional button'u görünür yap
+            pumpsControl.conditionalButtonPump1?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            pumpsControl.conditionalButtonPump2?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            pumpsControl.conditionalButtonPump3?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            pumpsControl.conditionalButtonPump4?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            pumpsControl.conditionalButtonPump5?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            pumpsControl.conditionalButtonPump6?.SetValue(VisibilityProperty, Visibility.Collapsed);
         }
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
@@ -485,6 +514,7 @@ namespace WpfApp1
 
             StartButton.Visibility = Visibility.Collapsed;
             StopButton.Visibility = Visibility.Visible;
+            SampleButton.Visibility = Visibility.Visible;
         }
 
 
@@ -498,14 +528,82 @@ namespace WpfApp1
 
         private void SampleButton_Click(object sender, RoutedEventArgs e)
         {
-            sampleCount++;
-            var textBlock = ((Button)sender).Content as TextBlock;
-            if (textBlock != null)
+            try
             {
-                textBlock.Text = $"{sampleCount}.Sample";
+                var values = new Dictionary<string, string>();
+
+                // Sample değerini butonun mevcut text'i ile doldur
+                values["Sample"] = SampleButtonText.Text;
+
+                // Diğer değerleri ekle
+                values["Username"] = _currentUser?.Username;
+                values["DateTime"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                values["ElapsedTime"] = clockTextBlock?.Text;
+                values["VesselType"] = Properties.Settings.Default.SelectedVesselType;
+                values["TemperatureValue"] = mainControl?.TemperatureValue?.Content?.ToString();
+                values["TemperatureTarget"] = mainControl?.TemperatureTarget?.Text;
+                values["StirrerValue"] = mainControl?.StirrerValue?.Content?.ToString();
+                values["StirrerTarget"] = mainControl?.StirrerTarget?.Text;
+                values["pHValue"] = mainControl?.pHValue?.Content?.ToString();
+                values["pHTarget"] = mainControl?.pHTarget?.Text;
+                values["pO2Value"] = mainControl?.pO2Value?.Content?.ToString();
+                values["pO2Target"] = mainControl?.pO2Target?.Text;
+                values["Gas1Value"] = mainControl?.Gas1Value?.Content?.ToString();
+                values["Gas1Target"] = mainControl?.Gas1Target?.Text;
+                values["Gas2Value"] = mainControl?.Gas2Value?.Content?.ToString();
+                values["Gas2Target"] = mainControl?.Gas2Target?.Text;
+                values["Gas3Value"] = mainControl?.Gas3Value?.Content?.ToString();
+                values["Gas3Target"] = mainControl?.Gas3Target?.Text;
+                values["Gas4Value"] = mainControl?.Gas4Value?.Content?.ToString();
+                values["Gas4Target"] = mainControl?.Gas4Target?.Text;
+                values["FoamValue"] = mainControl?.FoamValue?.Content?.ToString();
+                values["FoamTarget"] = mainControl?.FoamTarget?.Text;
+                values["RedoxValue"] = mainControl?.RedoxValue?.Content?.ToString();
+                values["RedoxTarget"] = mainControl?.RedoxTarget?.Text;
+                values["TurbidityValue"] = extendedControl?.TurbidityValue?.Content?.ToString();
+                values["TurbidityTarget"] = extendedControl?.TurbidityTarget?.Text;
+                values["BalanceValue"] = extendedControl?.BalanceValue?.Content?.ToString();
+                values["BalanceTarget"] = extendedControl?.BalanceTarget?.Text;
+                values["AirFlowValue"] = extendedControl?.AirFlowValue?.Content?.ToString();
+                values["AirFlowTarget"] = extendedControl?.AirFlowTarget?.Text;
+                values["Gas2FlowValue"] = extendedControl?.Gas2FlowValue?.Content?.ToString();
+                values["Gas2FlowTarget"] = extendedControl?.Gas2FlowTarget?.Text;
+                values["Gas3FlowValue"] = extendedControl?.Gas3FlowValue?.Content?.ToString();
+                values["Gas3FlowTarget"] = extendedControl?.Gas3FlowTarget?.Text;
+                values["Gas4FlowValue"] = extendedControl?.Gas4FlowValue?.Content?.ToString();
+                values["Gas4FlowTarget"] = extendedControl?.Gas4FlowTarget?.Text;
+                values["Gas5FlowValue"] = extendedControl?.Gas5FlowValue?.Content?.ToString();
+                values["Gas5FlowTarget"] = extendedControl?.Gas5FlowTarget?.Text;
+                values["ExitTurbidityValue"] = exitGasControl?.ExitTurbidityValue?.Content?.ToString();
+                values["ExitTurbidityTarget"] = exitGasControl?.ExitTurbidityTarget?.Text;
+                values["ExitBalanceValue"] = exitGasControl?.ExitBalanceValue?.Content?.ToString();
+                values["ExitBalanceTarget"] = exitGasControl?.ExitBalanceTarget?.Text;
+                values["Pump1Value"] = pumpsControl?.Pump1Value?.Content?.ToString();
+                values["Pump1Target"] = pumpsControl?.Pump1Target?.Text;
+                values["Pump2Value"] = pumpsControl?.Pump2Value?.Content?.ToString();
+                values["Pump2Target"] = pumpsControl?.Pump2Target?.Text;
+                values["Pump3Value"] = pumpsControl?.Pump3Value?.Content?.ToString();
+                values["Pump3Target"] = pumpsControl?.Pump3Target?.Text;
+                values["Pump4Value"] = pumpsControl?.Pump4Value?.Content?.ToString();
+                values["Pump4Target"] = pumpsControl?.Pump4Target?.Text;
+                values["Pump5Value"] = pumpsControl?.Pump5Value?.Content?.ToString();
+                values["Pump5Target"] = pumpsControl?.Pump5Target?.Text;
+                values["Pump6Value"] = pumpsControl?.Pump6Value?.Content?.ToString();
+                values["Pump6Target"] = pumpsControl?.Pump6Target?.Text;
+                // Verileri kaydet
+                DatabaseHelper.LogData(currentTableName, values);
+
+                // Sample sayısını artır
+                sampleCount++;
+
+                // Butonun text'ini güncelle
+                SampleButtonText.Text = $"{sampleCount}.Sample";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving sample: {ex.Message}");
             }
         }
-
 
 
 
@@ -594,10 +692,10 @@ namespace WpfApp1
                 {
                     values[key] = value?.ToString() ?? ""; // Null ise boş string ata
                 }
-
+                // Sample sütununu boş bırak
+                values["Sample"] = "";  // Her log kaydında boş olacak
                 // Tüm alanları ekle (null olsa bile)
                 AddValue("Username", _currentUser?.Username);
-                AddValue("SampleButtonText", SampleButtonText?.Text);
                 AddValue("DateTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 AddValue("ElapsedTime", clockTextBlock?.Text);
                 AddValue("VesselType", Properties.Settings.Default.SelectedVesselType);
@@ -722,27 +820,61 @@ namespace WpfApp1
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
-            // Timer'ları durdur
-            timer?.Stop();
-
-            if (logTimer != null && logTimer.IsEnabled)
+            try
             {
-                // Son bir kayıt al
-                LogTimer_Tick(null, null);
-                logTimer.Stop();
+                // Timer'ları durdur
+                timer?.Stop();
+
+                if (logTimer != null && logTimer.IsEnabled)
+                {
+                    // Son bir kayıt al
+                    LogTimer_Tick(null, null);
+                    logTimer.Stop();
+                }
+
+                // Mevcut çalışma süresini TimeSpan'e çevir
+                if (TimeSpan.TryParse(clockTextBlock.Text, out TimeSpan currentTime))
+                {
+                    // Settings'den mevcut toplam süreyi al
+                    TimeSpan totalTime = Properties.Settings.Default.TotalWorkTime;
+
+                    // Yeni süreyi ekle
+                    totalTime = totalTime.Add(currentTime);
+
+                    // Settings'e kaydet
+                    Properties.Settings.Default.TotalWorkTime = totalTime;
+                    Properties.Settings.Default.Save();
+
+                    // SystemInfo sayfasındaki göstergeyi güncelle (eğer açıksa)
+                    //if (Application.Current.Windows.OfType<SettingsWindow>().FirstOrDefault() is SettingsWindow settingsWindow)
+                    //{
+                    //    if (settingsWindow.systemInfo?.TotalWorkHours != null)
+                    //    {
+                    //        settingsWindow.systemInfo.TotalWorkHours.Text =
+                    //            $"{totalTime.Days * 24 + totalTime.Hours}h {totalTime.Minutes}min {totalTime.Seconds}s";
+                    //    }
+                    //}
+                }
+
+                // Sayacı sıfırla
+                time = TimeSpan.Zero;
+                clockTextBlock.Text = "00:00:00";
+
+                // Sample sayacını sıfırla
+                sampleCount = 1;
+                SampleButtonText.Text = "1.Sample";
+
+                // Görünürlükleri güncelle
+                StopButton.Visibility = Visibility.Collapsed;
+                FirstStartButton.Visibility = Visibility.Visible;
+                SampleButton.Visibility = Visibility.Collapsed;
             }
-
-            // Mevcut çalışma süresini toplam süreye ekle
-            totalWorkTime += time;
-
-            // Settings'e kaydet
-            Properties.Settings.Default.TotalWorkTime = totalWorkTime;
-            Properties.Settings.Default.Save();
-
-            // Görünürlükleri güncelle
-            StopButton.Visibility = Visibility.Collapsed;
-            FirstStartButton.Visibility = Visibility.Visible;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving total work time: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
 
         private void Admin_Button_Click(object sender, RoutedEventArgs e)
         {

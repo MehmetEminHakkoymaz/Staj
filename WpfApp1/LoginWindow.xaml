@@ -53,12 +53,14 @@
 
         <!-- Login Alanı -->
         <Border Grid.Row="0" 
-                Background="White" 
+                Background="Transparent" 
                 CornerRadius="10" 
                 Margin="230,6,230,9"
                 Padding="0">
             <StackPanel VerticalAlignment="Center" Height="230" Margin="2,0,0,0">
                 <TextBlock Text="Username:" 
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
                          FontSize="18" 
                          FontWeight="SemiBold" 
                          Margin="0,0"/>
@@ -69,6 +71,8 @@
                         GotFocus="TextBox_GotFocus"/>
 
                 <TextBlock Text="Password:" 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
                          FontSize="18" 
                          FontWeight="SemiBold" 
                          Margin="0,0,0,0"/>
@@ -85,7 +89,7 @@
                         FontWeight="SemiBold"
                         Background="#272932" 
                         Foreground="White" 
-                        Margin="0,30,0,0">
+                        Margin="0,20,0,0">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>

@@ -46,7 +46,7 @@ namespace WpfApp1.Data
                     CREATE TABLE IF NOT EXISTS {tableName} (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Username TEXT NULL,
-                        SampleButtonText TEXT NULL,
+                        Sample TEXT NULL,  
                         DateTime TEXT NULL,
                         ElapsedTime TEXT NULL,
                         VesselType TEXT NULL,
@@ -114,7 +114,7 @@ namespace WpfApp1.Data
 
                     // Tüm kolon isimleri ile sabit bir sorgu oluştur
                     var sql = @$"INSERT INTO {tableName} (
-                        Username, SampleButtonText, DateTime, ElapsedTime, VesselType,
+                        Username, Sample, DateTime, ElapsedTime, VesselType,
                         TemperatureValue, TemperatureTarget, StirrerValue, StirrerTarget,
                         pHValue, pHTarget, pO2Value, pO2Target,
                         Gas1Value, Gas1Target, Gas2Value, Gas2Target,
@@ -130,7 +130,7 @@ namespace WpfApp1.Data
                         Pump3Value, Pump3Target, Pump4Value, Pump4Target,
                         Pump5Value, Pump5Target, Pump6Value, Pump6Target
                     ) VALUES (
-                        @Username, @SampleButtonText, @DateTime, @ElapsedTime, @VesselType,
+                        @Username, @Sample, @DateTime, @ElapsedTime, @VesselType,
                         @TemperatureValue, @TemperatureTarget, @StirrerValue, @StirrerTarget,
                         @pHValue, @pHTarget, @pO2Value, @pO2Target,
                         @Gas1Value, @Gas1Target, @Gas2Value, @Gas2Target,
@@ -151,7 +151,7 @@ namespace WpfApp1.Data
                     var parameters = new DynamicParameters();
                     var allColumns = new[]
                     {
-                        "Username", "SampleButtonText", "DateTime", "ElapsedTime", "VesselType",
+                        "Username", "Sample", "DateTime", "ElapsedTime", "VesselType",
                         "TemperatureValue", "TemperatureTarget", "StirrerValue", "StirrerTarget",
                         "pHValue", "pHTarget", "pO2Value", "pO2Target",
                         "Gas1Value", "Gas1Target", "Gas2Value", "Gas2Target",

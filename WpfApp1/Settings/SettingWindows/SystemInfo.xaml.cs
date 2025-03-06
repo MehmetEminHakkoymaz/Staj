@@ -14,44 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-//namespace WpfApp1.Settings.SettingWindows
-//{
-//    /// <summary>
-//    /// Interaction logic for SystemInfo.xaml
-//    /// </summary>
-//    public partial class SystemInfo : UserControl
-//    {
-//        private DispatcherTimer updateTimer;
-
-//        public SystemInfo()
-//        {
-//            InitializeComponent();
-//            LoadTotalWorkTime();
-
-//            // Timer'ı başlat (her saniye güncelle)
-//            updateTimer = new DispatcherTimer();
-//            updateTimer.Interval = TimeSpan.FromSeconds(1);
-//            updateTimer.Tick += UpdateTimer_Tick;
-//            updateTimer.Start();
-//        }
-
-//        private void LoadTotalWorkTime()
-//        {
-//            UpdateTotalWorkHoursDisplay(Properties.Settings.Default.TotalWorkTime);
-//        }
-
-//        private void UpdateTimer_Tick(object sender, EventArgs e)
-//        {
-//            UpdateTotalWorkHoursDisplay(Properties.Settings.Default.TotalWorkTime);
-//        }
-
-//        private void UpdateTotalWorkHoursDisplay(TimeSpan totalTime)
-//        {
-//            TotalWorkHours.Text = $"{(int)totalTime.TotalHours}h {totalTime.Minutes}min {totalTime.Seconds}s";
-//        }
-//    }
-//}
-
 namespace WpfApp1.Settings.SettingWindows
 {
     public partial class SystemInfo : UserControl
@@ -125,5 +87,13 @@ namespace WpfApp1.Settings.SettingWindows
                 return 3000 + (nextMaintenanceCount * 4000);
             }
         }
+
+        public void UpdateTotalWorkTime()
+        {
+            var totalTime = Properties.Settings.Default.TotalWorkTime;
+            TotalWorkHours.Text = $"{totalTime.Days * 24 + totalTime.Hours}h {totalTime.Minutes}min {totalTime.Seconds}s";
+        }
+
+
     }
 }

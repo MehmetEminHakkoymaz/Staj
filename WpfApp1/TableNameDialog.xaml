@@ -5,22 +5,239 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Enter Project Name" Height="150" Width="300"
-        WindowStartupLocation="CenterScreen">
+        Title="Enter Project Name" Height="600" Width="1024"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="KeyboardButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3E4049"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#1A1B21"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
-    <Grid Margin="10">
+        <Style x:Key="KeyboarddButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3E4049"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#1A1B21"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <Style x:Key="KeyboardSpecialButtonStyle" 
+           BasedOn="{StaticResource KeyboardButtonStyle}" 
+           TargetType="Button">
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="#AF0101"/>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid Background="#E7ECEF">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <!-- Uyarı mesajı için yeni -->
+            <RowDefinition Height="Auto"/>
+            <!-- İsimlendirme kuralları için yeni -->
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Enter project name:" Margin="0,0,0,5"/>
-        <TextBox x:Name="TableNameTextBox" Grid.Row="1" Margin="0,0,0,10"/>
+        <TextBlock Text="ENTER PROJECT NAME" 
+                   FontSize="30" 
+                   FontWeight="Bold" 
+                   Margin="0,5,0,5"
+                   HorizontalAlignment="Center"/>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="OK" Width="60" Click="OkButton_Click" Margin="0,0,10,0"/>
-            <Button Content="Cancel" Width="60" Click="CancelButton_Click"/>
-        </StackPanel>
+        <Border Grid.Row="1" 
+                BorderBrush="Gray" 
+                BorderThickness="1" 
+                CornerRadius="10"
+                Width="400" 
+                Height="60" 
+                Margin="0,0,0,0">
+            <TextBox x:Name="TableNameTextBox" 
+                     FontSize="35"
+                     BorderThickness="0"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     Background="Transparent"/>
+        </Border>
+
+        <!-- Uyarı Mesajı -->
+        <TextBlock x:Name="WarningText"
+               Grid.Row="2"
+               Text="Invalid table name! Please try again."
+               Foreground="Red"
+               FontSize="18"
+               HorizontalAlignment="Center"
+               Margin="0,5,0,0"
+               Visibility="Collapsed"/>
+
+        <!-- İsimlendirme Kuralları -->
+        <Border Grid.Row="3" 
+            BorderBrush="#007BFF"
+            BorderThickness="1"
+            CornerRadius="5"
+            Margin="162,5,162,0"
+            Padding="5">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Table Naming Rules:"
+                       FontWeight="Bold"
+                       FontSize="16"
+                       Margin="0,0,0,2"/>
+                <TextBlock TextWrapping="Wrap"
+                       Opacity="0.8"
+                       LineHeight="20">
+                <Run Text="• Must start with a letter"/>
+                <LineBreak/>
+                <Run Text="• Can contain letters and numbers"/>
+                <LineBreak/>
+                <Run Text="• Length must be between 1-30 characters"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <!-- Mevcut klavye ve butonlar -->
+        <Grid Grid.Row="4" Width="700" Margin="0,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- İlk Satır (1-0) -->
+            <UniformGrid Grid.Row="0" Rows="1">
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="1" Click="KeyboardButton_Click" Margin="3" />
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="2" Click="KeyboardButton_Click" Margin="3" />
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="3" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="4" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="5" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="6" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="7" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="8" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="9" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="0" Click="KeyboardButton_Click" Margin="3"/>
+            </UniformGrid>
+
+            <!-- İkinci Satır (Q-P) -->
+            <UniformGrid Grid.Row="1" Rows="1">
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="Q" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="W" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="E" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="R" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="T" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="Y" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="U" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="I" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="O" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="P" Click="KeyboardButton_Click" Margin="3"/>
+            </UniformGrid>
+
+            <!-- Üçüncü Satır (A-L) -->
+            <UniformGrid Grid.Row="2" Rows="1">
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="A" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="S" Click="KeyboardButton_Click" Margin="3"/>
+                <Button  Style="{StaticResource KeyboardButtonStyle}" Content="D" Click="KeyboardButton_Click" Margin="3"/>
+                <Button  Style="{StaticResource KeyboardButtonStyle}" Content="F" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="G" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="H" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="J" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="K" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="L" Click="KeyboardButton_Click" Margin="3"/>
+            </UniformGrid>
+
+            <!-- Dördüncü Satır (Z-M ve Backspace) -->
+            <UniformGrid Grid.Row="3" Rows="1">
+                <Button Style="{StaticResource KeyboardButtonStyle}" Content="Z" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="X" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="C" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="V" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="B" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="N" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardButtonStyle}"  Content="M" Click="KeyboardButton_Click" Margin="3"/>
+                <Button Style="{StaticResource KeyboardSpecialButtonStyle}" Content="←" Click="BackspaceButton_Click" Margin="3"/>
+            </UniformGrid>
+        </Grid>
+
+
+        <!-- Alt Butonlar -->
+        <Grid Grid.Row="5" Height="90" VerticalAlignment="Bottom">
+            <Button Width="300" Height="70" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Click="OkButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border Background="#007BFF" CornerRadius="5">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#808080" 
+                                            Direction="270" 
+                                            ShadowDepth="3" 
+                                            BlurRadius="5"/>
+                                </Border.Effect>
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Text="Create Table" 
+                   FontSize="35" 
+                   Foreground="#FFFFFF" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+            </Button>
+        </Grid>
     </Grid>
 </Window>

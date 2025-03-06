@@ -55,7 +55,8 @@ namespace WpfApp1.Settings.SettingWindows.UsbWindows
                 {
                     connection.Open();
                     var tables = connection.Query<string>(
-                        "SELECT name FROM sqlite_master WHERE type='table' AND name != 'sqlite_sequence'");
+                        "SELECT name FROM sqlite_master WHERE type='table' AND name != 'sqlite_sequence' AND name != 'Users'")
+                        .ToList();
                     DatabaseTablesListBox.ItemsSource = tables;
                 }
             }
@@ -226,6 +227,81 @@ namespace WpfApp1.Settings.SettingWindows.UsbWindows
         {
             this.Close();
         }
+
+
+        private async void DeleteTableButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DatabaseTablesListBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a table to delete.");
+                return;
+            }
+
+            string tableName = DatabaseTablesListBox.SelectedItem.ToString();
+
+            // Users tablosunu silmeye çalışırsa engelle
+            if (tableName.ToLower() == "users")
+            {
+                MessageBox.Show("The Users table cannot be deleted as it is a system table.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Kullanıcıdan onay al
+            var result = MessageBox.Show(
+                $"Are you sure you want to delete the table '{tableName}'?\nThis action cannot be undone!",
+                "Confirm Delete",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    DeleteTableButton.IsEnabled = false;
+                    Mouse.OverrideCursor = Cursors.Wait;
+
+                    await Task.Run(() => DeleteTable(tableName));
+
+                    // Tabloların listesini yenile
+                    LoadDatabaseTables();
+
+                    MessageBox.Show($"Table '{tableName}' has been successfully deleted.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error deleting table: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    DeleteTableButton.IsEnabled = true;
+                    Mouse.OverrideCursor = null;
+                }
+            }
+        }
+
+        private void DeleteTable(string tableName)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        // Tabloyu sil
+                        connection.Execute($"DROP TABLE IF EXISTS [{tableName}]");
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
 
     }
 }
