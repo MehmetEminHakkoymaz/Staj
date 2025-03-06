@@ -563,6 +563,7 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\w
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.AssemblyReference.cache
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\SystemInfo.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\00000000000.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\AdminPanel.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\ArdunioCommunication\ArdunioCommunication.g.cs
@@ -625,7 +626,6 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\S
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\NetworkSetting.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\PinSetting.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\ServiceMenu.baml
-C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\SystemInfo.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\Usb.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\UsbWindows\ExportDataToUsb.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\Settings\SettingWindows\VesselType.baml

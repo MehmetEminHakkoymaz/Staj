@@ -3,22 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WpfApp1.Settings.SettingWindows"
              mc:Ignorable="d" 
              d:DesignHeight="462" d:DesignWidth="724">
+
     <Grid Background="#FFE7ECEF">
-        <StackPanel VerticalAlignment="Center">
-            <Grid Width="724" Height="60" x:Name="Version">
-                <Label Content="Version" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontWeight="Regular" Margin="40,0,0,0"/>
-                <TextBlock Text="V 0.1.0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="402,0,0,0"/>
+        <StackPanel VerticalAlignment="Center" Margin="20">
+            <!-- Version Bilgisi -->
+            <Grid Height="70" x:Name="Version">
+                <Label Content="Version" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Left" 
+                       FontSize="25" 
+                       FontWeight="Regular" 
+                       Margin="40,0,0,0"/>
+                <TextBlock Text="V 0.1.0" 
+                          VerticalAlignment="Center" 
+                          HorizontalAlignment="Left" 
+                          FontSize="20" 
+                          Margin="402,0,0,0"/>
             </Grid>
-            <Grid Width="724" Height="60" x:Name="OperationHours">
-                <Label Content="OPERATION HOURS" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontWeight="Regular" Margin="40,0,0,0"/>
-                <TextBlock x:Name="TotalWorkHours" Text="h min s" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="402,0,0,0"/>
+
+            <!-- Çalışma Saati -->
+            <Grid Height="70" x:Name="OperationHours">
+                <Label Content="OPERATION HOURS" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Left" 
+                       FontSize="25" 
+                       FontWeight="Regular" 
+                       Margin="40,0,0,0"/>
+                <TextBlock x:Name="TotalWorkHours" 
+                          Text="0d 0h 0m 0s" 
+                          VerticalAlignment="Center" 
+                          HorizontalAlignment="Left" 
+                          FontSize="20" 
+                          Margin="402,0,0,0"/>
             </Grid>
-            <Grid Width="724" Height="60" x:Name="ServiceTime">
-                <Label Content="Time until next maintenance:" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontWeight="Regular" Margin="40,0,0,0"/>
-                <TextBlock x:Name="ServiceTm" Text="h min s" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="402,0,0,0"/>
+
+            <!-- Bakım Zamanı -->
+            <Grid Height="70" x:Name="ServiceTime">
+                <Label Content="Time until next maintenance:" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Left" 
+                       FontSize="25" 
+                       FontWeight="Regular" 
+                       Margin="40,0,0,0"/>
+                <TextBlock x:Name="ServiceTm" 
+                          Text="0d 0h 0m 0s" 
+                          VerticalAlignment="Center" 
+                          HorizontalAlignment="Left" 
+                          FontSize="20" 
+                          Margin="402,0,0,0"/>
             </Grid>
         </StackPanel>
     </Grid>

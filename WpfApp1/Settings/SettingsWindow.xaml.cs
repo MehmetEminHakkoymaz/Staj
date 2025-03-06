@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using WpfApp1.Settings.SettingWindows;
+using WpfApp1;
+
 
 namespace WpfApp1.Settings
 {
@@ -21,92 +24,138 @@ namespace WpfApp1.Settings
     public partial class SettingsWindow : Window
     {
         private DispatcherTimer clockTimer;
+        private SystemInfo systemInfo;
+
+        // Singleton pattern için static instance
+        public static SettingsWindow Instance { get; private set; }
 
         public SettingsWindow()
         {
             InitializeComponent();
             InitializeClock();
+            Instance = this;
+
+            // Window özelliklerini ayarla
             this.WindowState = WindowState.Maximized;
             this.WindowStyle = WindowStyle.None;
             this.ResizeMode = ResizeMode.NoResize;
             this.Topmost = true;
+
+            // SystemInfo kontrolünü oluştur
+            systemInfo = new SystemInfo();
         }
 
         private void InitializeClock()
         {
-            clockTimer = new DispatcherTimer();
-            clockTimer.Interval = TimeSpan.FromSeconds(1);
+            clockTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
             clockTimer.Tick += ClockTimer_Tick;
             clockTimer.Start();
         }
 
         private void ClockTimer_Tick(object sender, EventArgs e)
         {
-            // Sistem saatini "HH:mm:ss" formatında güncelle
             ClockTextBlock.Text = DateTime.Now.ToString("HH : mm : ss");
         }
 
         private void Vessel_Type_Button_Click(object sender, RoutedEventArgs e)
         {
-            // VesselType UserControl'ünün bir örneğini oluştur
-            var vesselTypeControl = new WpfApp1.Settings.SettingWindows.VesselType();
-            // Sağ Grid'in içeriğini temizle
-            RightGrid.Children.Clear();
-
-            // VesselType UserControl'ünü Sağ Grid'e ekle
-            RightGrid.Children.Add(vesselTypeControl);
+            ClearAndAddControl(new VesselType());
         }
 
         private void Appearance_Button_Click(object sender, RoutedEventArgs e)
         {
-            var appearanceControl = new WpfApp1.Settings.SettingWindows.Appearance();
-            RightGrid.Children.Clear();
-            RightGrid.Children.Add(appearanceControl);
+            ClearAndAddControl(new Appearance());
         }
 
         private void Network_Setting_Button_Click(object sender, RoutedEventArgs e)
         {
-            var networkSettingControl = new WpfApp1.Settings.SettingWindows.NetworkSetting();
-            RightGrid.Children.Clear();
-            RightGrid.Children.Add(networkSettingControl);
+            ClearAndAddControl(new NetworkSetting());
         }
 
         private void Usb_Button_Click(object sender, RoutedEventArgs e)
         {
-            var usbControl = new WpfApp1.Settings.SettingWindows.Usb();
-            RightGrid.Children.Clear();
-            RightGrid.Children.Add(usbControl);
+            ClearAndAddControl(new Usb());
         }
 
         private void System_Info_Button_Click(object sender, RoutedEventArgs e)
         {
-            var systemInfoControl = new WpfApp1.Settings.SettingWindows.SystemInfo();
-            RightGrid.Children.Clear();
-            RightGrid.Children.Add(systemInfoControl);
-        }
-
-        private void Service_Menu_Button_Click(object sender, RoutedEventArgs e)
-        {
-            var serviceMenuControl = new WpfApp1.Settings.SettingWindows.ServiceMenu();
-            RightGrid.Children.Clear();
-            RightGrid.Children.Add(serviceMenuControl);
+            // SystemInfo kontrolünü kullan
+            ClearAndAddControl(systemInfo);
         }
 
         private void Pin_Setting_Button_Click(object sender, RoutedEventArgs e)
         {
-            var pinSettingControl = new WpfApp1.Settings.SettingWindows.PinSetting();
-            RightGrid.Children.Clear();
-            RightGrid.Children.Add(pinSettingControl);
+            try
+            {
+                // MainWindow'a erişim sağla
+                var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                if (mainWindow != null)
+                {
+                    // Yeni AdminPanel örneği oluştur ve göster
+                    var adminPanel = new AdminPanel(mainWindow);
+                    adminPanel.Show();
+
+                    // İsteğe bağlı: SettingsWindow'u kapat
+                    //this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("MainWindow not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error opening AdminPanel: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        // Yardımcı metod - kontrolleri temizle ve yeni kontrol ekle
+        private void ClearAndAddControl(UserControl control)
+        {
+            if (RightGrid != null)
+            {
+                RightGrid.Children.Clear();
+                RightGrid.Children.Add(control);
+            }
         }
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            CleanupAndClose();
         }
 
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
+            CleanupAndClose();
+        }
+
+        private void CleanupAndClose()
+        {
+            // Timer'ı durdur
+            clockTimer?.Stop();
+
+            // SystemInfo'yu temizle
+            if (systemInfo != null && RightGrid.Children.Contains(systemInfo))
+            {
+                RightGrid.Children.Remove(systemInfo);
+            }
+
             this.Close();
+        }
+
+        // SystemInfo'ya public erişim için property
+        public SystemInfo SystemInfoControl
+        {
+            get { return systemInfo; }
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            clockTimer?.Stop();
+            Instance = null;
         }
     }
 }

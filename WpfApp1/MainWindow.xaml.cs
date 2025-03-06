@@ -18,6 +18,7 @@ using System.Security.Cryptography.X509Certificates;
 using WpfApp1.Models;
 using WpfApp1.Data;
 using WpfApp1.Settings;
+using WpfApp1.Settings.SettingWindows;
 
 
 
@@ -36,6 +37,7 @@ namespace WpfApp1
         public PumpsControl pumpsControl; // PumpsControl'ü burada bir kez oluşturun
         public OpenAutoWindow openAutoWindow; // OpenAutoWindow'ü burada bir kez oluşturun
         public AdminPanel adminPanel;
+        public SystemInfo systemInfo;
 
         private User _currentUser;
 
@@ -290,8 +292,71 @@ namespace WpfApp1
             // Zamanı güncelle ve göster
             time = time.Add(TimeSpan.FromSeconds(1));
             clockTextBlock.Text = time.ToString(@"hh\:mm\:ss");
+
+            // Settings'den mevcut toplam süreyi al
+            TimeSpan totalTime = Properties.Settings.Default.TotalWorkTime;
+
+            // Geçerli çalışma süresini ekle
+            TimeSpan currentTotalTime = totalTime.Add(time);
+
+
+            // Eğer Settings penceresi açıksa SystemInfo'yu güncelle
+            var settingsWindow = SettingsWindow.Instance;
+            if (settingsWindow?.SystemInfoControl != null)
+            {
+                try
+                {
+                    settingsWindow.SystemInfoControl.UpdateDisplays(currentTotalTime);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error updating SystemInfo: {ex.Message}");
+                }
+            }
+
+            //// Eğer Settings penceresi açıksa SystemInfo'yu güncelle
+            //var settingsWindow = SettingsWindow.Instance;
+            //if (settingsWindow?.SystemInfoControl != null)
+            //{
+            //    try
+            //    {
+            //        // OPERATION HOURS güncelleme
+            //        int days = currentTotalTime.Days;
+            //        int hours = currentTotalTime.Hours;
+            //        int minutes = currentTotalTime.Minutes;
+            //        int seconds = currentTotalTime.Seconds;
+
+            //        settingsWindow.SystemInfoControl.TotalWorkHours.Text =
+            //            $"{days}d {hours}h {minutes}m {seconds}s";
+
+            //        // Bir sonraki bakıma kalan süreyi hesapla ve güncelle
+            //        int totalHours = (int)currentTotalTime.TotalHours;
+            //        int nextMaintenance = CalculateNextMaintenance(totalHours);
+            //        TimeSpan remainingTime = TimeSpan.FromHours(nextMaintenance - currentTotalTime.TotalHours);
+
+            //        settingsWindow.SystemInfoControl.ServiceTm.Text =
+            //            $"{remainingTime.Days}d {remainingTime.Hours}h {remainingTime.Minutes}m {remainingTime.Seconds}s";
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine($"Error updating SystemInfo: {ex.Message}");
+            //    }
+            //}
         }
 
+        private int CalculateNextMaintenance(int currentHours)
+        {
+            if (currentHours < 1000)
+                return 1000;
+            else if (currentHours < 3000)
+                return 3000;
+            else
+            {
+                int maintenanceCount = (int)((currentHours - 3000) / 4000);
+                int nextMaintenanceCount = maintenanceCount + 1;
+                return 3000 + (nextMaintenanceCount * 4000);
+            }
+        }
 
 
         private void Main_Button_Click(object sender, RoutedEventArgs e)
@@ -385,15 +450,22 @@ namespace WpfApp1
 
         private void Settings_Button_Click(object sender, RoutedEventArgs e)
         {
-            // Yeni pencere örneği oluştur (namespace'i dikkate alarak)
-            var settingsWindow = new WpfApp1.Settings.SettingsWindow();
+            if (_currentUser.Role == "admin")
+            {
+                // Yeni pencere örneği oluştur (namespace'i dikkate alarak)
+                var settingsWindow = new WpfApp1.Settings.SettingsWindow();
 
-            // Pencerenin boyutunu ayarla
-            settingsWindow.Width = 1024;
-            settingsWindow.Height = 600;
+                // Pencerenin boyutunu ayarla
+                settingsWindow.Width = 1024;
+                settingsWindow.Height = 600;
 
-            // Pencereyi göster
-            settingsWindow.Show();
+                // Pencereyi göster
+                settingsWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("You do not have permission to access this page.");
+            }
         }
 
         private void FirstStartButton_Click(object sender, RoutedEventArgs e)
@@ -608,73 +680,6 @@ namespace WpfApp1
 
 
         //DATABASE BAĞLANTISI GİRİŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞ
-        //private void LogTimer_Tick(object sender, EventArgs e)
-        //{
-        //    var values = new Dictionary<string, string>();
-
-        //    // Null olabilen değerleri güvenli bir şekilde ekle
-        //    void AddValue(string key, object value)
-        //    {
-        //        values[key] = value?.ToString();
-        //    }
-
-        //    AddValue("Username", _currentUser?.Username);
-        //    AddValue("SampleButtonText", label2?.Content);
-        //    AddValue("DateTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-        //    AddValue("ElapsedTime", clockTextBlock?.Text);
-        //    AddValue("VesselType", Properties.Settings.Default.SelectedVesselType);
-        //    AddValue("TemperatureValue", mainControl?.TemperatureValue?.Content);
-        //    AddValue("TemperatureTarget", mainControl?.TemperatureTarget?.Text);
-        //    AddValue("StirrerValue", mainControl?.StirrerValue?.Content);
-        //    AddValue("StirrerTarget", mainControl?.StirrerTarget?.Text);
-        //    AddValue("pHValue", mainControl?.pHValue?.Content);
-        //    AddValue("pHTarget", mainControl?.pHTarget?.Text);
-        //    AddValue("pO2Value", mainControl?.pO2Value?.Content);
-        //    AddValue("pO2Target", mainControl?.pO2Target?.Text);
-        //    AddValue("Gas1Value", mainControl?.Gas1Value?.Content);
-        //    AddValue("Gas1Target", mainControl?.Gas1Target?.Text);
-        //    AddValue("Gas2Value", mainControl?.Gas2Value?.Content);
-        //    AddValue("Gas2Target", mainControl?.Gas2Target?.Text);
-        //    AddValue("Gas3Value", mainControl?.Gas3Value?.Content);
-        //    AddValue("Gas3Target", mainControl?.Gas3Target?.Text);
-        //    AddValue("Gas4Value", mainControl?.Gas4Value?.Content);
-        //    AddValue("Gas4Target", mainControl?.Gas4Target?.Text);
-        //    AddValue("FoamValue", mainControl?.FoamValue?.Content);
-        //    AddValue("FoamTarget", mainControl?.FoamTarget?.Text);
-        //    AddValue("RedoxValue", mainControl?.RedoxValue?.Content);
-        //    AddValue("RedoxTarget", mainControl?.RedoxTarget?.Text);
-        //    AddValue("TurbidityValue", extendedControl?.TurbidityValue?.Content);
-        //    AddValue("TurbidityTarget", extendedControl?.TurbidityTarget?.Text);
-        //    AddValue("BalanceValue", extendedControl?.BalanceValue?.Content);
-        //    AddValue("BalanceTarget", extendedControl?.BalanceTarget?.Text);
-        //    AddValue("AirFlowValue", extendedControl?.AirFlowValue?.Content);
-        //    AddValue("AirFlowTarget", extendedControl?.AirFlowTarget?.Text);
-        //    AddValue("Gas2FlowValue", extendedControl?.Gas2FlowValue?.Content);
-        //    AddValue("Gas2FlowTarget", extendedControl?.Gas2FlowTarget?.Text);
-        //    AddValue("Gas3FlowValue", extendedControl?.Gas3FlowValue?.Content);
-        //    AddValue("Gas3FlowTarget", extendedControl?.Gas3FlowTarget?.Text);
-        //    AddValue("Gas4FlowValue", extendedControl?.Gas4FlowValue?.Content);
-        //    AddValue("Gas4FlowTarget", extendedControl?.Gas4FlowTarget?.Text);
-        //    AddValue("Gas5FlowValue", extendedControl?.Gas5FlowValue?.Content);
-        //    AddValue("Gas5FlowTarget", extendedControl?.Gas5FlowTarget?.Text);
-        //    AddValue("ExitTurbidityValue", exitGasControl?.ExitTurbidityValue?.Content);
-        //    AddValue("ExitTurbidityTarget", exitGasControl?.ExitTurbidityTarget?.Text);
-        //    AddValue("ExitBalanceValue", exitGasControl?.ExitBalanceValue?.Content);
-        //    AddValue("ExitBalanceTarget", exitGasControl?.ExitBalanceTarget?.Text);
-        //    AddValue("Pump1Value", pumpsControl?.Pump1Value?.Content);
-        //    AddValue("Pump1Target", pumpsControl?.Pump1Target?.Text);
-        //    AddValue("Pump2Value", pumpsControl?.Pump2Value?.Content);
-        //    AddValue("Pump2Target", pumpsControl?.Pump2Target?.Text);
-        //    AddValue("Pump3Value", pumpsControl?.Pump3Value?.Content);
-        //    AddValue("Pump3Target", pumpsControl?.Pump3Target?.Text);
-        //    AddValue("Pump4Value", pumpsControl?.Pump4Value?.Content);
-        //    AddValue("Pump4Target", pumpsControl?.Pump4Target?.Text);
-        //    AddValue("Pump5Value", pumpsControl?.Pump5Value?.Content);
-        //    AddValue("Pump5Target", pumpsControl?.Pump5Target?.Text);
-        //    AddValue("Pump6Value", pumpsControl?.Pump6Value?.Content);
-        //    AddValue("Pump6Target", pumpsControl?.Pump6Target?.Text);
-        //    DatabaseHelper.LogData(currentTableName, values);
-        //}
         private void LogTimer_Tick(object sender, EventArgs e)
         {
             try
@@ -845,15 +850,13 @@ namespace WpfApp1
                     Properties.Settings.Default.TotalWorkTime = totalTime;
                     Properties.Settings.Default.Save();
 
-                    // SystemInfo sayfasındaki göstergeyi güncelle (eğer açıksa)
-                    //if (Application.Current.Windows.OfType<SettingsWindow>().FirstOrDefault() is SettingsWindow settingsWindow)
-                    //{
-                    //    if (settingsWindow.systemInfo?.TotalWorkHours != null)
-                    //    {
-                    //        settingsWindow.systemInfo.TotalWorkHours.Text =
-                    //            $"{totalTime.Days * 24 + totalTime.Hours}h {totalTime.Minutes}min {totalTime.Seconds}s";
-                    //    }
-                    //}
+                    // SystemInfo'yu güncelle
+                    var settingsWindow = SettingsWindow.Instance;
+                    if (settingsWindow?.SystemInfoControl != null)
+                    {
+                        settingsWindow.SystemInfoControl.TotalWorkHours.Text =
+                            $"{totalTime.Days}d {totalTime.Hours}h {totalTime.Minutes}m {totalTime.Seconds}s";
+                    }
                 }
 
                 // Sayacı sıfırla
@@ -895,7 +898,8 @@ namespace WpfApp1
             // Örnek: Admin olmayan kullanıcılar için AdminPanel butonunu gizle
             if (_currentUser.Role != "admin")
             {
-                AdminPanelButton.Visibility = Visibility.Collapsed;
+                //AdminPanelButton.Visibility = Visibility.Collapsed;
+                SettingsButtonClk.Visibility = Visibility.Collapsed;
             }
         }
         public void UpdateCurrentUser(User user)
