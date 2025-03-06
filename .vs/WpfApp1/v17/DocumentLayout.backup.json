@@ -143,24 +143,11 @@
         },
         {
           "DockedWidth": 191,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SettingsWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\Settings\\SettingsWindow.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\Settings\\SettingsWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\Settings\\SettingsWindow.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\Settings\\SettingsWindow.xaml.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAswGYAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T23:25:55.105Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -171,8 +158,7 @@
               "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\Settings\\SettingWindows\\SystemInfo.xaml",
               "RelativeToolTip": "WpfApp1\\Settings\\SettingWindows\\SystemInfo.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-06T01:38:42.117Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-06T01:38:42.117Z"
             },
             {
               "$type": "Document",
@@ -184,8 +170,7 @@
               "RelativeToolTip": "WpfApp1\\Settings\\SettingWindows\\SystemInfo.xaml.cs",
               "ViewState": "AgIAAHAAAAAAAAAAAADwv5kAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T01:43:26.058Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-06T01:43:26.058Z"
             },
             {
               "$type": "Document",
@@ -195,7 +180,7 @@
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AgIAALYBAAAAAAAAAAAgwNQBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAKQBAAAAAAAAAAAiwNgBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-05T22:26:23.575Z",
               "EditorCaption": ""
@@ -214,6 +199,18 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SettingsWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\Settings\\SettingsWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Settings\\SettingsWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\Settings\\SettingsWindow.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Settings\\SettingsWindow.xaml.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAswGYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T23:25:55.105Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
               "Title": "SettingsWindow.xaml",
               "DocumentMoniker": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\Settings\\SettingsWindow.xaml",
@@ -221,8 +218,7 @@
               "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\Settings\\SettingsWindow.xaml",
               "RelativeToolTip": "WpfApp1\\Settings\\SettingsWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-05T22:23:38.187Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-05T22:23:38.187Z"
             },
             {
               "$type": "Document",
@@ -233,8 +229,7 @@
               "ToolTip": "C:\\Users\\mehme\\Documents\\GitHub\\Staj\\WpfApp1\\MainControl.xaml",
               "RelativeToolTip": "WpfApp1\\MainControl.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-05T20:12:53.166Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-05T20:12:53.166Z"
             },
             {
               "$type": "Document",

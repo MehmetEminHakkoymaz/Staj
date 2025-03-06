@@ -26,6 +26,7 @@ namespace WpfApp1
 {
     public partial class MainWindow : Window
     {
+        private DispatcherTimer autoHideTimer; // Sınıf seviyesinde timer tanımı
         private DispatcherTimer checkButtonTimer;
         private DispatcherTimer timer;
         private TimeSpan time;
@@ -90,7 +91,46 @@ namespace WpfApp1
 
                 totalWorkTime = Properties.Settings.Default.TotalWorkTime;
             }
+
+            // AutoHide timer'ını başlat
+            autoHideTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(5)
+            };
+            autoHideTimer.Tick += AutoHideTimer_Tick;
         }
+
+        private void AutoHideTimer_Tick(object sender, EventArgs e)
+        {
+            // Timer'ı durdur
+            autoHideTimer.Stop();
+
+            // TopGrid'i yukarı çek
+            if (TopGrid.Margin.Top == 0) // Eğer grid aşağıdaysa
+            {
+                var targetMargin = new Thickness(0, -30, 0, 0);
+
+                ThicknessAnimation marginAnimation = new ThicknessAnimation
+                {
+                    To = targetMargin,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    FillBehavior = FillBehavior.Stop
+                };
+
+                marginAnimation.Completed += (s, args) =>
+                {
+                    TopGrid.Margin = targetMargin;
+                    // Image kaynağını güncelle
+                    if (sender is Button button)
+                    {
+                        button.Tag = "pack://application:,,,/WpfApp1;component/images/Down.png";
+                    }
+                };
+
+                TopGrid.BeginAnimation(MarginProperty, marginAnimation);
+            }
+        }
+
 
         //public void SafeAction(Action action, bool message = true)
         //{
@@ -120,13 +160,13 @@ namespace WpfApp1
         //        port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
         //        port.Open();
-             
+
         //            if (port.IsOpen && port != null)
         //            {
         //                selectedPort = listeningPort;
-                        
+
         //            }
-              
+
         //    });
 
         //}
@@ -394,22 +434,25 @@ namespace WpfApp1
         //ÜstMenü
         private void TogglePopupButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button) // Güvenli tür dönüşümü ve null kontrolü
+            if (sender is Button button)
             {
                 Thickness targetMargin;
-
                 bool isExpanded = TopGrid.Margin.Top == 0;
+
+                // Mevcut timer'ı durdur
+                autoHideTimer.Stop();
+
                 if (isExpanded)
                 {
                     targetMargin = new Thickness(0, -30, 0, 0);
-                    // Image kaynağını güncelle
                     button.Tag = "pack://application:,,,/WpfApp1;component/images/Down.png";
                 }
                 else
                 {
                     targetMargin = new Thickness(0, 0, 0, 0);
-                    // Image kaynağını güncelle
                     button.Tag = "pack://application:,,,/WpfApp1;component/images/Up.png";
+                    // Grid aşağı indiğinde timer'ı başlat
+                    autoHideTimer.Start();
                 }
 
                 ThicknessAnimation marginAnimation = new ThicknessAnimation
@@ -422,7 +465,6 @@ namespace WpfApp1
                 marginAnimation.Completed += (s, args) =>
                 {
                     TopGrid.Margin = targetMargin;
-                    // Burada artık Image kaynağını güncellemeye gerek yok, çünkü Tag özelliği ile bağlama yapıldı
                 };
 
                 TopGrid.BeginAnimation(MarginProperty, marginAnimation);

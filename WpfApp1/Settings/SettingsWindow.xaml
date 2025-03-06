@@ -13,7 +13,7 @@
         <Grid Height="30" VerticalAlignment="Top">
             <Border Background="#DAE2E7" Grid.Row="0" Width="1024" Height="30" BorderThickness="0,0,0,1" BorderBrush="Black">
                 <Grid>
-                    <Image Width="28" Height="28" HorizontalAlignment="Left" Margin="1,1,0,0" Source="pack://application:,,,/images/options.png"/>
+                    <!--<Image Width="28" Height="28" HorizontalAlignment="Left" Margin="1,1,0,0" Source="pack://application:,,,/images/options.png"/>-->
                     <Label Content="MECHOSPHERE" Padding="5,0,5,0" FontSize="20" FontFamily="Inter" FontWeight="Regular" HorizontalAlignment="Left" Margin="41,0,0,0" Width="152" Height="24"  VerticalAlignment="Center"/>
                     <TextBlock x:Name="ClockTextBlock" FontFamily="Inter" FontWeight="Regular" FontSize="20" Width="106" Height="24" HorizontalAlignment="Left" Margin="463,3,0,0" VerticalAlignment="Center"/>
                     <Image Source="pack://application:,,,/images/usb.png" Width="28" Height="28" HorizontalAlignment="Right" Margin="0,-1,36,1"/>
