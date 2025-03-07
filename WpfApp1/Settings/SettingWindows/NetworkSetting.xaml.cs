@@ -1,4 +1,221 @@
 ﻿//using System;
+//using System.Net.NetworkInformation;
+//using System.Windows;
+//using System.Windows.Controls;
+//using System.Management;
+//using System.Collections.ObjectModel;
+//using System.Net;
+//using Windows.Devices.WiFi;
+//using Windows.Networking.Connectivity;
+
+//namespace WpfApp1.Settings.SettingWindows
+//{
+//    public partial class NetworkSetting : UserControl
+//    {
+//        private ObservableCollection<NetworkInfo> _networks;
+//        private WiFiAdapter _wifiAdapter;
+
+//        public NetworkSetting()
+//        {
+//            InitializeComponent();
+//            _networks = new ObservableCollection<NetworkInfo>();
+//            NetworksList.ItemsSource = _networks;
+//            InitializeWifiAdapter();
+//            LoadCurrentNetworkSettings();
+//        }
+
+//        private async void InitializeWifiAdapter()
+//        {
+//            var access = await WiFiAdapter.RequestAccessAsync();
+//            if (access == WiFiAccessStatus.Allowed)
+//            {
+//                var adapters = await WiFiAdapter.FindAllAdaptersAsync();
+//                _wifiAdapter = adapters[0]; // İlk adaptörü kullan
+//                WifiToggle.IsChecked = _wifiAdapter != null;
+//                await ScanNetworks();
+//            }
+//        }
+
+//        private async Task ScanNetworks()
+//        {
+//            try
+//            {
+//                _networks.Clear();
+//                await _wifiAdapter.ScanAsync();
+
+//                foreach (var network in _wifiAdapter.NetworkReport.AvailableNetworks)
+//                {
+//                    _networks.Add(new NetworkInfo
+//                    {
+//                        Ssid = network.Ssid,
+//                        SignalStrength = network.SignalBars,
+//                        SecurityType = network.SecurityType.ToString()
+//                    });
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                MessageBox.Show($"Error scanning networks: {ex.Message}");
+//            }
+//        }
+
+//        private void LoadCurrentNetworkSettings()
+//        {
+//            try
+//            {
+//                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+//                {
+//                    if (nic.OperationalStatus == OperationalStatus.Up &&
+//                        (nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 ||
+//                         nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet))
+//                    {
+//                        IPInterfaceProperties ipProps = nic.GetIPProperties();
+//                        foreach (UnicastIPAddressInformation addr in ipProps.UnicastAddresses)
+//                        {
+//                            if (addr.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+//                            {
+//                                IpAddress.Text = addr.Address.ToString();
+//                                SubnetMask.Text = addr.IPv4Mask.ToString();
+//                                ConnectionStatus.Text = "Connected";
+//                                break;
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                MessageBox.Show($"Error loading network settings: {ex.Message}");
+//            }
+//        }
+
+//        private void WifiToggle_Click(object sender, RoutedEventArgs e)
+//        {
+//            // Wi-Fi açma/kapama işlemi
+//            try
+//            {
+//                using (var process = new System.Diagnostics.Process())
+//                {
+//                    process.StartInfo.FileName = "netsh";
+//                    process.StartInfo.Arguments = $"interface set interface \"Wi-Fi\" {(WifiToggle.IsChecked == true ? "enabled" : "disabled")}";
+//                    process.StartInfo.UseShellExecute = false;
+//                    process.StartInfo.CreateNoWindow = true;
+//                    process.Start();
+//                    process.WaitForExit();
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                MessageBox.Show($"Error toggling Wi-Fi: {ex.Message}");
+//            }
+//        }
+
+//        private void NetworksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+//        {
+//            if (NetworksList.SelectedItem is NetworkInfo network)
+//            {
+//                // Seçilen ağa bağlanma işlemi
+//                ConnectToNetwork(network);
+//            }
+//        }
+
+//        private async void ConnectToNetwork(NetworkInfo network)
+//        {
+//            try
+//            {
+//                // Ağa bağlanma işlemi
+//                // Not: Bu kısım için Windows SDK ve ek izinler gerekebilir
+//                MessageBox.Show($"Connecting to {network.Ssid}...");
+//            }
+//            catch (Exception ex)
+//            {
+//                MessageBox.Show($"Error connecting to network: {ex.Message}");
+//            }
+//        }
+
+//        private void DhcpEnabled_Checked(object sender, RoutedEventArgs e)
+//        {
+//            ManualSettings.IsEnabled = false;
+//        }
+
+//        private void DhcpEnabled_Unchecked(object sender, RoutedEventArgs e)
+//        {
+//            ManualSettings.IsEnabled = true;
+//        }
+
+//        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+//        {
+//            await ScanNetworks();
+//            LoadCurrentNetworkSettings();
+//        }
+
+//        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+//        {
+//            try
+//            {
+//                if (DhcpEnabled.IsChecked == true)
+//                {
+//                    EnableDHCP();
+//                }
+//                else
+//                {
+//                    SetStaticIP();
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                MessageBox.Show($"Error applying network settings: {ex.Message}");
+//            }
+//        }
+
+//        private void EnableDHCP()
+//        {
+//            // DHCP'yi etkinleştirme işlemi
+//            using (var process = new System.Diagnostics.Process())
+//            {
+//                process.StartInfo.FileName = "netsh";
+//                process.StartInfo.Arguments = "interface ip set address \"Wi-Fi\" dhcp";
+//                process.StartInfo.UseShellExecute = false;
+//                process.StartInfo.CreateNoWindow = true;
+//                process.Start();
+//                process.WaitForExit();
+//            }
+//        }
+
+//        private void SetStaticIP()
+//        {
+//            // Statik IP ayarlama işlemi
+//            using (var process = new System.Diagnostics.Process())
+//            {
+//                process.StartInfo.FileName = "netsh";
+//                process.StartInfo.Arguments = $"interface ip set address \"Wi-Fi\" static {ManualIpAddress.Text} {ManualSubnetMask.Text} {ManualGateway.Text}";
+//                process.StartInfo.UseShellExecute = false;
+//                process.StartInfo.CreateNoWindow = true;
+//                process.Start();
+//                process.WaitForExit();
+//            }
+//        }
+//    }
+
+//    public class NetworkInfo
+//    {
+//        public string Ssid { get; set; }
+//        public int SignalStrength { get; set; }
+//        public string SecurityType { get; set; }
+//    }
+//}
+
+
+
+
+
+
+
+
+
+
+
+//using System;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
@@ -304,6 +521,15 @@
 
 
 
+
+//ESKİ UI KODLARI
+//ESKİ UI KODLARI
+//ESKİ UI KODLARI
+//ESKİ UI KODLARI
+//ESKİ UI KODLARI
+//ESKİ UI KODLARI
+//ESKİ UI KODLARI
+//ESKİ UI KODLARI
 
 using System;
 using System.Collections.Generic;
@@ -647,3 +873,9 @@ namespace WpfApp1.Settings.SettingWindows
 
     }
 }
+
+
+
+
+
+
