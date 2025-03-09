@@ -19,6 +19,7 @@ using WpfApp1.Models;
 using WpfApp1.Data;
 using WpfApp1.Settings;
 using WpfApp1.Settings.SettingWindows;
+using System.Diagnostics;
 
 
 
@@ -972,5 +973,67 @@ namespace WpfApp1
                 }
             };
         }
+
+
+        private void CloseAppButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(
+                "Are you sure you want to close the application?",
+                "Close Application",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                CloseApplication();
+            }
+        }
+
+        private void ShutdownButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(
+                "Are you sure you want to shutdown the computer?",
+                "Shutdown Computer",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                // Önce uygulamayı düzgün şekilde kapatalım
+                CloseApplication();
+
+                // Bilgisayarı kapat
+                try
+                {
+                    Process.Start("shutdown", "/s /t 0");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to shutdown computer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void CloseApplication()
+        {
+            // Tüm açık portları kapat
+            if (port != null && port.IsOpen)
+            {
+                port.Close();
+            }
+
+            // Timer'ları durdur
+            if (timer != null)
+                timer.Stop();
+            if (checkButtonTimer != null)
+                checkButtonTimer.Stop();
+            if (logTimer != null)
+                logTimer.Stop();
+
+            // Uygulamayı kapat
+            Application.Current.Shutdown();
+        }
+
+
     }
 }
