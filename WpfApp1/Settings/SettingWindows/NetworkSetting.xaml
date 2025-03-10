@@ -7,6 +7,23 @@
              xmlns:kepad="clr-namespace:WpfApp1.Keypad"
              mc:Ignorable="d" 
              d:DesignHeight="462" d:DesignWidth="724">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.ColumnSpan="2" Background="Transparent"/>
+                <Path Grid.Column="1" 
+                  Fill="Gray"
+                  Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Resources>
+    
     <Grid Background="#FFE7ECEF">
         <StackPanel VerticalAlignment="Center">
             <Grid Width="724" Height="60" x:Name="ConType">
@@ -33,7 +50,7 @@
                     </ToggleButton>
 
 
-                    <ToggleButton x:Name="WLAN" Width="160" Height="50" Content="WLAN" FontSize="20" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton x:Name="WLAN" Width="160" Height="50" Content="WLAN" FontSize="20" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" IsChecked="False">
                         <ToggleButton.Template>
                             <ControlTemplate TargetType="{x:Type ToggleButton}">
                                 <Grid>
@@ -60,7 +77,7 @@
             <Grid Width="724" Height="60" x:Name="Config">
                 <Label Content="CONFIGURATION" FontSize="25" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
-                    <ToggleButton x:Name="Autodhcp" Width="160" Height="50" Content="Auto(DHCP)" FontSize="20" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton x:Name="Autodhcp" Width="160" Height="50" Content="Auto(DHCP)" FontSize="20" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" IsChecked="False">
                         <ToggleButton.Template>
                             <ControlTemplate TargetType="{x:Type ToggleButton}">
                                 <Grid>
@@ -105,22 +122,22 @@
 
             </Grid>
 
-            <Grid Width="724" Height="60" x:Name="IPAddress">
+            <Grid Width="724" Height="60" x:Name="IpAddressGrid">
                 <Label Content="IP ADDRESS" FontSize="25" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
                 <Border HorizontalAlignment="Left" Margin="385,0,0,0" Width="60" Height="35" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="IpAddressTextBox1" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
+                    <TextBox x:Name="IpAddressTextBox1" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="192" Background="Transparent" 
                              BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
                 <Border HorizontalAlignment="Left" Margin="470,0,0,0" Width="60" Height="35" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="IpAddressTextBox2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
+                    <TextBox x:Name="IpAddressTextBox2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="168" Background="Transparent" 
                              BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
                 <Border HorizontalAlignment="Left" Margin="555,0,0,0" Width="60" Height="35" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="IpAddressTextBox3" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
+                    <TextBox x:Name="IpAddressTextBox3" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="1" Background="Transparent" 
                              BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
                 <Border HorizontalAlignment="Left" Margin="640,0,0,0" Width="60" Height="35" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="IpAddressTextBox4" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
+                    <TextBox x:Name="IpAddressTextBox4" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="1" Background="Transparent" 
                              BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
@@ -128,42 +145,97 @@
             <Grid Width="724" Height="60" x:Name="SubnetMask">
                 <Label Content="SUBNET MASK" FontSize="25" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
                 <Border HorizontalAlignment="Left" Margin="385,0,0,0" Width="60" Height="35" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="SubnetMaskTextBox1" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
+                    <TextBox x:Name="SubnetMaskTextBox1" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="255" Background="Transparent" 
                              BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
                 <Border HorizontalAlignment="Left" Margin="470,0,0,0" Width="60" Height="35" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="SubnetMaskTextBox2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
+                    <TextBox x:Name="SubnetMaskTextBox2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="255" Background="Transparent" 
                              BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
                 <Border HorizontalAlignment="Left" Margin="555,0,0,0" Width="60" Height="35" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="SubnetMaskTextBox3" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
+                    <TextBox x:Name="SubnetMaskTextBox3" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="255" Background="Transparent" 
                              BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
                 <Border HorizontalAlignment="Left" Margin="640,0,0,0" Width="60" Height="35" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="SubnetMaskTextBox4" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
+                    <TextBox x:Name="SubnetMaskTextBox4" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="0" Background="Transparent" 
                              BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
                 </Border>
             </Grid>
 
             <Grid Width="724" Height="60" x:Name="Ssid">
                 <Label Content="SSID" FontSize="25" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
-                <ComboBox x:Name="SsidComboBox" Width="320" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="385,0,0,0"/>
+                <ComboBox x:Name="SsidComboBox" 
+                          Width="320" Height="50" 
+                          HorizontalAlignment="Left" 
+                          VerticalAlignment="Center" 
+                          Margin="385,0,0,0" 
+                          FontSize="20">
+                    <ComboBox.Style>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ComboBox">
+                                        <Border Background="Transparent" 
+                                                BorderBrush="Gray" 
+                                                BorderThickness="1" 
+                                                CornerRadius="5">
+                                            <Grid>
+                                                <TextBlock Text="{TemplateBinding Text}"
+                                                           Margin="10,0,0,0"
+                                                           VerticalAlignment="Center"/>
+                                                <ToggleButton IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, 
+                                                              RelativeSource={RelativeSource TemplatedParent}}"
+                                                              Template="{StaticResource ComboBoxToggleButton}"
+                                                              Focusable="False"
+                                                              Grid.Column="2"/>
+                                                <Popup IsOpen="{TemplateBinding IsDropDownOpen}" 
+                                                       Placement="Bottom"
+                                                       AllowsTransparency="True">
+                                                    <Border Background="White" 
+                                                            BorderBrush="Gray" 
+                                                            BorderThickness="1">
+                                                        <ScrollViewer MaxHeight="200">
+                                                            <StackPanel IsItemsHost="True"/>
+                                                        </ScrollViewer>
+                                                    </Border>
+                                                </Popup>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ComboBox.Style>
+                </ComboBox>
 
             </Grid>
 
             <Grid Width="724" Height="60" x:Name="PASSWORD">
                 <Label Content="PASSWORD" FontSize="25" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
-                <Border HorizontalAlignment="Left" Margin="385,0,0,0" Width="320" Height="50" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="PasswordTextBox" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
-                             BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                <Border HorizontalAlignment="Left" Margin="385,0,0,0" Width="320" Height="50" 
+                        CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                    <PasswordBox x:Name="PasswordTextBox" 
+                                 Background="Transparent"
+                                 BorderThickness="0" 
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Center"
+                                 Padding="0,5"
+                                 FontSize="20"/>
                 </Border>
             </Grid>
         </StackPanel>
         <Popup x:Name="KeypadPopup" Placement="Center" IsOpen="False">
             <kepad:KeyPad x:Name="KeypadControl"/>
         </Popup>
-        <Button Content="SAVE" FontSize="20" FontWeight="Regular" HorizontalAlignment="Center" Margin="0,427,0,0" VerticalAlignment="Top" 
-                Width="90" Height="25" Click="SaveButton_Click">
+        <Button Content="SAVE" 
+                FontSize="20" 
+                FontWeight="Regular" 
+                HorizontalAlignment="Center" 
+                Margin="0,427,0,0" 
+                VerticalAlignment="Top" 
+                Width="90" 
+                Height="25" 
+                Click="SaveButton_Click">
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
@@ -172,7 +244,9 @@
                                 <DropShadowEffect Color="#808080" Direction="270" ShadowDepth="3" BlurRadius="5"/>
                             </Border.Effect>
                         </Border>
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"
+                                        TextElement.Foreground="White"/>
                     </Grid>
                 </ControlTemplate>
             </Button.Template>

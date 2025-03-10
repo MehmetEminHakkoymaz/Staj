@@ -1,544 +1,8 @@
-﻿//using System;
-//using System.Net.NetworkInformation;
-//using System.Windows;
-//using System.Windows.Controls;
-//using System.Management;
-//using System.Collections.ObjectModel;
-//using System.Net;
-//using Windows.Devices.WiFi;
-//using Windows.Networking.Connectivity;
-
-//namespace WpfApp1.Settings.SettingWindows
-//{
-//    public partial class NetworkSetting : UserControl
-//    {
-//        private ObservableCollection<NetworkInfo> _networks;
-//        private WiFiAdapter _wifiAdapter;
-
-//        public NetworkSetting()
-//        {
-//            InitializeComponent();
-//            _networks = new ObservableCollection<NetworkInfo>();
-//            NetworksList.ItemsSource = _networks;
-//            InitializeWifiAdapter();
-//            LoadCurrentNetworkSettings();
-//        }
-
-//        private async void InitializeWifiAdapter()
-//        {
-//            var access = await WiFiAdapter.RequestAccessAsync();
-//            if (access == WiFiAccessStatus.Allowed)
-//            {
-//                var adapters = await WiFiAdapter.FindAllAdaptersAsync();
-//                _wifiAdapter = adapters[0]; // İlk adaptörü kullan
-//                WifiToggle.IsChecked = _wifiAdapter != null;
-//                await ScanNetworks();
-//            }
-//        }
-
-//        private async Task ScanNetworks()
-//        {
-//            try
-//            {
-//                _networks.Clear();
-//                await _wifiAdapter.ScanAsync();
-
-//                foreach (var network in _wifiAdapter.NetworkReport.AvailableNetworks)
-//                {
-//                    _networks.Add(new NetworkInfo
-//                    {
-//                        Ssid = network.Ssid,
-//                        SignalStrength = network.SignalBars,
-//                        SecurityType = network.SecurityType.ToString()
-//                    });
-//                }
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show($"Error scanning networks: {ex.Message}");
-//            }
-//        }
-
-//        private void LoadCurrentNetworkSettings()
-//        {
-//            try
-//            {
-//                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-//                {
-//                    if (nic.OperationalStatus == OperationalStatus.Up &&
-//                        (nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 ||
-//                         nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet))
-//                    {
-//                        IPInterfaceProperties ipProps = nic.GetIPProperties();
-//                        foreach (UnicastIPAddressInformation addr in ipProps.UnicastAddresses)
-//                        {
-//                            if (addr.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-//                            {
-//                                IpAddress.Text = addr.Address.ToString();
-//                                SubnetMask.Text = addr.IPv4Mask.ToString();
-//                                ConnectionStatus.Text = "Connected";
-//                                break;
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show($"Error loading network settings: {ex.Message}");
-//            }
-//        }
-
-//        private void WifiToggle_Click(object sender, RoutedEventArgs e)
-//        {
-//            // Wi-Fi açma/kapama işlemi
-//            try
-//            {
-//                using (var process = new System.Diagnostics.Process())
-//                {
-//                    process.StartInfo.FileName = "netsh";
-//                    process.StartInfo.Arguments = $"interface set interface \"Wi-Fi\" {(WifiToggle.IsChecked == true ? "enabled" : "disabled")}";
-//                    process.StartInfo.UseShellExecute = false;
-//                    process.StartInfo.CreateNoWindow = true;
-//                    process.Start();
-//                    process.WaitForExit();
-//                }
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show($"Error toggling Wi-Fi: {ex.Message}");
-//            }
-//        }
-
-//        private void NetworksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-//        {
-//            if (NetworksList.SelectedItem is NetworkInfo network)
-//            {
-//                // Seçilen ağa bağlanma işlemi
-//                ConnectToNetwork(network);
-//            }
-//        }
-
-//        private async void ConnectToNetwork(NetworkInfo network)
-//        {
-//            try
-//            {
-//                // Ağa bağlanma işlemi
-//                // Not: Bu kısım için Windows SDK ve ek izinler gerekebilir
-//                MessageBox.Show($"Connecting to {network.Ssid}...");
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show($"Error connecting to network: {ex.Message}");
-//            }
-//        }
-
-//        private void DhcpEnabled_Checked(object sender, RoutedEventArgs e)
-//        {
-//            ManualSettings.IsEnabled = false;
-//        }
-
-//        private void DhcpEnabled_Unchecked(object sender, RoutedEventArgs e)
-//        {
-//            ManualSettings.IsEnabled = true;
-//        }
-
-//        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
-//        {
-//            await ScanNetworks();
-//            LoadCurrentNetworkSettings();
-//        }
-
-//        private void ApplyButton_Click(object sender, RoutedEventArgs e)
-//        {
-//            try
-//            {
-//                if (DhcpEnabled.IsChecked == true)
-//                {
-//                    EnableDHCP();
-//                }
-//                else
-//                {
-//                    SetStaticIP();
-//                }
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show($"Error applying network settings: {ex.Message}");
-//            }
-//        }
-
-//        private void EnableDHCP()
-//        {
-//            // DHCP'yi etkinleştirme işlemi
-//            using (var process = new System.Diagnostics.Process())
-//            {
-//                process.StartInfo.FileName = "netsh";
-//                process.StartInfo.Arguments = "interface ip set address \"Wi-Fi\" dhcp";
-//                process.StartInfo.UseShellExecute = false;
-//                process.StartInfo.CreateNoWindow = true;
-//                process.Start();
-//                process.WaitForExit();
-//            }
-//        }
-
-//        private void SetStaticIP()
-//        {
-//            // Statik IP ayarlama işlemi
-//            using (var process = new System.Diagnostics.Process())
-//            {
-//                process.StartInfo.FileName = "netsh";
-//                process.StartInfo.Arguments = $"interface ip set address \"Wi-Fi\" static {ManualIpAddress.Text} {ManualSubnetMask.Text} {ManualGateway.Text}";
-//                process.StartInfo.UseShellExecute = false;
-//                process.StartInfo.CreateNoWindow = true;
-//                process.Start();
-//                process.WaitForExit();
-//            }
-//        }
-//    }
-
-//    public class NetworkInfo
-//    {
-//        public string Ssid { get; set; }
-//        public int SignalStrength { get; set; }
-//        public string SecurityType { get; set; }
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using System.Windows;
-//using System.Windows.Controls;
-//using System.Windows.Controls.Primitives;
-//using System.Windows.Data;
-//using System.Windows.Documents;
-//using System.Windows.Input;
-//using System.Windows.Media;
-//using System.Windows.Media.Imaging;
-//using System.Windows.Navigation;
-//using System.Windows.Shapes;
-//using System.Management;
-//using NativeWifi;
-//using System.Windows.Threading;
-//using WpfApp1;
-
-//namespace WpfApp1.Settings.SettingWindows
-//{
-//    /// <summary>
-//    /// Interaction logic for NetworkSetting.xaml
-//    /// </summary>
-//    public partial class NetworkSetting : UserControl
-//    {
-//        public event EventHandler<string> ValueSelected;
-
-//        private DispatcherTimer _timer;
-
-//        public NetworkSetting()
-//        {
-//            InitializeComponent();
-//            KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
-//            LoadNetworkSettings();
-
-//            LoadWifiNetworks();
-
-
-//        }
-
-//        private void InitializeTimer()
-//        {
-//            _timer = new DispatcherTimer();
-//            _timer.Interval = TimeSpan.FromSeconds(1);
-//            _timer.Tick += Timer_Tick;
-//            _timer.Start();
-//        }
-
-//        private void Timer_Tick(object sender, EventArgs e)
-//        {
-//            LoadWifiNetworks();
-//        }
-
-//        private TextBox activeTextBox = null;
-
-//        private TextBox currentTextBox = null;
-
-//        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-//        {
-//            TextBox focusedTextBox = sender as TextBox;
-//            if (focusedTextBox != null)
-//            {
-//                // TextBox'ın ebeveyninin ebeveynini bul (Grid varsayıyoruz)
-//                DependencyObject parent = VisualTreeHelper.GetParent(focusedTextBox);
-//                DependencyObject grandParent = parent != null ? VisualTreeHelper.GetParent(parent) : null;
-//                Grid parentGrid = grandParent as Grid;
-//                activeTextBox = sender as TextBox; // Odaklanan TextBox'ı aktif olarak ayarla
-//                if (parentGrid != null)
-//                {
-//                    // Grid içindeki ilk Label'ı bul
-//                    Label firstLabel = parentGrid.Children.OfType<Label>().FirstOrDefault();
-//                    if (firstLabel != null)
-//                    {
-//                        // Label'ın içeriğini al
-//                        string labelContent = firstLabel.Content.ToString();
-//                        // KeyPad'e label içeriğini gönder
-//                        activeTextBox = sender as TextBox;
-//                        KeypadPopup.IsOpen = true;
-//                        KeypadControl.SetLabelContent(labelContent);
-//                    }
-//                }
-//            }
-//        }
-
-//        private void KeyPadControl_ValueSelected(object sender, string value)
-//        {
-//            if (activeTextBox != null)
-//            {
-//                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
-//            }
-//        }
-
-
-//        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-//        {
-//            ToggleButton clickedButton = sender as ToggleButton;
-
-//            UpdateVisibility();
-
-//            if (clickedButton == Ethernet && WLAN != null)
-//            {
-//                WLAN.IsChecked = false;
-//                Ssid.Visibility = Visibility.Collapsed;
-//                PASSWORD.Visibility = Visibility.Collapsed;
-//            }
-//            else if (clickedButton == WLAN && Ethernet != null)
-//            {
-//                Ethernet.IsChecked = false;
-//                Ssid.Visibility = Visibility.Visible;
-//                PASSWORD.Visibility = Visibility.Visible;
-//            }
-//            else if (clickedButton == Autodhcp && Manual != null)
-//            {
-//                Manual.IsChecked = false;
-//            }
-//            else if (clickedButton == Manual && Autodhcp != null)
-//            {
-//                Autodhcp.IsChecked = false;
-//            }
-//        }
-
-//        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-//        {
-//            ToggleButton clickedButton = sender as ToggleButton;
-
-//            UpdateVisibility();
-
-//            if (!Ethernet.IsChecked.Value && !WLAN.IsChecked.Value)
-//            {
-//                clickedButton.IsChecked = true;
-//            }
-//            if (!Autodhcp.IsChecked.Value && !Manual.IsChecked.Value)
-//            {
-//                clickedButton.IsChecked = true;
-//            }
-//        }
-
-
-//        private void SaveButton_Click(object sender, RoutedEventArgs e)
-//        {
-//            // Connection Type
-//            //string connectionType = ((ComboBoxItem)ConnectionTypeComboBox.SelectedItem).Content.ToString();
-//            string connectionType = Ethernet.IsChecked == true ? "Ethernet" : (WLAN.IsChecked == true ? "WLAN" : "None");
-
-//            // Configuration
-//            //string configuration = ((ComboBoxItem)ConfigurationComboBox.SelectedItem).Content.ToString();
-//            string configuration = Autodhcp.IsChecked == true ? "Auto" : (Manual.IsChecked == true ? "Manual" : "None");
-//            // IP Address
-//            string ipAddress = $"{IpAddressTextBox1.Text}.{IpAddressTextBox2.Text}.{IpAddressTextBox3.Text}.{IpAddressTextBox4.Text}";
-
-//            // Subnet Mask
-//            string subnetMask = $"{SubnetMaskTextBox1.Text}.{SubnetMaskTextBox2.Text}.{SubnetMaskTextBox3.Text}.{SubnetMaskTextBox4.Text}";
-
-//            // SSID
-//            string ssid = ((ComboBoxItem)SsidComboBox.SelectedItem).Content.ToString();
-
-//            // Password
-//            string password = PasswordTextBox.Text;
-
-//            // Ayarları doğrulayın ve kaydedin
-//            if (IsValidIpAddress(ipAddress) && IsValidIpAddress(subnetMask))
-//            {
-//                SaveNetworkSettings(connectionType, configuration, ipAddress, subnetMask, ssid, password);
-//                MessageBox.Show("Settings saved successfully.");
-//            }
-//            else
-//            {
-//                MessageBox.Show("Invalid IP address or subnet mask.");
-//            }
-
-//            LoadNetworkSettings();
-
-//        }
-
-//        private bool IsValidIpAddress(string ipAddress)
-//        {
-//            // IP adresi doğrulama işlemi
-//            System.Net.IPAddress temp;
-//            return System.Net.IPAddress.TryParse(ipAddress, out temp);
-//        }
-
-//        private void SaveNetworkSettings(string connectionType, string configuration, string ipAddress, string subnetMask, string ssid, string password)
-//        {
-//            // Ayarları kaydetme veya uygulama işlemi
-//            // Örneğin, ayarları bir dosyaya yazabilir veya bir sınıfın özelliklerine atayabilirsiniz
-//            Properties.Settings.Default.ConnectionType = connectionType;
-//            Properties.Settings.Default.Configuration = configuration;
-//            Properties.Settings.Default.IpAddress = ipAddress;
-//            Properties.Settings.Default.SubnetMask = subnetMask;
-//            Properties.Settings.Default.Ssid = ssid;
-//            Properties.Settings.Default.Password = password;
-//            Properties.Settings.Default.Save();
-
-//            MessageBox.Show("Settings saved successfully.");
-
-//        }
-
-//        private void LoadNetworkSettings()
-//        {
-//            // Retrieve the saved settings
-//            string connectionType = Properties.Settings.Default.ConnectionType;
-//            string configuration = Properties.Settings.Default.Configuration;
-//            string ipAddress = Properties.Settings.Default.IpAddress;
-//            string subnetMask = Properties.Settings.Default.SubnetMask;
-//            string ssid = Properties.Settings.Default.Ssid;
-//            string password = Properties.Settings.Default.Password;
-
-//            // Set the values to the UI components
-//            Ethernet.IsChecked = connectionType == "Ethernet";
-//            WLAN.IsChecked = connectionType == "WLAN";
-//            Autodhcp.IsChecked = configuration == "Auto";
-//            Manual.IsChecked = configuration == "Manual";
-
-//            var ipParts = ipAddress.Split('.');
-//            if (ipParts.Length == 4)
-//            {
-//                IpAddressTextBox1.Text = ipParts[0];
-//                IpAddressTextBox2.Text = ipParts[1];
-//                IpAddressTextBox3.Text = ipParts[2];
-//                IpAddressTextBox4.Text = ipParts[3];
-//            }
-
-//            var subnetParts = subnetMask.Split('.');
-//            if (subnetParts.Length == 4)
-//            {
-//                SubnetMaskTextBox1.Text = subnetParts[0];
-//                SubnetMaskTextBox2.Text = subnetParts[1];
-//                SubnetMaskTextBox3.Text = subnetParts[2];
-//                SubnetMaskTextBox4.Text = subnetParts[3];
-//            }
-
-//            foreach (ComboBoxItem item in SsidComboBox.Items)
-//            {
-//                if (item.Content.ToString() == ssid)
-//                {
-//                    SsidComboBox.SelectedItem = item;
-//                    break;
-//                }
-//            }
-
-//            PasswordTextBox.Text = password;
-
-//            // Set visibility based on connection type
-//            if (connectionType == "Ethernet")
-//            {
-//                Ssid.Visibility = Visibility.Collapsed;
-//                PASSWORD.Visibility = Visibility.Collapsed;
-//            }
-//            else if (connectionType == "WLAN")
-//            {
-//                Ssid.Visibility = Visibility.Visible;
-//                PASSWORD.Visibility = Visibility.Visible;
-//            }
-//        }
-
-
-
-//        private void LoadWifiNetworks()
-//        {
-//            try
-//            {
-//                SsidComboBox.Items.Clear();
-//                WlanClient wlanClient = new WlanClient();
-//                foreach (WlanClient.WlanInterface wlanInterface in wlanClient.Interfaces)
-//                {
-//                    Wlan.WlanAvailableNetwork[] networks = wlanInterface.GetAvailableNetworkList(0);
-//                    foreach (Wlan.WlanAvailableNetwork network in networks)
-//                    {
-//                        string ssid = GetStringForSSID(network.dot11Ssid);
-//                        if (!string.IsNullOrEmpty(ssid))
-//                        {
-//                            SsidComboBox.Items.Add(new ComboBoxItem { Content = ssid });
-//                        }
-//                    }
-//                }
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show($"Error loading Wi-Fi networks: {ex.Message}");
-//            }
-//        }
-
-//        private string GetStringForSSID(Wlan.Dot11Ssid ssid)
-//        {
-//            return new string(Encoding.ASCII.GetChars(ssid.SSID, 0, (int)ssid.SSIDLength));
-//        }
-
-//        private void UpdateVisibility()
-//        {
-//            bool isEthernet = Ethernet.IsChecked == true;
-//            bool isAuto = Autodhcp.IsChecked == true;
-
-//            IPAddress.Visibility = isEthernet && isAuto ? Visibility.Collapsed : Visibility.Visible;
-//            SubnetMask.Visibility = isEthernet && isAuto ? Visibility.Collapsed : Visibility.Visible;
-//            Ssid.Visibility = isEthernet ? Visibility.Collapsed : Visibility.Visible;
-//            PASSWORD.Visibility = isEthernet ? Visibility.Collapsed : Visibility.Visible;
-//        }
-
-//    }
-//}
-
-
-
-
-
-//ESKİ UI KODLARI
-//ESKİ UI KODLARI
-//ESKİ UI KODLARI
-//ESKİ UI KODLARI
-//ESKİ UI KODLARI
-//ESKİ UI KODLARI
-//ESKİ UI KODLARI
-//ESKİ UI KODLARI
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -546,9 +10,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Management;
 using NativeWifi;
 using System.Windows.Threading;
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Net.NetworkInformation;
+using System.Net;
+using System.Management;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using WpfApp1;
 
 namespace WpfApp1.Settings.SettingWindows
@@ -558,60 +30,192 @@ namespace WpfApp1.Settings.SettingWindows
     /// </summary>
     public partial class NetworkSetting : UserControl
     {
-        public event EventHandler<string> ValueSelected;
-
-        private DispatcherTimer _timer;
+        private TextBox activeTextBox = null;
+        private PasswordBox activePasswordBox = null;
+        private bool isInitialized = false;
 
         public NetworkSetting()
         {
-            InitializeComponent();
-            KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
-            LoadNetworkSettings();
+            try
+            {
+                InitializeComponent();
 
-            LoadWifiNetworks();
+                // Kontrollerin yüklenmesini bekle
+                this.Loaded += (s, e) =>
+                {
+                    if (!isInitialized)
+                    {
+                        InitializeControls();
+                        isInitialized = true;
+                    }
+                };
+
+                // Keypad kontrolünü başlat
+                if (KeypadControl != null)
+                {
+                    KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in NetworkSetting constructor: {ex.Message}");
+            }
         }
 
-        private void InitializeTimer()
+        private void InitializeControls()
         {
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(1);
-            _timer.Tick += Timer_Tick;
-            _timer.Start();
+            try
+            {
+                // UI elementlerinin hazır olduğundan emin ol
+                if (Ethernet != null && WLAN != null)
+                {
+                    Ethernet.IsChecked = true;
+                    WLAN.IsChecked = false;
+                }
+
+                if (Autodhcp != null && Manual != null)
+                {
+                    Autodhcp.IsChecked = true;
+                    Manual.IsChecked = false;
+                }
+
+                // Görünürlüğü güncelle
+                UpdateVisibility();
+
+                // Ağ ayarlarını yükle
+                LoadCurrentNetworkSettings();
+
+                // WLAN seçili ise ağları tara
+                if (WLAN?.IsChecked == true)
+                {
+                    ScanWifiNetworks();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error initializing controls: {ex.Message}");
+            }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+
+        private void NetworkSetting_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadWifiNetworks();
+            try
+            {
+                // UI elementlerinin hazır olduğundan emin ol
+                if (Ethernet != null && WLAN != null)
+                {
+                    // Varsayılan seçimi yap
+                    Ethernet.IsChecked = true;
+                    WLAN.IsChecked = false;
+                }
+
+                if (Autodhcp != null && Manual != null)
+                {
+                    // Varsayılan seçimi yap
+                    Autodhcp.IsChecked = true;
+                    Manual.IsChecked = false;
+                }
+
+                // Görünürlüğü güncelle
+                UpdateVisibility();
+
+                // Ağ ayarlarını yükle
+                LoadCurrentNetworkSettings();
+
+                // WLAN seçili ise ağları tara
+                if (WLAN?.IsChecked == true)
+                {
+                    ScanWifiNetworks();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in NetworkSetting_Loaded: {ex.Message}");
+            }
         }
 
-        private TextBox activeTextBox = null;
+        private async void LoadCurrentNetworkSettings()
+        {
+            try
+            {
+                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if (nic.OperationalStatus == OperationalStatus.Up)
+                    {
+                        // Ethernet/WLAN kontrolü
+                        bool isEthernet = nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet;
+                        Ethernet.IsChecked = isEthernet;
+                        WLAN.IsChecked = !isEthernet;
 
-        private TextBox currentTextBox = null;
+                        // DHCP kontrolü
+                        IPInterfaceProperties ipProps = nic.GetIPProperties();
+                        bool isDhcp = nic.GetIPProperties().GetIPv4Properties()?.IsDhcpEnabled ?? false;
+                        Autodhcp.IsChecked = isDhcp;
+                        Manual.IsChecked = !isDhcp;
+
+                        // IP ve Subnet bilgilerini al
+                        foreach (UnicastIPAddressInformation addr in ipProps.UnicastAddresses)
+                        {
+                            if (addr.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                            {
+                                string[] ipParts = addr.Address.ToString().Split('.');
+                                if (ipParts.Length == 4)
+                                {
+                                    IpAddressTextBox1.Text = ipParts[0];
+                                    IpAddressTextBox2.Text = ipParts[1];
+                                    IpAddressTextBox3.Text = ipParts[2];
+                                    IpAddressTextBox4.Text = ipParts[3];
+                                }
+
+                                string[] maskParts = addr.IPv4Mask.ToString().Split('.');
+                                if (maskParts.Length == 4)
+                                {
+                                    SubnetMaskTextBox1.Text = maskParts[0];
+                                    SubnetMaskTextBox2.Text = maskParts[1];
+                                    SubnetMaskTextBox3.Text = maskParts[2];
+                                    SubnetMaskTextBox4.Text = maskParts[3];
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading network settings: {ex.Message}");
+            }
+        }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox focusedTextBox = sender as TextBox;
-            if (focusedTextBox != null)
+            if (sender is TextBox focusedTextBox)
             {
-                // TextBox'ın ebeveyninin ebeveynini bul (Grid varsayıyoruz)
+                activeTextBox = focusedTextBox;
+                activePasswordBox = null; // PasswordBox'ı temizle
+
                 DependencyObject parent = VisualTreeHelper.GetParent(focusedTextBox);
                 DependencyObject grandParent = parent != null ? VisualTreeHelper.GetParent(parent) : null;
                 Grid parentGrid = grandParent as Grid;
-                activeTextBox = sender as TextBox; // Odaklanan TextBox'ı aktif olarak ayarla
+
                 if (parentGrid != null)
                 {
-                    // Grid içindeki ilk Label'ı bul
                     Label firstLabel = parentGrid.Children.OfType<Label>().FirstOrDefault();
                     if (firstLabel != null)
                     {
-                        // Label'ın içeriğini al
                         string labelContent = firstLabel.Content.ToString();
-                        // KeyPad'e label içeriğini gönder
-                        activeTextBox = sender as TextBox;
                         KeypadPopup.IsOpen = true;
                         KeypadControl.SetLabelContent(labelContent);
                     }
                 }
+            }
+            else if (sender is PasswordBox focusedPasswordBox)
+            {
+                activePasswordBox = focusedPasswordBox;
+                activeTextBox = null; // TextBox'ı temizle
+                KeypadPopup.IsOpen = true;
+                KeypadControl.SetLabelContent("PASSWORD");
             }
         }
 
@@ -619,263 +223,296 @@ namespace WpfApp1.Settings.SettingWindows
         {
             if (activeTextBox != null)
             {
-                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
-            }
-        }
-
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-        {
-            ToggleButton clickedButton = sender as ToggleButton;
-
-            UpdateVisibility();
-
-            if (clickedButton == Ethernet && WLAN != null)
-            {
-                WLAN.IsChecked = false;
-                Ssid.Visibility = Visibility.Collapsed;
-                PASSWORD.Visibility = Visibility.Collapsed;
-            }
-            else if (clickedButton == WLAN && Ethernet != null)
-            {
-                Ethernet.IsChecked = false;
-                Ssid.Visibility = Visibility.Visible;
-                PASSWORD.Visibility = Visibility.Visible;
-            }
-            else if (clickedButton == Autodhcp && Manual != null)
-            {
-                Manual.IsChecked = false;
-            }
-            else if (clickedButton == Manual && Autodhcp != null)
-            {
-                Autodhcp.IsChecked = false;
-            }
-        }
-
-        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ToggleButton clickedButton = sender as ToggleButton;
-
-            UpdateVisibility();
-
-            if (!Ethernet.IsChecked.Value && !WLAN.IsChecked.Value)
-            {
-                clickedButton.IsChecked = true;
-            }
-            if (!Autodhcp.IsChecked.Value && !Manual.IsChecked.Value)
-            {
-                clickedButton.IsChecked = true;
-            }
-        }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Connection Type
-            string connectionType = Ethernet.IsChecked == true ? "Ethernet" : (WLAN.IsChecked == true ? "WLAN" : "None");
-
-            // Configuration
-            string configuration = Autodhcp.IsChecked == true ? "Auto" : (Manual.IsChecked == true ? "Manual" : "None");
-
-            // IP Address
-            string ipAddress = $"{IpAddressTextBox1.Text}.{IpAddressTextBox2.Text}.{IpAddressTextBox3.Text}.{IpAddressTextBox4.Text}";
-
-            // Subnet Mask
-            string subnetMask = $"{SubnetMaskTextBox1.Text}.{SubnetMaskTextBox2.Text}.{SubnetMaskTextBox3.Text}.{SubnetMaskTextBox4.Text}";
-
-            // SSID
-            string ssid = ((ComboBoxItem)SsidComboBox.SelectedItem).Content.ToString();
-
-            // Password
-            string password = PasswordTextBox.Text;
-
-            // Ayarları doğrulayın ve kaydedin
-            if (IsValidIpAddress(ipAddress) && IsValidIpAddress(subnetMask))
-            {
-                SaveNetworkSettings(connectionType, configuration, ipAddress, subnetMask, ssid, password);
-                MessageBox.Show("Settings saved successfully.");
-            }
-            else
-            {
-                MessageBox.Show("Invalid IP address or subnet mask.");
-            }
-
-            LoadNetworkSettings();
-        }
-
-        private bool IsValidIpAddress(string ipAddress)
-        {
-            // IP adresi doğrulama işlemi
-            System.Net.IPAddress temp;
-            return System.Net.IPAddress.TryParse(ipAddress, out temp);
-        }
-
-        private void SaveNetworkSettings(string connectionType, string configuration, string ipAddress, string subnetMask, string ssid, string password)
-        {
-            // Ayarları kaydetme veya uygulama işlemi
-            // Örneğin, ayarları bir dosyaya yazabilir veya bir sınıfın özelliklerine atayabilirsiniz
-            Properties.Settings.Default.ConnectionType = connectionType;
-            Properties.Settings.Default.Configuration = configuration;
-            Properties.Settings.Default.IpAddress = ipAddress;
-            Properties.Settings.Default.SubnetMask = subnetMask;
-            Properties.Settings.Default.Ssid = ssid;
-            Properties.Settings.Default.Password = password;
-            Properties.Settings.Default.Save();
-
-            MessageBox.Show("Settings saved successfully.");
-        }
-
-        private void LoadNetworkSettings()
-        {
-            // Varsayılan ayarları kullanmak yerine, ayarları belirli bir kaynaktan alalım
-            string connectionType = GetSetting("ConnectionType");
-            string configuration = GetSetting("Configuration");
-            string ipAddress = GetSetting("IpAddress");
-            string subnetMask = GetSetting("SubnetMask");
-            string ssid = GetSetting("Ssid");
-            string password = GetSetting("Password");
-
-            // Set the values to the UI components
-            Ethernet.IsChecked = connectionType == "Ethernet";
-            WLAN.IsChecked = connectionType == "WLAN";
-            Autodhcp.IsChecked = configuration == "Auto";
-            Manual.IsChecked = configuration == "Manual";
-
-            var ipParts = ipAddress.Split('.');
-            if (ipParts.Length == 4)
-            {
-                IpAddressTextBox1.Text = ipParts[0];
-                IpAddressTextBox2.Text = ipParts[1];
-                IpAddressTextBox3.Text = ipParts[2];
-                IpAddressTextBox4.Text = ipParts[3];
-            }
-
-            var subnetParts = subnetMask.Split('.');
-            if (subnetParts.Length == 4)
-            {
-                SubnetMaskTextBox1.Text = subnetParts[0];
-                SubnetMaskTextBox2.Text = subnetParts[1];
-                SubnetMaskTextBox3.Text = subnetParts[2];
-                SubnetMaskTextBox4.Text = subnetParts[3];
-            }
-
-            foreach (ComboBoxItem item in SsidComboBox.Items)
-            {
-                if (item.Content.ToString() == ssid)
+                // IP ve Subnet için değer kontrolü
+                if (int.TryParse(value, out int numValue) && numValue >= 0 && numValue <= 255)
                 {
-                    SsidComboBox.SelectedItem = item;
-                    break;
+                    activeTextBox.Text = value;
+                    MoveToNextTextBox();
                 }
             }
-
-            PasswordTextBox.Text = password;
-
-            // Set visibility based on connection type
-            if (connectionType == "Ethernet")
+            else if (activePasswordBox != null)
             {
-                Ssid.Visibility = Visibility.Collapsed;
-                PASSWORD.Visibility = Visibility.Collapsed;
-            }
-            else if (connectionType == "WLAN")
-            {
-                Ssid.Visibility = Visibility.Visible;
-                PASSWORD.Visibility = Visibility.Visible;
+                activePasswordBox.Password = value;
             }
         }
 
-        private string GetSetting(string key)
+        private void MoveToNextTextBox()
         {
-            // Bu metot, ayarları belirli bir kaynaktan alır. Örneğin, bir yapılandırma dosyasından veya bir veritabanından.
-            // Bu örnekte, basit bir şekilde sabit değerler döndürüyoruz.
-            switch (key)
+            if (activeTextBox != null)
             {
-                case "ConnectionType":
-                    return "Ethernet"; // Örnek değer
-                case "Configuration":
-                    return "Auto"; // Örnek değer
-                case "IpAddress":
-                    return "192.168.1.1"; // Örnek değer
-                case "SubnetMask":
-                    return "255.255.255.0"; // Örnek değer
-                case "Ssid":
-                    return "MyNetwork"; // Örnek değer
-                case "Password":
-                    return "password123"; // Örnek değer
-                default:
-                    return string.Empty;
+                string currentName = activeTextBox.Name;
+                if (currentName.Contains("TextBox"))
+                {
+                    int currentNumber = int.Parse(currentName[currentName.Length - 1].ToString());
+                    if (currentNumber < 4)
+                    {
+                        string baseName = currentName.Substring(0, currentName.Length - 1);
+                        string nextName = baseName + (currentNumber + 1);
+                        TextBox nextBox = FindName(nextName) as TextBox;
+                        if (nextBox != null)
+                        {
+                            nextBox.Focus();
+                        }
+                    }
+                    else
+                    {
+                        KeypadPopup.IsOpen = false;
+                    }
+                }
             }
         }
 
-        private void LoadWifiNetworks()
+        private async void ScanWifiNetworks()
         {
             try
             {
+                if (SsidComboBox == null) return; // SsidComboBox null kontrolü
+
                 SsidComboBox.Items.Clear();
-                WlanClient wlanClient = new WlanClient();
-                foreach (WlanClient.WlanInterface wlanInterface in wlanClient.Interfaces)
+                using (Process process = new Process())
                 {
-                    Wlan.WlanAvailableNetwork[] networks = wlanInterface.GetAvailableNetworkList(0);
-                    foreach (Wlan.WlanAvailableNetwork network in networks)
+                    process.StartInfo = new ProcessStartInfo
                     {
-                        string ssid = GetStringForSSID(network.dot11Ssid);
-                        if (!string.IsNullOrEmpty(ssid))
+                        FileName = "netsh",
+                        Arguments = "wlan show networks",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true
+                    };
+
+                    try
+                    {
+                        process.Start();
+                        string output = await process.StandardOutput.ReadToEndAsync();
+                        process.WaitForExit();
+
+                        foreach (string line in output.Split('\n'))
                         {
-                            SsidComboBox.Items.Add(new ComboBoxItem { Content = ssid });
+                            if (line.Contains("SSID") && line.Contains(":"))
+                            {
+                                string ssid = line.Split(':')[1].Trim();
+                                if (!string.IsNullOrEmpty(ssid))
+                                {
+                                    Application.Current.Dispatcher.Invoke(() =>
+                                    {
+                                        SsidComboBox.Items.Add(new ComboBoxItem { Content = ssid });
+                                    });
+                                }
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error running netsh command: {ex.Message}");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading Wi-Fi networks: {ex.Message}");
+                MessageBox.Show($"Error scanning networks: {ex.Message}");
             }
         }
 
-        private string GetStringForSSID(Wlan.Dot11Ssid ssid)
+        // ToggleButton_Checked metodunu güncelle
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            return new string(Encoding.ASCII.GetChars(ssid.SSID, 0, (int)ssid.SSIDLength));
+            try
+            {
+                if (!isInitialized) return;
+
+                var button = sender as ToggleButton;
+                if (button == null) return;
+
+                if (button == Ethernet || button == WLAN)
+                {
+                    Ethernet.IsChecked = (button == Ethernet);
+                    WLAN.IsChecked = (button == WLAN);
+                    UpdateVisibility();
+
+                    if (button == WLAN)
+                    {
+                        ScanWifiNetworks();
+                    }
+                }
+                else if (button == Autodhcp || button == Manual)
+                {
+                    Autodhcp.IsChecked = (button == Autodhcp);
+                    Manual.IsChecked = (button == Manual);
+                    UpdateVisibility();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in ToggleButton_Checked: {ex.Message}");
+            }
         }
-
-        //private void UpdateVisibility()
-        //{
-        //    bool isEthernet = Ethernet.IsChecked == true;
-        //    bool isAuto = Autodhcp.IsChecked == true;
-
-        //    IPAddress.Visibility = isEthernet && isAuto ? Visibility.Collapsed : Visibility.Visible;
-        //    SubnetMask.Visibility = isEthernet && isAuto ? Visibility.Collapsed : Visibility.Visible;
-        //    Ssid.Visibility = isEthernet ? Visibility.Collapsed : Visibility.Visible;
-        //    PASSWORD.Visibility = isEthernet ? Visibility.Collapsed : Visibility.Visible;
-        //}
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            UpdateVisibility();
+        }
 
         private void UpdateVisibility()
         {
-            bool isEthernet = Ethernet?.IsChecked == true;
-            bool isAuto = Autodhcp?.IsChecked == true;
-
-            if (IPAddress != null)
+            try
             {
-                IPAddress.Visibility = isEthernet && isAuto ? Visibility.Collapsed : Visibility.Visible;
+                // Tüm kontroller için null kontrolü
+                if (Ethernet == null || WLAN == null || Manual == null ||
+                    IpAddressGrid == null || SubnetMask == null ||
+                    Ssid == null || PASSWORD == null)
+                {
+                    return;
+                }
+
+                bool isEthernet = Ethernet.IsChecked == true;
+                bool isManual = Manual.IsChecked == true;
+
+                // IP ve Subnet alanlarını manuel modda göster
+                IpAddressGrid.Visibility = isManual ? Visibility.Visible : Visibility.Collapsed;
+                SubnetMask.Visibility = isManual ? Visibility.Visible : Visibility.Collapsed;
+
+                // SSID ve Password alanlarını WLAN modunda göster
+                Ssid.Visibility = !isEthernet ? Visibility.Visible : Visibility.Collapsed;
+                PASSWORD.Visibility = !isEthernet ? Visibility.Visible : Visibility.Collapsed;
             }
-
-            if (SubnetMask != null)
+            catch (Exception ex)
             {
-                SubnetMask.Visibility = isEthernet && isAuto ? Visibility.Collapsed : Visibility.Visible;
-            }
-
-            if (Ssid != null)
-            {
-                Ssid.Visibility = isEthernet ? Visibility.Collapsed : Visibility.Visible;
-            }
-
-            if (PASSWORD != null)
-            {
-                PASSWORD.Visibility = isEthernet ? Visibility.Collapsed : Visibility.Visible;
+                MessageBox.Show($"Error updating visibility: {ex.Message}");
             }
         }
 
+        private async void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Manual.IsChecked == true)
+                {
+                    string ipAddress = $"{IpAddressTextBox1.Text}.{IpAddressTextBox2.Text}.{IpAddressTextBox3.Text}.{IpAddressTextBox4.Text}";
+                    string subnetMask = $"{SubnetMaskTextBox1.Text}.{SubnetMaskTextBox2.Text}.{SubnetMaskTextBox3.Text}.{SubnetMaskTextBox4.Text}";
+
+                    if (!IsValidIpAddress(ipAddress) || !IsValidIpAddress(subnetMask))
+                    {
+                        MessageBox.Show("Invalid IP address or subnet mask!");
+                        return;
+                    }
+
+                    await SetStaticIp(ipAddress, subnetMask);
+                }
+                else
+                {
+                    await SetDhcp();
+                }
+
+                if (WLAN.IsChecked == true && SsidComboBox.SelectedItem != null)
+                {
+                    string ssid = ((ComboBoxItem)SsidComboBox.SelectedItem).Content.ToString();
+                    await ConnectToWifi(ssid, PasswordTextBox.Password);
+                }
+
+                // Ayarları kaydet
+                SaveSettings();
+
+                MessageBox.Show("Network settings saved successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving settings: {ex.Message}");
+            }
+        }
+
+        private bool IsValidIpAddress(string ipAddress)
+        {
+            return IPAddress.TryParse(ipAddress, out _);
+        }
+
+        private async Task SetStaticIp(string ipAddress, string subnetMask)
+        {
+            string interfaceName = Ethernet.IsChecked == true ? "Ethernet" : "Wi-Fi";
+            string command = $"interface ip set address \"{interfaceName}\" static {ipAddress} {subnetMask}";
+            await RunNetshCommand(command);
+        }
+
+        private async Task SetDhcp()
+        {
+            string interfaceName = Ethernet.IsChecked == true ? "Ethernet" : "Wi-Fi";
+            string command = $"interface ip set address \"{interfaceName}\" dhcp";
+            await RunNetshCommand(command);
+        }
+
+        private async Task ConnectToWifi(string ssid, string password)
+        {
+            // Password kontrolü
+            if (PasswordTextBox is PasswordBox passwordBox)
+            {
+                password = passwordBox.Password;
+            }
+
+            string profileXml = $@"<?xml version=""1.0""?>
+            <WLANProfile xmlns=""http://www.microsoft.com/networking/WLAN/profile/v1"">
+                <name>{ssid}</name>
+                <SSIDConfig>
+                    <SSID>
+                        <name>{ssid}</name>
+                    </SSID>
+                </SSIDConfig>
+                <connectionType>ESS</connectionType>
+                <connectionMode>auto</connectionMode>
+                <MSM>
+                    <security>
+                        <authEncryption>
+                            <authentication>WPA2PSK</authentication>
+                            <encryption>AES</encryption>
+                            <useOneX>false</useOneX>
+                        </authEncryption>
+                        <sharedKey>
+                            <keyType>passPhrase</keyType>
+                            <protected>false</protected>
+                            <keyMaterial>{password}</keyMaterial>
+                        </sharedKey>
+                    </security>
+                </MSM>
+            </WLANProfile>";
+
+            string profilePath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "wifi.xml");
+            await System.IO.File.WriteAllTextAsync(profilePath, profileXml);
+
+            await RunNetshCommand($"wlan add profile filename=\"{profilePath}\"");
+            await RunNetshCommand($"wlan connect name=\"{ssid}\"");
+
+            System.IO.File.Delete(profilePath);
+        }
+
+        private async Task RunNetshCommand(string arguments)
+        {
+            using (Process process = new Process())
+            {
+                process.StartInfo.FileName = "netsh";
+                process.StartInfo.Arguments = arguments;
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = true;
+                process.StartInfo.RedirectStandardOutput = true;
+                process.Start();
+                await process.WaitForExitAsync();
+            }
+        }
+
+        private void SaveSettings()
+        {
+            Properties.Settings.Default.ConnectionType = Ethernet.IsChecked == true ? "Ethernet" : "WLAN";
+            Properties.Settings.Default.Configuration = Autodhcp.IsChecked == true ? "Auto" : "Manual";
+
+            if (Manual.IsChecked == true)
+            {
+                Properties.Settings.Default.IpAddress = $"{IpAddressTextBox1.Text}.{IpAddressTextBox2.Text}.{IpAddressTextBox3.Text}.{IpAddressTextBox4.Text}";
+                Properties.Settings.Default.SubnetMask = $"{SubnetMaskTextBox1.Text}.{SubnetMaskTextBox2.Text}.{SubnetMaskTextBox3.Text}.{SubnetMaskTextBox4.Text}";
+            }
+
+            if (WLAN.IsChecked == true && SsidComboBox.SelectedItem != null)
+            {
+                Properties.Settings.Default.Ssid = ((ComboBoxItem)SsidComboBox.SelectedItem).Content.ToString();
+                Properties.Settings.Default.Password = (PasswordTextBox as PasswordBox)?.Password ?? "";
+            }
+
+            Properties.Settings.Default.Save();
+        }
     }
 }
-
-
-
-
-
-
