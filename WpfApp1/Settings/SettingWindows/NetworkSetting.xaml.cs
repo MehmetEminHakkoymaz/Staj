@@ -22,12 +22,16 @@ using System.Management;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using WpfApp1;
+using System.Windows.Media.Animation;
 
 namespace WpfApp1.Settings.SettingWindows
 {
     /// <summary>
     /// Interaction logic for NetworkSetting.xaml
     /// </summary>
+    /// 
+
+
     public partial class NetworkSetting : UserControl
     {
         private TextBox activeTextBox = null;
@@ -262,54 +266,154 @@ namespace WpfApp1.Settings.SettingWindows
             }
         }
 
-        private async void ScanWifiNetworks()
+        private async void RefreshWifiButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (SsidComboBox == null) return; // SsidComboBox null kontrolü
-
-                SsidComboBox.Items.Clear();
-                using (Process process = new Process())
+                var button = sender as Button;
+                if (button != null)
                 {
-                    process.StartInfo = new ProcessStartInfo
-                    {
-                        FileName = "netsh",
-                        Arguments = "wlan show networks",
-                        UseShellExecute = false,
-                        RedirectStandardOutput = true,
-                        CreateNoWindow = true
-                    };
+                    button.IsEnabled = false;
 
-                    try
+                    // Animasyon başlat
+                    var path = button.Content as Path;
+                    if (path != null)
                     {
-                        process.Start();
-                        string output = await process.StandardOutput.ReadToEndAsync();
-                        process.WaitForExit();
-
-                        foreach (string line in output.Split('\n'))
+                        var rotation = new DoubleAnimation
                         {
-                            if (line.Contains("SSID") && line.Contains(":"))
-                            {
-                                string ssid = line.Split(':')[1].Trim();
-                                if (!string.IsNullOrEmpty(ssid))
-                                {
-                                    Application.Current.Dispatcher.Invoke(() =>
-                                    {
-                                        SsidComboBox.Items.Add(new ComboBoxItem { Content = ssid });
-                                    });
-                                }
-                            }
-                        }
+                            From = 0,
+                            To = 360,
+                            Duration = TimeSpan.FromSeconds(1),
+                            RepeatBehavior = RepeatBehavior.Forever
+                        };
+                        path.RenderTransform.BeginAnimation(RotateTransform.AngleProperty, rotation);
                     }
-                    catch (Exception ex)
+
+                    // WiFi ağlarını tara
+                    await ScanWifiNetworksAsync();
+
+                    // Animasyonu durdur ve butonu aktif et
+                    if (path != null)
                     {
-                        MessageBox.Show($"Error running netsh command: {ex.Message}");
+                        path.RenderTransform.BeginAnimation(RotateTransform.AngleProperty, null);
                     }
+                    button.IsEnabled = true;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error scanning networks: {ex.Message}");
+                MessageBox.Show($"Error refreshing networks: {ex.Message}");
+            }
+        }
+
+        private async Task ScanWifiNetworksAsync()
+        {
+            try
+            {
+                // ComboBox'ı temizle
+                SsidComboBox.Items.Clear();
+
+                // netsh komutunu çalıştır
+                using (var process = new Process())
+                {
+                    process.StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "netsh",
+                        Arguments = "wlan show networks mode=Bssid",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true,
+                        StandardOutputEncoding = Encoding.UTF8
+                    };
+
+                    process.Start();
+                    string output = await process.StandardOutput.ReadToEndAsync();
+                    await process.WaitForExitAsync();
+
+                    var networks = new List<string>();
+                    string currentSsid = null;
+
+                    foreach (string line in output.Split('\n'))
+                    {
+                        string trimmedLine = line.Trim();
+                        if (trimmedLine.StartsWith("SSID"))
+                        {
+                            var parts = trimmedLine.Split(':', 2);
+                            if (parts.Length == 2)
+                            {
+                                currentSsid = parts[1].Trim();
+                                if (!string.IsNullOrEmpty(currentSsid) && !networks.Contains(currentSsid))
+                                {
+                                    networks.Add(currentSsid);
+                                }
+                            }
+                        }
+                    }
+
+                    // UI thread'de ComboBox'ı güncelle
+                    await Dispatcher.InvokeAsync(() =>
+                    {
+                        foreach (var network in networks.OrderBy(n => n))
+                        {
+                            SsidComboBox.Items.Add(new ComboBoxItem { Content = network });
+                        }
+
+                        if (SsidComboBox.Items.Count > 0)
+                        {
+                            SsidComboBox.SelectedIndex = 0;
+                        }
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                await Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show($"Error scanning networks: {ex.Message}");
+                });
+            }
+        }
+
+        private async Task ScanWifiNetworks()
+        {
+            try
+            {
+                if (SsidComboBox == null) return;
+
+                // ComboBox'ı temizle
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    SsidComboBox.Items.Clear();
+                });
+
+                // Ağları tara
+                var networks = await ManageWifi.GetAvailableNetworks();
+
+                // UI'ı güncelle
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    foreach (var network in networks.OrderBy(n => n)) // Ağları alfabetik sırala
+                    {
+                        var item = new ComboBoxItem
+                        {
+                            Content = network,
+                            Tag = network
+                        };
+                        SsidComboBox.Items.Add(item);
+                    }
+
+                    if (SsidComboBox.Items.Count > 0)
+                    {
+                        SsidComboBox.SelectedIndex = 0;
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show($"Error scanning networks: {ex.Message}");
+                });
             }
         }
 
@@ -515,4 +619,52 @@ namespace WpfApp1.Settings.SettingWindows
             Properties.Settings.Default.Save();
         }
     }
+
+    public class ManageWifi
+    {
+        public static async Task<List<string>> GetAvailableNetworks()
+        {
+            var networks = new List<string>();
+
+            try
+            {
+                using (var process = new Process())
+                {
+                    process.StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "netsh",
+                        Arguments = "wlan show networks",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true,
+                        StandardOutputEncoding = Encoding.UTF8
+                    };
+
+                    process.Start();
+                    string output = await process.StandardOutput.ReadToEndAsync();
+                    await process.WaitForExitAsync();
+
+                    string[] lines = output.Split('\n');
+                    foreach (string line in lines)
+                    {
+                        if (line.Contains("SSID") && line.Contains(":"))
+                        {
+                            string ssid = line.Split(':')[1].Trim();
+                            if (!string.IsNullOrEmpty(ssid))
+                            {
+                                networks.Add(ssid);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error scanning WiFi networks: {ex.Message}");
+            }
+
+            return networks;
+        }
+    }
+
 }
