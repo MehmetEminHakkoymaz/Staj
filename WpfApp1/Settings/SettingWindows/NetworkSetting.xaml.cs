@@ -44,25 +44,85 @@ namespace WpfApp1.Settings.SettingWindows
             {
                 InitializeComponent();
 
-                // Kontrollerin yüklenmesini bekle
-                this.Loaded += (s, e) =>
-                {
-                    if (!isInitialized)
-                    {
-                        InitializeControls();
-                        isInitialized = true;
-                    }
-                };
+                // UI bileşenlerini başlat
+                SetupUIComponents();
 
-                // Keypad kontrolünü başlat
+                // Event'leri kaydet
+                RegisterEvents();
+
+                // Kontrollerin yüklenmesini bekle
+                this.Loaded += NetworkSetting_Loaded;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error initializing NetworkSetting: {ex.Message}", "Initialization Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void SetupUIComponents()
+        {
+            try
+            {
+                // Keyboard ve Keypad başlatma
+                if (CustomKeyboard != null)
+                {
+                    InitializeKeyboard();
+                }
+
                 if (KeypadControl != null)
                 {
                     KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
                 }
+
+                // Varsayılan değerleri ayarla
+                isInitialized = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error in NetworkSetting constructor: {ex.Message}");
+                throw new InvalidOperationException("Failed to setup UI components", ex);
+            }
+        }
+
+        private void RegisterEvents()
+        {
+            try
+            {
+                // Cleanup events
+                this.Unloaded += (s, e) =>
+                {
+                    CleanupKeyboard();
+                    if (KeypadControl != null)
+                    {
+                        KeypadControl.ValueSelected -= KeyPadControl_ValueSelected;
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Failed to register events", ex);
+            }
+        }
+
+        private void NetworkSetting_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!isInitialized)
+                {
+                    InitializeControls();
+                    isInitialized = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading NetworkSetting: {ex.Message}", "Loading Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                // Loaded event'ini bir kez çalıştıktan sonra kaldır
+                this.Loaded -= NetworkSetting_Loaded;
             }
         }
 
@@ -100,45 +160,6 @@ namespace WpfApp1.Settings.SettingWindows
                 MessageBox.Show($"Error initializing controls: {ex.Message}");
             }
         }
-
-
-        private void NetworkSetting_Loaded(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                // UI elementlerinin hazır olduğundan emin ol
-                if (Ethernet != null && WLAN != null)
-                {
-                    // Varsayılan seçimi yap
-                    Ethernet.IsChecked = true;
-                    WLAN.IsChecked = false;
-                }
-
-                if (Autodhcp != null && Manual != null)
-                {
-                    // Varsayılan seçimi yap
-                    Autodhcp.IsChecked = true;
-                    Manual.IsChecked = false;
-                }
-
-                // Görünürlüğü güncelle
-                UpdateVisibility();
-
-                // Ağ ayarlarını yükle
-                LoadCurrentNetworkSettings();
-
-                // WLAN seçili ise ağları tara
-                if (WLAN?.IsChecked == true)
-                {
-                    ScanWifiNetworks();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error in NetworkSetting_Loaded: {ex.Message}");
-            }
-        }
-
         private async void LoadCurrentNetworkSettings()
         {
             try
@@ -191,7 +212,6 @@ namespace WpfApp1.Settings.SettingWindows
                 MessageBox.Show($"Error loading network settings: {ex.Message}");
             }
         }
-
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             if (sender is TextBox focusedTextBox)
@@ -222,7 +242,6 @@ namespace WpfApp1.Settings.SettingWindows
                 KeypadControl.SetLabelContent("PASSWORD");
             }
         }
-
         private void KeyPadControl_ValueSelected(object sender, string value)
         {
             if (activeTextBox != null)
@@ -239,7 +258,6 @@ namespace WpfApp1.Settings.SettingWindows
             //    activePasswordBox.Password = value;
             //}
         }
-
         private void MoveToNextTextBox()
         {
             if (activeTextBox != null)
@@ -265,7 +283,6 @@ namespace WpfApp1.Settings.SettingWindows
                 }
             }
         }
-
         private async void RefreshWifiButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -305,7 +322,6 @@ namespace WpfApp1.Settings.SettingWindows
                 MessageBox.Show($"Error refreshing networks: {ex.Message}");
             }
         }
-
         private async Task ScanWifiNetworksAsync()
         {
             try
@@ -373,7 +389,6 @@ namespace WpfApp1.Settings.SettingWindows
                 });
             }
         }
-
         private async Task ScanWifiNetworks()
         {
             try
@@ -416,7 +431,6 @@ namespace WpfApp1.Settings.SettingWindows
                 });
             }
         }
-
         // ToggleButton_Checked metodunu güncelle
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -454,7 +468,6 @@ namespace WpfApp1.Settings.SettingWindows
         {
             UpdateVisibility();
         }
-
         private void UpdateVisibility()
         {
             try
@@ -483,7 +496,6 @@ namespace WpfApp1.Settings.SettingWindows
                 MessageBox.Show($"Error updating visibility: {ex.Message}");
             }
         }
-
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -522,26 +534,22 @@ namespace WpfApp1.Settings.SettingWindows
                 MessageBox.Show($"Error saving settings: {ex.Message}");
             }
         }
-
         private bool IsValidIpAddress(string ipAddress)
         {
             return IPAddress.TryParse(ipAddress, out _);
         }
-
         private async Task SetStaticIp(string ipAddress, string subnetMask)
         {
             string interfaceName = Ethernet.IsChecked == true ? "Ethernet" : "Wi-Fi";
             string command = $"interface ip set address \"{interfaceName}\" static {ipAddress} {subnetMask}";
             await RunNetshCommand(command);
         }
-
         private async Task SetDhcp()
         {
             string interfaceName = Ethernet.IsChecked == true ? "Ethernet" : "Wi-Fi";
             string command = $"interface ip set address \"{interfaceName}\" dhcp";
             await RunNetshCommand(command);
         }
-
         private async Task ConnectToWifi(string ssid, string password)
         {
             // Password kontrolü
@@ -584,7 +592,6 @@ namespace WpfApp1.Settings.SettingWindows
 
             System.IO.File.Delete(profilePath);
         }
-
         private async Task RunNetshCommand(string arguments)
         {
             using (Process process = new Process())
@@ -598,7 +605,6 @@ namespace WpfApp1.Settings.SettingWindows
                 await process.WaitForExitAsync();
             }
         }
-
         private void SaveSettings()
         {
             Properties.Settings.Default.ConnectionType = Ethernet.IsChecked == true ? "Ethernet" : "WLAN";
@@ -618,33 +624,105 @@ namespace WpfApp1.Settings.SettingWindows
 
             Properties.Settings.Default.Save();
         }
-
         private void PasswordTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            KeyboardPopup.IsOpen = true;
-        }
-
-        private void CustomKeyboard_KeyPressed(object sender, string key)
-        {
-            switch (key)
+            try
             {
-                case "Backspace":
-                    if (PasswordTextBox.Password.Length > 0)
-                    {
-                        PasswordTextBox.Password = PasswordTextBox.Password.Substring(0, PasswordTextBox.Password.Length - 1);
-                    }
-                    break;
-                case "Shift":
-                    // Shift işlevselliği
-                    break;
-                default:
-                    PasswordTextBox.Password += key;
-                    break;
+                // Mevcut klavyeyi kapat (eğer açıksa)
+                KeypadPopup.IsOpen = false;
+
+                if (KeyboardPopup != null && CustomKeyboard != null)
+                {
+                    // Klavyeyi göster
+                    KeyboardPopup.IsOpen = true;
+
+                    // Event handler'ı ekle (eğer daha önce eklenmemişse)
+                    CustomKeyboard.KeyPressed -= CustomKeyboard_KeyPressed; // Önce varolan handler'ı kaldır
+                    CustomKeyboard.KeyPressed += CustomKeyboard_KeyPressed;
+                }
+                else
+                {
+                    MessageBox.Show("Keyboard initialization error");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error showing keyboard: {ex.Message}");
             }
         }
 
-    }
+        private void CustomKeyboard_KeyPressed(object sender, string value)
+        {
+            try
+            {
+                if (PasswordTextBox == null) return;
 
+                switch (value)
+                {
+                    case "{BACKSPACE}":
+                        if (PasswordTextBox.Password.Length > 0)
+                        {
+                            PasswordTextBox.Password = PasswordTextBox.Password.Substring(0, PasswordTextBox.Password.Length - 1);
+                        }
+                        break;
+
+                    case "{ENTER}":
+                        KeyboardPopup.IsOpen = false;
+                        break;
+
+                    case " ":
+                        // Boşluk tuşu için özel işlem
+                        PasswordTextBox.Password += value;
+                        break;
+
+                    default:
+                        PasswordTextBox.Password += value;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error processing keyboard input: {ex.Message}");
+            }
+        }
+
+        // NetworkSetting constructor'ında veya Loaded event'inde
+        private void InitializeKeyboard()
+        {
+            try
+            {
+                if (CustomKeyboard != null)
+                {
+                    CustomKeyboard.KeyPressed += CustomKeyboard_KeyPressed;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error initializing keyboard: {ex.Message}");
+            }
+        }
+
+        // Cleanup için (örneğin UserControl Unloaded event'inde)
+        private void CleanupKeyboard()
+        {
+            try
+            {
+                if (CustomKeyboard != null)
+                {
+                    CustomKeyboard.KeyPressed -= CustomKeyboard_KeyPressed;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error cleaning up keyboard: {ex.Message}");
+            }
+        }
+
+
+
+
+
+    }
     public class ManageWifi
     {
         public static async Task<List<string>> GetAvailableNetworks()

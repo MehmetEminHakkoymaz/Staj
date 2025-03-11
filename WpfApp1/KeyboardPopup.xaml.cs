@@ -13,9 +13,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
+
 namespace WpfApp1
 {
-    // Önce sınıfın dışında yeni bir static sınıf oluşturuyoruz
     public static class VisualTreeHelperExtensions
     {
         public static IEnumerable<DependencyObject> GetVisualChildren(this DependencyObject parent)
@@ -37,12 +37,14 @@ namespace WpfApp1
             }
         }
     }
+
     public partial class KeyboardPopup : UserControl
     {
         #region Fields
         private readonly Dictionary<Button, string> originalButtonContents;
         private bool isShiftActive;
         private bool isSymbolsActive;
+        private bool isInitialized;
         #endregion
 
         #region Events
@@ -56,6 +58,7 @@ namespace WpfApp1
             {
                 InitializeComponent();
                 originalButtonContents = new Dictionary<Button, string>();
+                isInitialized = false;
                 InitializeKeyboard();
             }
             catch (Exception ex)
@@ -68,9 +71,20 @@ namespace WpfApp1
         #region Private Methods
         private void InitializeKeyboard()
         {
-            isShiftActive = false;
-            isSymbolsActive = false;
-            SaveOriginalButtonContents();
+            try
+            {
+                if (!isInitialized)
+                {
+                    isShiftActive = false;
+                    isSymbolsActive = false;
+                    SaveOriginalButtonContents();
+                    isInitialized = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in InitializeKeyboard: {ex.Message}");
+            }
         }
 
         private void SaveOriginalButtonContents()
@@ -99,19 +113,14 @@ namespace WpfApp1
             if (button?.Content == null) return false;
 
             string content = button.Content.ToString();
-            return button.Name != "ShiftButton" &&
-                   button.Name != "BackspaceButton" &&
-                   content != "Space" &&
-                   content != "Enter" &&
-                   content != "123" &&
-                   content != "ABC";
+            return !new[] { "ShiftButton", "BackspaceButton", "SymbolsButton" }.Contains(button.Name) &&
+                   !new[] { "Space", "Enter", "123", "ABC", "Shift", "Backspace" }.Contains(content);
         }
 
         private List<Button> GetAllButtons()
         {
             try
             {
-                // this parametresini ekleyerek GetVisualChildren'ı çağırıyoruz
                 return this.GetVisualChildren()
                     .OfType<WrapPanel>()
                     .SelectMany(panel => panel.Children.OfType<Button>())
@@ -122,6 +131,7 @@ namespace WpfApp1
                 return new List<Button>();
             }
         }
+
         private void UpdateButtonsToSymbols(List<Button> buttons)
         {
             try
@@ -143,24 +153,6 @@ namespace WpfApp1
             }
         }
 
-        private string[] GetSymbolsArray()
-        {
-            return new[]
-            {
-                // Sayılar ve semboller
-                "!", "@", "#", "$", "%", "^", "&", "*", "(", ")",
-                
-                // Özel karakterler
-                "~", "`", "-", "_", "=", "+", "[", "]", "{", "}", "\\", "|",
-                
-                // Noktalama işaretleri
-                ";", ":", "'", "\"", "<", ">", "?", "/", "€", "£", "¥", "₺",
-                
-                // Matematik sembolleri
-                "±", "×", "÷", "≠", "≈", "≤", "≥", "∞", "π", "µ"
-            };
-        }
-
         private void RestoreOriginalButtonContents(List<Button> buttons)
         {
             try
@@ -178,6 +170,28 @@ namespace WpfApp1
                 MessageBox.Show($"Error restoring button contents: {ex.Message}");
             }
         }
+
+        private string[] GetSymbolsArray()
+        {
+            return new[]
+            {
+                "!", "@", "#", "$", "%", "^", "&", "*", "(", ")",
+                "~", "`", "-", "_", "=", "+", "[", "]", "{", "}", "\\", "|",
+                ";", ":", "'", "\"", "<", ">", "?", "/", "€", "£", "¥", "₺",
+                "±", "×", "÷", "≠", "≈", "≤", "≥", "∞", "π", "µ"
+            };
+        }
+
+        private string[] GetNormalKeysArray()
+        {
+            return new[]
+            {
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+                "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Ğ", "Ü",
+                "A", "S", "D", "F", "G", "H", "J", "K", "L", "Ş", "İ",
+                "Z", "X", "C", "V", "B", "N", "M", "Ö", "Ç", ",", "."
+            };
+        }
         #endregion
 
         #region Event Handlers
@@ -185,13 +199,10 @@ namespace WpfApp1
         {
             try
             {
-                if (sender is Button button)
+                if (sender is Button button && button.Content != null)
                 {
-                    string value = button.Content?.ToString() ?? string.Empty;
-                    if (!isShiftActive)
-                    {
-                        value = value.ToLower();
-                    }
+                    string value = button.Content.ToString();
+                    value = !isShiftActive ? value.ToLower() : value;
                     KeyPressed?.Invoke(this, value);
                 }
             }
@@ -221,9 +232,9 @@ namespace WpfApp1
             try
             {
                 isShiftActive = !isShiftActive;
-                if (ShiftButton != null)
+                if (sender is Button shiftButton)
                 {
-                    ShiftButton.Background = new SolidColorBrush(
+                    shiftButton.Background = new SolidColorBrush(
                         isShiftActive ? Colors.LightGray : Colors.White
                     );
                 }
@@ -238,21 +249,29 @@ namespace WpfApp1
         {
             try
             {
+                if (!isInitialized)
+                {
+                    SaveOriginalButtonContents();
+                    isInitialized = true;
+                }
+
                 isSymbolsActive = !isSymbolsActive;
-
-                if (sender is Button button)
-                {
-                    button.Content = isSymbolsActive ? "ABC" : "123";
-                }
-
                 var buttons = GetAllButtons();
-                if (isSymbolsActive)
+
+                if (sender is Button symbolsButton)
                 {
-                    UpdateButtonsToSymbols(buttons);
-                }
-                else
-                {
-                    RestoreOriginalButtonContents(buttons);
+                    symbolsButton.Content = isSymbolsActive ? "ABC" : "123";
+
+                    string[] newContents = isSymbolsActive ? GetSymbolsArray() : GetNormalKeysArray();
+                    int index = 0;
+
+                    foreach (var button in buttons.Where(IsRegularButton))
+                    {
+                        if (index < newContents.Length)
+                        {
+                            button.Content = newContents[index++];
+                        }
+                    }
                 }
             }
             catch (Exception ex)
