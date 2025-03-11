@@ -629,28 +629,48 @@ namespace WpfApp1.Settings.SettingWindows
             try
             {
                 // Mevcut klavyeyi kapat (eğer açıksa)
-                KeypadPopup.IsOpen = false;
-
-                if (KeyboardPopup != null && CustomKeyboard != null)
+                if (KeypadPopup != null)
                 {
-                    // Klavyeyi göster
-                    KeyboardPopup.IsOpen = true;
-
-                    // Event handler'ı ekle (eğer daha önce eklenmemişse)
-                    CustomKeyboard.KeyPressed -= CustomKeyboard_KeyPressed; // Önce varolan handler'ı kaldır
-                    CustomKeyboard.KeyPressed += CustomKeyboard_KeyPressed;
+                    KeypadPopup.IsOpen = false;
                 }
-                else
+
+                // Keyboard popup kontrolü
+                if (KeyboardPopup == null || CustomKeyboard == null)
                 {
                     MessageBox.Show("Keyboard initialization error");
+                    return;
                 }
+
+                // Event handler'ları güvenli bir şekilde yönet
+                UnregisterKeyboardEvents();
+                RegisterKeyboardEvents();
+
+                // Klavyeyi göster
+                KeyboardPopup.IsOpen = true;
+                KeyboardPopup.StaysOpen = true; // Popup'ın açık kalmasını sağla
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error showing keyboard: {ex.Message}");
             }
         }
+        private void RegisterKeyboardEvents()
+        {
+            if (CustomKeyboard != null)
+            {
+                CustomKeyboard.KeyPressed += CustomKeyboard_KeyPressed;
+                CustomKeyboard.CloseRequested += CustomKeyboard_CloseRequested;
+            }
+        }
 
+        private void UnregisterKeyboardEvents()
+        {
+            if (CustomKeyboard != null)
+            {
+                CustomKeyboard.KeyPressed -= CustomKeyboard_KeyPressed;
+                CustomKeyboard.CloseRequested -= CustomKeyboard_CloseRequested;
+            }
+        }
         private void CustomKeyboard_KeyPressed(object sender, string value)
         {
             try
@@ -693,7 +713,8 @@ namespace WpfApp1.Settings.SettingWindows
             {
                 if (CustomKeyboard != null)
                 {
-                    CustomKeyboard.KeyPressed += CustomKeyboard_KeyPressed;
+                    UnregisterKeyboardEvents(); // Önce mevcut event'ları temizle
+                    RegisterKeyboardEvents(); // Sonra yeniden kaydet
                 }
             }
             catch (Exception ex)
@@ -702,14 +723,32 @@ namespace WpfApp1.Settings.SettingWindows
             }
         }
 
+        private void CustomKeyboard_CloseRequested(object sender, EventArgs e)
+        {
+            try
+            {
+                if (KeyboardPopup != null)
+                {
+                    KeyboardPopup.IsOpen = false;
+                    KeyboardPopup.StaysOpen = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error closing keyboard: {ex.Message}");
+            }
+        }
+
         // Cleanup için (örneğin UserControl Unloaded event'inde)
         private void CleanupKeyboard()
         {
             try
             {
-                if (CustomKeyboard != null)
+                UnregisterKeyboardEvents();
+                if (KeyboardPopup != null)
                 {
-                    CustomKeyboard.KeyPressed -= CustomKeyboard_KeyPressed;
+                    KeyboardPopup.IsOpen = false;
+                    KeyboardPopup.StaysOpen = false;
                 }
             }
             catch (Exception ex)

@@ -1,18 +1,9 @@
-﻿using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-
 
 namespace WpfApp1
 {
@@ -46,9 +37,20 @@ namespace WpfApp1
         private bool isSymbolsActive;
         private bool isInitialized;
         #endregion
+        public string PreviewText
+        {
+            get => PreviewTextBox?.Text ?? string.Empty;
+            set
+            {
+                if (PreviewTextBox != null)
+                    PreviewTextBox.Text = value;
+            }
+        }
 
         #region Events
         public event EventHandler<string> KeyPressed;
+        public event EventHandler CloseRequested;
+
         #endregion
 
         #region Constructor
@@ -77,7 +79,7 @@ namespace WpfApp1
                 {
                     isShiftActive = false;
                     isSymbolsActive = false;
-                    SaveOriginalButtonContents();
+                    SetInitialKeyboardState();
                     isInitialized = true;
                 }
             }
@@ -87,24 +89,25 @@ namespace WpfApp1
             }
         }
 
-        private void SaveOriginalButtonContents()
+        private void SetInitialKeyboardState()
         {
             try
             {
-                originalButtonContents.Clear();
                 var buttons = GetAllButtons();
+                int index = 0;
+                var initialContents = GetLowerCaseArray();
 
-                foreach (var button in buttons)
+                foreach (var button in buttons.Where(IsRegularButton))
                 {
-                    if (IsRegularButton(button))
+                    if (index < initialContents.Length)
                     {
-                        originalButtonContents[button] = button.Content?.ToString() ?? string.Empty;
+                        button.Content = initialContents[index++];
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error saving button contents: {ex.Message}");
+                MessageBox.Show($"Error setting initial keyboard state: {ex.Message}");
             }
         }
 
@@ -132,65 +135,49 @@ namespace WpfApp1
             }
         }
 
-        private void UpdateButtonsToSymbols(List<Button> buttons)
+        private string[] GetSymbolsArray() => new[]
+        {
+            "!", "@", "#", "$", "%", "^", "&", "*", "(", ")",
+            "~", "`", "-", "_", "=", "+", "[", "]", "{", "}", "\\", "|",
+            ";", ":", "'", "\"", "<", ">", "?", "/", "€", "£", "¥", "₺",
+            "±", "×", "÷", "≠", "≈", "≤", "≥", "∞", "π", "µ"
+        };
+
+        private string[] GetLowerCaseArray() => new[]
+        {
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+            "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "ğ", "ü",
+            "a", "s", "d", "f", "g", "h", "j", "k", "l", "ş", "i",
+            "z", "x", "c", "v", "b", "n", "m", "ö", "ç", ",", "."
+        };
+
+        private string[] GetUpperCaseArray() => new[]
+        {
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+            "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Ğ", "Ü",
+            "A", "S", "D", "F", "G", "H", "J", "K", "L", "Ş", "İ",
+            "Z", "X", "C", "V", "B", "N", "M", "Ö", "Ç", ",", "."
+        };
+
+        private void UpdateButtonContents(string[] newContents)
         {
             try
             {
-                string[] symbols = GetSymbolsArray();
-                int symbolIndex = 0;
+                var buttons = GetAllButtons();
+                int index = 0;
 
                 foreach (var button in buttons.Where(IsRegularButton))
                 {
-                    if (symbolIndex < symbols.Length)
+                    if (index < newContents.Length)
                     {
-                        button.Content = symbols[symbolIndex++];
+                        button.Content = newContents[index++];
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error updating symbols: {ex.Message}");
+                MessageBox.Show($"Error updating button contents: {ex.Message}");
             }
-        }
-
-        private void RestoreOriginalButtonContents(List<Button> buttons)
-        {
-            try
-            {
-                foreach (var button in buttons)
-                {
-                    if (originalButtonContents.ContainsKey(button))
-                    {
-                        button.Content = originalButtonContents[button];
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error restoring button contents: {ex.Message}");
-            }
-        }
-
-        private string[] GetSymbolsArray()
-        {
-            return new[]
-            {
-                "!", "@", "#", "$", "%", "^", "&", "*", "(", ")",
-                "~", "`", "-", "_", "=", "+", "[", "]", "{", "}", "\\", "|",
-                ";", ":", "'", "\"", "<", ">", "?", "/", "€", "£", "¥", "₺",
-                "±", "×", "÷", "≠", "≈", "≤", "≥", "∞", "π", "µ"
-            };
-        }
-
-        private string[] GetNormalKeysArray()
-        {
-            return new[]
-            {
-                "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-                "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Ğ", "Ü",
-                "A", "S", "D", "F", "G", "H", "J", "K", "L", "Ş", "İ",
-                "Z", "X", "C", "V", "B", "N", "M", "Ö", "Ç", ",", "."
-            };
         }
         #endregion
 
@@ -202,8 +189,10 @@ namespace WpfApp1
                 if (sender is Button button && button.Content != null)
                 {
                     string value = button.Content.ToString();
-                    value = !isShiftActive ? value.ToLower() : value;
                     KeyPressed?.Invoke(this, value);
+                    // Önizleme eklentisi
+                    if (PreviewTextBox != null)
+                        PreviewTextBox.Text += value;
                 }
             }
             catch (Exception ex)
@@ -214,11 +203,19 @@ namespace WpfApp1
 
         private void Backspace_Click(object sender, RoutedEventArgs e)
         {
+            // Önizleme için backspace işlemi
+            if (PreviewTextBox?.Text?.Length > 0)
+                PreviewTextBox.Text = PreviewTextBox.Text.Substring(0, PreviewTextBox.Text.Length - 1);
+
             KeyPressed?.Invoke(this, "{BACKSPACE}");
         }
 
         private void Space_Click(object sender, RoutedEventArgs e)
         {
+            // Önizleme için space işlemi
+            if (PreviewTextBox != null)
+                PreviewTextBox.Text += " ";
+
             KeyPressed?.Invoke(this, " ");
         }
 
@@ -231,12 +228,18 @@ namespace WpfApp1
         {
             try
             {
+                if (isSymbolsActive) return; // Sembol modunda Shift işlevsiz
+
                 isShiftActive = !isShiftActive;
                 if (sender is Button shiftButton)
                 {
+                    // Shift butonunun görsel değişimi
                     shiftButton.Background = new SolidColorBrush(
                         isShiftActive ? Colors.LightGray : Colors.White
                     );
+
+                    // Tuş içeriklerini güncelle
+                    UpdateButtonContents(isShiftActive ? GetUpperCaseArray() : GetLowerCaseArray());
                 }
             }
             catch (Exception ex)
@@ -249,34 +252,46 @@ namespace WpfApp1
         {
             try
             {
-                if (!isInitialized)
-                {
-                    SaveOriginalButtonContents();
-                    isInitialized = true;
-                }
-
                 isSymbolsActive = !isSymbolsActive;
-                var buttons = GetAllButtons();
-
+                
                 if (sender is Button symbolsButton)
                 {
                     symbolsButton.Content = isSymbolsActive ? "ABC" : "123";
 
-                    string[] newContents = isSymbolsActive ? GetSymbolsArray() : GetNormalKeysArray();
-                    int index = 0;
-
-                    foreach (var button in buttons.Where(IsRegularButton))
+                    if (isSymbolsActive)
                     {
-                        if (index < newContents.Length)
+                        // Sembol moduna geçerken
+                        UpdateButtonContents(GetSymbolsArray());
+                        // Shift'i sıfırla
+                        isShiftActive = false;
+                        if (ShiftButton != null)
                         {
-                            button.Content = newContents[index++];
+                            ShiftButton.Background = new SolidColorBrush(Colors.White);
                         }
+                    }
+                    else
+                    {
+                        // Normal moda dönerken
+                        UpdateButtonContents(isShiftActive ? GetUpperCaseArray() : GetLowerCaseArray());
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error toggling symbols: {ex.Message}");
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // CloseRequested event'ini tetikle
+                CloseRequested?.Invoke(this, EventArgs.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error closing keyboard: {ex.Message}");
             }
         }
         #endregion

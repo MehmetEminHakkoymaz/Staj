@@ -198,8 +198,8 @@ namespace WpfApp1
                 mainControl.pO2Value.Content = incommingWords[4];
                 mainControl.Gas1Value.Content = incommingWords[5];
                 mainControl.Gas2Value.Content = incommingWords[6];
-                mainControl.Gas3Value.Content = incommingWords[7];
-                mainControl.Gas4Value.Content = incommingWords[8];
+                //mainControl.Gas3Value.Content = incommingWords[7];
+                //mainControl.Gas4Value.Content = incommingWords[8];
                 mainControl.FoamValue.Content = incommingWords[9];
                 extendedControl.TurbidityValue.Content = incommingWords[10];
                 extendedControl.BalanceValue.Content = incommingWords[11];
@@ -233,10 +233,10 @@ namespace WpfApp1
             sendingWords += ",";
             sendingWords += mainControl.Gas2Target.Text;
             sendingWords += ",";
-            sendingWords += mainControl.Gas3Target.Text;
-            sendingWords += ",";
-            sendingWords += mainControl.Gas4Target.Text;
-            sendingWords += ",";
+            //sendingWords += mainControl.Gas3Target.Text;
+            //sendingWords += ",";
+            //sendingWords += mainControl.Gas4Target.Text;
+            //sendingWords += ",";
             sendingWords += mainControl.FoamTarget.Text;
             sendingWords += ",";
             sendingWords += extendedControl.TurbidityTarget.Text;
@@ -414,12 +414,27 @@ namespace WpfApp1
         {
             contentArea.Content = exitGasControl;
         }
-
         private void EditView_Button_Click(object sender, RoutedEventArgs e)
         {
-            contentArea.Content = editViewControl;
-        }
+            try
+            {
+                // Eğer contentArea'da şu anda EditViewControl varsa
+                if (contentArea.Content is EditViewControl)
+                {
+                    // FavouritesControl'e yönlendir
+                    contentArea.Content = favouritesControl;
+                    return;
+                }
 
+                // Eğer EditViewControl açık değilse, normal işleme devam et
+                contentArea.Content = editViewControl;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error switching views: {ex.Message}", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
         private void Favourites_Button_Click(object sender, RoutedEventArgs e)
         {
             contentArea.Content = favouritesControl;
@@ -563,8 +578,8 @@ namespace WpfApp1
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse4, mainControl.conditionalButtonpO2);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse5, mainControl.conditionalButtonGas1);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse6, mainControl.conditionalButtonGas2);
-            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse7, mainControl.conditionalButtonGas3);
-            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse8, mainControl.conditionalButtonGas4);
+            //mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse7, mainControl.conditionalButtonGas3);
+            //mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse8, mainControl.conditionalButtonGas4);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse9, mainControl.conditionalButtonFoam);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse19, mainControl.conditionalButtonRedox);
         }
@@ -575,9 +590,9 @@ namespace WpfApp1
             extendedControl.conditionalButtonAirFlow?.SetValue(VisibilityProperty, Visibility.Collapsed);
             extendedControl.conditionalButtonBalance?.SetValue(VisibilityProperty, Visibility.Collapsed);
             extendedControl.conditionalButtonGas2Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            extendedControl.conditionalButtonGas3Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            extendedControl.conditionalButtonGas4Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            extendedControl.conditionalButtonGas5Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            //extendedControl.conditionalButtonGas3Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            //extendedControl.conditionalButtonGas4Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
+            //extendedControl.conditionalButtonGas5Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
             extendedControl.conditionalButtonTurbidity?.SetValue(VisibilityProperty, Visibility.Collapsed);
         }
 
@@ -667,10 +682,10 @@ namespace WpfApp1
                 values["Gas1Target"] = mainControl?.Gas1Target?.Text;
                 values["Gas2Value"] = mainControl?.Gas2Value?.Content?.ToString();
                 values["Gas2Target"] = mainControl?.Gas2Target?.Text;
-                values["Gas3Value"] = mainControl?.Gas3Value?.Content?.ToString();
-                values["Gas3Target"] = mainControl?.Gas3Target?.Text;
-                values["Gas4Value"] = mainControl?.Gas4Value?.Content?.ToString();
-                values["Gas4Target"] = mainControl?.Gas4Target?.Text;
+                //values["Gas3Value"] = mainControl?.Gas3Value?.Content?.ToString();
+                //values["Gas3Target"] = mainControl?.Gas3Target?.Text;
+                //values["Gas4Value"] = mainControl?.Gas4Value?.Content?.ToString();
+                //values["Gas4Target"] = mainControl?.Gas4Target?.Text;
                 values["FoamValue"] = mainControl?.FoamValue?.Content?.ToString();
                 values["FoamTarget"] = mainControl?.FoamTarget?.Text;
                 values["RedoxValue"] = mainControl?.RedoxValue?.Content?.ToString();
@@ -683,12 +698,12 @@ namespace WpfApp1
                 values["AirFlowTarget"] = extendedControl?.AirFlowTarget?.Text;
                 values["Gas2FlowValue"] = extendedControl?.Gas2FlowValue?.Content?.ToString();
                 values["Gas2FlowTarget"] = extendedControl?.Gas2FlowTarget?.Text;
-                values["Gas3FlowValue"] = extendedControl?.Gas3FlowValue?.Content?.ToString();
-                values["Gas3FlowTarget"] = extendedControl?.Gas3FlowTarget?.Text;
-                values["Gas4FlowValue"] = extendedControl?.Gas4FlowValue?.Content?.ToString();
-                values["Gas4FlowTarget"] = extendedControl?.Gas4FlowTarget?.Text;
-                values["Gas5FlowValue"] = extendedControl?.Gas5FlowValue?.Content?.ToString();
-                values["Gas5FlowTarget"] = extendedControl?.Gas5FlowTarget?.Text;
+                //values["Gas3FlowValue"] = extendedControl?.Gas3FlowValue?.Content?.ToString();
+                //values["Gas3FlowTarget"] = extendedControl?.Gas3FlowTarget?.Text;
+                //values["Gas4FlowValue"] = extendedControl?.Gas4FlowValue?.Content?.ToString();
+                //values["Gas4FlowTarget"] = extendedControl?.Gas4FlowTarget?.Text;
+                //values["Gas5FlowValue"] = extendedControl?.Gas5FlowValue?.Content?.ToString();
+                //values["Gas5FlowTarget"] = extendedControl?.Gas5FlowTarget?.Text;
                 values["ExitTurbidityValue"] = exitGasControl?.ExitTurbidityValue?.Content?.ToString();
                 values["ExitTurbidityTarget"] = exitGasControl?.ExitTurbidityTarget?.Text;
                 values["ExitBalanceValue"] = exitGasControl?.ExitBalanceValue?.Content?.ToString();
@@ -759,10 +774,10 @@ namespace WpfApp1
                 AddValue("Gas1Target", mainControl?.Gas1Target?.Text);
                 AddValue("Gas2Value", mainControl?.Gas2Value?.Content);
                 AddValue("Gas2Target", mainControl?.Gas2Target?.Text);
-                AddValue("Gas3Value", mainControl?.Gas3Value?.Content);
-                AddValue("Gas3Target", mainControl?.Gas3Target?.Text);
-                AddValue("Gas4Value", mainControl?.Gas4Value?.Content);
-                AddValue("Gas4Target", mainControl?.Gas4Target?.Text);
+                //AddValue("Gas3Value", mainControl?.Gas3Value?.Content);
+                //AddValue("Gas3Target", mainControl?.Gas3Target?.Text);
+                //AddValue("Gas4Value", mainControl?.Gas4Value?.Content);
+                //AddValue("Gas4Target", mainControl?.Gas4Target?.Text);
                 AddValue("FoamValue", mainControl?.FoamValue?.Content);
                 AddValue("FoamTarget", mainControl?.FoamTarget?.Text);
                 AddValue("RedoxValue", mainControl?.RedoxValue?.Content);
@@ -775,12 +790,12 @@ namespace WpfApp1
                 AddValue("AirFlowTarget", extendedControl?.AirFlowTarget?.Text);
                 AddValue("Gas2FlowValue", extendedControl?.Gas2FlowValue?.Content);
                 AddValue("Gas2FlowTarget", extendedControl?.Gas2FlowTarget?.Text);
-                AddValue("Gas3FlowValue", extendedControl?.Gas3FlowValue?.Content);
-                AddValue("Gas3FlowTarget", extendedControl?.Gas3FlowTarget?.Text);
-                AddValue("Gas4FlowValue", extendedControl?.Gas4FlowValue?.Content);
-                AddValue("Gas4FlowTarget", extendedControl?.Gas4FlowTarget?.Text);
-                AddValue("Gas5FlowValue", extendedControl?.Gas5FlowValue?.Content);
-                AddValue("Gas5FlowTarget", extendedControl?.Gas5FlowTarget?.Text);
+                //AddValue("Gas3FlowValue", extendedControl?.Gas3FlowValue?.Content);
+                //AddValue("Gas3FlowTarget", extendedControl?.Gas3FlowTarget?.Text);
+                //AddValue("Gas4FlowValue", extendedControl?.Gas4FlowValue?.Content);
+                //AddValue("Gas4FlowTarget", extendedControl?.Gas4FlowTarget?.Text);
+                //AddValue("Gas5FlowValue", extendedControl?.Gas5FlowValue?.Content);
+                //AddValue("Gas5FlowTarget", extendedControl?.Gas5FlowTarget?.Text);
                 AddValue("ExitTurbidityValue", exitGasControl?.ExitTurbidityValue?.Content);
                 AddValue("ExitTurbidityTarget", exitGasControl?.ExitTurbidityTarget?.Text);
                 AddValue("ExitBalanceValue", exitGasControl?.ExitBalanceValue?.Content);
@@ -848,16 +863,16 @@ namespace WpfApp1
                 mainControl.conditionalButtonpO2,
                 mainControl.conditionalButtonGas1,
                 mainControl.conditionalButtonGas2,
-                mainControl.conditionalButtonGas3,
-                mainControl.conditionalButtonGas4,
+                //mainControl.conditionalButtonGas3,
+                //mainControl.conditionalButtonGas4,
                 mainControl.conditionalButtonFoam,
                 extendedControl.conditionalButtonTurbidity,
                 extendedControl.conditionalButtonBalance,
                 extendedControl.conditionalButtonAirFlow,
                 extendedControl.conditionalButtonGas2Flow,
-                extendedControl.conditionalButtonGas3Flow,
-                extendedControl.conditionalButtonGas4Flow,
-                extendedControl.conditionalButtonGas5Flow,
+                //extendedControl.conditionalButtonGas3Flow,
+                //extendedControl.conditionalButtonGas4Flow,
+                //extendedControl.conditionalButtonGas5Flow,
                 exitGasControl.conditionalButtonTurbidity,
                 exitGasControl.conditionalButtonBalance))
             {

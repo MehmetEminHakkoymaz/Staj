@@ -88,7 +88,7 @@
             </Grid>
         </Border>
 
-        <Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="0,350,0,0" BorderBrush="#FFD6D6D6" 
+        <!--<Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="0,350,0,0" BorderBrush="#FFD6D6D6" 
                 BorderThickness="2,2,2,2">
             <Grid x:Name="MainGas3">
                 <Grid.ColumnDefinitions>
@@ -108,7 +108,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="Gas4" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
-        </Border>
+        </Border>-->
 
         <Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="266,50,0,0" BorderBrush="#FFD6D6D6" 
                 BorderThickness="2,2,2,2">
@@ -165,7 +165,7 @@
             </Grid>
         </Border>
 
-        <Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="266,300,0,0" BorderBrush="#FFD6D6D6" 
+        <!--<Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="266,300,0,0" BorderBrush="#FFD6D6D6" 
                 BorderThickness="2,2,2,2">
             <Grid x:Name="ExtendedGas3Flow">
                 <Grid.ColumnDefinitions>
@@ -196,7 +196,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="Gas5Flow" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
-        </Border>
+        </Border>-->
 
 
         <Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="532,50,0,0" BorderBrush="#FFD6D6D6" 
@@ -221,7 +221,7 @@
             </Grid>
         </Border>
 
-        <Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="532,150,0,0" BorderBrush="#FFD6D6D6" 
+        <Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="0,350,0,0" BorderBrush="#FFD6D6D6" 
                 BorderThickness="2,2,2,2">
             <Grid x:Name="MainRedux">
                 <Grid.ColumnDefinitions>
@@ -391,7 +391,7 @@
             </CheckBox>
 
             <!--Gas3-->
-            <CheckBox Tag="64" x:Name="Gas3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
+            <!--<CheckBox Tag="64" x:Name="Gas3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
                       Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -414,10 +414,10 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </CheckBox.Template>
-            </CheckBox>
+            </CheckBox>-->
 
             <!--Gas4-->
-            <CheckBox Tag="128" x:Name="Gas4" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
+            <!--<CheckBox Tag="128" x:Name="Gas4" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" Height="40"
                       Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -440,10 +440,10 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </CheckBox.Template>
-            </CheckBox>
+            </CheckBox>-->
 
             <!--Foam-->
-            <CheckBox Tag="256" x:Name="Foam" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-390,0,0" Width="40" Height="40"
+            <CheckBox Tag="256" x:Name="Foam" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-290,0,0" Width="40" Height="40"
                       Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -469,7 +469,7 @@
             </CheckBox>
 
             <!--Turbidity-->
-            <CheckBox Tag="512" x:Name="Turbidity" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-340,0,0" Width="40" 
+            <CheckBox Tag="512" x:Name="Turbidity" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-240,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -495,7 +495,7 @@
             </CheckBox>
 
             <!--Balance-->
-            <CheckBox Tag="1024"  x:Name="Balance"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-290,0,0" Width="40" 
+            <CheckBox Tag="1024"  x:Name="Balance"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-190,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -521,7 +521,7 @@
             </CheckBox>
 
             <!--AirFlow-->
-            <CheckBox Tag="2048" x:Name="AirFlow"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-240,0,0" Width="40" 
+            <CheckBox Tag="2048" x:Name="AirFlow"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-140,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -547,7 +547,7 @@
             </CheckBox>
 
             <!--Gas2Flow-->
-            <CheckBox Tag="4096" x:Name="Gas2Flow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-190,0,0" Width="40" 
+            <CheckBox Tag="4096" x:Name="Gas2Flow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-90,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -573,7 +573,7 @@
             </CheckBox>
             
             <!-- Gas3Flow -->
-            <CheckBox Tag="32768" x:Name="Gas3Flow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-140,0,0" Width="40" 
+            <!--<CheckBox Tag="32768" x:Name="Gas3Flow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-40,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -596,10 +596,10 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </CheckBox.Template>
-            </CheckBox>
+            </CheckBox>-->
 
             <!--Gas4Flow-->
-            <CheckBox Tag="65536" x:Name="Gas4Flow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-90,0,0" Width="40" 
+            <!--<CheckBox Tag="65536" x:Name="Gas4Flow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,10,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -622,10 +622,10 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </CheckBox.Template>
-            </CheckBox>
+            </CheckBox>-->
 
             <!--Gas5Flow-->
-            <CheckBox Tag="131072" x:Name="Gas5Flow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,-40,0,0" Width="40" 
+            <!--<CheckBox Tag="131072" x:Name="Gas5Flow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="271,60,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -648,10 +648,10 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </CheckBox.Template>
-            </CheckBox>
+            </CheckBox>-->
 
             <!--ExitTurbidity-->
-            <CheckBox Tag="8192" x:Name="ExitTurbidity" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="537,-390,0,0" Width="40" 
+            <CheckBox Tag="8192" x:Name="ExitTurbidity" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="537,-290,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -677,7 +677,7 @@
             </CheckBox>
 
             <!--ExitBalance-->
-            <CheckBox Tag="16384" x:Name="ExitBalance" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="537,-340,0,0" Width="40" 
+            <CheckBox Tag="16384" x:Name="ExitBalance" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="537,-240,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
@@ -703,7 +703,7 @@
             </CheckBox>
 
             <!--Redux-->
-            <CheckBox Tag="262144" x:Name="Redux" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="537,-290,0,0" Width="40" 
+            <CheckBox Tag="262144" x:Name="Redux" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">

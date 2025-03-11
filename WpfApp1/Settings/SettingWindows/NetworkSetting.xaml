@@ -297,8 +297,8 @@
         <Popup x:Name="KeyboardPopup" 
                Placement="Center" 
                StaysOpen="True"
-               AllowsTransparency="True"
-               FocusManager.IsFocusScope="True">
+               AllowsTransparency="True">
+            <!--FocusManager.IsFocusScope="True">-->
             <Border Background="White" 
                     BorderBrush="Gray" 
                     BorderThickness="1" 

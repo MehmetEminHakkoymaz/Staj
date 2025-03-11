@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -169,8 +170,8 @@ namespace WpfApp1
                     editViewControl.pO2,
                     editViewControl.Gas1,
                     editViewControl.Gas2,
-                    editViewControl.Gas3,
-                    editViewControl.Gas4,
+                    //editViewControl.Gas3,
+                    //editViewControl.Gas4,
                     editViewControl.Foam,
                     editViewControl.Turbidity,
                     editViewControl.Balance,
@@ -178,9 +179,9 @@ namespace WpfApp1
                     editViewControl.Gas2Flow,
                     editViewControl.ExitTurbidity,
                     editViewControl.ExitBalance,
-                    editViewControl.Gas3Flow,
-                    editViewControl.Gas4Flow,
-                    editViewControl.Gas5Flow,
+                    //editViewControl.Gas3Flow,
+                    //editViewControl.Gas4Flow,
+                    //editViewControl.Gas5Flow,
                     editViewControl.Redux
                     // other properties
                 };
@@ -197,7 +198,15 @@ namespace WpfApp1
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
             comparisonTimer.Tick += ComparisonTimer_Tick!; // Zamanlayıcı olayı
 
+            DataContext = this;
+            InitializeTemperatureMonitoring();
+
         }
+        private double currentTemperature;
+        private double maxTemperature = 37.0; // Maksimum sıcaklık değeri
+        private double warningOffset = 10.0;  // Uyarı için düşülecek derece
+        private DispatcherTimer temperatureTimer;
+
 
         private void UpdateTimer_Tickk(object sender, EventArgs e)
         {
@@ -554,5 +563,229 @@ namespace WpfApp1
             var editpHWindow = new WpfApp1.EditPages.EditpH();
             editpHWindow.Show();
         }
+
+
+
+
+
+
+
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool isHighTemperature;
+        public bool IsHighTemperature
+        {
+            get => isHighTemperature;
+            set
+            {
+                isHighTemperature = value;
+                OnPropertyChanged(nameof(IsHighTemperature));
+            }
+        }
+
+        private bool isWarningTemperature;
+        public bool IsWarningTemperature
+        {
+            get => isWarningTemperature;
+            set
+            {
+                isWarningTemperature = value;
+                OnPropertyChanged(nameof(IsWarningTemperature));
+            }
+        }
+
+        private bool isNormalTemperature;
+        public bool IsNormalTemperature
+        {
+            get => isNormalTemperature;
+            set
+            {
+                isNormalTemperature = value;
+                OnPropertyChanged(nameof(IsNormalTemperature));
+            }
+        }
+
+
+        private void InitializeTemperatureMonitoring()
+        {
+            temperatureTimer = new DispatcherTimer();
+            temperatureTimer.Interval = TimeSpan.FromSeconds(1);
+            temperatureTimer.Tick += TemperatureTimer_Tick;
+            temperatureTimer.Start();
+        }
+
+        private void TemperatureTimer_Tick(object sender, EventArgs e)
+        {
+            // Burada sensörden sıcaklık değerini okuyacak kodunuz olacak
+            // Şimdilik test için rastgele değer üretiyoruz
+            // pH için mevcut kod
+            currentTemperature = GetTemperatureFromSensor();
+            TemperatureIndicator.Text = currentTemperature.ToString("F1");
+            UpdateTemperatureStatus();
+
+            // pO2 için
+            pO2CurrentTemperature = GetTemperatureFromSensor(); // veya farklı bir sensör
+            pO2TemperatureIndicator.Text = pO2CurrentTemperature.ToString("F1");
+            UpdatepO2TemperatureStatus();
+
+            // Redox için
+            redoxCurrentTemperature = GetTemperatureFromSensor(); // veya farklı bir sensör
+            RedoxTemperatureIndicator.Text = redoxCurrentTemperature.ToString("F1");
+            UpdateRedoxTemperatureStatus();
+        }
+
+        private double GetTemperatureFromSensor()
+        {
+            // Burada gerçek sensör kodunuz olacak
+            // Şimdilik test için rastgele değer üretiyoruz
+            Random rand = new Random();
+            return 20 + rand.NextDouble() * 30; // 20-50 derece arası
+        }
+
+        private void UpdateTemperatureStatus()
+        {
+            if (currentTemperature >= maxTemperature)
+            {
+                IsHighTemperature = true;
+                IsWarningTemperature = false;
+                IsNormalTemperature = false;
+            }
+            else if (currentTemperature >= (maxTemperature - warningOffset))
+            {
+                IsHighTemperature = false;
+                IsWarningTemperature = true;
+                IsNormalTemperature = false;
+            }
+            else
+            {
+                IsHighTemperature = false;
+                IsWarningTemperature = false;
+                IsNormalTemperature = true;
+            }
+        }
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        // pO2 için property'ler
+        private bool ispO2HighTemperature;
+        public bool IspO2HighTemperature
+        {
+            get => ispO2HighTemperature;
+            set
+            {
+                ispO2HighTemperature = value;
+                OnPropertyChanged(nameof(IspO2HighTemperature));
+            }
+        }
+
+        private bool ispO2WarningTemperature;
+        public bool IspO2WarningTemperature
+        {
+            get => ispO2WarningTemperature;
+            set
+            {
+                ispO2WarningTemperature = value;
+                OnPropertyChanged(nameof(IspO2WarningTemperature));
+            }
+        }
+
+        private bool ispO2NormalTemperature;
+        public bool IspO2NormalTemperature
+        {
+            get => ispO2NormalTemperature;
+            set
+            {
+                ispO2NormalTemperature = value;
+                OnPropertyChanged(nameof(IspO2NormalTemperature));
+            }
+        }
+
+        // Redox için property'ler
+        private bool isRedoxHighTemperature;
+        public bool IsRedoxHighTemperature
+        {
+            get => isRedoxHighTemperature;
+            set
+            {
+                isRedoxHighTemperature = value;
+                OnPropertyChanged(nameof(IsRedoxHighTemperature));
+            }
+        }
+
+        private bool isRedoxWarningTemperature;
+        public bool IsRedoxWarningTemperature
+        {
+            get => isRedoxWarningTemperature;
+            set
+            {
+                isRedoxWarningTemperature = value;
+                OnPropertyChanged(nameof(IsRedoxWarningTemperature));
+            }
+        }
+
+        private bool isRedoxNormalTemperature;
+        public bool IsRedoxNormalTemperature
+        {
+            get => isRedoxNormalTemperature;
+            set
+            {
+                isRedoxNormalTemperature = value;
+                OnPropertyChanged(nameof(IsRedoxNormalTemperature));
+            }
+        }
+
+        // Sıcaklık değerleri için field'lar
+        private double pO2CurrentTemperature;
+        private double redoxCurrentTemperature;
+
+        private void UpdatepO2TemperatureStatus()
+        {
+            if (pO2CurrentTemperature >= maxTemperature)
+            {
+                IspO2HighTemperature = true;
+                IspO2WarningTemperature = false;
+                IspO2NormalTemperature = false;
+            }
+            else if (pO2CurrentTemperature >= (maxTemperature - warningOffset))
+            {
+                IspO2HighTemperature = false;
+                IspO2WarningTemperature = true;
+                IspO2NormalTemperature = false;
+            }
+            else
+            {
+                IspO2HighTemperature = false;
+                IspO2WarningTemperature = false;
+                IspO2NormalTemperature = true;
+            }
+        }
+
+        private void UpdateRedoxTemperatureStatus()
+        {
+            if (redoxCurrentTemperature >= maxTemperature)
+            {
+                IsRedoxHighTemperature = true;
+                IsRedoxWarningTemperature = false;
+                IsRedoxNormalTemperature = false;
+            }
+            else if (redoxCurrentTemperature >= (maxTemperature - warningOffset))
+            {
+                IsRedoxHighTemperature = false;
+                IsRedoxWarningTemperature = true;
+                IsRedoxNormalTemperature = false;
+            }
+            else
+            {
+                IsRedoxHighTemperature = false;
+                IsRedoxWarningTemperature = false;
+                IsRedoxNormalTemperature = true;
+            }
+        }
+
     }
 }

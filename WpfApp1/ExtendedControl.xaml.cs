@@ -30,9 +30,9 @@ namespace WpfApp1
             ellipse11.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse12.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse13.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown; 
-            ellipse16.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
-            ellipse17.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
-            ellipse18.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            //ellipse16.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            //ellipse17.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            //ellipse18.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             this.mainWindow = mainWindow;
             KeypadControl.ValueSelected += KePadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
@@ -260,9 +260,9 @@ namespace WpfApp1
                 "ellipse11" => conditionalButtonBalance,
                 "ellipse12" => conditionalButtonAirFlow,
                 "ellipse13" => conditionalButtonGas2Flow,
-                "ellipse16" => conditionalButtonGas3Flow,
-                "ellipse17" => conditionalButtonGas4Flow,
-                "ellipse18" => conditionalButtonGas5Flow,
+                //"ellipse16" => conditionalButtonGas3Flow,
+                //"ellipse17" => conditionalButtonGas4Flow,
+                //"ellipse18" => conditionalButtonGas5Flow,
                 _ => null
             };
         }
@@ -319,9 +319,9 @@ namespace WpfApp1
             CheckEllipsePositionAndSetButtonVisibility(ellipse11, conditionalButtonBalance);
             CheckEllipsePositionAndSetButtonVisibility(ellipse12, conditionalButtonAirFlow);
             CheckEllipsePositionAndSetButtonVisibility(ellipse13, conditionalButtonAirFlow);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse16, conditionalButtonGas3Flow);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse17, conditionalButtonGas4Flow);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse18, conditionalButtonGas5Flow);
+            //CheckEllipsePositionAndSetButtonVisibility(ellipse16, conditionalButtonGas3Flow);
+            //CheckEllipsePositionAndSetButtonVisibility(ellipse17, conditionalButtonGas4Flow);
+            //CheckEllipsePositionAndSetButtonVisibility(ellipse18, conditionalButtonGas5Flow);
         }
 
         public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)

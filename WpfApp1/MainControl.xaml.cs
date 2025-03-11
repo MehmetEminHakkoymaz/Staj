@@ -35,8 +35,8 @@ namespace WpfApp1
             ellipse4.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse5.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse6.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
-            ellipse7.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
-            ellipse8.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            //ellipse7.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            //ellipse8.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse9.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse19.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
@@ -421,8 +421,8 @@ namespace WpfApp1
                 "ellipse4" => conditionalButtonpO2,
                 "ellipse5" => conditionalButtonGas1,
                 "ellipse6" => conditionalButtonGas2,
-                "ellipse7" => conditionalButtonGas3,
-                "ellipse8" => conditionalButtonGas4,
+                //"ellipse7" => conditionalButtonGas3,
+                //"ellipse8" => conditionalButtonGas4,
                 "ellipse9" => conditionalButtonFoam,
                 "ellipse19" => conditionalButtonRedox,
                 _ => null
@@ -482,8 +482,8 @@ namespace WpfApp1
             CheckEllipsePositionAndSetButtonVisibility(ellipse4, conditionalButtonpO2);
             CheckEllipsePositionAndSetButtonVisibility(ellipse5, conditionalButtonGas1);
             CheckEllipsePositionAndSetButtonVisibility(ellipse6, conditionalButtonGas2);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse7, conditionalButtonGas3);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse8, conditionalButtonGas4);
+            //CheckEllipsePositionAndSetButtonVisibility(ellipse7, conditionalButtonGas3);
+            //CheckEllipsePositionAndSetButtonVisibility(ellipse8, conditionalButtonGas4);
             CheckEllipsePositionAndSetButtonVisibility(ellipse9, conditionalButtonFoam);
             CheckEllipsePositionAndSetButtonVisibility(ellipse19, conditionalButtonRedox);
         }
