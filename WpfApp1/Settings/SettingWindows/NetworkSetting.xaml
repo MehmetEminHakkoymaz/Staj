@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Settings.SettingWindows"
              xmlns:kepad="clr-namespace:WpfApp1.Keypad"
+             xmlns:wpfapp1="clr-namespace:WpfApp1"
              mc:Ignorable="d" 
              d:DesignHeight="462" d:DesignWidth="724">
     <UserControl.Resources>
@@ -272,6 +273,7 @@
                 <Border HorizontalAlignment="Left" Margin="385,0,0,0" Width="320" Height="50" 
                         CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <PasswordBox x:Name="PasswordTextBox" 
+                                 GotFocus="PasswordTextBox_GotFocus"
                                  Background="Transparent"
                                  BorderThickness="0" 
                                  VerticalContentAlignment="Center"
@@ -284,6 +286,13 @@
         <Popup x:Name="KeypadPopup" Placement="Center" IsOpen="False">
             <kepad:KeyPad x:Name="KeypadControl"/>
         </Popup>
+        <Popup x:Name="KeyboardPopup" 
+               Placement="Center" 
+               IsOpen="False"
+               StaysOpen="False">
+            <wpfapp1:KeyboardPopup x:Name="CustomKeyboard"/>
+        </Popup>
+
         <Button Content="SAVE" 
                 FontSize="20" 
                 FontWeight="Regular" 

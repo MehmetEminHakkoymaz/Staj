@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="WpfApp1.KeyboardPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             mc:Ignorable="d" 
+             Background="#E7ECEF"
+             Width="724" Height="330">
+    <UserControl.Resources>
+        <!-- Normal tuşlar için stil -->
+        <Style x:Key="KeyboardButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#CCCCCC" 
+                                BorderThickness="1"
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#EEEEEE"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#F5F5F5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Özel tuşlar için stil (Shift, Enter, Backspace gibi) -->
+        <Style x:Key="SpecialKeyStyle" TargetType="Button" BasedOn="{StaticResource KeyboardButtonStyle}">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Background" Value="#E0E0E0"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Background="#E7ECEF">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Sayılar satırı -->
+            <WrapPanel Grid.Row="0" HorizontalAlignment="Center">
+                <Button Content="1" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="2" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="3" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="4" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="5" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="6" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="7" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="8" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="9" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="0" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+            </WrapPanel>
+
+            <!-- QWERTY satırı -->
+            <WrapPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,2">
+                <Button Content="Q" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="W" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="E" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="R" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="T" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="Y" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="U" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="I" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="O" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="P" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="Ğ" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="Ü" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+            </WrapPanel>
+
+            <!-- ASDF satırı -->
+            <WrapPanel Grid.Row="2" HorizontalAlignment="Center" Margin="20,2">
+                <Button Content="A" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="S" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="D" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="F" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="G" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="H" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="J" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="K" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="L" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="Ş" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="İ" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+            </WrapPanel>
+
+            <!-- ZXCV satırı -->
+            <WrapPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0,2">
+                <Button x:Name="ShiftButton" Content="⇧" Style="{StaticResource SpecialKeyStyle}" Click="ShiftButton_Click"/>
+                <Button Content="Z" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="X" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="C" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="V" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="B" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="N" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="M" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="Ö" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="Ç" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button x:Name="BackspaceButton" Content="⌫" Style="{StaticResource SpecialKeyStyle}" Click="Backspace_Click"/>
+            </WrapPanel>
+
+            <!-- Son satır -->
+            <WrapPanel Grid.Row="4" HorizontalAlignment="Center" Margin="0,2">
+                <Button Content="123" Style="{StaticResource SpecialKeyStyle}" Click="SymbolsButton_Click"/>
+                <Button Content="," Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="Space" Width="350" Style="{StaticResource KeyboardButtonStyle}" Click="Space_Click"/>
+                <Button Content="." Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click"/>
+                <Button Content="Enter" Style="{StaticResource SpecialKeyStyle}" Click="Enter_Click"/>
+            </WrapPanel>
+        </Grid>
+    </Border>
+</UserControl>

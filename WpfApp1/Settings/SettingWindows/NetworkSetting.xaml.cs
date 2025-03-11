@@ -234,10 +234,10 @@ namespace WpfApp1.Settings.SettingWindows
                     MoveToNextTextBox();
                 }
             }
-            else if (activePasswordBox != null)
-            {
-                activePasswordBox.Password = value;
-            }
+            //else if (activePasswordBox != null)
+            //{
+            //    activePasswordBox.Password = value;
+            //}
         }
 
         private void MoveToNextTextBox()
@@ -618,6 +618,31 @@ namespace WpfApp1.Settings.SettingWindows
 
             Properties.Settings.Default.Save();
         }
+
+        private void PasswordTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            KeyboardPopup.IsOpen = true;
+        }
+
+        private void CustomKeyboard_KeyPressed(object sender, string key)
+        {
+            switch (key)
+            {
+                case "Backspace":
+                    if (PasswordTextBox.Password.Length > 0)
+                    {
+                        PasswordTextBox.Password = PasswordTextBox.Password.Substring(0, PasswordTextBox.Password.Length - 1);
+                    }
+                    break;
+                case "Shift":
+                    // Shift işlevselliği
+                    break;
+                default:
+                    PasswordTextBox.Password += key;
+                    break;
+            }
+        }
+
     }
 
     public class ManageWifi

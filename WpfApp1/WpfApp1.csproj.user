@@ -51,6 +51,9 @@
     <Compile Update="FavouritesControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="KeyboardPopup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Keypad\KeyPad.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

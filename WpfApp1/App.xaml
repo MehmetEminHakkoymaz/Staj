@@ -9,5 +9,6 @@
         <Style TargetType="{x:Type Control}">
             <Setter Property="FontFamily" Value="pack://application:,,,/WpfApp1;component/Fonts/#Inter-VariableFont_slnt,wght"/>
         </Style>
+        
     </Application.Resources>
 </Application>
