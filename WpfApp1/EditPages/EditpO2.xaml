@@ -58,7 +58,7 @@
                                 Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                 <TextBox x:Name="pO2StirrerRPM" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="1400"/>
+                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="1400" Tag="0,1400"/>
                             </Border>
                         </StackPanel>
                     </DataTemplate>
@@ -71,15 +71,15 @@
                                 <Grid>
                                     <Label Content="TotalFlow" HorizontalAlignment="Center" VerticalAlignment="Top" 
                                         FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
-                                    <Label Content="(MAX 4L/m)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                                        Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    <Label Content="(MAX 4000ml/m)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        Opacity="0.6" FontSize="12" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
                                 </Grid>
                             </Border>
                             <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" Margin="0,0,0,0" 
                                 Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                 <TextBox x:Name="pO2TotalFlowTotalFlow" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="4000"/>
+                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="4000" Tag="0,4000"/>
                             </Border>
                         </StackPanel>
                     </DataTemplate>
@@ -99,7 +99,7 @@
                                 Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                 <TextBox x:Name="pO2GasMixGasMix" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="21,100"/>
                             </Border>
                         </StackPanel>
                     </DataTemplate>
@@ -120,7 +120,7 @@
                                     Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                     <TextBox x:Name="pO2StirrerTotalFlowRPM" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,1400"/>
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -129,7 +129,7 @@
                                     <Grid>
                                         <Label Content="TotalFlow" HorizontalAlignment="Center" VerticalAlignment="Top" 
                                         FontSize="25" Margin="0,-10,0,0" Foreground="Black" FontWeight="Regular"/>
-                                        <Label Content="(MAX 4L/m)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                        <Label Content="(MAX 4000ml/m)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
                                         Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
                                     </Grid>
                                 </Border>
@@ -137,7 +137,7 @@
                                 Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                     <TextBox x:Name="pO2StirrerTotalFlowTotalFlow" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,4000"/>
                                 </Border>
                             </StackPanel>
 
@@ -161,7 +161,7 @@
                                 Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                     <TextBox x:Name="pO2StirrerGasMixRPM" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,1400"/>
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -178,7 +178,7 @@
                                 Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                     <TextBox x:Name="pO2StirrerGasMixGasMix" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="21,100"/>
                                 </Border>
                             </StackPanel>
 
@@ -253,39 +253,39 @@
                 <Label Content="I" FontSize="20" Opacity="0.5" Margin="50,115,0,0" Padding="0,0,0,0" Width="8" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Label Content="I Limit" FontSize="20" Opacity="0.5" Margin="50,167,0,0" Padding="0,0,0,0" Width="57" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Label Content="Deadband" FontSize="20" Opacity="0.5" Margin="290,63,0,0" Padding="0,0,0,0" Width="95" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Label Content="Neg. factor" FontSize="20" Opacity="0.5" Margin="290,115,0,0" Padding="0,0,0,0" Width="105" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="Neg. factor" FontSize="20" Opacity="0.5" Margin="290,115,0,0" Padding="0,0,0,0" Width="105" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Label Content="Eval. Time" FontSize="20" Opacity="0.5" Margin="290,167,0,0" Padding="0,0,0,0" Width="105" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="115,58,495,127">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pO2P" GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                             x:Name="pO2P" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="115,110,495,75">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pO2I" GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                             x:Name="pO2I" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="115,162,495,23">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pO2ILimit" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" />
+                             x:Name="pO2ILimit" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100" />
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="400,58,210,127">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pO2P2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" />
+                             x:Name="pO2Deadband" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="400,110,210,75">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pO2I2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" />
+                             x:Name="pO2Negfactor" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="400,162,210,23">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pO2Ilimit2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" />
+                             x:Name="pO2EvalTime" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
-                <Button Width="150" Height="40" Content="Reset PID" FontSize="25" Opacity="0.7" Margin="581,57,19,128">
+                <Button Width="150" Height="40" Content="Reset PID" FontSize="25" Opacity="0.7" Margin="581,57,19,128" Click="ResetPIDButton_Click">
                     <Button.Background>
                         <SolidColorBrush Color="#D6D6D6"/>
                     </Button.Background>

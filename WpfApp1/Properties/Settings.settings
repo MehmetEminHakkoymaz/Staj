@@ -50,34 +50,34 @@
     <Setting Name="pO2SelectedCascade" Type="System.String" Scope="User">
       <Value Profile="(Default)">None</Value>
     </Setting>
-    <Setting Name="pO2StirrerRPM" Type="System.Int32" Scope="User">
+    <Setting Name="pO2StirrerRPM" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1400</Value>
     </Setting>
-    <Setting Name="pO2TotalFlowTotalFlow" Type="System.Int32" Scope="User">
+    <Setting Name="pO2TotalFlowTotalFlow" Type="System.Double" Scope="User">
       <Value Profile="(Default)">4000</Value>
     </Setting>
-    <Setting Name="pO2GasMixGasMix" Type="System.Int32" Scope="User">
+    <Setting Name="pO2GasMixGasMix" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="pO2StirrerTotalFlowRPM" Type="System.Int32" Scope="User">
+    <Setting Name="pO2StirrerTotalFlowRPM" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1400</Value>
     </Setting>
-    <Setting Name="pO2StirrerTotalFlowTotalFlow" Type="System.Int32" Scope="User">
+    <Setting Name="pO2StirrerTotalFlowTotalFlow" Type="System.Double" Scope="User">
       <Value Profile="(Default)">4000</Value>
     </Setting>
-    <Setting Name="pO2StirrerGasMixRPM" Type="System.Int32" Scope="User">
+    <Setting Name="pO2StirrerGasMixRPM" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1400</Value>
     </Setting>
-    <Setting Name="pO2StirrerGasMixGasMix" Type="System.Int32" Scope="User">
+    <Setting Name="pO2StirrerGasMixGasMix" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="pO2StirrerTotalFlowGasMixRPM" Type="System.Int32" Scope="User">
+    <Setting Name="pO2StirrerTotalFlowGasMixRPM" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1400</Value>
     </Setting>
-    <Setting Name="pO2StirrerTotalFlowGasMixTotalFlow" Type="System.Int32" Scope="User">
+    <Setting Name="pO2StirrerTotalFlowGasMixTotalFlow" Type="System.Double" Scope="User">
       <Value Profile="(Default)">4000</Value>
     </Setting>
-    <Setting Name="pO2StirrerTotalFlowGasMixGasMix" Type="System.Int32" Scope="User">
+    <Setting Name="pO2StirrerTotalFlowGasMixGasMix" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="pHBaseBase" Type="System.Int32" Scope="User">
@@ -100,6 +100,24 @@
     </Setting>
     <Setting Name="LastSelectedpO2CascadeItem" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="pO2P" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="pO2I" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="pO2ILimit" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">70</Value>
+    </Setting>
+    <Setting Name="pO2Deadband" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="pO2Negfactor" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="pO2EvalTime" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">60</Value>
     </Setting>
   </Settings>
 </SettingsFile>

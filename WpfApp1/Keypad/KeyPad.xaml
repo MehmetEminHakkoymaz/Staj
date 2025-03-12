@@ -185,7 +185,7 @@
                         FontSize="20" Opacity="0.2"/>
                 <Button Content="0" Grid.Row="3" Grid.Column="1" Width="100" Height="50" Style="{StaticResource ButtonStyle}" 
                         FontSize="20" Opacity="0.2" Click="Button_Click_0"/>
-                <Button Content="." Grid.Row="3" Grid.Column="2" Width="100" Height="50" Style="{StaticResource Button12Style}" 
+                <Button Content="," Grid.Row="3" Grid.Column="2" Width="100" Height="50" Style="{StaticResource Button12Style}" 
                         Click="Button_Click_" FontSize="20" Opacity="0.2"/>
             </Grid>
 

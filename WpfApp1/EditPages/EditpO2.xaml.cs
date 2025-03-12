@@ -2,71 +2,127 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
-using WpfApp1;
 
 namespace WpfApp1.EditPages
 {
     public partial class EditpO2 : Window
     {
-        public event EventHandler<string> ValueSelected;
-        private DispatcherTimer clockTimer;
-        private Dictionary<string, (int Min, int Max)> textBoxLimits;
+        #region Fields
+        private readonly DispatcherTimer clockTimer;
+        private readonly Dictionary<string, (int Min, int Max)> textBoxLimits;
         private TextBox activeTextBox = null;
+        #endregion
 
+        #region Constructor
         public EditpO2()
         {
             InitializeComponent();
-            InitializeClock();
-            InitializeComboBox();
-            InitializeTextBoxLimits();
+
+            // UI bileşenlerini başlat
+            textBoxLimits = InitializeTextBoxLimits();
+            clockTimer = InitializeClock();
+
+            // Event'leri bağla
             contentComboBox.SelectionChanged += ContentComboBox_SelectionChanged;
-            LoadLastSelectedCascade();
-            this.Loaded += EditpO2_Loaded;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
 
-            this.WindowState = WindowState.Maximized;
-            this.WindowStyle = WindowStyle.None;
-            this.ResizeMode = ResizeMode.NoResize;
-            this.Topmost = true;
+            // Son seçileni yükle - bu kısmı constructor'da yapmalıyız
+            // çünkü SelectionChanged eventi bağlandıktan sonra çalışmalı
+            LoadLastSelectedCascade();
+            LoadPIDSettings();
+
+            // Pencere ayarları
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.None;
+            ResizeMode = ResizeMode.NoResize;
+            Topmost = true;
+        }
+        #endregion
+
+        #region Initialization Methods
+
+        // Bu metodu ekleyin - PID ayarlarını yüklemek için
+        private void LoadPIDSettings()
+        {
+            try
+            {
+                // P, I, ILimit, Deadband, Negfactor, EvalTime ayarlarını yükle
+                // Kültür ayarlarını dikkate alarak formatla
+                var culture = System.Globalization.CultureInfo.CurrentCulture;
+
+                pO2P.Text = Properties.Settings.Default.pO2P.ToString(culture);
+                pO2I.Text = Properties.Settings.Default.pO2I.ToString(culture);
+                pO2ILimit.Text = Properties.Settings.Default.pO2ILimit.ToString(culture);
+                pO2Deadband.Text = Properties.Settings.Default.pO2Deadband.ToString(culture);
+                pO2Negfactor.Text = Properties.Settings.Default.pO2Negfactor.ToString(culture);
+                pO2EvalTime.Text = Properties.Settings.Default.pO2EvalTime.ToString(culture);
+
+                // PID TextBox'larına event'leri bağla
+                RegisterPIDTextBoxEvents();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading PID settings: {ex.Message}");
+            }
+        }
+        // Bu metodu ekleyin - PID TextBox'larına event'leri bağlamak için
+        private void RegisterPIDTextBoxEvents()
+        {
+            // TextBox'lara event'leri bağla
+            pO2P.PreviewTextInput += TextBox_PreviewTextInput;
+            pO2I.PreviewTextInput += TextBox_PreviewTextInput;
+            pO2ILimit.PreviewTextInput += TextBox_PreviewTextInput;
+            pO2Deadband.PreviewTextInput += TextBox_PreviewTextInput;
+            pO2Negfactor.PreviewTextInput += TextBox_PreviewTextInput;
+            pO2EvalTime.PreviewTextInput += TextBox_PreviewTextInput;
+
+            pO2P.TextChanged += TextBox_TextChanged;
+            pO2I.TextChanged += TextBox_TextChanged;
+            pO2ILimit.TextChanged += TextBox_TextChanged;
+            pO2Deadband.TextChanged += TextBox_TextChanged;
+            pO2Negfactor.TextChanged += TextBox_TextChanged;
+            pO2EvalTime.TextChanged += TextBox_TextChanged;
         }
 
-        //private void LoadLastSelectedCascade()
-        //{
-        //    try
-        //    {
-        //        string lastSelected = Properties.Settings.Default.LastSelectedpO2Cascade;
-        //        if (!string.IsNullOrEmpty(lastSelected))
-        //        {
-        //            foreach (ComboBoxItem item in contentComboBox.Items)
-        //            {
-        //                if (item.Content.ToString() == lastSelected)
-        //                {
-        //                    contentComboBox.SelectedItem = item;
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //        else
-        //        {
-        //            // Varsayılan olarak ilk öğeyi seç
-        //            contentComboBox.SelectedIndex = 0;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error loading last selected cascade: {ex.Message}");
-        //    }
-        //}
+
+        private Dictionary<string, (int Min, int Max)> InitializeTextBoxLimits()
+        {
+            return new Dictionary<string, (int Min, int Max)>
+                {
+                    {"pO2StirrerRPM", (0, 1400)},
+                    {"pO2TotalFlowTotalFlow", (0, 4000)},
+                    {"pO2GasMixGasMix", (21, 100)},
+                    {"pO2StirrerTotalFlowRPM", (0, 1400)},
+                    {"pO2StirrerTotalFlowTotalFlow", (0, 4000)},
+                    {"pO2StirrerGasMixRPM", (0, 1400)},
+                    {"pO2StirrerGasMixGasMix", (21, 100)},
+                    {"pO2StirrerTotalFlowGasMixRPM", (0, 1400)},
+                    {"pO2StirrerTotalFlowGasMixTotalFlow", (0, 4000)},
+                    {"pO2StirrerTotalFlowGasMixGasMix", (21, 100)},
+                    {"pO2P", (0, 1000)},
+                    {"pO2I", (0, 1000)},
+                    {"pO2ILimit", (0, 1000)},
+                    {"pO2Deadband", (0, 100)},
+                    {"pO2Negfactor", (0, 1000)},
+                    {"pO2EvalTime", (0, 1000)}
+                };
+        }
+
+        private DispatcherTimer InitializeClock()
+        {
+            var timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            timer.Tick += ClockTimer_Tick;
+            timer.Start();
+            return timer;
+        }
 
         private void LoadLastSelectedCascade()
         {
@@ -98,47 +154,9 @@ namespace WpfApp1.EditPages
                 contentComboBox.SelectedIndex = 0;
             }
         }
+        #endregion
 
-
-        private void InitializeTextBoxLimits()
-        {
-            textBoxLimits = new Dictionary<string, (int Min, int Max)>
-            {
-                {"pO2StirrerRPM", (0, 1400)},
-                {"pO2TotalFlowTotalFlow", (0, 4000)},
-                {"pO2GasMixGasMix", (21, 100)},
-                {"pO2StirrerTotalFlowRPM", (0, 1400)},
-                {"pO2StirrerTotalFlowTotalFlow", (0, 4000)},
-                {"pO2StirrerGasMixRPM", (0, 1400)},
-                {"pO2StirrerGasMixGasMix", (21, 100)},
-                {"pO2StirrerTotalFlowGasMixRPM", (0, 1400)},
-                {"pO2StirrerTotalFlowGasMixTotalFlow", (0, 4000)},
-                {"pO2StirrerTotalFlowGasMixGasMix", (21, 100)}
-            };
-        }
-
-        private void EditpO2_Loaded(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string savedCascade = Properties.Settings.Default.pO2SelectedCascade;
-                contentComboBox.SelectedValue = savedCascade;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading saved settings: {ex.Message}");
-            }
-        }
-
-        private void InitializeComboBox()
-        {
-            // ComboBox'a SelectionChanged event'ini ekle
-            contentComboBox.SelectionChanged += ContentComboBox_SelectionChanged;
-
-            // Başlangıçta None seçili olsun
-            contentComboBox.SelectedIndex = 0;
-        }
-
+        #region Event Handlers
         private void ContentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
@@ -150,336 +168,9 @@ namespace WpfApp1.EditPages
                 contentArea.Content = null;
                 contentArea.ContentTemplate = null;
 
-                switch (content)
-                {
-                    case "None":
-                        contentArea.ContentTemplate = (DataTemplate)contentArea.Resources["NoneTemplate"];
-                        break;
-                    case "Stirrer":
-                        var stirrerTemplate = (DataTemplate)contentArea.Resources["StirrerTemplate"];
-                        var stirrerContent = stirrerTemplate.LoadContent() as FrameworkElement;
-                        if (stirrerContent != null)
-                        {
-                            var textBox = FindChild<TextBox>(stirrerContent, "pO2StirrerRPM");
-                            if (textBox != null)
-                            {
-                                textBox.GotFocus += TextBox_GotFocus;
-                                textBox.Text = Properties.Settings.Default.pO2StirrerRPM.ToString();
-                            }
-                            contentArea.Content = stirrerContent;
-                        }
-                        break;
-                    case "TotalFlow":
-                        var totalFlowTemplate = (DataTemplate)contentArea.Resources["TotalFlowTemplate"];
-                        var totalFlowContent = totalFlowTemplate.LoadContent() as FrameworkElement;
-                        if (totalFlowContent != null)
-                        {
-                            var textBox = FindChild<TextBox>(totalFlowContent, "pO2TotalFlowTotalFlow");
-                            if (textBox != null)
-                            {
-                                textBox.GotFocus += TextBox_GotFocus;
-                                textBox.Text = Properties.Settings.Default.pO2TotalFlowTotalFlow.ToString();
-                            }
-                            contentArea.Content = totalFlowContent;
-                        }
-                        break;
-                    case "GasMix":
-                        var gasMixTemplate = (DataTemplate)contentArea.Resources["GasMixTemplate"];
-                        var gasMixContent = gasMixTemplate.LoadContent() as FrameworkElement;
-                        if (gasMixContent != null)
-                        {
-                            var textBox = FindChild<TextBox>(gasMixContent, "pO2GasMixGasMix");
-                            if (textBox != null)
-                            {
-                                textBox.GotFocus += TextBox_GotFocus;
-                                textBox.Text = Properties.Settings.Default.pO2GasMixGasMix.ToString();
-                            }
-                            contentArea.Content = gasMixContent;
-                        }
-                        break;
-                    case "Stirrer->TotalFlow":
-                        var stirrerTotalFlowTemplate = (DataTemplate)contentArea.Resources["StirrerTotalFlowTemplate"];
-                        var stirrerTotalFlowContent = stirrerTotalFlowTemplate.LoadContent() as FrameworkElement;
-                        if (stirrerTotalFlowContent != null)
-                        {
-                            var rpm = FindChild<TextBox>(stirrerTotalFlowContent, "pO2StirrerTotalFlowRPM");
-                            if (rpm != null)
-                            {
-                                rpm.GotFocus += TextBox_GotFocus;
-                                rpm.Text = Properties.Settings.Default.pO2StirrerTotalFlowRPM.ToString();
-                            }
-                            var totalFlow = FindChild<TextBox>(stirrerTotalFlowContent, "pO2StirrerTotalFlowTotalFlow");
-                            if (totalFlow != null)
-                            {
-                                totalFlow.GotFocus += TextBox_GotFocus;
-                                totalFlow.Text = Properties.Settings.Default.pO2StirrerTotalFlowTotalFlow.ToString();
-                            }
-                            contentArea.Content = stirrerTotalFlowContent;
-                        }
-                        break;
-                    case "Stirrer->GasMix":
-                        var stirrerGasMixTemplate = (DataTemplate)contentArea.Resources["StirrerGasMixTemplate"];
-                        var stirrerGasMixContent = stirrerGasMixTemplate.LoadContent() as FrameworkElement;
-                        if (stirrerGasMixContent != null)
-                        {
-                            var rpm = FindChild<TextBox>(stirrerGasMixContent, "pO2StirrerGasMixRPM");
-                            if (rpm != null)
-                            {
-                                rpm.GotFocus += TextBox_GotFocus;
-                                rpm.Text = Properties.Settings.Default.pO2StirrerGasMixRPM.ToString();
-                            }
-                            var gasMix = FindChild<TextBox>(stirrerGasMixContent, "pO2StirrerGasMixGasMix");
-                            if (gasMix != null)
-                            {
-                                gasMix.GotFocus += TextBox_GotFocus;
-                                gasMix.Text = Properties.Settings.Default.pO2StirrerGasMixGasMix.ToString();
-                            }
-                            contentArea.Content = stirrerGasMixContent;
-                        }
-                        break;
-                    case "Stirrer->TotalFlow->GasMix":
-                        var stirrerTotalFlowGasMixTemplate = (DataTemplate)contentArea.Resources["StirrerTotalFlowGasMixTemplate"];
-                        var stirrerTotalFlowGasMixContent = stirrerTotalFlowGasMixTemplate.LoadContent() as FrameworkElement;
-                        if (stirrerTotalFlowGasMixContent != null)
-                        {
-                            var rpm = FindChild<TextBox>(stirrerTotalFlowGasMixContent, "pO2StirrerTotalFlowGasMixRPM");
-                            if (rpm != null)
-                            {
-                                rpm.GotFocus += TextBox_GotFocus;
-                                rpm.Text = Properties.Settings.Default.pO2StirrerTotalFlowGasMixRPM.ToString();
-                            }
-                            var totalFlow = FindChild<TextBox>(stirrerTotalFlowGasMixContent, "pO2StirrerTotalFlowGasMixTotalFlow");
-                            if (totalFlow != null)
-                            {
-                                totalFlow.GotFocus += TextBox_GotFocus;
-                                totalFlow.Text = Properties.Settings.Default.pO2StirrerTotalFlowGasMixTotalFlow.ToString();
-                            }
-                            var gasMix = FindChild<TextBox>(stirrerTotalFlowGasMixContent, "pO2StirrerTotalFlowGasMixGasMix");
-                            if (gasMix != null)
-                            {
-                                gasMix.GotFocus += TextBox_GotFocus;
-                                gasMix.Text = Properties.Settings.Default.pO2StirrerTotalFlowGasMixGasMix.ToString();
-                            }
-                            contentArea.Content = stirrerTotalFlowGasMixContent;
-                        }
-                        break;
-                }
+                // Seçilen template'i yükle
+                ApplyTemplate(content);
             }
-        }
-
-
-        private void LoadStirrerValues()
-        {
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
-            {
-                var rpm = FindChild<TextBox>(contentArea, "pO2StirrerRPM");
-                if (rpm != null)
-                {
-                    rpm.Text = Properties.Settings.Default.pO2StirrerRPM.ToString();
-                    rpm.PreviewTextInput += TextBox_PreviewTextInput;
-                    rpm.TextChanged += TextBox_TextChanged;
-                }
-            }));
-        }
-
-        private void SaveStirrerValues()
-        {
-            var rpm = FindChild<TextBox>(contentArea, "pO2StirrerRPM");
-            if (rpm != null && int.TryParse(rpm.Text, out int rpmValue))
-            {
-                Properties.Settings.Default.pO2StirrerRPM = rpmValue;
-            }
-        }
-
-        private void loadTotalFlowValues()
-        {
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
-            {
-                var totalFlow = FindChild<TextBox>(contentArea, "pO2TotalFlowTotalFlow");
-                if (totalFlow != null)
-                {
-                    totalFlow.Text = Properties.Settings.Default.pO2TotalFlowTotalFlow.ToString();
-                    totalFlow.PreviewTextInput += TextBox_PreviewTextInput;
-                    totalFlow.TextChanged += TextBox_TextChanged;
-                }
-            }));
-        }
-
-        private void SaveTotalFlowValues()
-        {
-            var totalFlow = FindChild<TextBox>(contentArea, "pO2TotalFlowTotalFlow");
-            if (totalFlow != null && int.TryParse(totalFlow.Text, out int totalFlowValue))
-            {
-                Properties.Settings.Default.pO2TotalFlowTotalFlow = totalFlowValue;
-            }
-        }
-
-        private void loadGasMixValues()
-        {
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
-            {
-                var gasMix = FindChild<TextBox>(contentArea, "pO2GasMixGasMix");
-                if (gasMix != null)
-                {
-                    gasMix.Text = Properties.Settings.Default.pO2GasMixGasMix.ToString();
-                    gasMix.PreviewTextInput += TextBox_PreviewTextInput;
-                    gasMix.TextChanged += TextBox_TextChanged;
-                }
-            }));
-        }
-
-        private void SaveGasMixValues()
-        {
-            var gasMix = FindChild<TextBox>(contentArea, "pO2GasMixGasMix");
-            if (gasMix != null && int.TryParse(gasMix.Text, out int gasMixValue))
-            {
-                Properties.Settings.Default.pO2GasMixGasMix = gasMixValue;
-            }
-        }
-
-        private void loadStirrerTotalFlowValues()
-        {
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
-            {
-                var rpm = FindChild<TextBox>(contentArea, "pO2StirrerTotalFlowRPM");
-                if (rpm != null)
-                {
-                    rpm.Text = Properties.Settings.Default.pO2StirrerTotalFlowRPM.ToString();
-                    rpm.PreviewTextInput += TextBox_PreviewTextInput;
-                    rpm.TextChanged += TextBox_TextChanged;
-                }
-                var totalFlow = FindChild<TextBox>(contentArea, "pO2StirrerTotalFlowTotalFlow");
-                if (totalFlow != null)
-                {
-                    totalFlow.Text = Properties.Settings.Default.pO2StirrerTotalFlowTotalFlow.ToString();
-                    totalFlow.PreviewTextInput += TextBox_PreviewTextInput;
-                    totalFlow.TextChanged += TextBox_TextChanged;
-                }
-            }));
-        }
-
-        private void SaveStirrerTotalFlowValues()
-        {
-            var rpm = FindChild<TextBox>(contentArea, "pO2StirrerTotalFlowRPM");
-            if (rpm != null && int.TryParse(rpm.Text, out int rpmValue))
-            {
-                Properties.Settings.Default.pO2StirrerTotalFlowRPM = rpmValue;
-            }
-            var totalFlow = FindChild<TextBox>(contentArea, "pO2StirrerTotalFlowTotalFlow");
-            if (totalFlow != null && int.TryParse(totalFlow.Text, out int totalFlowValue))
-            {
-                Properties.Settings.Default.pO2StirrerTotalFlowTotalFlow = totalFlowValue;
-            }
-        }
-
-        private void loadStirrerGasMixValues()
-        {
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
-            {
-                var rpm = FindChild<TextBox>(contentArea, "pO2StirrerGasMixRPM");
-                if (rpm != null)
-                {
-                    rpm.Text = Properties.Settings.Default.pO2StirrerGasMixRPM.ToString();
-                    rpm.PreviewTextInput += TextBox_PreviewTextInput;
-                    rpm.TextChanged += TextBox_TextChanged;
-                }
-                var gasMix = FindChild<TextBox>(contentArea, "pO2StirrerGasMixGasMix");
-                if (gasMix != null)
-                {
-                    gasMix.Text = Properties.Settings.Default.pO2StirrerGasMixGasMix.ToString();
-                    gasMix.PreviewTextInput += TextBox_PreviewTextInput;
-                    gasMix.TextChanged += TextBox_TextChanged;
-                }
-            }));
-        }
-
-        private void SaveStirrerGasMixValues()
-        {
-            var rpm = FindChild<TextBox>(contentArea, "pO2StirrerGasMixRPM");
-            if (rpm != null && int.TryParse(rpm.Text, out int rpmValue))
-            {
-                Properties.Settings.Default.pO2StirrerGasMixRPM = rpmValue;
-            }
-            var gasMix = FindChild<TextBox>(contentArea, "pO2StirrerGasMixGasMix");
-            if (gasMix != null && int.TryParse(gasMix.Text, out int gasMixValue))
-            {
-                Properties.Settings.Default.pO2StirrerGasMixGasMix = gasMixValue;
-            }
-        }
-
-        private void loadStirrerTotalFlowGasMix()
-        {
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
-            {
-                var rpm = FindChild<TextBox>(contentArea, "pO2StirrerTotalFlowGasMixRPM");
-                if (rpm != null)
-                {
-                    rpm.Text = Properties.Settings.Default.pO2StirrerTotalFlowGasMixRPM.ToString();
-                    rpm.PreviewTextInput += TextBox_PreviewTextInput;
-                    rpm.TextChanged += TextBox_TextChanged;
-                }
-                var totalFlow = FindChild<TextBox>(contentArea, "pO2StirrerTotalFlowGasMixTotalFlow");
-                if (totalFlow != null)
-                {
-                    totalFlow.Text = Properties.Settings.Default.pO2StirrerTotalFlowGasMixTotalFlow.ToString();
-                    totalFlow.PreviewTextInput += TextBox_PreviewTextInput;
-                    totalFlow.TextChanged += TextBox_TextChanged;
-                }
-                var gasMix = FindChild<TextBox>(contentArea, "pO2StirrerTotalFlowGasMixGasMix");
-                if (gasMix != null)
-                {
-                    gasMix.Text = Properties.Settings.Default.pO2StirrerTotalFlowGasMixGasMix.ToString();
-                    gasMix.PreviewTextInput += TextBox_PreviewTextInput;
-                    gasMix.TextChanged += TextBox_TextChanged;
-                }
-            }));
-        }
-
-        private void SaveStirrerTotalFlowGasMix()
-        {
-            var rpm = FindChild<TextBox>(contentArea, "pO2StirrerTotalFlowGasMixRPM");
-            if (rpm != null && int.TryParse(rpm.Text, out int rpmValue))
-            {
-                Properties.Settings.Default.pO2StirrerTotalFlowGasMixRPM = rpmValue;
-            }
-            var totalFlow = FindChild<TextBox>(contentArea, "pO2StirrerTotalFlowGasMixTotalFlow");
-            if (totalFlow != null && int.TryParse(totalFlow.Text, out int totalFlowValue))
-            {
-                Properties.Settings.Default.pO2StirrerTotalFlowGasMixTotalFlow = totalFlowValue;
-            }
-            var gasMix = FindChild<TextBox>(contentArea, "pO2StirrerTotalFlowGasMixGasMix");
-            if (gasMix != null && int.TryParse(gasMix.Text, out int gasMixValue))
-            {
-                Properties.Settings.Default.pO2StirrerTotalFlowGasMixGasMix = gasMixValue;
-            }
-        }
-
-        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !int.TryParse(e.Text, out _);
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (sender is TextBox textBox && !string.IsNullOrEmpty(textBox.Text))
-            {
-                if (textBoxLimits.TryGetValue(textBox.Name, out var limits))
-                {
-                    if (int.TryParse(textBox.Text, out int value))
-                    {
-                        if (value < limits.Min) textBox.Text = limits.Min.ToString();
-                        if (value > limits.Max) textBox.Text = limits.Max.ToString();
-                    }
-                }
-            }
-        }
-
-        private void InitializeClock()
-        {
-            clockTimer = new DispatcherTimer();
-            clockTimer.Interval = TimeSpan.FromSeconds(1);
-            clockTimer.Tick += ClockTimer_Tick;
-            clockTimer.Start();
         }
 
         private void ClockTimer_Tick(object sender, EventArgs e)
@@ -487,29 +178,209 @@ namespace WpfApp1.EditPages
             ClockTextBlock.Text = DateTime.Now.ToString("HH : mm : ss");
         }
 
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                activeTextBox = textBox;
+
+                // Label içeriğini bulmak için parent container'ı kontrol et
+                var parent = VisualTreeHelper.GetParent(textBox);
+                while (parent != null)
+                {
+                    if (parent is Grid grid)
+                    {
+                        var label = grid.Children.OfType<Label>().FirstOrDefault();
+                        if (label != null)
+                        {
+                            KeypadPopup.IsOpen = true;
+                            KeypadControl.SetLabelContent(label.Content.ToString());
+                            break;
+                        }
+                    }
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+            }
+        }
+
+
+        //private void KeyPadControl_ValueSelected(object sender, string value)
+        //{
+        //    if (activeTextBox != null)
+        //    {
+        //        // Eğer tag kullanarak limit kontrolü yapılıyorsa
+        //        if (activeTextBox.Tag is string tag && ParseRange(tag, out double min, out double max))
+        //        {
+        //            // Nokta veya virgül içeren değerleri düzgün işle
+        //            string normalizedValue = value.Replace(',', '.');
+
+        //            if (double.TryParse(normalizedValue, System.Globalization.NumberStyles.Any,
+        //                               System.Globalization.CultureInfo.InvariantCulture, out double doubleValue))
+        //            {
+        //                // Değer sınırlar içinde mi kontrol et
+        //                if (doubleValue >= min && doubleValue <= max)
+        //                {
+        //                    // Yerel kültüre göre değeri TextBox'a ayarla
+        //                    activeTextBox.Text = doubleValue.ToString(System.Globalization.CultureInfo.CurrentCulture);
+        //                }
+        //                else
+        //                {
+        //                    KeypadPopup.IsOpen = true; // Hata durumunda KeyPad'i tekrar aç
+        //                    MessageBox.Show($"Please enter a value between {min} and {max}.",
+        //                                   "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                // Sayısal değer değilse uyarı ver
+        //                KeypadPopup.IsOpen = true;
+        //                MessageBox.Show("Please enter a valid number.",
+        //                               "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            // Tag yoksa veya geçersizse, direkt değeri ata
+        //            activeTextBox.Text = value;
+        //        }
+        //    }
+        //}
+
+        //private bool ParseRange(string tag, out double min, out double max)
+        //{
+        //    var parts = tag.Split(',');
+        //    if (parts.Length == 2 &&
+        //        double.TryParse(parts[0], System.Globalization.NumberStyles.Any,
+        //                      System.Globalization.CultureInfo.InvariantCulture, out min) &&
+        //        double.TryParse(parts[1], System.Globalization.NumberStyles.Any,
+        //                      System.Globalization.CultureInfo.InvariantCulture, out max))
+        //    {
+        //        return true;
+        //    }
+        //    min = max = 0;
+        //    return false;
+        //}
+
+        //private void KeyPadControl_ValueSelected(object sender, string value)
+        //{
+        //    if (activeTextBox != null)
+        //    {
+        //        if (activeTextBox.Tag is string tag && ParseRange(tag, out double min, out double max))
+        //        {
+        //            // Nokta veya virgül içeren değerleri düzgün işle
+        //            string normalizedValue = value.Replace(',', '.');
+
+        //            if (double.TryParse(normalizedValue, System.Globalization.NumberStyles.Any,
+        //                              System.Globalization.CultureInfo.InvariantCulture, out double doubleValue))
+        //            {
+        //                // Değer sınırlar içinde mi kontrol et
+        //                if (doubleValue >= min && doubleValue <= max)
+        //                {
+        //                    activeTextBox.Text = doubleValue.ToString(System.Globalization.CultureInfo.CurrentCulture);
+        //                }
+        //                else
+        //                {
+        //                    KeypadPopup.IsOpen = true; // Hata durumunda KeyPad'i tekrar aç
+        //                    MessageBox.Show($"Please enter a value between {min} and {max}.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                KeypadPopup.IsOpen = true;
+        //                MessageBox.Show("Please enter a valid number.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            // Tag yoksa veya geçersizse, direkt değeri ata
+        //            activeTextBox.Text = value;
+        //        }
+        //    }
+        //}
+
+        //private bool ParseRange(string tag, out double min, out double max)
+        //{
+        //    min = max = 0;
+        //    if (string.IsNullOrEmpty(tag)) return false;
+
+        //    var parts = tag.Split(',');
+        //    if (parts.Length == 2 &&
+        //        double.TryParse(parts[0], System.Globalization.NumberStyles.Any,
+        //                   System.Globalization.CultureInfo.InvariantCulture, out min) &&
+        //        double.TryParse(parts[1], System.Globalization.NumberStyles.Any,
+        //                   System.Globalization.CultureInfo.InvariantCulture, out max))
+        //    {
+        //        return true;
+        //    }
+
+        //    return false;
+        //}
+
+        private void KeyPadControl_ValueSelected(object sender, string value)
+        {
+            if (activeTextBox != null)
+            {
+                if (activeTextBox.Tag is string tag && ParseRange(tag, out double min, out double max))
+                {
+                    // Nokta veya virgül içeren değerleri düzgün işle
+                    string normalizedValue = value.Replace(',', '.');
+
+                    if (double.TryParse(normalizedValue, System.Globalization.NumberStyles.Any,
+                                       System.Globalization.CultureInfo.InvariantCulture, out double doubleValue))
+                    {
+                        // Değer sınırlar içinde mi kontrol et
+                        if (doubleValue >= min && doubleValue <= max)
+                        {
+                            // Yerel kültüre göre değeri TextBox'a ayarla
+                            activeTextBox.Text = doubleValue.ToString(System.Globalization.CultureInfo.CurrentCulture);
+                        }
+                        else
+                        {
+                            KeypadPopup.IsOpen = true; // Hata durumunda KeyPad'i tekrar aç
+                            MessageBox.Show($"Please enter a value between {min} and {max}.",
+                                           "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                    else
+                    {
+                        // Sayısal değer değilse uyarı ver
+                        KeypadPopup.IsOpen = true;
+                        MessageBox.Show("Please enter a valid number.",
+                                       "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+                else
+                {
+                    // Tag yoksa veya geçersizse, direkt değeri ata
+                    activeTextBox.Text = value;
+                }
+            }
+        }
+
+        private bool ParseRange(string tag, out double min, out double max)
+        {
+            min = max = 0;
+            if (string.IsNullOrEmpty(tag)) return false;
+
+            var parts = tag.Split(',');
+            if (parts.Length == 2 &&
+                double.TryParse(parts[0], System.Globalization.NumberStyles.Any,
+                              System.Globalization.CultureInfo.InvariantCulture, out min) &&
+                double.TryParse(parts[1], System.Globalization.NumberStyles.Any,
+                              System.Globalization.CultureInfo.InvariantCulture, out max))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
+
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-        //private void Ok_Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
-        //        {
-        //            Properties.Settings.Default.LastSelectedpO2Cascade = selectedItem.Content.ToString();
-        //            Properties.Settings.Default.Save();
-        //        }
-        //        SaveCurrentValues();
-        //        Properties.Settings.Default.Save();
-        //        this.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error saving settings: {ex.Message}");
-        //    }
-        //}
 
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -518,14 +389,19 @@ namespace WpfApp1.EditPages
                 // Seçili cascade değerini kaydet
                 if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
                 {
-                    Properties.Settings.Default.LastSelectedpO2CascadeItem = selectedItem.Content.ToString();
+                    // BURASI ÖNEMLİ: Bu değer ComboBox'ta görünecek son seçimi belirler
+                    string content = selectedItem.Content.ToString();
+                    Properties.Settings.Default.pO2SelectedCascade = content;
+                    Properties.Settings.Default.LastSelectedpO2CascadeItem = content;
 
-                    // Diğer değerleri de kaydet
+                    // Diğer değerleri kaydet
                     SaveCurrentValues();
-
+                    SavePIDSettings();
                     // Ayarları kalıcı olarak kaydet
                     Properties.Settings.Default.Save();
                 }
+
+
 
                 this.Close();
             }
@@ -535,6 +411,155 @@ namespace WpfApp1.EditPages
             }
         }
 
+        // Bu metodu ekleyin - PID ayarlarını kaydetmek için
+        private void SavePIDSettings()
+        {
+            try
+            {
+                // P değeri
+                if (double.TryParse(pO2P.Text, out double pValue))
+                {
+                    Properties.Settings.Default.pO2P = pValue;
+                }
+
+                // I değeri
+                if (double.TryParse(pO2I.Text, out double iValue))
+                {
+                    Properties.Settings.Default.pO2I = iValue;
+                }
+
+                // ILimit değeri
+                if (double.TryParse(pO2ILimit.Text, out double iLimitValue))
+                {
+                    Properties.Settings.Default.pO2ILimit = iLimitValue;
+                }
+
+                // Deadband değeri
+                if (double.TryParse(pO2Deadband.Text, out double deadbandValue))
+                {
+                    Properties.Settings.Default.pO2Deadband = deadbandValue;
+                }
+
+                // Negfactor değeri
+                if (double.TryParse(pO2Negfactor.Text, out double negfactorValue))
+                {
+                    Properties.Settings.Default.pO2Negfactor = negfactorValue;
+                }
+
+                // EvalTime değeri
+                if (double.TryParse(pO2EvalTime.Text, out double evalTimeValue))
+                {
+                    Properties.Settings.Default.pO2EvalTime = evalTimeValue;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving PID settings: {ex.Message}");
+            }
+        }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !int.TryParse(e.Text, out _);
+        }
+
+        //private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    if (sender is TextBox textBox && !string.IsNullOrEmpty(textBox.Text))
+        //    {
+        //        ValidateTextBoxValue(textBox);
+        //    }
+        //}
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox && !string.IsNullOrEmpty(textBox.Text))
+            {
+                ValidateTextBoxValue(textBox);
+            }
+        }
+        #endregion
+
+        #region Helper Methods
+        private void ApplyTemplate(string templateName)
+        {
+            string resourceKey = $"{templateName}Template".Replace("->", "");
+
+            try
+            {
+                var template = contentArea.Resources[resourceKey] as DataTemplate;
+                if (template != null)
+                {
+                    var content = template.LoadContent() as FrameworkElement;
+                    if (content != null)
+                    {
+                        SetupTemplateControls(content, templateName);
+                        contentArea.Content = content;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error applying template: {ex.Message}");
+            }
+        }
+
+        private void SetupTemplateControls(FrameworkElement content, string templateName)
+        {
+            switch (templateName)
+            {
+                case "Stirrer":
+                    SetupTextBox(content, "pO2StirrerRPM", Properties.Settings.Default.pO2StirrerRPM);
+                    break;
+                case "TotalFlow":
+                    SetupTextBox(content, "pO2TotalFlowTotalFlow", Properties.Settings.Default.pO2TotalFlowTotalFlow);
+                    break;
+                case "GasMix":
+                    SetupTextBox(content, "pO2GasMixGasMix", Properties.Settings.Default.pO2GasMixGasMix);
+                    break;
+                case "Stirrer->TotalFlow":
+                    SetupTextBox(content, "pO2StirrerTotalFlowRPM", Properties.Settings.Default.pO2StirrerTotalFlowRPM);
+                    SetupTextBox(content, "pO2StirrerTotalFlowTotalFlow", Properties.Settings.Default.pO2StirrerTotalFlowTotalFlow);
+                    break;
+                case "Stirrer->GasMix":
+                    SetupTextBox(content, "pO2StirrerGasMixRPM", Properties.Settings.Default.pO2StirrerGasMixRPM);
+                    SetupTextBox(content, "pO2StirrerGasMixGasMix", Properties.Settings.Default.pO2StirrerGasMixGasMix);
+                    break;
+                case "Stirrer->TotalFlow->GasMix":
+                    SetupTextBox(content, "pO2StirrerTotalFlowGasMixRPM", Properties.Settings.Default.pO2StirrerTotalFlowGasMixRPM);
+                    SetupTextBox(content, "pO2StirrerTotalFlowGasMixTotalFlow", Properties.Settings.Default.pO2StirrerTotalFlowGasMixTotalFlow);
+                    SetupTextBox(content, "pO2StirrerTotalFlowGasMixGasMix", Properties.Settings.Default.pO2StirrerTotalFlowGasMixGasMix);
+                    break;
+            }
+        }
+
+        //private void ValidateTextBoxValue(TextBox textBox)
+        //{
+        //    if (textBoxLimits.TryGetValue(textBox.Name, out var limits))
+        //    {
+        //        if (int.TryParse(textBox.Text, out int value))
+        //        {
+        //            if (value < limits.Min) textBox.Text = limits.Min.ToString();
+        //            if (value > limits.Max) textBox.Text = limits.Max.ToString();
+        //        }
+        //    }
+        //}
+
+        private void ValidateTextBoxValue(TextBox textBox)
+        {
+            if (textBox.Tag is string tag && ParseRange(tag, out double min, out double max))
+            {
+                if (double.TryParse(textBox.Text,
+                    System.Globalization.NumberStyles.Any,
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    out double value))
+                {
+                    if (value < min)
+                        textBox.Text = min.ToString(System.Globalization.CultureInfo.CurrentCulture);
+                    else if (value > max)
+                        textBox.Text = max.ToString(System.Globalization.CultureInfo.CurrentCulture);
+                }
+            }
+        }
 
         private void SaveCurrentValues()
         {
@@ -546,24 +571,79 @@ namespace WpfApp1.EditPages
                 switch (content)
                 {
                     case "Stirrer":
-                        SaveStirrerValues();
+                        SaveValue("pO2StirrerRPM", "pO2StirrerRPM");
                         break;
                     case "TotalFlow":
-                        SaveTotalFlowValues();
+                        SaveValue("pO2TotalFlowTotalFlow", "pO2TotalFlowTotalFlow");
                         break;
                     case "GasMix":
-                        SaveGasMixValues();
+                        SaveValue("pO2GasMixGasMix", "pO2GasMixGasMix");
                         break;
                     case "Stirrer->TotalFlow":
-                        SaveStirrerTotalFlowValues();
+                        SaveValue("pO2StirrerTotalFlowRPM", "pO2StirrerTotalFlowRPM");
+                        SaveValue("pO2StirrerTotalFlowTotalFlow", "pO2StirrerTotalFlowTotalFlow");
                         break;
                     case "Stirrer->GasMix":
-                        SaveStirrerGasMixValues();
+                        SaveValue("pO2StirrerGasMixRPM", "pO2StirrerGasMixRPM");
+                        SaveValue("pO2StirrerGasMixGasMix", "pO2StirrerGasMixGasMix");
                         break;
                     case "Stirrer->TotalFlow->GasMix":
-                        SaveStirrerTotalFlowGasMix();
+                        SaveValue("pO2StirrerTotalFlowGasMixRPM", "pO2StirrerTotalFlowGasMixRPM");
+                        SaveValue("pO2StirrerTotalFlowGasMixTotalFlow", "pO2StirrerTotalFlowGasMixTotalFlow");
+                        SaveValue("pO2StirrerTotalFlowGasMixGasMix", "pO2StirrerTotalFlowGasMixGasMix");
                         break;
                 }
+            }
+        }
+
+        //private void SetupTextBox(FrameworkElement parent, string name, int value)
+        //{
+        //    var textBox = FindChild<TextBox>(parent, name);
+        //    if (textBox != null)
+        //    {
+        //        textBox.GotFocus += TextBox_GotFocus;
+        //        textBox.Text = value.ToString();
+        //    }
+        //}
+
+        //private void SaveValue(string controlName, string settingsProperty)
+        //{
+        //    var textBox = FindChild<TextBox>(contentArea, controlName);
+        //    if (textBox != null && int.TryParse(textBox.Text, out int value))
+        //    {
+        //        var property = Properties.Settings.Default.GetType().GetProperty(settingsProperty);
+        //        if (property != null)
+        //        {
+        //            property.SetValue(Properties.Settings.Default, value);
+        //        }
+        //    }
+        //}
+
+        private void SaveValue(string controlName, string settingsProperty)
+        {
+            var textBox = FindChild<TextBox>(contentArea, controlName);
+            if (textBox != null && double.TryParse(textBox.Text,
+                System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.CurrentCulture,
+                out double value))
+            {
+                var property = Properties.Settings.Default.GetType().GetProperty(settingsProperty);
+                if (property != null)
+                {
+                    property.SetValue(Properties.Settings.Default, value);
+                }
+            }
+        }
+
+        private void SetupTextBox(FrameworkElement parent, string name, double value)
+        {
+            var textBox = FindChild<TextBox>(parent, name);
+            if (textBox != null)
+            {
+                textBox.GotFocus += TextBox_GotFocus;
+
+                // Kültüre göre formatla
+                textBox.Text = value.ToString(System.Globalization.CultureInfo.CurrentCulture);
             }
         }
 
@@ -592,58 +672,17 @@ namespace WpfApp1.EditPages
             }
             return foundChild;
         }
+        #endregion
 
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        private void ResetPIDButton_Click(object sender, RoutedEventArgs e)
         {
-            var textBox = sender as TextBox;
-            if (textBox != null)
-            {
-                activeTextBox = textBox;
-
-                // Label içeriğini bulmak için parent container'ı kontrol et
-                var parent = VisualTreeHelper.GetParent(textBox);
-                while (parent != null)
-                {
-                    if (parent is Grid grid)
-                    {
-                        var label = grid.Children.OfType<Label>().FirstOrDefault();
-                        if (label != null)
-                        {
-                            KeypadPopup.IsOpen = true;
-                            KeypadControl.SetLabelContent(label.Content.ToString());
-                            break;
-                        }
-                    }
-                    parent = VisualTreeHelper.GetParent(parent);
-                }
-            }
-        }
-        private void KeyPadControl_ValueSelected(object sender, string value)
-        {
-            if (activeTextBox != null)
-            {
-                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
-            }
-        }
-
-        private void RegisterTextBoxEvents(DependencyObject parent)
-        {
-            // Verilen parent içindeki tüm TextBox'ları bul
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
-            {
-                var child = VisualTreeHelper.GetChild(parent, i);
-
-                if (child is TextBox textBox)
-                {
-                    // TextBox'a GotFocus event'ini bağla
-                    textBox.GotFocus += TextBox_GotFocus;
-                }
-                else
-                {
-                    // Recursive olarak diğer container'ları kontrol et
-                    RegisterTextBoxEvents(child);
-                }
-            }
+            // Varsayılan değerleri yükle
+            pO2P.Text = "50";
+            pO2I.Text = "25";
+            pO2ILimit.Text = "50";
+            pO2Deadband.Text = "5";
+            pO2Negfactor.Text = "100";
+            pO2EvalTime.Text = "60";
         }
     }
 }

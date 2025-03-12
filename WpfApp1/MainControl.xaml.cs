@@ -32,7 +32,8 @@ namespace WpfApp1
             ellipse1.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse2.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse3.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
-            ellipse4.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            // ellipse4 için özel event handler kullan
+            ellipse4.MouseLeftButtonDown += ellipse4_MouseDown;
             ellipse5.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse6.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             //ellipse7.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
@@ -411,6 +412,22 @@ namespace WpfApp1
             }
         }
 
+        private void ellipse4_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
+            if (Properties.Settings.Default.pO2SelectedCascade == "None")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("pO2 cascade selection is required. Please go to EditpO2 settings and select a cascade option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
         private Button GetConditionalButton(Ellipse ellipse)
         {
             return ellipse.Name switch

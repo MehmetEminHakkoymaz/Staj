@@ -54,7 +54,7 @@ namespace WpfApp1.Keypad
 
         private void Button_Click_(object sender, RoutedEventArgs e)
         {
-            numbers.Text += ".";
+            numbers.Text += ",";
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
