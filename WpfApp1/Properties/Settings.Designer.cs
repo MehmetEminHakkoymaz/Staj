@@ -217,7 +217,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1400")]
         public int pO2StirrerRPM {
             get {
                 return ((int)(this["pO2StirrerRPM"]));
@@ -229,7 +229,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4000")]
         public int pO2TotalFlowTotalFlow {
             get {
                 return ((int)(this["pO2TotalFlowTotalFlow"]));
@@ -241,7 +241,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public int pO2GasMixGasMix {
             get {
                 return ((int)(this["pO2GasMixGasMix"]));
@@ -253,7 +253,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1400")]
         public int pO2StirrerTotalFlowRPM {
             get {
                 return ((int)(this["pO2StirrerTotalFlowRPM"]));
@@ -265,7 +265,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4000")]
         public int pO2StirrerTotalFlowTotalFlow {
             get {
                 return ((int)(this["pO2StirrerTotalFlowTotalFlow"]));
@@ -277,7 +277,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1400")]
         public int pO2StirrerGasMixRPM {
             get {
                 return ((int)(this["pO2StirrerGasMixRPM"]));
@@ -289,7 +289,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public int pO2StirrerGasMixGasMix {
             get {
                 return ((int)(this["pO2StirrerGasMixGasMix"]));
@@ -301,7 +301,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1400")]
         public int pO2StirrerTotalFlowGasMixRPM {
             get {
                 return ((int)(this["pO2StirrerTotalFlowGasMixRPM"]));
@@ -313,7 +313,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4000")]
         public int pO2StirrerTotalFlowGasMixTotalFlow {
             get {
                 return ((int)(this["pO2StirrerTotalFlowGasMixTotalFlow"]));
@@ -325,7 +325,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public int pO2StirrerTotalFlowGasMixGasMix {
             get {
                 return ((int)(this["pO2StirrerTotalFlowGasMixGasMix"]));
@@ -392,6 +392,30 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["pHSelectedCascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSelectedpO2Cascade {
+            get {
+                return ((string)(this["LastSelectedpO2Cascade"]));
+            }
+            set {
+                this["LastSelectedpO2Cascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSelectedpO2CascadeItem {
+            get {
+                return ((string)(this["LastSelectedpO2CascadeItem"]));
+            }
+            set {
+                this["LastSelectedpO2CascadeItem"] = value;
             }
         }
     }

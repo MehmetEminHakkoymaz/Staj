@@ -227,3 +227,5 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Release\net8.0-windows\EditPage
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Release\net8.0-windows\LoginWindow.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Release\net8.0-windows\Settings\SettingWindows\UsbWindows\ExportDataToUsb.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Release\net8.0-windows\TableNameDialog.baml
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Release\net8.0-windows\KeyboardPopup.g.cs
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Release\net8.0-windows\KeyboardPopup.baml

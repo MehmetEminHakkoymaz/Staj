@@ -51,34 +51,34 @@
       <Value Profile="(Default)">None</Value>
     </Setting>
     <Setting Name="pO2StirrerRPM" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">1400</Value>
     </Setting>
     <Setting Name="pO2TotalFlowTotalFlow" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">4000</Value>
     </Setting>
     <Setting Name="pO2GasMixGasMix" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="pO2StirrerTotalFlowRPM" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">1400</Value>
     </Setting>
     <Setting Name="pO2StirrerTotalFlowTotalFlow" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">4000</Value>
     </Setting>
     <Setting Name="pO2StirrerGasMixRPM" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">1400</Value>
     </Setting>
     <Setting Name="pO2StirrerGasMixGasMix" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="pO2StirrerTotalFlowGasMixRPM" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">1400</Value>
     </Setting>
     <Setting Name="pO2StirrerTotalFlowGasMixTotalFlow" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">4000</Value>
     </Setting>
     <Setting Name="pO2StirrerTotalFlowGasMixGasMix" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="pHBaseBase" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -94,6 +94,12 @@
     </Setting>
     <Setting Name="pHSelectedCascade" Type="System.String" Scope="User">
       <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="LastSelectedpO2Cascade" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LastSelectedpO2CascadeItem" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

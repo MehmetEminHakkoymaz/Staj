@@ -26,7 +26,7 @@
         <Grid>
             <Border CornerRadius="5" Background="#FFE7ECEF" BorderBrush="Gray" BorderThickness="1" Margin="224,96,351,443" Height="45">
                 <ComboBox x:Name="contentComboBox" FontSize="25" FontWeight="Regular" Margin="1,1,1,1" Padding="0,0,0,0" 
-                          VerticalContentAlignment="Center">
+                          VerticalContentAlignment="Center" IsSynchronizedWithCurrentItem="True">
                     <ComboBoxItem Content="None" FontSize="25" FontWeight="Regular"/>
                     <ComboBoxItem Content="Stirrer" FontSize="25" FontWeight="Regular"/>
                     <ComboBoxItem Content="TotalFlow" FontWeight="Regular" FontSize="25"/>
@@ -58,7 +58,7 @@
                                 Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                 <TextBox x:Name="pO2StirrerRPM" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="1400"/>
                             </Border>
                         </StackPanel>
                     </DataTemplate>
@@ -79,7 +79,7 @@
                                 Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                 <TextBox x:Name="pO2TotalFlowTotalFlow" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="4000"/>
                             </Border>
                         </StackPanel>
                     </DataTemplate>

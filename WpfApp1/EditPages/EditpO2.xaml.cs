@@ -29,6 +29,8 @@ namespace WpfApp1.EditPages
             InitializeClock();
             InitializeComboBox();
             InitializeTextBoxLimits();
+            contentComboBox.SelectionChanged += ContentComboBox_SelectionChanged;
+            LoadLastSelectedCascade();
             this.Loaded += EditpO2_Loaded;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
 
@@ -37,6 +39,66 @@ namespace WpfApp1.EditPages
             this.ResizeMode = ResizeMode.NoResize;
             this.Topmost = true;
         }
+
+        //private void LoadLastSelectedCascade()
+        //{
+        //    try
+        //    {
+        //        string lastSelected = Properties.Settings.Default.LastSelectedpO2Cascade;
+        //        if (!string.IsNullOrEmpty(lastSelected))
+        //        {
+        //            foreach (ComboBoxItem item in contentComboBox.Items)
+        //            {
+        //                if (item.Content.ToString() == lastSelected)
+        //                {
+        //                    contentComboBox.SelectedItem = item;
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            // Varsayılan olarak ilk öğeyi seç
+        //            contentComboBox.SelectedIndex = 0;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error loading last selected cascade: {ex.Message}");
+        //    }
+        //}
+
+        private void LoadLastSelectedCascade()
+        {
+            try
+            {
+                // En son seçilen cascade değerini oku
+                string lastSelected = Properties.Settings.Default.LastSelectedpO2CascadeItem;
+
+                if (!string.IsNullOrEmpty(lastSelected))
+                {
+                    // ComboBox'ta bu değeri bul ve seç
+                    foreach (ComboBoxItem item in contentComboBox.Items)
+                    {
+                        if (item.Content.ToString() == lastSelected)
+                        {
+                            contentComboBox.SelectedItem = item;
+                            return; // İşlem tamamlandı
+                        }
+                    }
+                }
+
+                // Eğer son seçim bulunamadı veya yoksa, varsayılan olarak ilk öğeyi seç
+                contentComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading last selected cascade: {ex.Message}");
+                // Hata durumunda da varsayılan seçimi yap
+                contentComboBox.SelectedIndex = 0;
+            }
+        }
+
 
         private void InitializeTextBoxLimits()
         {
@@ -430,12 +492,41 @@ namespace WpfApp1.EditPages
             this.Close();
         }
 
+        //private void Ok_Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
+        //        {
+        //            Properties.Settings.Default.LastSelectedpO2Cascade = selectedItem.Content.ToString();
+        //            Properties.Settings.Default.Save();
+        //        }
+        //        SaveCurrentValues();
+        //        Properties.Settings.Default.Save();
+        //        this.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error saving settings: {ex.Message}");
+        //    }
+        //}
+
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                SaveCurrentValues();
-                Properties.Settings.Default.Save();
+                // Seçili cascade değerini kaydet
+                if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
+                {
+                    Properties.Settings.Default.LastSelectedpO2CascadeItem = selectedItem.Content.ToString();
+
+                    // Diğer değerleri de kaydet
+                    SaveCurrentValues();
+
+                    // Ayarları kalıcı olarak kaydet
+                    Properties.Settings.Default.Save();
+                }
+
                 this.Close();
             }
             catch (Exception ex)
@@ -443,6 +534,7 @@ namespace WpfApp1.EditPages
                 MessageBox.Show($"Error saving settings: {ex.Message}");
             }
         }
+
 
         private void SaveCurrentValues()
         {
