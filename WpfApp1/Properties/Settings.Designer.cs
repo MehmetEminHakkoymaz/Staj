@@ -97,7 +97,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Profile=\"(Default)\">L2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("L2")]
         public string SelectedVesselType {
             get {
                 return ((string)(this["SelectedVesselType"]));
@@ -338,9 +338,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int pHBaseBase {
+        public double pHBaseBase {
             get {
-                return ((int)(this["pHBaseBase"]));
+                return ((double)(this["pHBaseBase"]));
             }
             set {
                 this["pHBaseBase"] = value;
@@ -350,9 +350,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int pHAcidAcid {
+        public double pHAcidAcid {
             get {
-                return ((int)(this["pHAcidAcid"]));
+                return ((double)(this["pHAcidAcid"]));
             }
             set {
                 this["pHAcidAcid"] = value;
@@ -362,9 +362,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int pHBaseAcidBase {
+        public double pHBaseAcidBase {
             get {
-                return ((int)(this["pHBaseAcidBase"]));
+                return ((double)(this["pHBaseAcidBase"]));
             }
             set {
                 this["pHBaseAcidBase"] = value;
@@ -374,9 +374,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int pHBaseAcidAcid {
+        public double pHBaseAcidAcid {
             get {
-                return ((int)(this["pHBaseAcidAcid"]));
+                return ((double)(this["pHBaseAcidAcid"]));
             }
             set {
                 this["pHBaseAcidAcid"] = value;
@@ -488,6 +488,114 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["pO2EvalTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideStirrerBorder {
+            get {
+                return ((bool)(this["HideStirrerBorder"]));
+            }
+            set {
+                this["HideStirrerBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideGas1Border {
+            get {
+                return ((bool)(this["HideGas1Border"]));
+            }
+            set {
+                this["HideGas1Border"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSelectedpHCascadeItem {
+            get {
+                return ((string)(this["LastSelectedpHCascadeItem"]));
+            }
+            set {
+                this["LastSelectedpHCascadeItem"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public double pHP {
+            get {
+                return ((double)(this["pHP"]));
+            }
+            set {
+                this["pHP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        public double pHI {
+            get {
+                return ((double)(this["pHI"]));
+            }
+            set {
+                this["pHI"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public double pHILimit {
+            get {
+                return ((double)(this["pHILimit"]));
+            }
+            set {
+                this["pHILimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double pHDeadband {
+            get {
+                return ((double)(this["pHDeadband"]));
+            }
+            set {
+                this["pHDeadband"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public double pHNegFactor {
+            get {
+                return ((double)(this["pHNegFactor"]));
+            }
+            set {
+                this["pHNegFactor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public double pHEvalTime {
+            get {
+                return ((double)(this["pHEvalTime"]));
+            }
+            set {
+                this["pHEvalTime"] = value;
             }
         }
     }

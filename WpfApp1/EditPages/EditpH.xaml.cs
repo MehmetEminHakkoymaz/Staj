@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Globalization;
 using WpfApp1;
 
 namespace WpfApp1.EditPages
@@ -22,44 +23,142 @@ namespace WpfApp1.EditPages
     public partial class EditpH : Window
     {
         private DispatcherTimer clockTimer;
-        public event EventHandler<string> ValueSelected;
-        private Dictionary<string, (int Min, int Max)> textBoxLimits;
+        private Dictionary<string, (double Min, double Max)> textBoxLimits;
         private TextBox activeTextBox = null;
 
         public EditpH()
         {
             InitializeComponent();
             InitializeClock();
-            InitializeComboBox();
-            InitializeTextBoxLimits();
-            this.Loaded += EditpH_Loaded;
+            textBoxLimits = InitializeTextBoxLimits(); // Değeri değişkene ata
+
+            // Event'leri bağla
+            contentComboBox.SelectionChanged += ContentComboBox_SelectionChanged;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
 
+            // Son seçileni yükle - bu kısmı constructor'da yapmalıyız
+            // çünkü SelectionChanged eventi bağlandıktan sonra çalışmalı
+            LoadLastSelectedCascade();
 
+            // PID ayarlarını yükle
+            LoadPIDSettings();
+
+            // Pencere ayarları
             this.WindowState = WindowState.Maximized;
             this.WindowStyle = WindowStyle.None;
             this.ResizeMode = ResizeMode.NoResize;
             this.Topmost = true;
         }
 
-        private void InitializeTextBoxLimits()
+        #region Initialization Methods
+        private Dictionary<string, (double Min, double Max)> InitializeTextBoxLimits()
         {
-            textBoxLimits = new Dictionary<string, (int Min, int Max)>
+            return new Dictionary<string, (double Min, double Max)>
             {
                 { "pHBaseBase", (0, 14) },
                 { "pHAcidAcid", (0, 14) },
                 { "pHBaseAcidBase", (0, 14) },
-                { "pHBaseAcidAcid", (0, 14) }
+                { "pHBaseAcidAcid", (0, 14) },
+                { "pHP", (0, 1000) },
+                { "pHI", (0, 1000) },
+                { "pHILimit", (0, 1000) },
+                { "pHDeadband", (0, 100) },
+                { "pHNegFactor", (0, 1000) },
+                { "pHEvalTime", (0, 1000) }
             };
         }
+
+        private void LoadPIDSettings()
+        {
+            try
+            {
+                // PID değerlerini ayarla
+                pHP.Text = Properties.Settings.Default.pHP.ToString(CultureInfo.CurrentCulture);
+                pHI.Text = Properties.Settings.Default.pHI.ToString(CultureInfo.CurrentCulture);
+                pHILimit.Text = Properties.Settings.Default.pHILimit.ToString(CultureInfo.CurrentCulture);
+                pHDeadband.Text = Properties.Settings.Default.pHDeadband.ToString(CultureInfo.CurrentCulture);
+                pHNegFactor.Text = Properties.Settings.Default.pHNegFactor.ToString(CultureInfo.CurrentCulture);
+                pHEvalTime.Text = Properties.Settings.Default.pHEvalTime.ToString(CultureInfo.CurrentCulture);
+
+                // PID TextBox'larına event'leri bağla
+                RegisterPIDTextBoxEvents();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading PID settings: {ex.Message}");
+            }
+        }
+
+        private void RegisterPIDTextBoxEvents()
+        {
+            // PID TextBox'larına event'leri bağla
+            pHP.GotFocus += TextBox_GotFocus;
+            pHP.TextChanged += TextBox_TextChanged;
+            pHP.PreviewTextInput += TextBox_PreviewTextInput;
+
+            pHI.GotFocus += TextBox_GotFocus;
+            pHI.TextChanged += TextBox_TextChanged;
+            pHI.PreviewTextInput += TextBox_PreviewTextInput;
+
+            pHILimit.GotFocus += TextBox_GotFocus;
+            pHILimit.TextChanged += TextBox_TextChanged;
+            pHILimit.PreviewTextInput += TextBox_PreviewTextInput;
+
+            pHDeadband.GotFocus += TextBox_GotFocus;
+            pHDeadband.TextChanged += TextBox_TextChanged;
+            pHDeadband.PreviewTextInput += TextBox_PreviewTextInput;
+
+            pHNegFactor.GotFocus += TextBox_GotFocus;
+            pHNegFactor.TextChanged += TextBox_TextChanged;
+            pHNegFactor.PreviewTextInput += TextBox_PreviewTextInput;
+
+            pHEvalTime.GotFocus += TextBox_GotFocus;
+            pHEvalTime.TextChanged += TextBox_TextChanged;
+            pHEvalTime.PreviewTextInput += TextBox_PreviewTextInput;
+        }
+
         private void InitializeClock()
         {
-            clockTimer = new DispatcherTimer();
-            clockTimer.Interval = TimeSpan.FromSeconds(1);
+            clockTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
             clockTimer.Tick += ClockTimer_Tick;
             clockTimer.Start();
         }
+        private void LoadLastSelectedCascade()
+        {
+            try
+            {
+                // En son seçilen cascade değerini oku
+                string lastSelected = Properties.Settings.Default.LastSelectedpHCascadeItem;
 
+                if (!string.IsNullOrEmpty(lastSelected))
+                {
+                    // ComboBox'ta bu değeri bul ve seç
+                    foreach (ComboBoxItem item in contentComboBox.Items)
+                    {
+                        if (item.Content.ToString() == lastSelected)
+                        {
+                            contentComboBox.SelectedItem = item;
+                            return; // İşlem tamamlandı
+                        }
+                    }
+                }
+
+                // Eğer son seçim bulunamadı veya yoksa, varsayılan olarak ilk öğeyi seç
+                contentComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading last selected cascade: {ex.Message}");
+                // Hata durumunda da varsayılan seçimi yap
+                contentComboBox.SelectedIndex = 0;
+            }
+        }
+        #endregion
+
+        #region Event Handlers
         private void ClockTimer_Tick(object sender, EventArgs e)
         {
             // Sistem saatini "HH:mm:ss" formatında güncelle
@@ -75,13 +174,65 @@ namespace WpfApp1.EditPages
         {
             try
             {
+                // Seçili cascade değerini kaydet
+                if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
+                {
+                    Properties.Settings.Default.LastSelectedpHCascadeItem = selectedItem.Content.ToString();
+                }
+
                 SaveCurrentValues();
+                SavePIDSettings(); // Bu metot eklenmeli
                 Properties.Settings.Default.Save();
                 this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving settings: {ex.Message}");
+            }
+        }
+        private void SavePIDSettings()
+        {
+            try
+            {
+                // P değeri
+                if (double.TryParse(pHP.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pValue))
+                {
+                    Properties.Settings.Default.pHP = pValue;
+                }
+
+                // I değeri
+                if (double.TryParse(pHI.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double iValue))
+                {
+                    Properties.Settings.Default.pHI = iValue;
+                }
+
+                // ILimit değeri
+                if (double.TryParse(pHILimit.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double iLimitValue))
+                {
+                    Properties.Settings.Default.pHILimit = iLimitValue;
+                }
+
+                // Deadband değeri
+                if (double.TryParse(pHDeadband.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double deadbandValue))
+                {
+                    Properties.Settings.Default.pHDeadband = deadbandValue;
+                }
+
+                // Negfactor değeri
+                if (double.TryParse(pHNegFactor.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double negfactorValue))
+                {
+                    Properties.Settings.Default.pHNegFactor = negfactorValue;
+                }
+
+                // EvalTime değeri
+                if (double.TryParse(pHEvalTime.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double evalTimeValue))
+                {
+                    Properties.Settings.Default.pHEvalTime = evalTimeValue;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving PID settings: {ex.Message}");
             }
         }
         private void EditpH_Loaded(object sender, RoutedEventArgs e)
@@ -190,7 +341,8 @@ namespace WpfApp1.EditPages
         private void SaveBaseValues()
         {
             var basee = FindChild<TextBox>(contentArea, "pHBaseBase");
-            if (basee != null && int.TryParse(basee.Text, out int baseValue))
+            if (basee != null && double.TryParse(basee.Text, NumberStyles.Any,
+                CultureInfo.CurrentCulture, out double baseValue))
             {
                 Properties.Settings.Default.pHBaseBase = baseValue;
             }
@@ -213,12 +365,12 @@ namespace WpfApp1.EditPages
         private void SaveAcidValues()
         {
             var acid = FindChild<TextBox>(contentArea, "pHAcidAcid");
-            if (acid != null && int.TryParse(acid.Text, out int acidValue))
+            if (acid != null && double.TryParse(acid.Text, NumberStyles.Any,
+                CultureInfo.CurrentCulture, out double acidValue))
             {
                 Properties.Settings.Default.pHAcidAcid = acidValue;
             }
         }
-
         private void LoadBaseAcidValues()
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
@@ -243,33 +395,58 @@ namespace WpfApp1.EditPages
         private void SaveBaseAcidValues()
         {
             var basee = FindChild<TextBox>(contentArea, "pHBaseAcidBase");
-            if (basee != null && int.TryParse(basee.Text, out int baseValue))
+            if (basee != null && double.TryParse(basee.Text, NumberStyles.Any,
+                CultureInfo.CurrentCulture, out double baseValue))
             {
                 Properties.Settings.Default.pHBaseAcidBase = baseValue;
             }
+
             var acid = FindChild<TextBox>(contentArea, "pHBaseAcidAcid");
-            if (acid != null && int.TryParse(acid.Text, out int acidValue))
+            if (acid != null && double.TryParse(acid.Text, NumberStyles.Any,
+                CultureInfo.CurrentCulture, out double acidValue))
             {
                 Properties.Settings.Default.pHBaseAcidAcid = acidValue;
             }
         }
-
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !int.TryParse(e.Text, out _);
+            // Hem tamsayı hem ondalıklı sayılar için geçerli karakterleri kontrol et
+            // Geçerli karakterler: rakamlar, nokta ve virgül
+            bool isValid = e.Text.All(c => char.IsDigit(c) || c == '.' || c == ',');
+
+            // Eğer nokta veya virgül ise, TextBox'ta zaten bir tane var mı kontrol et
+            if (isValid && (e.Text == "." || e.Text == ","))
+            {
+                if (sender is TextBox textBox)
+                {
+                    isValid = !textBox.Text.Contains(".") && !textBox.Text.Contains(",");
+                }
+            }
+
+            e.Handled = !isValid;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (sender is TextBox textBox && !string.IsNullOrEmpty(textBox.Text))
             {
-                if (textBoxLimits.TryGetValue(textBox.Name, out var limits))
+                ValidateTextBoxValue(textBox);
+            }
+        }
+
+        private void ValidateTextBoxValue(TextBox textBox)
+        {
+            if (textBoxLimits.TryGetValue(textBox.Name, out var limits))
+            {
+                string normalizedText = textBox.Text.Replace(',', '.');
+
+                if (double.TryParse(normalizedText, NumberStyles.Any,
+                                  CultureInfo.InvariantCulture, out double value))
                 {
-                    if (int.TryParse(textBox.Text, out int value))
-                    {
-                        if (value < limits.Min) textBox.Text = limits.Min.ToString();
-                        if (value > limits.Max) textBox.Text = limits.Max.ToString();
-                    }
+                    if (value < limits.Min)
+                        textBox.Text = limits.Min.ToString(CultureInfo.CurrentCulture);
+                    else if (value > limits.Max)
+                        textBox.Text = limits.Max.ToString(CultureInfo.CurrentCulture);
                 }
             }
         }
@@ -351,10 +528,60 @@ namespace WpfApp1.EditPages
         {
             if (activeTextBox != null)
             {
-                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
+                if (activeTextBox.Tag is string tag && ParseRange(tag, out double min, out double max))
+                {
+                    // Nokta veya virgül içeren değerleri düzgün işle
+                    string normalizedValue = value.Replace(',', '.');
+
+                    if (double.TryParse(normalizedValue, NumberStyles.Any,
+                                       CultureInfo.InvariantCulture, out double doubleValue))
+                    {
+                        // Değer sınırlar içinde mi kontrol et
+                        if (doubleValue >= min && doubleValue <= max)
+                        {
+                            // Yerel kültüre göre değeri TextBox'a ayarla
+                            activeTextBox.Text = doubleValue.ToString(CultureInfo.CurrentCulture);
+                        }
+                        else
+                        {
+                            KeypadPopup.IsOpen = true; // Hata durumunda KeyPad'i tekrar aç
+                            MessageBox.Show($"Please enter a value between {min} and {max}.",
+                                          "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                    else
+                    {
+                        // Sayısal değer değilse uyarı ver
+                        KeypadPopup.IsOpen = true;
+                        MessageBox.Show("Please enter a valid number.",
+                                      "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+                else
+                {
+                    // Tag yoksa veya geçersizse, direkt değeri ata
+                    activeTextBox.Text = value;
+                }
             }
         }
 
+        private bool ParseRange(string tag, out double min, out double max)
+        {
+            min = max = 0;
+            if (string.IsNullOrEmpty(tag)) return false;
+
+            var parts = tag.Split(',');
+            if (parts.Length == 2 &&
+                double.TryParse(parts[0], NumberStyles.Any,
+                              CultureInfo.InvariantCulture, out min) &&
+                double.TryParse(parts[1], NumberStyles.Any,
+                              CultureInfo.InvariantCulture, out max))
+            {
+                return true;
+            }
+
+            return false;
+        }
         private void RegisterTextBoxEvents(DependencyObject parent)
         {
             // Verilen parent içindeki tüm TextBox'ları bul
@@ -375,21 +602,16 @@ namespace WpfApp1.EditPages
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        private void pHResetPIDButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Varsayılan değerleri ayarla
+            pHP.Text = "50";
+            pHI.Text = "25";
+            pHILimit.Text = "50";
+            pHDeadband.Text = "5";
+            pHNegFactor.Text = "100";
+            pHEvalTime.Text = "60";
+        }
+        #endregion
     }
 }

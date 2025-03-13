@@ -55,7 +55,7 @@
                                 Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                 <TextBox x:Name="pHBaseBase" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                             </Border>
                         </StackPanel>
                     </DataTemplate>
@@ -76,7 +76,7 @@
                                 Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                 <TextBox x:Name="pHAcidAcid" Background="Transparent" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                         GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                             </Border>
                         </StackPanel>
                     </DataTemplate>
@@ -98,7 +98,7 @@
                                     Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                     <TextBox x:Name="pHBaseAcidBase" Background="Transparent" FontSize="20" FontWeight="Regular"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                                 </Border>
                             </StackPanel>
 
@@ -116,7 +116,7 @@
                                     Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
                                     <TextBox x:Name="pHBaseAcidAcid" Background="Transparent" FontSize="20" FontWeight="Regular"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                                 </Border>
                             </StackPanel>
                         </Grid>
@@ -138,34 +138,34 @@
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="115,58,495,127">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pHP" GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                             x:Name="pHP" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="115,110,495,75">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pHI" GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                             x:Name="pHI" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="115,162,495,23">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pHILimit" GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                             x:Name="pHILimit" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="400,58,210,127">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pHP2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                             x:Name="pHDeadband" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="400,110,210,75">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pHI2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                             x:Name="pHNegFactor" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
                 <Border CornerRadius="5" Width="140" Height="40" Background="Transparent" BorderBrush="Gray" BorderThickness="1" Margin="400,162,210,23">
                     <TextBox Width="136" Height="36" Background="White" BorderThickness="0" FontSize="20" FontWeight="Regular"
                                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                             x:Name="pHILimit2" GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
+                             x:Name="pHEvalTime" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,100"/>
                 </Border>
-                <Button Width="150" Height="40" Content="Reset PID" FontSize="25" Opacity="0.7" Margin="581,57,19,128">
+                <Button Width="150" Height="40" Content="Reset PID" FontSize="25" Opacity="0.7" Margin="581,57,19,128" Click="pHResetPIDButton_Click">
                     <Button.Background>
                         <SolidColorBrush Color="#D6D6D6"/>
                     </Button.Background>

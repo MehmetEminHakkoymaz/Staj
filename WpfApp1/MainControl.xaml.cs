@@ -31,14 +31,14 @@ namespace WpfApp1
             this.mainWindow = mainWindow;
             ellipse1.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse2.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
-            ellipse3.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse3.MouseLeftButtonDown += ellipse3_MouseDown;
             // ellipse4 için özel event handler kullan
             ellipse4.MouseLeftButtonDown += ellipse4_MouseDown;
             ellipse5.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse6.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             //ellipse7.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             //ellipse8.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
-            ellipse9.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse9.MouseLeftButtonDown += ellipse9_MouseDown;
             ellipse19.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
@@ -46,6 +46,10 @@ namespace WpfApp1
 
             DataContext = this;
             InitializeTemperatureMonitoring();
+            // Settings değişikliklerini dinle
+            Properties.Settings.Default.PropertyChanged += Settings_PropertyChanged;
+            UpdateBorderVisibilities();
+
         }
 
         private double currentTemperature;
@@ -428,6 +432,39 @@ namespace WpfApp1
             // Normal ellipse tıklama olayını çağır
             Ellipse_MouseLeftButtonDown(sender, e);
         }
+        private void ellipse3_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
+            if (Properties.Settings.Default.pHSelectedCascade == "None")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("pH cascade selection is required. Please go to EditpH settings and select a cascade option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+
+        private void ellipse9_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
+            if (Properties.Settings.Default.FoamSelectedMode == "None")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Foam selection is required. Please go to EditFoam settings and select an option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
         private Button GetConditionalButton(Ellipse ellipse)
         {
             return ellipse.Name switch
@@ -623,5 +660,33 @@ namespace WpfApp1
             return false;
         }
 
+
+        private void UpdateBorderVisibilities()
+        {
+            // Stirrer border görünürlüğünü güncelle
+            if (FindName("StirrerTargetBorder") is Border stirrerBorder)
+            {
+                stirrerBorder.Visibility = Properties.Settings.Default.HideStirrerBorder ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
+
+            // Gas1 border görünürlüğünü güncelle
+            if (FindName("Gas1TargetBorder") is Border gas1Border)
+            {
+                gas1Border.Visibility = Properties.Settings.Default.HideGas1Border ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // Eğer ilgili ayarlar değiştiyse border görünürlüklerini güncelle
+            if (e.PropertyName == "HideStirrerBorder" ||
+                e.PropertyName == "HideGas1Border" ||
+                e.PropertyName == "pO2SelectedCascade")
+            {
+                UpdateBorderVisibilities();
+            }
+        }
     }
 }

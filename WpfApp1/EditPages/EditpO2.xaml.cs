@@ -164,6 +164,34 @@ namespace WpfApp1.EditPages
                 string content = selectedItem.Content.ToString();
                 Properties.Settings.Default.pO2SelectedCascade = content;
 
+                // Border görünürlükleri için ayarları güncelle
+                switch (content)
+                {
+                    case "Stirrer":
+                        Properties.Settings.Default.HideStirrerBorder = true;
+                        Properties.Settings.Default.HideGas1Border = false;
+                        break;
+                    case "TotalFlow":
+                        Properties.Settings.Default.HideStirrerBorder = false;
+                        Properties.Settings.Default.HideGas1Border = true;
+                        break;
+                    case "Stirrer->TotalFlow":
+                        Properties.Settings.Default.HideStirrerBorder = true;
+                        Properties.Settings.Default.HideGas1Border = true;
+                        break;
+                    case "Stirrer->GasMix":
+                        Properties.Settings.Default.HideStirrerBorder = true;
+                        Properties.Settings.Default.HideGas1Border = false;
+                        break;
+                    default:
+                        Properties.Settings.Default.HideStirrerBorder = false;
+                        Properties.Settings.Default.HideGas1Border = false;
+                        break;
+                }
+
+                // Settings'i kaydet
+                Properties.Settings.Default.Save();
+
                 // Önce mevcut içeriği temizle
                 contentArea.Content = null;
                 contentArea.ContentTemplate = null;
@@ -389,19 +417,42 @@ namespace WpfApp1.EditPages
                 // Seçili cascade değerini kaydet
                 if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
                 {
-                    // BURASI ÖNEMLİ: Bu değer ComboBox'ta görünecek son seçimi belirler
                     string content = selectedItem.Content.ToString();
-                    Properties.Settings.Default.pO2SelectedCascade = content;
                     Properties.Settings.Default.LastSelectedpO2CascadeItem = content;
+                    Properties.Settings.Default.pO2SelectedCascade = content;
 
-                    // Diğer değerleri kaydet
-                    SaveCurrentValues();
-                    SavePIDSettings();
-                    // Ayarları kalıcı olarak kaydet
-                    Properties.Settings.Default.Save();
+                    // Border görünürlükleri için ayarları güncelle
+                    switch (content)
+                    {
+                        case "Stirrer":
+                            Properties.Settings.Default.HideStirrerBorder = true;
+                            Properties.Settings.Default.HideGas1Border = false;
+                            break;
+                        case "TotalFlow":
+                            Properties.Settings.Default.HideStirrerBorder = false;
+                            Properties.Settings.Default.HideGas1Border = true;
+                            break;
+                        case "Stirrer->TotalFlow":
+                            Properties.Settings.Default.HideStirrerBorder = true;
+                            Properties.Settings.Default.HideGas1Border = true;
+                            break;
+                        case "Stirrer->GasMix":
+                            Properties.Settings.Default.HideStirrerBorder = true;
+                            Properties.Settings.Default.HideGas1Border = false;
+                            break;
+                        default:
+                            Properties.Settings.Default.HideStirrerBorder = false;
+                            Properties.Settings.Default.HideGas1Border = false;
+                            break;
+                    }
                 }
 
+                // Diğer değerleri kaydet
+                SaveCurrentValues();
+                SavePIDSettings();
 
+                // Ayarları kalıcı olarak kaydet
+                Properties.Settings.Default.Save();
 
                 this.Close();
             }

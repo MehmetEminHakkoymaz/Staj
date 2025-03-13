@@ -21,7 +21,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SelectedVesselType" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Profile="(Default)"&gt;L2</Value>
+      <Value Profile="(Default)">L2</Value>
     </Setting>
     <Setting Name="TotalWorkTime" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00</Value>
@@ -80,16 +80,16 @@
     <Setting Name="pO2StirrerTotalFlowGasMixGasMix" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="pHBaseBase" Type="System.Int32" Scope="User">
+    <Setting Name="pHBaseBase" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="pHAcidAcid" Type="System.Int32" Scope="User">
+    <Setting Name="pHAcidAcid" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="pHBaseAcidBase" Type="System.Int32" Scope="User">
+    <Setting Name="pHBaseAcidBase" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="pHBaseAcidAcid" Type="System.Int32" Scope="User">
+    <Setting Name="pHBaseAcidAcid" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="pHSelectedCascade" Type="System.String" Scope="User">
@@ -118,6 +118,33 @@
     </Setting>
     <Setting Name="pO2EvalTime" Type="System.Double" Scope="User">
       <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="HideStirrerBorder" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HideGas1Border" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LastSelectedpHCascadeItem" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="pHP" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="pHI" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="pHILimit" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="pHDeadband" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="pHNegFactor" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="pHEvalTime" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
     </Setting>
   </Settings>
 </SettingsFile>
