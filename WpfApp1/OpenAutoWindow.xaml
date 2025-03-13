@@ -71,7 +71,7 @@
                 <Label Content="Pump1" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="68,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Border HorizontalAlignment="Left" Margin="350,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox x:Name="Pump1Fill" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
-                             BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                             BorderThickness="0" TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"  Tag="0,100" />
                 </Border>
                 <Button HorizontalAlignment="Left" Margin="490,0,0,0" Width="127" Height="30" BorderBrush="Gray"
                         BorderThickness="1" Background="#DAE2E7">
@@ -86,7 +86,7 @@
                 </Button>
                 <Border HorizontalAlignment="Left" Margin="700,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox x:Name="Pump1Empty" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
-                             BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                             BorderThickness="0" TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"  Tag="0,100"/>
                 </Border>
 
                 <Button HorizontalAlignment="Left" Margin="840,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
@@ -108,7 +108,7 @@
                 <Label Content="Pump2" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="68,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Border HorizontalAlignment="Left" Margin="350,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox x:Name="Pump2Fill" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
-                             BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                             BorderThickness="0" TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"  Tag="0,100"/>
                 </Border>
                 <Button HorizontalAlignment="Left" Margin="490,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
                     <Button.Template>
@@ -121,8 +121,9 @@
                     <TextBlock Text="FILL" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
                 </Button>
                 <Border HorizontalAlignment="Left" Margin="700,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="Pump2Empty" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
-                </Border>
+                    <TextBox x:Name="Pump2Empty" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"  Tag="0,100"/>
+                </Border> 
 
                 <Button HorizontalAlignment="Left" Margin="840,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
                     <Button.Template>
@@ -143,7 +144,7 @@
                 <Label Content="Pump3" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="68,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Border HorizontalAlignment="Left" Margin="350,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox x:Name="Pump3Fill" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
-                             BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                             BorderThickness="0" TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"  Tag="0,100"/>
                 </Border>
                 <Button HorizontalAlignment="Left" Margin="490,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
                     <Button.Template>
@@ -157,7 +158,7 @@
                 </Button>
                 <Border HorizontalAlignment="Left" Margin="700,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox x:Name="Pump3Empty" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
-                             BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                             BorderThickness="0" TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"  Tag="0,100"/>
                 </Border>
 
                 <Button HorizontalAlignment="Left" Margin="840,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
@@ -178,7 +179,8 @@
             <Grid>
                 <Label Content="Pump4" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="68,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Border HorizontalAlignment="Left" Margin="350,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
-                    <TextBox x:Name="Pump4Fill" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                    <TextBox x:Name="Pump4Fill" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"  Tag="0,100"/>
                 </Border>
                 <Button HorizontalAlignment="Left" Margin="490,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">
                     <Button.Template>
@@ -192,7 +194,7 @@
                 </Button>
                 <Border HorizontalAlignment="Left" Margin="700,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                     <TextBox x:Name="Pump4Empty" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" 
-                             BorderThickness="0" TextAlignment="Center" Padding="0,5"/>
+                             BorderThickness="0" TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7"  Tag="0,100"/>
                 </Border>
 
                 <Button HorizontalAlignment="Left" Margin="840,0,0,0" Width="127" Height="30" BorderBrush="Gray" BorderThickness="1" Background="#DAE2E7">

@@ -134,9 +134,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int AntiFoamDoseTime {
+        public double AntiFoamDoseTime {
             get {
-                return ((int)(this["AntiFoamDoseTime"]));
+                return ((double)(this["AntiFoamDoseTime"]));
             }
             set {
                 this["AntiFoamDoseTime"] = value;
@@ -146,9 +146,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int AntiFoamWaitTime {
+        public double AntiFoamWaitTime {
             get {
-                return ((int)(this["AntiFoamWaitTime"]));
+                return ((double)(this["AntiFoamWaitTime"]));
             }
             set {
                 this["AntiFoamWaitTime"] = value;
@@ -158,9 +158,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int AntiFoamAlarmTime {
+        public double AntiFoamAlarmTime {
             get {
-                return ((int)(this["AntiFoamAlarmTime"]));
+                return ((double)(this["AntiFoamAlarmTime"]));
             }
             set {
                 this["AntiFoamAlarmTime"] = value;
@@ -170,9 +170,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int LevelDoseTime {
+        public double LevelDoseTime {
             get {
-                return ((int)(this["LevelDoseTime"]));
+                return ((double)(this["LevelDoseTime"]));
             }
             set {
                 this["LevelDoseTime"] = value;
@@ -182,9 +182,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int LevelWaitTime {
+        public double LevelWaitTime {
             get {
-                return ((int)(this["LevelWaitTime"]));
+                return ((double)(this["LevelWaitTime"]));
             }
             set {
                 this["LevelWaitTime"] = value;
@@ -194,9 +194,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int LevelAlarmTime {
+        public double LevelAlarmTime {
             get {
-                return ((int)(this["LevelAlarmTime"]));
+                return ((double)(this["LevelAlarmTime"]));
             }
             set {
                 this["LevelAlarmTime"] = value;
@@ -596,6 +596,186 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["pHEvalTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump1TargetValue {
+            get {
+                return ((double)(this["Pump1TargetValue"]));
+            }
+            set {
+                this["Pump1TargetValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump2TargetValue {
+            get {
+                return ((double)(this["Pump2TargetValue"]));
+            }
+            set {
+                this["Pump2TargetValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump3TargetValue {
+            get {
+                return ((double)(this["Pump3TargetValue"]));
+            }
+            set {
+                this["Pump3TargetValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump4TargetValue {
+            get {
+                return ((double)(this["Pump4TargetValue"]));
+            }
+            set {
+                this["Pump4TargetValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump5TargetValue {
+            get {
+                return ((double)(this["Pump5TargetValue"]));
+            }
+            set {
+                this["Pump5TargetValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump6TargetValue {
+            get {
+                return ((double)(this["Pump6TargetValue"]));
+            }
+            set {
+                this["Pump6TargetValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump1FillValue {
+            get {
+                return ((double)(this["Pump1FillValue"]));
+            }
+            set {
+                this["Pump1FillValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump2FillValue {
+            get {
+                return ((double)(this["Pump2FillValue"]));
+            }
+            set {
+                this["Pump2FillValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump3FillValue {
+            get {
+                return ((double)(this["Pump3FillValue"]));
+            }
+            set {
+                this["Pump3FillValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump4FillValue {
+            get {
+                return ((double)(this["Pump4FillValue"]));
+            }
+            set {
+                this["Pump4FillValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump1EmptyValue {
+            get {
+                return ((double)(this["Pump1EmptyValue"]));
+            }
+            set {
+                this["Pump1EmptyValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump2EmptyValue {
+            get {
+                return ((double)(this["Pump2EmptyValue"]));
+            }
+            set {
+                this["Pump2EmptyValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump3EmptyValue {
+            get {
+                return ((double)(this["Pump3EmptyValue"]));
+            }
+            set {
+                this["Pump3EmptyValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump4EmptyValue {
+            get {
+                return ((double)(this["Pump4EmptyValue"]));
+            }
+            set {
+                this["Pump4EmptyValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int FoamLevel {
+            get {
+                return ((int)(this["FoamLevel"]));
+            }
+            set {
+                this["FoamLevel"] = value;
             }
         }
     }

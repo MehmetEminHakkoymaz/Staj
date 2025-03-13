@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Globalization;
 using WpfApp1;
 
 namespace WpfApp1
@@ -33,6 +34,12 @@ namespace WpfApp1
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
             comparisonTimer.Tick += ComparisonTimer_Tick; // Zamanlayıcı olayı
+
+            // TextBox'ları başlangıçta ayarla
+            LoadTargetValues();
+
+            // TextBox eventlerini bağla
+            RegisterTextBoxEvents();
         }
 
         private TextBox activeTextBox = null;
@@ -72,14 +79,6 @@ namespace WpfApp1
             OpenAutoWindow openAutoWindow = new OpenAutoWindow(mainWindow);
             openAutoWindow.Show();
         }
-        private void KeyPadControl_ValueSelected(object sender, string value)
-        {
-            if (activeTextBox != null)
-            {
-                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
-            }
-        }
-
         private void ToggleRightGridButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button)
@@ -375,5 +374,146 @@ namespace WpfApp1
             MainWindow.Pump4EmptyButtonPressDuration = pressDuration.TotalSeconds;
         }
 
+        // Kayıtlı değerleri yüklemek için yeni bir metot ekleyin
+        private void LoadTargetValues()
+        {
+            try
+            {
+                // Kaydedilmiş değerleri TextBox'lara yükle
+                Pump1Target.Text = Properties.Settings.Default.Pump1TargetValue.ToString(CultureInfo.CurrentCulture);
+                Pump2Target.Text = Properties.Settings.Default.Pump2TargetValue.ToString(CultureInfo.CurrentCulture);
+                Pump3Target.Text = Properties.Settings.Default.Pump3TargetValue.ToString(CultureInfo.CurrentCulture);
+                Pump4Target.Text = Properties.Settings.Default.Pump4TargetValue.ToString(CultureInfo.CurrentCulture);
+                Pump5Target.Text = Properties.Settings.Default.Pump5TargetValue.ToString(CultureInfo.CurrentCulture);
+                Pump6Target.Text = Properties.Settings.Default.Pump6TargetValue.ToString(CultureInfo.CurrentCulture);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading target values: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
+        // Değerleri kaydetmek için yeni bir metot ekleyin
+        private void SaveTargetValues()
+        {
+            try
+            {
+                // TextBox değerlerini ayarlara kaydet
+                if (double.TryParse(Pump1Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump1Value))
+                    Properties.Settings.Default.Pump1TargetValue = pump1Value;
+
+                if (double.TryParse(Pump2Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump2Value))
+                    Properties.Settings.Default.Pump2TargetValue = pump2Value;
+
+                if (double.TryParse(Pump3Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump3Value))
+                    Properties.Settings.Default.Pump3TargetValue = pump3Value;
+
+                if (double.TryParse(Pump4Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump4Value))
+                    Properties.Settings.Default.Pump4TargetValue = pump4Value;
+
+                if (double.TryParse(Pump5Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump5Value))
+                    Properties.Settings.Default.Pump5TargetValue = pump5Value;
+
+                if (double.TryParse(Pump6Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump6Value))
+                    Properties.Settings.Default.Pump6TargetValue = pump6Value;
+
+                // Değişiklikleri kaydet
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving target values: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // TextBox eventlerini bağlamak için yeni bir metot ekleyin
+        private void RegisterTextBoxEvents()
+        {
+            // TextChanged olaylarını bağla
+            Pump1Target.TextChanged += TextBox_TextChanged;
+            Pump2Target.TextChanged += TextBox_TextChanged;
+            Pump3Target.TextChanged += TextBox_TextChanged;
+            Pump4Target.TextChanged += TextBox_TextChanged;
+            Pump5Target.TextChanged += TextBox_TextChanged;
+            Pump6Target.TextChanged += TextBox_TextChanged;
+
+            // Ondalık sayı girişine izin veren TextBox_PreviewTextInput metodunu bağla
+            Pump1Target.PreviewTextInput += TextBox_PreviewTextInput;
+            Pump2Target.PreviewTextInput += TextBox_PreviewTextInput;
+            Pump3Target.PreviewTextInput += TextBox_PreviewTextInput;
+            Pump4Target.PreviewTextInput += TextBox_PreviewTextInput;
+            Pump5Target.PreviewTextInput += TextBox_PreviewTextInput;
+            Pump6Target.PreviewTextInput += TextBox_PreviewTextInput;
+        }
+
+        // KeyPad_ValueSelected metodunu değiştirin - ondalık sayı desteği ekleyin
+        private void KeyPadControl_ValueSelected(object sender, string value)
+        {
+            if (activeTextBox != null)
+            {
+                // Nokta ve virgül desteği ekleyin
+                string normalizedValue = value.Replace(',', '.');
+
+                if (activeTextBox.Tag is string tag)
+                {
+                    string[] limits = tag.ToString().Split(',');
+
+                    if (limits.Length == 2 &&
+                        double.TryParse(limits[0], out double min) &&
+                        double.TryParse(limits[1], out double max) &&
+                        double.TryParse(normalizedValue, NumberStyles.Any, CultureInfo.InvariantCulture, out double doubleValue))
+                    {
+                        if (doubleValue >= min && doubleValue <= max)
+                        {
+                            activeTextBox.Text = doubleValue.ToString(CultureInfo.CurrentCulture);
+                        }
+                        else
+                        {
+                            KeypadPopup.IsOpen = true;
+                            MessageBox.Show($"Please enter a value between {min} and {max}.",
+                                           "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                    else
+                    {
+                        activeTextBox.Text = normalizedValue;
+                    }
+                }
+                else
+                {
+                    // Tag yoksa direkt atama yap
+                    activeTextBox.Text = normalizedValue;
+                }
+
+                // Her değişiklikte değerleri kaydet
+                SaveTargetValues();
+            }
+        }
+
+        // TextBox'lara sadece sayı ve ondalık ayraç girilmesine izin veren metot ekleyin
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Nokta veya virgül içeren değerleri kabul et
+            bool isValid = e.Text.All(c => char.IsDigit(c) || c == '.' || c == ',');
+
+            // TextBox'ta zaten nokta veya virgül varsa tekrar girilmesini engelle
+            if (isValid && (e.Text == "." || e.Text == ","))
+            {
+                if (sender is TextBox textBox)
+                {
+                    isValid = !textBox.Text.Contains(".") && !textBox.Text.Contains(",");
+                }
+            }
+
+            e.Handled = !isValid;
+        }
+
+        // TextBox değeri değiştiğinde çağrılan metot
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // TextBox değeri değiştiğinde hemen kaydet
+            SaveTargetValues();
+        }
     }
 }

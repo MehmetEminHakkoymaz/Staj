@@ -94,51 +94,66 @@
                 <DataTemplate x:Key="AntiFoamTemplate">
                     <StackPanel x:Name="AntiFoamPanel" Margin="20">
                         <Grid VerticalAlignment="Center" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <!-- TextBlock -->
-                            <TextBlock Text="DOSE TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0, 0, 29, 0"/>
-
-                            <!-- Border (TextBox) -->
-                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
-                                    BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
-                                <TextBox x:Name="AntiFoamDoseTime" Background="Transparent" FontSize="20" FontWeight="Regular"
-                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                 GotFocus="TextBox_GotFocus" TextWrapping="Wrap"/>
-                            </Border>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,0,0,5" Width="120" Height="40" Opacity="1" 
+                                    BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="DOSE TIME" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                            FontSize="19" Margin="0,-5,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(Second)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                            Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,5,5,0" Width="120" Height="40" Margin="0,0,0,0" 
+                                    Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="AntiFoamDoseTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,1400"/>
+                                </Border>
+                            </StackPanel>
                         </Grid>
 
 
                         <Grid VerticalAlignment="Center" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="WAIT TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,31,0"/>
-                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
-                                BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
-                                <TextBox x:Name="AntiFoamWaitTime" Background="Transparent" FontSize="20" FontWeight="Regular"
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"  Grid.Column="1" />
-                            </Border>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,0,0,5" Width="120" Height="40" Opacity="1" 
+                                    BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="WAIT TIME" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                            FontSize="19" Margin="0,-5,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(Second)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                            Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,5,5,0" Width="120" Height="40" Margin="0,0,0,0" 
+                                    Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="AntiFoamWaitTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,1400"/>
+                                </Border>
+                            </StackPanel>
+
                         </Grid>
 
 
                         <Grid VerticalAlignment="Center" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="ALARM TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,20,0"/>
-                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
-                                BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
-                                <TextBox x:Name="AntiFoamAlarmTime" Background="Transparent" FontSize="20" FontWeight="Regular"
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"  Grid.Column="1" />
-                            </Border>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,0,0,5" Width="120" Height="40" Opacity="1" 
+                                    BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="ALARM TIME" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                            FontSize="19" Margin="0,-5,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(Second)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                            Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,5,5,0" Width="120" Height="40" Margin="0,0,0,0" 
+                                    Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="AntiFoamAlarmTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,1400"/>
+                                </Border>
+                            </StackPanel>
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
@@ -147,44 +162,66 @@
                 <DataTemplate x:Key="LevelTemplate">
                     <StackPanel x:Name="LevelPanel" Margin="20">
                         <Grid VerticalAlignment="Center" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="DOSE TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,29,0"/>
-                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
-                                BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
-                                <TextBox x:Name="LevelDoseTime" Background="Transparent" FontSize="20" FontWeight="Regular"
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap"  Grid.Column="1" />
-                            </Border>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,0,0,5" Width="120" Height="40" Opacity="1" 
+                                    BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="DOSE TIME" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                            FontSize="19" Margin="0,-5,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(Second)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                            Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,5,5,0" Width="120" Height="40" Margin="0,0,0,0" 
+                                    Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="LevelDoseTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,1400"/>
+                                </Border>
+                            </StackPanel>
                         </Grid>
-                        <Grid VerticalAlignment="Center" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="WAIT TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,31,0"/>
-                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
-                                BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
-                                <TextBox x:Name="LevelWaitTime" Background="Transparent" FontSize="20" FontWeight="Regular"
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Grid.Column="1" />
-                            </Border>
-                        </Grid>
-                        <Grid VerticalAlignment="Center" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="ALARM TIME" VerticalAlignment="Center" Grid.Column="0" Margin="0,0,20,0"/>
-                            <Border Background="#E7ECEF" CornerRadius="0,0,5,5" Width="120" Height="40" 
-                                BorderBrush="DarkGray" BorderThickness="1" Grid.Column="1">
-                                <TextBox x:Name="LevelAlarmTime" Background="Transparent" FontSize="20" FontWeight="Regular"
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Grid.Column="1" />
-                            </Border>
 
+
+                        <Grid VerticalAlignment="Center" Margin="0,10">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,0,0,5" Width="120" Height="40" Opacity="1" 
+                                    BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="WAIT TIME" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                            FontSize="19" Margin="0,-5,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(Second)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                            Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,5,5,0" Width="120" Height="40" Margin="0,0,0,0" 
+                                    Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="LevelWaitTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,1400"/>
+                                </Border>
+                            </StackPanel>
+
+                        </Grid>
+
+
+                        <Grid VerticalAlignment="Center" Margin="0,10">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Background="#c74d4d" CornerRadius="5,0,0,5" Width="120" Height="40" Opacity="1" 
+                                    BorderThickness="1" BorderBrush="DarkGray">
+                                    <Grid>
+                                        <Label Content="ALARM TIME" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                            FontSize="19" Margin="0,-5,0,0" Foreground="Black" FontWeight="Regular"/>
+                                        <Label Content="(Second)" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                            Opacity="0.6" FontSize="15" Margin="0,0,0,-6" Foreground="Black" FontWeight="Regular"/>
+                                    </Grid>
+                                </Border>
+                                <Border Background="#E7ECEF" CornerRadius="0,5,5,0" Width="120" Height="40" Margin="0,0,0,0" 
+                                    Opacity="1" BorderBrush="DarkGray" BorderThickness="1">
+                                    <TextBox x:Name="LevelAlarmTime" Background="Transparent" FontSize="20" FontWeight="Regular"
+                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Tag="0,1400"/>
+                                </Border>
+                            </StackPanel>
                         </Grid>
                     </StackPanel>
                 </DataTemplate>

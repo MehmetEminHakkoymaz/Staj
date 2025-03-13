@@ -46,9 +46,12 @@ namespace WpfApp1
 
             DataContext = this;
             InitializeTemperatureMonitoring();
+            UpdateFoamLevelStatus();
             // Settings değişikliklerini dinle
             Properties.Settings.Default.PropertyChanged += Settings_PropertyChanged;
             UpdateBorderVisibilities();
+            CompareGas2Values();
+
 
         }
 
@@ -56,6 +59,17 @@ namespace WpfApp1
         private double maxTemperature = 37.0; // Maksimum sıcaklık değeri
         private double warningOffset = 10.0;  // Uyarı için düşülecek derece
         private DispatcherTimer temperatureTimer;
+
+        private bool isGas2ValueLessThanTarget;
+        public bool IsGas2ValueLessThanTarget
+        {
+            get => isGas2ValueLessThanTarget;
+            set
+            {
+                isGas2ValueLessThanTarget = value;
+                OnPropertyChanged(nameof(IsGas2ValueLessThanTarget));
+            }
+        }
 
 
 
@@ -91,6 +105,18 @@ namespace WpfApp1
             {
                 isNormalTemperature = value;
                 OnPropertyChanged(nameof(IsNormalTemperature));
+            }
+        }
+        private void CompareGas2Values()
+        {
+            if (double.TryParse(Gas2Value.Content?.ToString(), out double value) &&
+                double.TryParse(Gas2Target.Text, out double target))
+            {
+                IsGas2ValueLessThanTarget = value < target;
+            }
+            else
+            {
+                IsGas2ValueLessThanTarget = false;
             }
         }
 
@@ -540,6 +566,8 @@ namespace WpfApp1
             //CheckEllipsePositionAndSetButtonVisibility(ellipse8, conditionalButtonGas4);
             CheckEllipsePositionAndSetButtonVisibility(ellipse9, conditionalButtonFoam);
             CheckEllipsePositionAndSetButtonVisibility(ellipse19, conditionalButtonRedox);
+            UpdateFoamLevelStatus();
+
         }
 
         public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)
@@ -605,6 +633,8 @@ namespace WpfApp1
                     }
                 }
             }
+            CompareGas2Values();
+
         }
 
         // Yardımcı metod: Belirli bir türdeki tüm görsel çocukları bulur
@@ -687,6 +717,49 @@ namespace WpfApp1
             {
                 UpdateBorderVisibilities();
             }
+            // FoamLevel değiştiyse foam durumunu güncelle
+            if (e.PropertyName == "FoamLevel")
+            {
+                UpdateFoamLevelStatus();
+            }
         }
+        private void Gas2Target_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // TextBox değeri değiştiğinde karşılaştırma yap
+            CompareGas2Values();
+        }
+
+        // FoamLevel için property
+        private bool isHighFoamLevel;
+        public bool IsHighFoamLevel
+        {
+            get => isHighFoamLevel;
+            set
+            {
+                isHighFoamLevel = value;
+                OnPropertyChanged(nameof(IsHighFoamLevel));
+            }
+        }
+
+        // FoamLevel durumunu kontrol eden metot
+        private void UpdateFoamLevelStatus()
+        {
+            // FoamLevel 0'dan farklı ise üst seviyede
+            IsHighFoamLevel = Properties.Settings.Default.FoamLevel != 0;
+
+            // Label görünürlüklerini güncelle
+            if (UnderFoam != null && AboveFoam != null)
+            {
+                UnderFoam.Visibility = IsHighFoamLevel ? Visibility.Collapsed : Visibility.Visible;
+                AboveFoam.Visibility = IsHighFoamLevel ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+        public void SetFoamLevel(int level)
+        {
+            Properties.Settings.Default.FoamLevel = level;
+            Properties.Settings.Default.Save();
+            // UpdateFoamLevelStatus(); // Gerek yok, Settings_PropertyChanged tetiklenecek
+        }
+
     }
 }

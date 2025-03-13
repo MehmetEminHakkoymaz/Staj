@@ -200,7 +200,7 @@ namespace WpfApp1
                 mainControl.Gas2Value.Content = incommingWords[6];
                 //mainControl.Gas3Value.Content = incommingWords[7];
                 //mainControl.Gas4Value.Content = incommingWords[8];
-                mainControl.FoamValue.Content = incommingWords[9];
+                //mainControl.FoamValue.Content = incommingWords[9];
                 extendedControl.TurbidityValue.Content = incommingWords[10];
                 extendedControl.BalanceValue.Content = incommingWords[11];
                 extendedControl.AirFlowValue.Content = incommingWords[12];
@@ -237,8 +237,8 @@ namespace WpfApp1
             //sendingWords += ",";
             //sendingWords += mainControl.Gas4Target.Text;
             //sendingWords += ",";
-            sendingWords += mainControl.FoamTarget.Text;
-            sendingWords += ",";
+            //sendingWords += mainControl.FoamTarget.Text;
+            //sendingWords += ",";
             sendingWords += extendedControl.TurbidityTarget.Text;
             sendingWords += ",";
             sendingWords += extendedControl.BalanceTarget.Text;
@@ -354,35 +354,6 @@ namespace WpfApp1
                     Console.WriteLine($"Error updating SystemInfo: {ex.Message}");
                 }
             }
-
-            //// Eğer Settings penceresi açıksa SystemInfo'yu güncelle
-            //var settingsWindow = SettingsWindow.Instance;
-            //if (settingsWindow?.SystemInfoControl != null)
-            //{
-            //    try
-            //    {
-            //        // OPERATION HOURS güncelleme
-            //        int days = currentTotalTime.Days;
-            //        int hours = currentTotalTime.Hours;
-            //        int minutes = currentTotalTime.Minutes;
-            //        int seconds = currentTotalTime.Seconds;
-
-            //        settingsWindow.SystemInfoControl.TotalWorkHours.Text =
-            //            $"{days}d {hours}h {minutes}m {seconds}s";
-
-            //        // Bir sonraki bakıma kalan süreyi hesapla ve güncelle
-            //        int totalHours = (int)currentTotalTime.TotalHours;
-            //        int nextMaintenance = CalculateNextMaintenance(totalHours);
-            //        TimeSpan remainingTime = TimeSpan.FromHours(nextMaintenance - currentTotalTime.TotalHours);
-
-            //        settingsWindow.SystemInfoControl.ServiceTm.Text =
-            //            $"{remainingTime.Days}d {remainingTime.Hours}h {remainingTime.Minutes}m {remainingTime.Seconds}s";
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine($"Error updating SystemInfo: {ex.Message}");
-            //    }
-            //}
         }
 
         private int CalculateNextMaintenance(int currentHours)
@@ -564,13 +535,6 @@ namespace WpfApp1
             StartButton.Opacity = 0.5;
             StartButton.IsEnabled = false;
 
-            // Extended ve ExitGas sayfaları için ellipse pozisyonlarını sıfırla
-            ResetExtendedControlEllipses();
-            ResetExitGasControlEllipses();
-
-            // Pumps sayfası için sadece ilk 4 butonun görünürlüğünü ayarla
-            InitializePumpsButtons();
-
             // Main sayfası kontrolleri
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse1, mainControl.conditionalButton);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse2, mainControl.conditionalButtonStirrer);
@@ -584,36 +548,6 @@ namespace WpfApp1
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse19, mainControl.conditionalButtonRedox);
         }
 
-        // Extended sayfası için ellipse'leri sıfırlama metodu
-        private void ResetExtendedControlEllipses()
-        {
-            extendedControl.conditionalButtonAirFlow?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            extendedControl.conditionalButtonBalance?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            extendedControl.conditionalButtonGas2Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            //extendedControl.conditionalButtonGas3Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            //extendedControl.conditionalButtonGas4Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            //extendedControl.conditionalButtonGas5Flow?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            extendedControl.conditionalButtonTurbidity?.SetValue(VisibilityProperty, Visibility.Collapsed);
-        }
-
-        // ExitGas sayfası için ellipse'leri sıfırlama metodu
-        private void ResetExitGasControlEllipses()
-        {
-            exitGasControl.conditionalButtonBalance?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            exitGasControl.conditionalButtonTurbidity?.SetValue(VisibilityProperty, Visibility.Collapsed);
-        }
-
-        // Pumps sayfası için ilk 4 butonun görünürlüğünü ayarlama metodu
-        private void InitializePumpsButtons()
-        {
-            // İlk 4 conditional button'u görünür yap
-            pumpsControl.conditionalButtonPump1?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            pumpsControl.conditionalButtonPump2?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            pumpsControl.conditionalButtonPump3?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            pumpsControl.conditionalButtonPump4?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            pumpsControl.conditionalButtonPump5?.SetValue(VisibilityProperty, Visibility.Collapsed);
-            pumpsControl.conditionalButtonPump6?.SetValue(VisibilityProperty, Visibility.Collapsed);
-        }
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             if (!StartButton.IsEnabled)
@@ -686,8 +620,8 @@ namespace WpfApp1
                 //values["Gas3Target"] = mainControl?.Gas3Target?.Text;
                 //values["Gas4Value"] = mainControl?.Gas4Value?.Content?.ToString();
                 //values["Gas4Target"] = mainControl?.Gas4Target?.Text;
-                values["FoamValue"] = mainControl?.FoamValue?.Content?.ToString();
-                values["FoamTarget"] = mainControl?.FoamTarget?.Text;
+                //values["FoamValue"] = mainControl?.FoamValue?.Content?.ToString();
+                //values["FoamTarget"] = mainControl?.FoamTarget?.Text;
                 values["RedoxValue"] = mainControl?.RedoxValue?.Content?.ToString();
                 values["RedoxTarget"] = mainControl?.RedoxTarget?.Text;
                 values["TurbidityValue"] = extendedControl?.TurbidityValue?.Content?.ToString();
@@ -778,8 +712,8 @@ namespace WpfApp1
                 //AddValue("Gas3Target", mainControl?.Gas3Target?.Text);
                 //AddValue("Gas4Value", mainControl?.Gas4Value?.Content);
                 //AddValue("Gas4Target", mainControl?.Gas4Target?.Text);
-                AddValue("FoamValue", mainControl?.FoamValue?.Content);
-                AddValue("FoamTarget", mainControl?.FoamTarget?.Text);
+                //AddValue("FoamValue", mainControl?.FoamValue?.Content);
+                //AddValue("FoamTarget", mainControl?.FoamTarget?.Text);
                 AddValue("RedoxValue", mainControl?.RedoxValue?.Content);
                 AddValue("RedoxTarget", mainControl?.RedoxTarget?.Text);
                 AddValue("TurbidityValue", extendedControl?.TurbidityValue?.Content);
