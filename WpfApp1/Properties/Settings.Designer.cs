@@ -778,5 +778,101 @@ namespace WpfApp1.Properties {
                 this["FoamLevel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxP {
+            get {
+                return ((double)(this["RedoxP"]));
+            }
+            set {
+                this["RedoxP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxI {
+            get {
+                return ((double)(this["RedoxI"]));
+            }
+            set {
+                this["RedoxI"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxILimit {
+            get {
+                return ((double)(this["RedoxILimit"]));
+            }
+            set {
+                this["RedoxILimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxDeadband {
+            get {
+                return ((double)(this["RedoxDeadband"]));
+            }
+            set {
+                this["RedoxDeadband"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxNegfactor {
+            get {
+                return ((double)(this["RedoxNegfactor"]));
+            }
+            set {
+                this["RedoxNegfactor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxEvalTime {
+            get {
+                return ((double)(this["RedoxEvalTime"]));
+            }
+            set {
+                this["RedoxEvalTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSelectedRedoxCascadeItem {
+            get {
+                return ((string)(this["LastSelectedRedoxCascadeItem"]));
+            }
+            set {
+                this["LastSelectedRedoxCascadeItem"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RedoxSelectedCascade {
+            get {
+                return ((string)(this["RedoxSelectedCascade"]));
+            }
+            set {
+                this["RedoxSelectedCascade"] = value;
+            }
+        }
     }
 }

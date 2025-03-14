@@ -802,6 +802,7 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditPump2.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditPump3.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditPump4.g.cs
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditRedox.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditViewControl.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\ExitGasControl.g.cs
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\ExtendedControl.g.cs
@@ -839,6 +840,7 @@ C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditPump2.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditPump3.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditPump4.baml
+C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditPages\EditRedox.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\EditViewControl.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\ExitGasControl.baml
 C:\Users\mehme\Documents\GitHub\Staj\WpfApp1\obj\Debug\net8.0-windows\ExtendedControl.baml
