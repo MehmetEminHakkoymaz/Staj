@@ -1,80 +1,185 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace WpfApp1.EditPages
 {
-    /// <summary>
-    /// Interaction logic for EditPump2.xaml
-    /// </summary>
     public partial class EditPump2 : Window
     {
-        private List<ToggleButton> allToggleButtons;
         private DispatcherTimer clockTimer;
+        private Dictionary<string, ToggleButton> tubeTypeButtons;
+        private Dictionary<string, ToggleButton> featureButtons;
+        private Dictionary<string, ToggleButton> displayCountUnitButtons;
 
         public EditPump2()
         {
-            // Önce component'leri initialize et
             InitializeComponent();
-
-            // Clock'u başlat
+            InitializeButtonDictionaries();
             InitializeClock();
 
-            // Window ayarlarını yap
-            this.WindowState = WindowState.Maximized;
-            this.WindowStyle = WindowStyle.None;
-            this.ResizeMode = ResizeMode.NoResize;
-            this.Topmost = true;
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.None;
+            ResizeMode = ResizeMode.NoResize;
+            Topmost = true;
 
-            // Bu kısmı Loaded event'ine taşıyalım
-            this.Loaded += EditPump2_Loaded;
+            Loaded += EditPump2_Loaded;
         }
 
         private void EditPump2_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Toggle butonları sadece window yüklendikten sonra initialize et
-                InitializeToggleButtons();
+                LoadSettings();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error initializing toggle buttons: {ex.Message}");
+                MessageBox.Show($"Error loading settings: {ex.Message}");
             }
         }
 
-        private void InitializeToggleButtons()
+        private void InitializeButtonDictionaries()
         {
-            // Liste oluştur
-            allToggleButtons = new List<ToggleButton>();
-
-            // Butonları bulmaya çalış ve varsa listeye ekle
-            var buttons = new[] { "Button13", "Button14", "Button19", "Button16", "Button25", "Button17", "Button18" };
-            foreach (var buttonName in buttons)
+            try
             {
-                var button = this.FindName(buttonName) as ToggleButton;
-                if (button != null)
+                // TUBE TYPE buttons
+                tubeTypeButtons = new Dictionary<string, ToggleButton>();
+                AddToButtonDictionary(tubeTypeButtons, "#13", Button13);
+                AddToButtonDictionary(tubeTypeButtons, "#14", Button14);
+                AddToButtonDictionary(tubeTypeButtons, "#19", Button19);
+                AddToButtonDictionary(tubeTypeButtons, "#16", Button16);
+                AddToButtonDictionary(tubeTypeButtons, "#25", Button25);
+                AddToButtonDictionary(tubeTypeButtons, "#17", Button17);
+                AddToButtonDictionary(tubeTypeButtons, "#18", Button18);
+
+                // FEATURE buttons - EditPump2'de Base ve Feed olarak değişti
+                featureButtons = new Dictionary<string, ToggleButton>();
+                AddToButtonDictionary(featureButtons, "Base", Base);
+                AddToButtonDictionary(featureButtons, "Feed", Feed);
+
+                // DISPLAY COUNT UNIT buttons
+                displayCountUnitButtons = new Dictionary<string, ToggleButton>();
+                AddToButtonDictionary(displayCountUnitButtons, "Count", Count);
+                AddToButtonDictionary(displayCountUnitButtons, "-ml", ml);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error initializing button dictionaries: {ex.Message}");
+            }
+        }
+
+        private void AddToButtonDictionary(Dictionary<string, ToggleButton> dictionary, string key, ToggleButton button)
+        {
+            if (button != null)
+            {
+                dictionary[key] = button;
+            }
+        }
+
+        private void LoadSettings()
+        {
+            // Check if settings exist in Settings.settings, if not provide defaults
+            var tubeType = GetSetting("EditPump2TubeType", "#13");
+            var feature = GetSetting("EditPump2Feature", "Base");
+            var displayCountUnit = GetSetting("EditPump2DisplayCountUnit", "-ml");
+
+            LoadButtonGroupSettings(tubeTypeButtons, tubeType, Button13);
+            LoadButtonGroupSettings(featureButtons, feature, Base);
+            LoadButtonGroupSettings(displayCountUnitButtons, displayCountUnit, ml);
+        }
+
+        private string GetSetting(string settingName, string defaultValue)
+        {
+            // Try to get setting, return default if not found
+            try
+            {
+                var property = Properties.Settings.Default.GetType().GetProperty(settingName);
+                if (property != null)
                 {
-                    allToggleButtons.Add(button);
+                    return (string)property.GetValue(Properties.Settings.Default) ?? defaultValue;
                 }
             }
-
-            if (allToggleButtons.Count == 0)
+            catch
             {
-                MessageBox.Show("No toggle buttons were found. Please check XAML names.");
+                // If setting doesn't exist, we'll just use the default
             }
+            return defaultValue;
+        }
+
+        private void LoadButtonGroupSettings(Dictionary<string, ToggleButton> buttonDictionary,
+                                             string savedSetting,
+                                             ToggleButton defaultButton)
+        {
+            try
+            {
+                // Reset all buttons
+                foreach (var btn in buttonDictionary.Values)
+                {
+                    btn.IsChecked = false;
+                }
+
+                // Set the saved or default button
+                if (!string.IsNullOrEmpty(savedSetting) && buttonDictionary.TryGetValue(savedSetting, out var button))
+                {
+                    button.IsChecked = true;
+                }
+                else if (defaultButton != null)
+                {
+                    defaultButton.IsChecked = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading button settings: {ex.Message}");
+            }
+        }
+
+        private void SaveSettings()
+        {
+            try
+            {
+                // Setting may not exist yet in Settings.settings, so use dynamic approach
+                SaveSetting("EditPump2TubeType", GetSelectedButtonKey(tubeTypeButtons));
+                SaveSetting("EditPump2Feature", GetSelectedButtonKey(featureButtons));
+                SaveSetting("EditPump2DisplayCountUnit", GetSelectedButtonKey(displayCountUnitButtons));
+
+                // Save any value changes
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving settings: {ex.Message}");
+            }
+        }
+
+        private void SaveSetting(string settingName, string value)
+        {
+            try
+            {
+                var property = Properties.Settings.Default.GetType().GetProperty(settingName);
+                if (property != null)
+                {
+                    property.SetValue(Properties.Settings.Default, value);
+                }
+                else
+                {
+                    // If you want to be notified when settings are missing
+                    // MessageBox.Show($"Setting {settingName} not found in Settings.settings");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving setting {settingName}: {ex.Message}");
+            }
+        }
+
+        private string GetSelectedButtonKey(Dictionary<string, ToggleButton> buttonDictionary)
+        {
+            var selectedButton = buttonDictionary.FirstOrDefault(x => x.Value?.IsChecked == true);
+            return selectedButton.Key ?? "";
         }
 
         private void HandleButtonToggle(object sender, RoutedEventArgs e)
@@ -84,48 +189,42 @@ namespace WpfApp1.EditPages
                 var clickedButton = sender as ToggleButton;
                 if (clickedButton == null) return;
 
-                // Önce allToggleButtons'ın initialize edildiğinden emin ol
-                if (allToggleButtons == null)
+                // Ensure dictionaries are initialized
+                if (tubeTypeButtons == null || featureButtons == null || displayCountUnitButtons == null)
                 {
-                    InitializeToggleButtons();
+                    InitializeButtonDictionaries();
                 }
 
-                // Base/Feed kontrolü
-                if (clickedButton == Base && Feed != null)
-                {
-                    Feed.IsChecked = false;
-                }
-                else if (clickedButton == Feed && Base != null)
-                {
-                    Base.IsChecked = false;
-                }
-                // Count/ml kontrolü
-                else if (clickedButton == Count && ml != null)
-                {
-                    Count.IsChecked = true;
-                    ml.IsChecked = false;
-                }
-                else if (clickedButton == ml && Count != null)
-                {
-                    ml.IsChecked = true;
-                    Count.IsChecked = false;
-                }
-                // Numaralı butonlar için kontrol (#13-#18)
-                else if (allToggleButtons?.Contains(clickedButton) == true)
-                {
-                    foreach (var button in allToggleButtons)
-                    {
-                        if (button != clickedButton && button != null)
-                        {
-                            button.IsChecked = false;
-                        }
-                    }
-                }
+                // Handle buttons in each group
+                HandleButtonInGroup(clickedButton, tubeTypeButtons);
+                HandleButtonInGroup(clickedButton, featureButtons);
+                HandleButtonInGroup(clickedButton, displayCountUnitButtons);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error in HandleButtonToggle: {ex.Message}");
             }
+        }
+
+        private bool HandleButtonInGroup(ToggleButton clickedButton, Dictionary<string, ToggleButton> buttonGroup)
+        {
+            if (buttonGroup == null) return false;
+
+            // Check if the clicked button belongs to this group
+            if (!buttonGroup.ContainsValue(clickedButton)) return false;
+
+            // Set mutual exclusivity
+            foreach (var btn in buttonGroup.Values)
+            {
+                if (btn != clickedButton && btn != null)
+                {
+                    btn.IsChecked = false;
+                }
+            }
+
+            // Ensure the clicked button is checked
+            clickedButton.IsChecked = true;
+            return true;
         }
 
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
@@ -135,18 +234,10 @@ namespace WpfApp1.EditPages
                 var clickedButton = sender as ToggleButton;
                 if (clickedButton == null) return;
 
-                // Base/Feed kontrolü
-                if ((clickedButton == Base || clickedButton == Feed) &&
-                    !Base.IsChecked.Value && !Feed.IsChecked.Value)
-                {
-                    clickedButton.IsChecked = true;
-                }
-                // Count/ml kontrolü
-                else if ((clickedButton == Count || clickedButton == ml) &&
-                         !Count.IsChecked.Value && !ml.IsChecked.Value)
-                {
-                    clickedButton.IsChecked = true;
-                }
+                // Ensure at least one button remains checked in each group
+                EnsureOneButtonChecked(clickedButton, tubeTypeButtons);
+                EnsureOneButtonChecked(clickedButton, featureButtons);
+                EnsureOneButtonChecked(clickedButton, displayCountUnitButtons);
             }
             catch (Exception ex)
             {
@@ -154,10 +245,23 @@ namespace WpfApp1.EditPages
             }
         }
 
+        private void EnsureOneButtonChecked(ToggleButton clickedButton, Dictionary<string, ToggleButton> buttonGroup)
+        {
+            if (buttonGroup == null) return;
+
+            if (buttonGroup.ContainsValue(clickedButton) &&
+                buttonGroup.Values.All(b => b?.IsChecked == false))
+            {
+                clickedButton.IsChecked = true;
+            }
+        }
+
         private void InitializeClock()
         {
-            clockTimer = new DispatcherTimer();
-            clockTimer.Interval = TimeSpan.FromSeconds(1);
+            clockTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
             clockTimer.Tick += ClockTimer_Tick;
             clockTimer.Start();
         }
@@ -174,6 +278,7 @@ namespace WpfApp1.EditPages
 
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
+            SaveSettings();
             this.Close();
         }
     }

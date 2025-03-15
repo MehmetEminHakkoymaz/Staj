@@ -1069,7 +1069,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
         public string EditPump3TubeType {
             get {
                 return ((string)(this["EditPump3TubeType"]));
@@ -1093,7 +1093,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
         public string EditPump3DisplayCountUnit {
             get {
                 return ((string)(this["EditPump3DisplayCountUnit"]));
@@ -1112,6 +1112,246 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["EditPump3Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
+        public string EditPump4TubeType {
+            get {
+                return ((string)(this["EditPump4TubeType"]));
+            }
+            set {
+                this["EditPump4TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Feed")]
+        public string EditPump4Feature {
+            get {
+                return ((string)(this["EditPump4Feature"]));
+            }
+            set {
+                this["EditPump4Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
+        public string EditPump4DisplayCountUnit {
+            get {
+                return ((string)(this["EditPump4DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump4DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int EditPump4Value {
+            get {
+                return ((int)(this["EditPump4Value"]));
+            }
+            set {
+                this["EditPump4Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
+        public string EditPump1TubeType {
+            get {
+                return ((string)(this["EditPump1TubeType"]));
+            }
+            set {
+                this["EditPump1TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Acid")]
+        public string EditPump1Feature {
+            get {
+                return ((string)(this["EditPump1Feature"]));
+            }
+            set {
+                this["EditPump1Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
+        public string EditPump1DisplayCountUnit {
+            get {
+                return ((string)(this["EditPump1DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump1DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int EditPump1Value {
+            get {
+                return ((int)(this["EditPump1Value"]));
+            }
+            set {
+                this["EditPump1Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
+        public string EditPump2TubeType {
+            get {
+                return ((string)(this["EditPump2TubeType"]));
+            }
+            set {
+                this["EditPump2TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EditPump2Feature {
+            get {
+                return ((string)(this["EditPump2Feature"]));
+            }
+            set {
+                this["EditPump2Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
+        public string EditPump2DisplayCountUnit {
+            get {
+                return ((string)(this["EditPump2DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump2DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int EditPump2Value {
+            get {
+                return ((int)(this["EditPump2Value"]));
+            }
+            set {
+                this["EditPump2Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
+        public string EditPump5TubeType {
+            get {
+                return ((string)(this["EditPump5TubeType"]));
+            }
+            set {
+                this["EditPump5TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Feed")]
+        public string EditPump5Feature {
+            get {
+                return ((string)(this["EditPump5Feature"]));
+            }
+            set {
+                this["EditPump5Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
+        public string EditPump5DisplayCountUnit {
+            get {
+                return ((string)(this["EditPump5DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump5DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int EditPump5Value {
+            get {
+                return ((int)(this["EditPump5Value"]));
+            }
+            set {
+                this["EditPump5Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
+        public string EditPump6TubeType {
+            get {
+                return ((string)(this["EditPump6TubeType"]));
+            }
+            set {
+                this["EditPump6TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Feed")]
+        public string EditPump6Feature {
+            get {
+                return ((string)(this["EditPump6Feature"]));
+            }
+            set {
+                this["EditPump6Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
+        public string EditPump6DisplayCountUnit {
+            get {
+                return ((string)(this["EditPump6DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump6DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int EditPump6Value {
+            get {
+                return ((int)(this["EditPump6Value"]));
+            }
+            set {
+                this["EditPump6Value"] = value;
             }
         }
     }

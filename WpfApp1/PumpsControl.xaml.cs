@@ -140,6 +140,16 @@ namespace WpfApp1
             var editPump4Window = new WpfApp1.EditPages.EditPump4();
             editPump4Window.Show();
         }
+        private void EditPump5_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var editPump5Window = new WpfApp1.EditPages.EditPump5();
+            editPump5Window.Show();
+        }
+        private void EditPump6_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var editPump6Window = new WpfApp1.EditPages.EditPump6();
+            editPump6Window.Show();
+        }
 
         private void Ellipse_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -179,6 +189,9 @@ namespace WpfApp1
                     CheckEllipsePositionAndSetButtonVisibility(ellipse21, conditionalButtonPump2);
                     CheckEllipsePositionAndSetButtonVisibility(ellipse22, conditionalButtonPump3);
                     CheckEllipsePositionAndSetButtonVisibility(ellipse23, conditionalButtonPump4);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse24, conditionalButtonPump5);
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse25, conditionalButtonPump6);
+
                 };
 
                 clickedEllipse.BeginAnimation(Canvas.LeftProperty, animation);
@@ -190,6 +203,9 @@ namespace WpfApp1
             CheckEllipsePositionAndSetButtonVisibility(ellipse21, conditionalButtonPump2);
             CheckEllipsePositionAndSetButtonVisibility(ellipse22, conditionalButtonPump3);
             CheckEllipsePositionAndSetButtonVisibility(ellipse23, conditionalButtonPump4);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse24, conditionalButtonPump5);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse25, conditionalButtonPump6);
+
         }
 
         public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)
@@ -514,6 +530,24 @@ namespace WpfApp1
         {
             // TextBox değeri değiştiğinde hemen kaydet
             SaveTargetValues();
+        }
+
+        private void ellipse24_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Peristaltic pump must be installed to activate these features.",
+              "Configuration Required",
+              MessageBoxButton.OK,
+              MessageBoxImage.Warning);
+            return;
+        }
+
+        private void ellipse25_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Peristaltic pump must be installed to activate these features.",
+              "Configuration Required",
+              MessageBoxButton.OK,
+              MessageBoxImage.Warning);
+            return;
         }
     }
 }

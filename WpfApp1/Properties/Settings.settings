@@ -264,15 +264,75 @@
       <Value Profile="(Default)">200</Value>
     </Setting>
     <Setting Name="EditPump3TubeType" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">#13</Value>
     </Setting>
     <Setting Name="EditPump3Feature" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="EditPump3DisplayCountUnit" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">-ml</Value>
     </Setting>
     <Setting Name="EditPump3Value" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="EditPump4TubeType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#13</Value>
+    </Setting>
+    <Setting Name="EditPump4Feature" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Feed</Value>
+    </Setting>
+    <Setting Name="EditPump4DisplayCountUnit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-ml</Value>
+    </Setting>
+    <Setting Name="EditPump4Value" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="EditPump1TubeType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#13</Value>
+    </Setting>
+    <Setting Name="EditPump1Feature" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Acid</Value>
+    </Setting>
+    <Setting Name="EditPump1DisplayCountUnit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-ml</Value>
+    </Setting>
+    <Setting Name="EditPump1Value" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="EditPump2TubeType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#13</Value>
+    </Setting>
+    <Setting Name="EditPump2Feature" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="EditPump2DisplayCountUnit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-ml</Value>
+    </Setting>
+    <Setting Name="EditPump2Value" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="EditPump5TubeType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#13</Value>
+    </Setting>
+    <Setting Name="EditPump5Feature" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Feed</Value>
+    </Setting>
+    <Setting Name="EditPump5DisplayCountUnit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-ml</Value>
+    </Setting>
+    <Setting Name="EditPump5Value" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="EditPump6TubeType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#13</Value>
+    </Setting>
+    <Setting Name="EditPump6Feature" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Feed</Value>
+    </Setting>
+    <Setting Name="EditPump6DisplayCountUnit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-ml</Value>
+    </Setting>
+    <Setting Name="EditPump6Value" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
