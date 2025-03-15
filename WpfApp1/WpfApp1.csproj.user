@@ -42,6 +42,9 @@
     <Compile Update="EditPages\EditRedox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EditPages\EditTurbidity.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EditViewControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

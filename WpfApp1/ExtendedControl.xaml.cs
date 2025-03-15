@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using WpfApp1;
 
 namespace WpfApp1
 {
@@ -26,7 +27,7 @@ namespace WpfApp1
         public ExtendedControl(MainWindow mainWindow)
         {
             InitializeComponent();
-            ellipse10.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse10.MouseLeftButtonDown += ellipse10_MouseLeftButtonDown;
             ellipse11.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse12.MouseLeftButtonDown += ellipse12_MouseLeftButtonDown;
             ellipse13.MouseLeftButtonDown += ellipse13_MouseLeftButtonDown; 
@@ -536,6 +537,26 @@ namespace WpfApp1
             {
                 // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
                 MessageBox.Show("pO2 cascade selection is required. Please go to EditpO2 settings and select a cascade option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+        private void EditTurbidity_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var editTurbidityWindow = new WpfApp1.EditPages.EditTurbidity();
+            editTurbidityWindow.Show();
+        }
+        private void ellipse10_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Properties.Settings.Default.TurbiditySelectedCascade == "None")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Turbidity selection is required. Please go to EditTurbidity settings and select an option.",
                               "Configuration Required",
                               MessageBoxButton.OK,
                               MessageBoxImage.Warning);

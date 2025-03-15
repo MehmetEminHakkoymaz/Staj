@@ -20,23 +20,28 @@ namespace WpfApp1.EditPages
     public partial class EditPump3 : Window
     {
         private DispatcherTimer clockTimer;
-        private List<ToggleButton> allToggleButtons;
+        private Dictionary<string, ToggleButton> tubeTypeButtons;
+        private Dictionary<string, ToggleButton> featureButtons;
+        private Dictionary<string, ToggleButton> displayCountUnitButtons;
 
         public EditPump3()
         {
-            // Önce component'leri initialize et
+            // Initialize components
             InitializeComponent();
 
-            // Clock'u başlat
+            // Initialize button dictionaries immediately
+            InitializeButtonDictionaries();
+
+            // Start the clock
             InitializeClock();
 
-            // Window ayarlarını yap
+            // Window settings
             this.WindowState = WindowState.Maximized;
             this.WindowStyle = WindowStyle.None;
             this.ResizeMode = ResizeMode.NoResize;
             this.Topmost = true;
 
-            // Bu kısmı Loaded event'ine taşıyalım
+            // Move loading settings to Loaded event
             this.Loaded += EditPump3_Loaded;
         }
 
@@ -44,35 +49,117 @@ namespace WpfApp1.EditPages
         {
             try
             {
-                // Toggle butonları sadece window yüklendikten sonra initialize et
-                InitializeToggleButtons();
+                // Load saved settings only after window is fully loaded
+                LoadSettings();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error initializing toggle buttons: {ex.Message}");
+                MessageBox.Show($"Error loading settings: {ex.Message}");
             }
         }
 
-        private void InitializeToggleButtons()
+        private void InitializeButtonDictionaries()
         {
-            // Liste oluştur
-            allToggleButtons = new List<ToggleButton>();
-
-            // Butonları bulmaya çalış ve varsa listeye ekle
-            var buttons = new[] { "Button13", "Button14", "Button19", "Button16", "Button25", "Button17", "Button18" };
-            foreach (var buttonName in buttons)
+            try
             {
-                var button = this.FindName(buttonName) as ToggleButton;
-                if (button != null)
+                // TUBE TYPE buttons
+                tubeTypeButtons = new Dictionary<string, ToggleButton>();
+
+                if (Button13 != null) tubeTypeButtons["#13"] = Button13;
+                if (Button14 != null) tubeTypeButtons["#14"] = Button14;
+                if (Button19 != null) tubeTypeButtons["#19"] = Button19;
+                if (Button16 != null) tubeTypeButtons["#16"] = Button16;
+                if (Button25 != null) tubeTypeButtons["#25"] = Button25;
+                if (Button17 != null) tubeTypeButtons["#17"] = Button17;
+                if (Button18 != null) tubeTypeButtons["#18"] = Button18;
+
+                // FEATURE buttons
+                featureButtons = new Dictionary<string, ToggleButton>();
+                if (Foam != null) featureButtons["Foam"] = Foam;
+                if (Feed != null) featureButtons["Feed"] = Feed;
+
+                // DISPLAY COUNT UNIT buttons
+                displayCountUnitButtons = new Dictionary<string, ToggleButton>();
+                if (Count != null) displayCountUnitButtons["Count"] = Count;
+                if (ml != null) displayCountUnitButtons["-ml"] = ml;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error initializing button dictionaries: {ex.Message}");
+            }
+        }
+
+
+        private void LoadSettings()
+        {
+            // Load TUBE TYPE setting
+            string savedTubeType = Properties.Settings.Default.EditPump3TubeType;
+            if (!string.IsNullOrEmpty(savedTubeType) && tubeTypeButtons.ContainsKey(savedTubeType))
+            {
+                // Uncheck all tube type buttons first
+                foreach (var btn in tubeTypeButtons.Values)
                 {
-                    allToggleButtons.Add(button);
+                    btn.IsChecked = false;
                 }
+
+                // Check the saved one
+                tubeTypeButtons[savedTubeType].IsChecked = true;
+            }
+            else
+            {
+                // Default to #13 if no setting is saved
+                Button13.IsChecked = true;
             }
 
-            if (allToggleButtons.Count == 0)
+            // Load FEATURE setting
+            string savedFeature = Properties.Settings.Default.EditPump3Feature;
+            if (!string.IsNullOrEmpty(savedFeature) && featureButtons.ContainsKey(savedFeature))
             {
-                MessageBox.Show("No toggle buttons were found. Please check XAML names.");
+                foreach (var btn in featureButtons.Values)
+                {
+                    btn.IsChecked = false;
+                }
+                featureButtons[savedFeature].IsChecked = true;
             }
+            else
+            {
+                // Default to Foam
+                Foam.IsChecked = true;
+            }
+
+            // Load DISPLAY COUNT UNIT setting
+            string savedDisplayCountUnit = Properties.Settings.Default.EditPump3DisplayCountUnit;
+            if (!string.IsNullOrEmpty(savedDisplayCountUnit) && displayCountUnitButtons.ContainsKey(savedDisplayCountUnit))
+            {
+                foreach (var btn in displayCountUnitButtons.Values)
+                {
+                    btn.IsChecked = false;
+                }
+                displayCountUnitButtons[savedDisplayCountUnit].IsChecked = true;
+            }
+            else
+            {
+                // Default to -ml
+                ml.IsChecked = true;
+            }
+        }
+
+        private void SaveSettings()
+        {
+            // Save TUBE TYPE setting
+            string selectedTubeType = tubeTypeButtons.FirstOrDefault(x => x.Value.IsChecked == true).Key;
+            Properties.Settings.Default.EditPump3TubeType = selectedTubeType;
+
+            // Save FEATURE setting
+            string selectedFeature = featureButtons.FirstOrDefault(x => x.Value.IsChecked == true).Key;
+            Properties.Settings.Default.EditPump3Feature = selectedFeature;
+
+            // Save DISPLAY COUNT UNIT setting
+            string selectedDisplayCountUnit = displayCountUnitButtons.FirstOrDefault(x => x.Value.IsChecked == true).Key;
+            Properties.Settings.Default.EditPump3DisplayCountUnit = selectedDisplayCountUnit;
+
+            // Save settings
+            Properties.Settings.Default.Save();
         }
 
         private void HandleButtonToggle(object sender, RoutedEventArgs e)
@@ -82,49 +169,86 @@ namespace WpfApp1.EditPages
                 var clickedButton = sender as ToggleButton;
                 if (clickedButton == null) return;
 
-                // Önce allToggleButtons'ın initialize edildiğinden emin ol
-                if (allToggleButtons == null)
+                // Ensure dictionaries are initialized
+                if (tubeTypeButtons == null || featureButtons == null || displayCountUnitButtons == null)
                 {
-                    InitializeToggleButtons();
+                    InitializeButtonDictionaries();
+                    if (tubeTypeButtons == null || featureButtons == null || displayCountUnitButtons == null)
+                    {
+                        MessageBox.Show("Button dictionaries could not be initialized.");
+                        return;
+                    }
                 }
 
-                // AntiFoam/Level/Feed kontrolü (üçlü grup)
-                if (clickedButton == AntiFoam && Level != null && Feed != null)
+                // Handle TUBE TYPE buttons 
+                bool isTubeTypeButton = false;
+                foreach (var btn in tubeTypeButtons.Values)
                 {
-                    Level.IsChecked = false;
-                    Feed.IsChecked = false;
-                }
-                else if (clickedButton == Level && AntiFoam != null && Feed != null)
-                {
-                    AntiFoam.IsChecked = false;
-                    Feed.IsChecked = false;
-                }
-                else if (clickedButton == Feed && AntiFoam != null && Level != null)
-                {
-                    AntiFoam.IsChecked = false;
-                    Level.IsChecked = false;
-                }
-                // Count/ml kontrolü
-                else if (clickedButton == Count && ml != null)
-                {
-                    Count.IsChecked = true;
-                    ml.IsChecked = false;
-                }
-                else if (clickedButton == ml && Count != null)
-                {
-                    ml.IsChecked = true;
-                    Count.IsChecked = false;
-                }
-                // Numaralı butonlar için kontrol (#13-#18)
-                else if (allToggleButtons?.Contains(clickedButton) == true)
-                {
-                    foreach (var button in allToggleButtons)
+                    if (btn == clickedButton)
                     {
-                        if (button != clickedButton && button != null)
+                        isTubeTypeButton = true;
+                        break;
+                    }
+                }
+
+                if (isTubeTypeButton)
+                {
+                    foreach (var btn in tubeTypeButtons.Values)
+                    {
+                        if (btn != clickedButton && btn != null)
                         {
-                            button.IsChecked = false;
+                            btn.IsChecked = false;
                         }
                     }
+                    clickedButton.IsChecked = true;
+                    return;
+                }
+
+                // Feature buttons
+                bool isFeatureButton = false;
+                foreach (var btn in featureButtons.Values)
+                {
+                    if (btn == clickedButton)
+                    {
+                        isFeatureButton = true;
+                        break;
+                    }
+                }
+
+                if (isFeatureButton)
+                {
+                    foreach (var btn in featureButtons.Values)
+                    {
+                        if (btn != clickedButton && btn != null)
+                        {
+                            btn.IsChecked = false;
+                        }
+                    }
+                    clickedButton.IsChecked = true;
+                    return;
+                }
+
+                // Display count unit buttons
+                bool isDisplayCountUnitButton = false;
+                foreach (var btn in displayCountUnitButtons.Values)
+                {
+                    if (btn == clickedButton)
+                    {
+                        isDisplayCountUnitButton = true;
+                        break;
+                    }
+                }
+
+                if (isDisplayCountUnitButton)
+                {
+                    foreach (var btn in displayCountUnitButtons.Values)
+                    {
+                        if (btn != clickedButton && btn != null)
+                        {
+                            btn.IsChecked = false;
+                        }
+                    }
+                    clickedButton.IsChecked = true;
                 }
             }
             catch (Exception ex)
@@ -140,15 +264,19 @@ namespace WpfApp1.EditPages
                 var clickedButton = sender as ToggleButton;
                 if (clickedButton == null) return;
 
-                // AntiFoam/Level/Feed kontrolü
-                if ((clickedButton == AntiFoam || clickedButton == Level || clickedButton == Feed) &&
-                    !AntiFoam.IsChecked.Value && !Level.IsChecked.Value && !Feed.IsChecked.Value)
+                // Prevent unchecking - ensure one button remains checked in each group
+                if (tubeTypeButtons.ContainsValue(clickedButton) &&
+                    tubeTypeButtons.Values.All(b => b.IsChecked == false))
                 {
                     clickedButton.IsChecked = true;
                 }
-                // Count/ml kontrolü
-                else if ((clickedButton == Count || clickedButton == ml) &&
-                         !Count.IsChecked.Value && !ml.IsChecked.Value)
+                else if (featureButtons.ContainsValue(clickedButton) &&
+                         featureButtons.Values.All(b => b.IsChecked == false))
+                {
+                    clickedButton.IsChecked = true;
+                }
+                else if (displayCountUnitButtons.ContainsValue(clickedButton) &&
+                         displayCountUnitButtons.Values.All(b => b.IsChecked == false))
                 {
                     clickedButton.IsChecked = true;
                 }
@@ -179,6 +307,7 @@ namespace WpfApp1.EditPages
 
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
+            SaveSettings();
             this.Close();
         }
     }

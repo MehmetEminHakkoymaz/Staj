@@ -199,7 +199,7 @@
             <Label Content="FEATURE" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="33,0,0,0" FontSize="25" 
                    Opacity="1" Padding="0,0,0,0" HorizontalContentAlignment="Left" RenderTransformOrigin="0.501,0.364" />
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,292,0">
+            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,292,0">
                 <ToggleButton x:Name="BalanceFeed" Width="200" Height="50" Content="Balance Feed" FontSize="20" IsChecked="False" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -241,7 +241,71 @@
                         </ControlTemplate>
                     </ToggleButton.Template>
                 </ToggleButton>
+            </StackPanel>-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,292,0">
+                <ToggleButton x:Name="Foam" Width="133" Height="50" Content="Foam" FontSize="20" IsChecked="True" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Grid>
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="2,2,1,2" CornerRadius="5,0,0,5" Opacity="0.5">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#E7ECEF"/>
+                                    </Border.Background>
+                                </Border>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#C33333"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+
+                <ToggleButton x:Name="Level" Width="133" Height="50" Content="Level" FontSize="20" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Grid>
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,1,2" CornerRadius="0" Opacity="0.5">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#E7ECEF"/>
+                                    </Border.Background>
+                                </Border>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#C33333"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+
+                </ToggleButton>
+
+                <ToggleButton x:Name="Feed" Width="133" Height="50" Content="Feed" FontSize="20" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Grid>
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1,2,2,2" CornerRadius="0,5,5,0" Opacity="0.5">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#E7ECEF"/>
+                                    </Border.Background>
+                                </Border>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#C33333"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
             </StackPanel>
+
 
 
         </Grid>

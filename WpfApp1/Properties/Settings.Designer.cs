@@ -934,5 +934,185 @@ namespace WpfApp1.Properties {
                 this["RedoxTotalFlowTotalFlow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityP {
+            get {
+                return ((double)(this["TurbidityP"]));
+            }
+            set {
+                this["TurbidityP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityI {
+            get {
+                return ((double)(this["TurbidityI"]));
+            }
+            set {
+                this["TurbidityI"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityILimit {
+            get {
+                return ((double)(this["TurbidityILimit"]));
+            }
+            set {
+                this["TurbidityILimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityDeadband {
+            get {
+                return ((double)(this["TurbidityDeadband"]));
+            }
+            set {
+                this["TurbidityDeadband"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityNegfactor {
+            get {
+                return ((double)(this["TurbidityNegfactor"]));
+            }
+            set {
+                this["TurbidityNegfactor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityEvalTime {
+            get {
+                return ((double)(this["TurbidityEvalTime"]));
+            }
+            set {
+                this["TurbidityEvalTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSelectedTurbidityCascadeItem {
+            get {
+                return ((string)(this["LastSelectedTurbidityCascadeItem"]));
+            }
+            set {
+                this["LastSelectedTurbidityCascadeItem"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TurbiditySelectedCascade {
+            get {
+                return ((string)(this["TurbiditySelectedCascade"]));
+            }
+            set {
+                this["TurbiditySelectedCascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public double TurbidityHarvestingInoculateHarvesting {
+            get {
+                return ((double)(this["TurbidityHarvestingInoculateHarvesting"]));
+            }
+            set {
+                this["TurbidityHarvestingInoculateHarvesting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public double TurbidityFeedml {
+            get {
+                return ((double)(this["TurbidityFeedml"]));
+            }
+            set {
+                this["TurbidityFeedml"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public double TurbidityHarvestingInoculateInoculate {
+            get {
+                return ((double)(this["TurbidityHarvestingInoculateInoculate"]));
+            }
+            set {
+                this["TurbidityHarvestingInoculateInoculate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EditPump3TubeType {
+            get {
+                return ((string)(this["EditPump3TubeType"]));
+            }
+            set {
+                this["EditPump3TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EditPump3Feature {
+            get {
+                return ((string)(this["EditPump3Feature"]));
+            }
+            set {
+                this["EditPump3Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EditPump3DisplayCountUnit {
+            get {
+                return ((string)(this["EditPump3DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump3DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int EditPump3Value {
+            get {
+                return ((int)(this["EditPump3Value"]));
+            }
+            set {
+                this["EditPump3Value"] = value;
+            }
+        }
     }
 }

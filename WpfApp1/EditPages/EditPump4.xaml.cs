@@ -91,14 +91,14 @@ namespace WpfApp1.EditPages
                 }
 
                 // BalanceFeed/Feed kontrolü
-                if (clickedButton == BalanceFeed && Feed != null)
-                {
-                    Feed.IsChecked = false;
-                }
-                else if (clickedButton == Feed && BalanceFeed != null)
-                {
-                    BalanceFeed.IsChecked = false;
-                }
+                //if (clickedButton == BalanceFeed && Feed != null)
+                //{
+                //    Feed.IsChecked = false;
+                //}
+                //else if (clickedButton == Feed && BalanceFeed != null)
+                //{
+                //    BalanceFeed.IsChecked = false;
+                //}
                 // Count/ml kontrolü
                 else if (clickedButton == Count && ml != null)
                 {
@@ -136,11 +136,11 @@ namespace WpfApp1.EditPages
                 if (clickedButton == null) return;
 
                 // BalanceFeed/Feed kontrolü
-                if ((clickedButton == BalanceFeed || clickedButton == Feed) &&
-                    !BalanceFeed.IsChecked.Value && !Feed.IsChecked.Value)
-                {
-                    clickedButton.IsChecked = true;
-                }
+                //if ((clickedButton == BalanceFeed || clickedButton == Feed) &&
+                //    !BalanceFeed.IsChecked.Value && !Feed.IsChecked.Value)
+                //{
+                //    clickedButton.IsChecked = true;
+                //}
                 // Count/ml kontrolü
                 else if ((clickedButton == Count || clickedButton == ml) &&
                          !Count.IsChecked.Value && !ml.IsChecked.Value)
