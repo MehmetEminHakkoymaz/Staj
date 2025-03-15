@@ -196,8 +196,8 @@ namespace WpfApp1
                 mainControl.StirrerValue.Content = incommingWords[2];
                 mainControl.pHValue.Content = incommingWords[3];
                 mainControl.pO2Value.Content = incommingWords[4];
-                mainControl.Gas1Value.Content = incommingWords[5];
-                mainControl.Gas2Value.Content = incommingWords[6];
+                //mainControl.Gas1Value.Content = incommingWords[5];
+                //mainControl.Gas2Value.Content = incommingWords[6];
                 //mainControl.Gas3Value.Content = incommingWords[7];
                 //mainControl.Gas4Value.Content = incommingWords[8];
                 //mainControl.FoamValue.Content = incommingWords[9];
@@ -229,10 +229,10 @@ namespace WpfApp1
             sendingWords += ",";
             sendingWords += mainControl.pO2Target.Text;
             sendingWords += ",";
-            sendingWords += mainControl.Gas1Target.Text;
-            sendingWords += ",";
-            sendingWords += mainControl.Gas2Target.Text;
-            sendingWords += ",";
+            //sendingWords += mainControl.Gas1Target.Text;
+            //sendingWords += ",";
+            //sendingWords += mainControl.Gas2Target.Text;
+            //sendingWords += ",";
             //sendingWords += mainControl.Gas3Target.Text;
             //sendingWords += ",";
             //sendingWords += mainControl.Gas4Target.Text;
@@ -540,8 +540,8 @@ namespace WpfApp1
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse2, mainControl.conditionalButtonStirrer);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse3, mainControl.conditionalButtonpH);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse4, mainControl.conditionalButtonpO2);
-            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse5, mainControl.conditionalButtonGas1);
-            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse6, mainControl.conditionalButtonGas2);
+            //mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse5, mainControl.conditionalButtonGas1);
+            //mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse6, mainControl.conditionalButtonGas2);
             //mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse7, mainControl.conditionalButtonGas3);
             //mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse8, mainControl.conditionalButtonGas4);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse9, mainControl.conditionalButtonFoam);
@@ -612,10 +612,10 @@ namespace WpfApp1
                 values["pHTarget"] = mainControl?.pHTarget?.Text;
                 values["pO2Value"] = mainControl?.pO2Value?.Content?.ToString();
                 values["pO2Target"] = mainControl?.pO2Target?.Text;
-                values["Gas1Value"] = mainControl?.Gas1Value?.Content?.ToString();
-                values["Gas1Target"] = mainControl?.Gas1Target?.Text;
-                values["Gas2Value"] = mainControl?.Gas2Value?.Content?.ToString();
-                values["Gas2Target"] = mainControl?.Gas2Target?.Text;
+                //values["Gas1Value"] = mainControl?.Gas1Value?.Content?.ToString();
+                //values["Gas1Target"] = mainControl?.Gas1Target?.Text;
+                //values["Gas2Value"] = mainControl?.Gas2Value?.Content?.ToString();
+                //values["Gas2Target"] = mainControl?.Gas2Target?.Text;
                 //values["Gas3Value"] = mainControl?.Gas3Value?.Content?.ToString();
                 //values["Gas3Target"] = mainControl?.Gas3Target?.Text;
                 //values["Gas4Value"] = mainControl?.Gas4Value?.Content?.ToString();
@@ -704,10 +704,10 @@ namespace WpfApp1
                 AddValue("pHTarget", mainControl?.pHTarget?.Text);
                 AddValue("pO2Value", mainControl?.pO2Value?.Content);
                 AddValue("pO2Target", mainControl?.pO2Target?.Text);
-                AddValue("Gas1Value", mainControl?.Gas1Value?.Content);
-                AddValue("Gas1Target", mainControl?.Gas1Target?.Text);
-                AddValue("Gas2Value", mainControl?.Gas2Value?.Content);
-                AddValue("Gas2Target", mainControl?.Gas2Target?.Text);
+                //AddValue("Gas1Value", mainControl?.Gas1Value?.Content);
+                //AddValue("Gas1Target", mainControl?.Gas1Target?.Text);
+                //AddValue("Gas2Value", mainControl?.Gas2Value?.Content);
+                //AddValue("Gas2Target", mainControl?.Gas2Target?.Text);
                 //AddValue("Gas3Value", mainControl?.Gas3Value?.Content);
                 //AddValue("Gas3Target", mainControl?.Gas3Target?.Text);
                 //AddValue("Gas4Value", mainControl?.Gas4Value?.Content);
@@ -795,8 +795,8 @@ namespace WpfApp1
                 mainControl.conditionalButtonStirrer,
                 mainControl.conditionalButtonpH,
                 mainControl.conditionalButtonpO2,
-                mainControl.conditionalButtonGas1,
-                mainControl.conditionalButtonGas2,
+                //mainControl.conditionalButtonGas1,
+                //mainControl.conditionalButtonGas2,
                 //mainControl.conditionalButtonGas3,
                 //mainControl.conditionalButtonGas4,
                 mainControl.conditionalButtonFoam,

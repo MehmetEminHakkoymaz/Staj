@@ -7,7 +7,7 @@
         xmlns:kepad="clr-namespace:WpfApp1.Keypad"
         mc:Ignorable="d"
         Title="EditRedox" Height="600" Width="1024">
-    <!--<Grid Background="#E7ECEF">
+    <Grid Background="#E7ECEF">
         <Border Background="#DAE2E7" Width="1024" Height="30" BorderThickness="0,0,0,1" BorderBrush="Black" VerticalAlignment="Top">
             <Grid>
                 <Button Width="28" Height="28" HorizontalAlignment="Left" Margin="0,2,0,0" Background="Transparent" BorderThickness="0">
@@ -29,7 +29,7 @@
                           VerticalContentAlignment="Center" IsSynchronizedWithCurrentItem="True">
                     <ComboBoxItem Content="None" FontSize="25" FontWeight="Regular"/>
                     <ComboBoxItem Content="Gas2" FontSize="25" FontWeight="Regular"/>
-                    <ComboBoxItem Content="Air" FontWeight="Regular" FontSize="25"/>
+                    <ComboBoxItem Content="AirFlow" FontWeight="Regular" FontSize="25"/>
                     <ComboBoxItem Content="TotalFlow" FontWeight="Regular" FontSize="25"/>
                 </ComboBox>
             </Border>
@@ -197,6 +197,5 @@
         <Popup x:Name="KeypadPopup" Placement="Center" IsOpen="False">
             <kepad:KeyPad x:Name="KeypadControl"/>
         </Popup>
-    </Grid>-->
-    <Grid></Grid>
+    </Grid>
 </Window>

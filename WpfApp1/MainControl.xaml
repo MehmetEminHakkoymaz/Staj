@@ -156,7 +156,7 @@
                 </Button>
             </Grid>
         </Border>
-        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,230,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
+        <!--<Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,230,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
             <Grid x:Name="Gas1">
                 <Label Content="Gas1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="Gas1Value" Content="1" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
@@ -177,8 +177,8 @@
                     <TextBlock/>
                 </Button>
             </Grid>
-        </Border>
-        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,275,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
+        </Border>-->
+        <!--<Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,275,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
             <Grid x:Name="Gas2">
                 <Label Content="Gas2" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="Gas2Value" Content="6" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7">
@@ -208,7 +208,7 @@
                     <TextBlock/>
                 </Button>
             </Grid>
-        </Border>
+        </Border>-->
         <!--<Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,320,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
             <Grid x:Name="Gas3">
                 <Label Content="Gas3" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
@@ -251,7 +251,7 @@
                 </Button>
             </Grid>
         </Border>-->
-        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,320,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
+        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,230,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
             <Grid x:Name="Foam">
                 <Label Content="Foam" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" 
                        VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
@@ -280,7 +280,7 @@
                 </Button>
             </Grid>
         </Border>
-        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,365,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
+        <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,275,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
             <Grid x:Name="Redox">
                 <Label Content="Redox" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" 
                        VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
@@ -373,7 +373,7 @@
                                MouseLeftButtonDown="EditpO2_MouseLeftButtonDown"/>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,140,21,274"/>
                     </Grid>
-                    <Grid>
+                    <!--<Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,185,244,229">
                             <Canvas x:Name="canvas5" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse5"
@@ -391,7 +391,7 @@
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,230,21,184"/>
-                    </Grid>
+                    </Grid>-->
                     <!--<Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,275,244,139">
                             <Canvas x:Name="canvas7" Width="66.87" Height="30">
@@ -412,25 +412,26 @@
                         <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,320,21,94"/>
                     </Grid>-->
                     <Grid>
-                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,275,244,139">
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,185,244,229">
                             <Canvas x:Name="canvas9" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse9"
                                          MouseLeftButtonDown="ellipse9_MouseDown"/>
                             </Canvas>
                         </Border>
-                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,275,94,139"
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,185,94,229"
                                MouseLeftButtonDown="EditFoam_MouseLeftButtonDown"/>
-                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,275,21,139"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,185,21,229"/>
                     </Grid>
                     <Grid>
-                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,320,244,94">
+                        <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,230,244,184">
                             <Canvas x:Name="canvas19" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse19"
-                                         MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                                         MouseLeftButtonDown="ellipse19_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
-                        <!--<Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,410,94,4"/>-->
-                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,320,21,94"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,230,94,184"
+                               MouseLeftButtonDown="EditRedox_MouseLeftButtonDown"/>
+                        <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,230,21,184"/>
                     </Grid>
 
                 </Grid>

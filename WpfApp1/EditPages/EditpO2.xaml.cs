@@ -169,23 +169,23 @@ namespace WpfApp1.EditPages
                 {
                     case "Stirrer":
                         Properties.Settings.Default.HideStirrerBorder = true;
-                        Properties.Settings.Default.HideGas1Border = false;
+                        Properties.Settings.Default.HideAirFlowBorder = false;
                         break;
                     case "TotalFlow":
                         Properties.Settings.Default.HideStirrerBorder = false;
-                        Properties.Settings.Default.HideGas1Border = true;
+                        Properties.Settings.Default.HideAirFlowBorder = true;
                         break;
                     case "Stirrer->TotalFlow":
                         Properties.Settings.Default.HideStirrerBorder = true;
-                        Properties.Settings.Default.HideGas1Border = true;
+                        Properties.Settings.Default.HideAirFlowBorder = true;
                         break;
                     case "Stirrer->GasMix":
                         Properties.Settings.Default.HideStirrerBorder = true;
-                        Properties.Settings.Default.HideGas1Border = false;
+                        Properties.Settings.Default.HideAirFlowBorder = false;
                         break;
                     default:
                         Properties.Settings.Default.HideStirrerBorder = false;
-                        Properties.Settings.Default.HideGas1Border = false;
+                        Properties.Settings.Default.HideAirFlowBorder = false;
                         break;
                 }
 
@@ -426,23 +426,23 @@ namespace WpfApp1.EditPages
                     {
                         case "Stirrer":
                             Properties.Settings.Default.HideStirrerBorder = true;
-                            Properties.Settings.Default.HideGas1Border = false;
+                            Properties.Settings.Default.HideAirFlowBorder = false;
                             break;
                         case "TotalFlow":
                             Properties.Settings.Default.HideStirrerBorder = false;
-                            Properties.Settings.Default.HideGas1Border = true;
+                            Properties.Settings.Default.HideAirFlowBorder = true;
                             break;
                         case "Stirrer->TotalFlow":
                             Properties.Settings.Default.HideStirrerBorder = true;
-                            Properties.Settings.Default.HideGas1Border = true;
+                            Properties.Settings.Default.HideAirFlowBorder = true;
                             break;
                         case "Stirrer->GasMix":
                             Properties.Settings.Default.HideStirrerBorder = true;
-                            Properties.Settings.Default.HideGas1Border = false;
+                            Properties.Settings.Default.HideAirFlowBorder = false;
                             break;
                         default:
                             Properties.Settings.Default.HideStirrerBorder = false;
-                            Properties.Settings.Default.HideGas1Border = false;
+                            Properties.Settings.Default.HideAirFlowBorder = false;
                             break;
                     }
                 }

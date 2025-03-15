@@ -34,12 +34,12 @@ namespace WpfApp1
             ellipse3.MouseLeftButtonDown += ellipse3_MouseDown;
             // ellipse4 için özel event handler kullan
             ellipse4.MouseLeftButtonDown += ellipse4_MouseDown;
-            ellipse5.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
-            ellipse6.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            //ellipse5.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            //ellipse6.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             //ellipse7.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             //ellipse8.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse9.MouseLeftButtonDown += ellipse9_MouseDown;
-            ellipse19.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
+            ellipse19.MouseLeftButtonDown += ellipse19_MouseLeftButtonDown;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
             comparisonTimer.Tick += ComparisonTimer_Tick; // Zamanlayıcı olayı
@@ -50,7 +50,7 @@ namespace WpfApp1
             // Settings değişikliklerini dinle
             Properties.Settings.Default.PropertyChanged += Settings_PropertyChanged;
             UpdateBorderVisibilities();
-            CompareGas2Values();
+            //CompareGas2Values();
 
 
         }
@@ -107,18 +107,18 @@ namespace WpfApp1
                 OnPropertyChanged(nameof(IsNormalTemperature));
             }
         }
-        private void CompareGas2Values()
-        {
-            if (double.TryParse(Gas2Value.Content?.ToString(), out double value) &&
-                double.TryParse(Gas2Target.Text, out double target))
-            {
-                IsGas2ValueLessThanTarget = value < target;
-            }
-            else
-            {
-                IsGas2ValueLessThanTarget = false;
-            }
-        }
+        //private void CompareGas2Values()
+        //{
+        //    if (double.TryParse(Gas2Value.Content?.ToString(), out double value) &&
+        //        double.TryParse(Gas2Target.Text, out double target))
+        //    {
+        //        IsGas2ValueLessThanTarget = value < target;
+        //    }
+        //    else
+        //    {
+        //        IsGas2ValueLessThanTarget = false;
+        //    }
+        //}
 
 
         private void InitializeTemperatureMonitoring()
@@ -499,8 +499,8 @@ namespace WpfApp1
                 "ellipse2" => conditionalButtonStirrer,
                 "ellipse3" => conditionalButtonpH,
                 "ellipse4" => conditionalButtonpO2,
-                "ellipse5" => conditionalButtonGas1,
-                "ellipse6" => conditionalButtonGas2,
+                //"ellipse5" => conditionalButtonGas1,
+                //"ellipse6" => conditionalButtonGas2,
                 //"ellipse7" => conditionalButtonGas3,
                 //"ellipse8" => conditionalButtonGas4,
                 "ellipse9" => conditionalButtonFoam,
@@ -560,8 +560,8 @@ namespace WpfApp1
             CheckEllipsePositionAndSetButtonVisibility(ellipse2, conditionalButtonStirrer);
             CheckEllipsePositionAndSetButtonVisibility(ellipse3, conditionalButtonpH);
             CheckEllipsePositionAndSetButtonVisibility(ellipse4, conditionalButtonpO2);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse5, conditionalButtonGas1);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse6, conditionalButtonGas2);
+            //CheckEllipsePositionAndSetButtonVisibility(ellipse5, conditionalButtonGas1);
+            //CheckEllipsePositionAndSetButtonVisibility(ellipse6, conditionalButtonGas2);
             //CheckEllipsePositionAndSetButtonVisibility(ellipse7, conditionalButtonGas3);
             //CheckEllipsePositionAndSetButtonVisibility(ellipse8, conditionalButtonGas4);
             CheckEllipsePositionAndSetButtonVisibility(ellipse9, conditionalButtonFoam);
@@ -633,7 +633,7 @@ namespace WpfApp1
                     }
                 }
             }
-            CompareGas2Values();
+            //CompareGas2Values();
 
         }
 
@@ -703,7 +703,7 @@ namespace WpfApp1
             // Gas1 border görünürlüğünü güncelle
             if (FindName("Gas1TargetBorder") is Border gas1Border)
             {
-                gas1Border.Visibility = Properties.Settings.Default.HideGas1Border ?
+                gas1Border.Visibility = Properties.Settings.Default.HideAirFlowBorder ?
                     Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -726,7 +726,7 @@ namespace WpfApp1
         private void Gas2Target_TextChanged(object sender, TextChangedEventArgs e)
         {
             // TextBox değeri değiştiğinde karşılaştırma yap
-            CompareGas2Values();
+            //CompareGas2Values();
         }
 
         // FoamLevel için property
@@ -761,5 +761,27 @@ namespace WpfApp1
             // UpdateFoamLevelStatus(); // Gerek yok, Settings_PropertyChanged tetiklenecek
         }
 
+        private void EditRedox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var editRedoxWindow = new WpfApp1.EditPages.EditRedox();
+            editRedoxWindow.Show();
+        }
+
+        private void ellipse19_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
+            if (Properties.Settings.Default.RedoxSelectedCascade == "None")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Redox selection is required. Please go to EditRedox settings and select an option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
     }
 }

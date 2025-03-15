@@ -506,12 +506,12 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HideGas1Border {
+        public bool HideAirFlowBorder {
             get {
-                return ((bool)(this["HideGas1Border"]));
+                return ((bool)(this["HideAirFlowBorder"]));
             }
             set {
-                this["HideGas1Border"] = value;
+                this["HideAirFlowBorder"] = value;
             }
         }
         
@@ -872,6 +872,66 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["RedoxSelectedCascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSelectedRedoxCascade {
+            get {
+                return ((string)(this["LastSelectedRedoxCascade"]));
+            }
+            set {
+                this["LastSelectedRedoxCascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideGas2FlowBorder {
+            get {
+                return ((bool)(this["HideGas2FlowBorder"]));
+            }
+            set {
+                this["HideGas2FlowBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxGas2N2 {
+            get {
+                return ((double)(this["RedoxGas2N2"]));
+            }
+            set {
+                this["RedoxGas2N2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxAirFlowAir {
+            get {
+                return ((double)(this["RedoxAirFlowAir"]));
+            }
+            set {
+                this["RedoxAirFlowAir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxTotalFlowTotalFlow {
+            get {
+                return ((double)(this["RedoxTotalFlowTotalFlow"]));
+            }
+            set {
+                this["RedoxTotalFlowTotalFlow"] = value;
             }
         }
     }

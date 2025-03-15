@@ -28,8 +28,8 @@ namespace WpfApp1
             InitializeComponent();
             ellipse10.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             ellipse11.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
-            ellipse12.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
-            ellipse13.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown; 
+            ellipse12.MouseLeftButtonDown += ellipse12_MouseLeftButtonDown;
+            ellipse13.MouseLeftButtonDown += ellipse13_MouseLeftButtonDown; 
             //ellipse16.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             //ellipse17.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
             //ellipse18.MouseLeftButtonDown += Ellipse_MouseLeftButtonDown;
@@ -39,12 +39,27 @@ namespace WpfApp1
             comparisonTimer.Tick += ComparisonTimer_Tick; // Zamanlayıcı olayı
             DataContext = this;
             InitializeTemperatureMonitoring();
+            Properties.Settings.Default.PropertyChanged += Settings_PropertyChanged;
+            UpdateBorderVisibilities();
+            CompareGas2Values();
+
         }
 
         private double turbidityCurrentTemperature;
         private double maxTemperature = 37.0;
         private double warningOffset = 10.0;
         private DispatcherTimer temperatureTimer;
+
+        private bool isGas2ValueLessThanTarget;
+        public bool IsGas2ValueLessThanTarget
+        {
+            get => isGas2ValueLessThanTarget;
+            set
+            {
+                isGas2ValueLessThanTarget = value;
+                OnPropertyChanged(nameof(IsGas2ValueLessThanTarget));
+            }
+        }
 
         // INotifyPropertyChanged implementasyonu
         public event PropertyChangedEventHandler PropertyChanged;
@@ -318,7 +333,7 @@ namespace WpfApp1
             CheckEllipsePositionAndSetButtonVisibility(ellipse10, conditionalButtonTurbidity);
             CheckEllipsePositionAndSetButtonVisibility(ellipse11, conditionalButtonBalance);
             CheckEllipsePositionAndSetButtonVisibility(ellipse12, conditionalButtonAirFlow);
-            CheckEllipsePositionAndSetButtonVisibility(ellipse13, conditionalButtonAirFlow);
+            CheckEllipsePositionAndSetButtonVisibility(ellipse13, conditionalButtonGas2Flow);
             //CheckEllipsePositionAndSetButtonVisibility(ellipse16, conditionalButtonGas3Flow);
             //CheckEllipsePositionAndSetButtonVisibility(ellipse17, conditionalButtonGas4Flow);
             //CheckEllipsePositionAndSetButtonVisibility(ellipse18, conditionalButtonGas5Flow);
@@ -387,6 +402,8 @@ namespace WpfApp1
                     }
                 }
             }
+            CompareGas2Values();
+
         }
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
@@ -441,6 +458,92 @@ namespace WpfApp1
             return false;
         }
 
+        private void UpdateBorderVisibilities()
+        {
+            if (FindName("AirFlowTargetBorder") is Border airFlowBorder)
+            {
+                airFlowBorder.Visibility = Properties.Settings.Default.HideAirFlowBorder ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
 
+            if (FindName("Gas2FlowTargetBorder") is Border gas2FlowBorder)
+            {
+                gas2FlowBorder.Visibility = Properties.Settings.Default.HideGas2FlowBorder ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // Eğer ilgili ayarlar değiştiyse border görünürlüklerini güncelle
+            if (e.PropertyName == "HideAirFlowBorder")
+            {
+                UpdateBorderVisibilities();
+            }
+            // ... diğer kodlar ...
+        }
+
+        private void CompareGas2Values()
+        {
+            if (double.TryParse(Gas2FlowValue.Content?.ToString(), out double value) &&
+                double.TryParse(Gas2FlowTarget.Text, out double target))
+            {
+                IsGas2ValueLessThanTarget = value < target;
+            }
+            else
+            {
+                IsGas2ValueLessThanTarget = false;
+            }
+        }
+
+        private void Gas2Target_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // TextBox değeri değiştiğinde karşılaştırma yap
+            CompareGas2Values();
+        }
+
+        private void ellipse12_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
+            if (Properties.Settings.Default.RedoxSelectedCascade == "AirFlow")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("pO2 cascade selection is required. Please go to EditpO2 settings and select a cascade option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+
+        private void ellipse13_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
+            if (Properties.Settings.Default.RedoxSelectedCascade == "Gas2")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("pO2 cascade selection is required. Please go to EditpO2 settings and select a cascade option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            if (Properties.Settings.Default.RedoxSelectedCascade == "TotalFlow")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("pO2 cascade selection is required. Please go to EditpO2 settings and select a cascade option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
     }
 }
