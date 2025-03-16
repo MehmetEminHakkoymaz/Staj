@@ -18,8 +18,34 @@ namespace WpfApp1.EditPages
         // Track the last valid feature selection
         private string lastValidFeatureSelection;
 
+        public static void SynchronizeSettings()
+        {
+            try
+            {
+                // TurbiditySelectedCascade ve EditPump4Feature'ı senkronize et
+                if (Properties.Settings.Default.TurbiditySelectedCascade == "Feed" &&
+                    Properties.Settings.Default.EditPump4Feature != "Turbidity")
+                {
+                    Properties.Settings.Default.EditPump4Feature = "Turbidity";
+                    Properties.Settings.Default.Save();
+                }
+                else if (Properties.Settings.Default.TurbiditySelectedCascade != "Feed" &&
+                         Properties.Settings.Default.EditPump4Feature == "Turbidity")
+                {
+                    Properties.Settings.Default.EditPump4Feature = "Feed";
+                    Properties.Settings.Default.Save();
+                }
+            }
+            catch
+            {
+                // Sessizce hatayı yok say
+            }
+        }
         public EditPump4()
         {
+            // Sayfayı başlatmadan önce ayarları senkronize et
+            SynchronizeSettings();
+
             InitializeComponent();
             InitializeButtonDictionaries();
             InitializeClock();
@@ -36,40 +62,75 @@ namespace WpfApp1.EditPages
         {
             try
             {
-                // Önce EditPump4Feature değerini TurbiditySelectedCascade'e göre ayarla
+                // Tüm düğmeleri sıfırla
+                foreach (var btn in tubeTypeButtons.Values) btn.IsChecked = false;
+                foreach (var btn in featureButtons.Values) btn.IsChecked = false;
+                foreach (var btn in displayCountUnitButtons.Values) btn.IsChecked = false;
+        
+                // TubeType ayarlarını yükle
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.EditPump4TubeType) && 
+                    tubeTypeButtons.TryGetValue(Properties.Settings.Default.EditPump4TubeType, out var tubeButton))
+                {
+                    tubeButton.IsChecked = true;
+                }
+                else if (Button13 != null)
+                {
+                    Button13.IsChecked = true;
+                }
+        
+                // DisplayCountUnit ayarlarını yükle
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.EditPump4DisplayCountUnit) && 
+                    displayCountUnitButtons.TryGetValue(Properties.Settings.Default.EditPump4DisplayCountUnit, out var displayButton))
+                {
+                    displayButton.IsChecked = true;
+                }
+                else if (ml != null)
+                {
+                    ml.IsChecked = true;
+                }
+        
+                // Feature ayarlarını yükle - hiç mesaj göstermeden
                 if (Properties.Settings.Default.TurbiditySelectedCascade == "Feed")
                 {
-                    // TurbiditySelectedCascade Feed ise, Turbidity özelliğini kullanmalıyız
-                    if (Properties.Settings.Default.EditPump4Feature != "Turbidity")
+                    // Feed modunda sadece Turbidity geçerli
+                    if (Turbidity != null) Turbidity.IsChecked = true;
+                    lastValidFeatureSelection = "Turbidity";
+                }
+                else
+                {
+                    // TurbiditySelectedCascade Feed değilse
+                    string feature = Properties.Settings.Default.EditPump4Feature;
+                    if (!string.IsNullOrEmpty(feature) && feature != "Turbidity" && 
+                        featureButtons.TryGetValue(feature, out var featureButton))
                     {
-                        Properties.Settings.Default.EditPump4Feature = "Turbidity";
-                        Properties.Settings.Default.Save();
+                        featureButton.IsChecked = true;
+                        lastValidFeatureSelection = feature;
                     }
-                }
-                else if (Properties.Settings.Default.EditPump4Feature == "Turbidity")
-                {
-                    // TurbiditySelectedCascade Feed değilse, Turbidity kullanamayız
-                    Properties.Settings.Default.EditPump4Feature = "Feed";
-                    Properties.Settings.Default.Save();
-                }
-
-                // Ayarları yükle
-                LoadSettings();
-
-                // lastValidFeatureSelection'ı güvenli bir değerle başlat
-                lastValidFeatureSelection = Properties.Settings.Default.EditPump4Feature;
-                if (string.IsNullOrEmpty(lastValidFeatureSelection))
-                {
-                    lastValidFeatureSelection = Properties.Settings.Default.TurbiditySelectedCascade == "Feed"
-                        ? "Turbidity"
-                        : "Feed";
+                    else
+                    {
+                        // Varsayılan Feed
+                        if (Feed != null) Feed.IsChecked = true;
+                        lastValidFeatureSelection = "Feed";
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading settings: {ex.Message}");
+                // Hata olursa güvenli bir şekilde defaults'a dön
+                foreach (var btn in tubeTypeButtons.Values) btn.IsChecked = false;
+                foreach (var btn in featureButtons.Values) btn.IsChecked = false;
+                foreach (var btn in displayCountUnitButtons.Values) btn.IsChecked = false;
+        
+                Button13.IsChecked = true;
+                ml.IsChecked = true;
+        
+                if (Properties.Settings.Default.TurbiditySelectedCascade == "Feed")
+                    Turbidity.IsChecked = true;
+                else
+                    Feed.IsChecked = true;
             }
         }
+
 
         private void InitializeButtonDictionaries()
         {

@@ -25,7 +25,8 @@
                        Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="Pump1Value" Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" 
                        VerticalAlignment="Center"/>
-                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"
+                        x:Name="Pump1TargetBorder" Visibility="Visible">
                     <TextBox x:Name="Pump1Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
@@ -72,7 +73,8 @@
             <Grid x:Name="Pump2">
                 <Label Content="Pump2 ← pH" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="Pump2Value" Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
-                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"
+                        x:Name="Pump2TargetBorder" Visibility="Visible">
                     <TextBox x:Name="Pump2Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
@@ -120,7 +122,8 @@
             <Grid x:Name="Pump3">
                 <Label Content="Pump3 ← Foam" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Center" Width="144" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="Pump3Value" Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
-                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"
+                        x:Name="Pump3TargetBorder" Visibility="Visible">
                     <TextBox x:Name="Pump3Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
@@ -325,7 +328,7 @@
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,5,244,409">
                             <Canvas x:Name="canvas20" Width="66.87" Height="30">
                                 <Ellipse x:Name="ellipse20" Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" 
-                                         Canvas.Left="6" Canvas.Top="3" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                                         Canvas.Left="6" Canvas.Top="3" MouseLeftButtonDown="ellipse20_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,5,94,409"
@@ -336,7 +339,7 @@
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="11,50,243,364">
                             <Canvas x:Name="canvas21" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
-                                         x:Name="ellipse21" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                                         x:Name="ellipse21" MouseLeftButtonDown="ellipse21_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,50,94,364"
@@ -348,7 +351,7 @@
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,95,244,319">
                             <Canvas x:Name="canvas22" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
-                                         x:Name="ellipse22" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                                         x:Name="ellipse22" MouseLeftButtonDown="ellipse22_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
                         <!--<Image Source="pack://application:,,,/WpfApp1;component/images/target.png" Width="30" Height="30" Margin="122,95,169,319"/>-->

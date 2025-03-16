@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Globalization;
 using WpfApp1;
+using System.ComponentModel;
 
 namespace WpfApp1
 {
@@ -31,6 +32,9 @@ namespace WpfApp1
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            ellipse20.MouseLeftButtonDown += ellipse20_MouseLeftButtonDown;
+            ellipse21.MouseLeftButtonDown += ellipse21_MouseLeftButtonDown;
+            ellipse22.MouseLeftButtonDown += ellipse22_MouseLeftButtonDown;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
             comparisonTimer.Tick += ComparisonTimer_Tick; // Zamanlayıcı olayı
@@ -40,6 +44,13 @@ namespace WpfApp1
 
             // TextBox eventlerini bağla
             RegisterTextBoxEvents();
+            Properties.Settings.Default.PropertyChanged += Settings_PropertyChanged;
+            UpdateBorderVisibilities();
+        }
+
+        private void Ellipse20_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private TextBox activeTextBox = null;
@@ -549,5 +560,90 @@ namespace WpfApp1
               MessageBoxImage.Warning);
             return;
         }
+
+        private void ellipse20_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Properties.Settings.Default.EditPump1Feature == "Acid")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Redox selection is required. Please go to EditRedox settings and select an option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+
+        private void ellipse21_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Properties.Settings.Default.EditPump2Feature == "Base")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Redox selection is required. Please go to EditRedox settings and select an option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+
+        private void ellipse22_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Properties.Settings.Default.EditPump3Feature == "Foam")
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Redox selection is required. Please go to EditRedox settings and select an option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+
+        private void UpdateBorderVisibilities()
+        {
+            if (FindName("Pump1TargetBorder") is Border pump1Border)
+            {
+                pump1Border.Visibility = Properties.Settings.Default.HidePump1Border ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
+            if (FindName("Pump2TargetBorder") is Border pump2Border)
+            {
+                pump2Border.Visibility = Properties.Settings.Default.HidePump2Border ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
+            if (FindName("Pump3TargetBorder") is Border pump3Border)
+            {
+                pump3Border.Visibility = Properties.Settings.Default.HidePump3Border ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // Eğer ilgili ayarlar değiştiyse border görünürlüklerini güncelle
+            if (e.PropertyName == "HidePump1Border" ||
+                e.PropertyName == "HidePump2Border" ||
+                e.PropertyName == "HidePump3Border" ||
+                e.PropertyName == "EditPump1Feature" ||
+                e.PropertyName == "EditPump2Feature" ||
+                e.PropertyName == "EditPump3Feature")
+            {
+                UpdateBorderVisibilities();
+            }
+        }
+
+
+
+
     }
 }

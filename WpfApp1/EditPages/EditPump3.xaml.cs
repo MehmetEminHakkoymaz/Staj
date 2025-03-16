@@ -34,6 +34,18 @@ namespace WpfApp1.EditPages
             try
             {
                 LoadSettings();
+
+                // Başlangıçta seçilen özelliğe göre HidePump1Border'ı ayarla
+                if (Foam.IsChecked == true)
+                {
+                    Properties.Settings.Default.HidePump1Border = true;
+                    Properties.Settings.Default.Save();
+                }
+                else if (Feed.IsChecked == true)
+                {
+                    Properties.Settings.Default.HidePump1Border = false;
+                    Properties.Settings.Default.Save();
+                }
             }
             catch (Exception ex)
             {
@@ -152,6 +164,18 @@ namespace WpfApp1.EditPages
                 HandleButtonInGroup(clickedButton, tubeTypeButtons);
                 HandleButtonInGroup(clickedButton, featureButtons);
                 HandleButtonInGroup(clickedButton, displayCountUnitButtons);
+                // Acid butonunun seçilmesini kontrol et ve HidePump1Border'ı ayarla
+                if (clickedButton == Foam && clickedButton.IsChecked == true)
+                {
+                    Properties.Settings.Default.HidePump3Border = true;
+                    Properties.Settings.Default.Save(); // Değişikliği kaydet
+                }
+                else if (clickedButton == Feed && clickedButton.IsChecked == true && featureButtons.ContainsValue(clickedButton))
+                {
+                    // Feed seçildiğinde HidePump1Border'ı false yap
+                    Properties.Settings.Default.HidePump3Border = false;
+                    Properties.Settings.Default.Save(); // Değişikliği kaydet
+                }
             }
             catch (Exception ex)
             {

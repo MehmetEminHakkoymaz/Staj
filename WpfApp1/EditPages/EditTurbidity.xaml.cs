@@ -96,7 +96,6 @@ namespace WpfApp1.EditPages
                 contentComboBox.SelectedIndex = 0;
             }
         }
-        //DOĞRU MU EMİN DEĞİLİM BAKACAĞIZ
         //private void ContentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{
         //    if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
@@ -104,8 +103,12 @@ namespace WpfApp1.EditPages
         //        string content = selectedItem.Content.ToString();
         //        Properties.Settings.Default.TurbiditySelectedCascade = content;
 
-        //        // None seçildiğinde EditPump4Feature'ı Feed olarak ayarla
-        //        if (content == "None")
+        //        // Otomatik olarak EditPump4Feature'ı ayarla
+        //        if (content == "Feed")
+        //        {
+        //            Properties.Settings.Default.EditPump4Feature = "Turbidity";
+        //        }
+        //        else if (content == "None")
         //        {
         //            Properties.Settings.Default.EditPump4Feature = "Feed";
         //        }
@@ -114,7 +117,6 @@ namespace WpfApp1.EditPages
         //        {
         //            case "Harvesting->Inoculate":
         //                Properties.Settings.Default.TurbiditySelectedCascade = "None";
-        //                // None olarak ayarlandığı için EditPump4Feature'ı Feed olarak ayarla
         //                Properties.Settings.Default.EditPump4Feature = "Feed";
         //                LoadLastSelectedCascade();
         //                MessageBox.Show("To use Harvesting->Inoculate mode, an external peristaltic pump must be attached.",
@@ -123,13 +125,13 @@ namespace WpfApp1.EditPages
         //                              MessageBoxImage.Warning);
         //                return;
         //        }
+
         //        Properties.Settings.Default.Save();
         //        contentArea.Content = null;
         //        contentArea.ContentTemplate = null;
         //        ApplyTemplate(content);
         //    }
         //}
-
         private void ContentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
@@ -137,30 +139,49 @@ namespace WpfApp1.EditPages
                 string content = selectedItem.Content.ToString();
                 Properties.Settings.Default.TurbiditySelectedCascade = content;
 
-                // Otomatik olarak EditPump4Feature'ı ayarla
+                // EditPump4Feature ayarını HEMEN güncelle ve kaydet
                 if (content == "Feed")
                 {
                     Properties.Settings.Default.EditPump4Feature = "Turbidity";
                 }
-                else if (content == "None")
+                else
                 {
-                    Properties.Settings.Default.EditPump4Feature = "Feed";
-                }
-
-                switch (content)
-                {
-                    case "Harvesting->Inoculate":
-                        Properties.Settings.Default.TurbiditySelectedCascade = "None";
+                    // Feed değilse, Turbidity özelliğini kullanamaz
+                    if (Properties.Settings.Default.EditPump4Feature == "Turbidity")
                         Properties.Settings.Default.EditPump4Feature = "Feed";
-                        LoadLastSelectedCascade();
-                        MessageBox.Show("To use Harvesting->Inoculate mode, an external peristaltic pump must be attached.",
-                                      "Configuration Required",
-                                      MessageBoxButton.OK,
-                                      MessageBoxImage.Warning);
-                        return;
                 }
 
+                // Harvesting->Inoculate kontrolü
+                if (content == "Harvesting->Inoculate")
+                {
+                    Properties.Settings.Default.TurbiditySelectedCascade = "None";
+                    Properties.Settings.Default.EditPump4Feature = "Feed";
+                    LoadLastSelectedCascade();
+                    MessageBox.Show("To use Harvesting->Inoculate mode, an external peristaltic pump must be attached.",
+                                  "Configuration Required",
+                                  MessageBoxButton.OK,
+                                  MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Ayarları derhal kaydet
                 Properties.Settings.Default.Save();
+
+                // Tam emin olmak için EditPump4 ayarlarını senkronize et
+                try
+                {
+                    // Eğer EditPump4 sınıfı erişilebilirse, onun senkronizasyon metodu çağrılabilir
+                    if (typeof(EditPump4).GetMethod("SynchronizeSettings", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static) != null)
+                    {
+                        typeof(EditPump4).GetMethod("SynchronizeSettings", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static).Invoke(null, null);
+                    }
+                }
+                catch
+                {
+                    // Sessizce hatayı yok say
+                }
+
+                // Şablonu uygula
                 contentArea.Content = null;
                 contentArea.ContentTemplate = null;
                 ApplyTemplate(content);
@@ -292,6 +313,37 @@ namespace WpfApp1.EditPages
         {
             this.Close();
         }
+        //private void Ok_Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
+        //        {
+        //            string content = selectedItem.Content.ToString();
+        //            Properties.Settings.Default.LastSelectedTurbidityCascadeItem = content;
+        //            Properties.Settings.Default.TurbiditySelectedCascade = content;
+
+        //            // None seçildiğinde EditPump4Feature'ı Feed olarak ayarla
+        //            if (content == "None")
+        //            {
+        //                Properties.Settings.Default.EditPump4Feature = "Feed";
+        //            }
+        //            // Feed seçildiğinde de EditPump4Feature'ı Turbidity olarak ayarla
+        //            else if (content == "Feed")
+        //            {
+        //                Properties.Settings.Default.EditPump4Feature = "Turbidity";
+        //            }
+        //        }
+        //        SaveCurrentValues();
+        //        SavePIDSettings();
+        //        Properties.Settings.Default.Save();
+        //        this.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error saving settings: {ex.Message}");
+        //    }
+        //}
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -302,20 +354,35 @@ namespace WpfApp1.EditPages
                     Properties.Settings.Default.LastSelectedTurbidityCascadeItem = content;
                     Properties.Settings.Default.TurbiditySelectedCascade = content;
 
-                    // None seçildiğinde EditPump4Feature'ı Feed olarak ayarla
-                    if (content == "None")
+                    // EditPump4Feature ayarını güncelle - bu kritik!
+                    if (content == "None" || content == "Harvesting->Inoculate")
                     {
                         Properties.Settings.Default.EditPump4Feature = "Feed";
                     }
-                    // Feed seçildiğinde de EditPump4Feature'ı Turbidity olarak ayarla
                     else if (content == "Feed")
                     {
                         Properties.Settings.Default.EditPump4Feature = "Turbidity";
                     }
                 }
+
                 SaveCurrentValues();
                 SavePIDSettings();
                 Properties.Settings.Default.Save();
+
+                // Ayarları derhal kaydet ve EditPump4 için senkronize et
+                try
+                {
+                    // Eğer EditPump4 sınıfı erişilebilirse
+                    if (typeof(EditPump4).GetMethod("SynchronizeSettings", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static) != null)
+                    {
+                        typeof(EditPump4).GetMethod("SynchronizeSettings", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static).Invoke(null, null);
+                    }
+                }
+                catch
+                {
+                    // Sessizce hatayı yok say
+                }
+
                 this.Close();
             }
             catch (Exception ex)
@@ -323,6 +390,7 @@ namespace WpfApp1.EditPages
                 MessageBox.Show($"Error saving settings: {ex.Message}");
             }
         }
+
         private void SavePIDSettings()
         {
             try

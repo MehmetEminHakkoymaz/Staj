@@ -1354,5 +1354,41 @@ namespace WpfApp1.Properties {
                 this["EditPump6Value"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HidePump1Border {
+            get {
+                return ((bool)(this["HidePump1Border"]));
+            }
+            set {
+                this["HidePump1Border"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HidePump2Border {
+            get {
+                return ((bool)(this["HidePump2Border"]));
+            }
+            set {
+                this["HidePump2Border"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HidePump3Border {
+            get {
+                return ((bool)(this["HidePump3Border"]));
+            }
+            set {
+                this["HidePump3Border"] = value;
+            }
+        }
     }
 }
