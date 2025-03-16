@@ -154,6 +154,17 @@ namespace WpfApp1.EditPages
                 var clickedButton = sender as ToggleButton;
                 if (clickedButton == null) return;
 
+                // Check if the Foam button is clicked and FoamSelectedMode is None
+                if (clickedButton == Foam && Properties.Settings.Default.FoamSelectedMode == "None")
+                {
+                    // Prevent selection
+                    clickedButton.IsChecked = false;
+                    // Show error message
+                    MessageBox.Show("The foam feature cannot be selected because FoamSelectedMode is set to 'None'.",
+                                   "Özellik Kısıtlaması", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 // Ensure dictionaries are initialized
                 if (tubeTypeButtons == null || featureButtons == null || displayCountUnitButtons == null)
                 {
@@ -164,7 +175,8 @@ namespace WpfApp1.EditPages
                 HandleButtonInGroup(clickedButton, tubeTypeButtons);
                 HandleButtonInGroup(clickedButton, featureButtons);
                 HandleButtonInGroup(clickedButton, displayCountUnitButtons);
-                // Acid butonunun seçilmesini kontrol et ve HidePump1Border'ı ayarla
+
+                // Foam butonunun seçilmesini kontrol et ve HidePump3Border'ı ayarla
                 if (clickedButton == Foam && clickedButton.IsChecked == true)
                 {
                     Properties.Settings.Default.HidePump3Border = true;
@@ -172,7 +184,7 @@ namespace WpfApp1.EditPages
                 }
                 else if (clickedButton == Feed && clickedButton.IsChecked == true && featureButtons.ContainsValue(clickedButton))
                 {
-                    // Feed seçildiğinde HidePump1Border'ı false yap
+                    // Feed seçildiğinde HidePump3Border'ı false yap
                     Properties.Settings.Default.HidePump3Border = false;
                     Properties.Settings.Default.Save(); // Değişikliği kaydet
                 }

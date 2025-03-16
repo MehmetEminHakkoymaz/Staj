@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Globalization;
 using WpfApp1;
+using System.Reflection.Metadata;
 
 namespace WpfApp1.EditPages
 {
@@ -174,10 +175,37 @@ namespace WpfApp1.EditPages
         {
             try
             {
+                if (contentComboBox.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select a cascade value.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 // Seçili cascade değerini kaydet
                 if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
                 {
-                    Properties.Settings.Default.LastSelectedpHCascadeItem = selectedItem.Content.ToString();
+                    string selectedContent = selectedItem.Content.ToString();
+                    Properties.Settings.Default.LastSelectedpHCascadeItem = selectedContent;
+
+                    // Check again if "Acid" is selected to ensure settings are set
+                    if (selectedContent == "Acid")
+                    {
+                        Properties.Settings.Default.HidePump1Border = true;
+                        Properties.Settings.Default.EditPump1Feature = "Acid";
+                    }
+                    if (selectedContent == "Base")
+                    {
+                        Properties.Settings.Default.HidePump2Border = true;
+                        Properties.Settings.Default.EditPump2Feature = "Base";
+                    }
+
+                    if (selectedContent == "Base->Acid")
+                    {
+                        Properties.Settings.Default.HidePump1Border = true;
+                        Properties.Settings.Default.EditPump1Feature = "Acid";
+                        Properties.Settings.Default.HidePump2Border = true;
+                        Properties.Settings.Default.EditPump2Feature = "Base";
+                    }
                 }
 
                 SaveCurrentValues();
@@ -241,6 +269,28 @@ namespace WpfApp1.EditPages
             {
                 string savedCascade = Properties.Settings.Default.pHSelectedCascade;
                 contentComboBox.SelectedValue = savedCascade;
+
+                // If saved cascade is "Acid", set corresponding settings
+                if (savedCascade == "Acid" || Properties.Settings.Default.LastSelectedpHCascadeItem == "Acid")
+                {
+                    Properties.Settings.Default.HidePump1Border = true;
+                    Properties.Settings.Default.EditPump1Feature = "Acid";
+                    Properties.Settings.Default.Save();
+                }
+                if (savedCascade == "Base" || Properties.Settings.Default.LastSelectedpHCascadeItem == "Base")
+                {
+                    Properties.Settings.Default.HidePump2Border = true;
+                    Properties.Settings.Default.EditPump2Feature = "Base";
+                    Properties.Settings.Default.Save();
+                }
+                if (savedCascade == "Base->Acid" || Properties.Settings.Default.LastSelectedpHCascadeItem == "Base->Acid")
+                {
+                    Properties.Settings.Default.HidePump1Border = true;
+                    Properties.Settings.Default.EditPump1Feature = "Acid";
+                    Properties.Settings.Default.HidePump2Border = true;
+                    Properties.Settings.Default.EditPump2Feature = "Base";
+                    Properties.Settings.Default.Save();
+                }
             }
             catch (Exception ex)
             {
@@ -264,6 +314,29 @@ namespace WpfApp1.EditPages
                 string content = selectedItem.Content.ToString();
                 Properties.Settings.Default.pHSelectedCascade = content;
 
+                // Check if "Acid" is selected and set corresponding settings
+                if (content == "Acid")
+                {
+                    Properties.Settings.Default.HidePump1Border = true;
+                    Properties.Settings.Default.EditPump1Feature = "Acid";
+                    Properties.Settings.Default.Save(); // Save changes immediately
+                }
+
+                if (content == "Base")
+                {
+                    Properties.Settings.Default.HidePump2Border = true;
+                    Properties.Settings.Default.EditPump2Feature = "Base";
+                    Properties.Settings.Default.Save(); // Save changes immediately
+                }
+
+                if (content == "Base->Acid")
+                {
+                    Properties.Settings.Default.HidePump1Border = true;
+                    Properties.Settings.Default.EditPump1Feature = "Acid";
+                    Properties.Settings.Default.HidePump2Border = true;
+                    Properties.Settings.Default.EditPump2Feature = "Base";
+                    Properties.Settings.Default.Save(); // Save changes immediately
+                }
                 contentArea.Content = null;
                 contentArea.ContentTemplate = null;
 

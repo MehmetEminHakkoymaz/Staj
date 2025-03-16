@@ -20,9 +20,6 @@ using System.ComponentModel;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Interaction logic for PumpsControl.xaml
-    /// </summary>
     public partial class PumpsControl : UserControl
     {
         private MainWindow mainWindow;
@@ -46,6 +43,58 @@ namespace WpfApp1
             RegisterTextBoxEvents();
             Properties.Settings.Default.PropertyChanged += Settings_PropertyChanged;
             UpdateBorderVisibilities();
+
+            // Check ellipse10 state in ExtendedControl and update Pump4 accordingly
+            Loaded += PumpsControl_Loaded;
+        }
+        private void PumpsControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Update Pump4 content and visibility based on ellipse10 state
+            UpdatePump4BasedOnTurbidity();
+        }
+        private void UpdatePump4BasedOnTurbidity()
+        {
+            try
+            {
+                // Get the ellipse10 from ExtendedControl
+                if (mainWindow?.extendedControl != null)
+                {
+                    Ellipse ellipse10 = mainWindow.extendedControl.FindName("ellipse10") as Ellipse;
+                    if (ellipse10 != null)
+                    {
+                        Canvas canvas10 = ellipse10.Parent as Canvas;
+                        if (canvas10 != null)
+                        {
+                            double canvasWidth = canvas10.ActualWidth;
+                            double ellipseRightPosition = Canvas.GetLeft(ellipse10) + ellipse10.Width;
+
+                            // Check if ellipse10 is active (positioned on the right side)
+                            if (ellipseRightPosition > canvasWidth / 2)
+                            {
+                                // Update Pump4Content label
+                                Pump4Content.Content = "Pump4 ← Turbidity";
+
+                                // Set Pump4TargetBorder visibility based on HidePump4Border setting
+                                //Pump4TargetBorder.Visibility = Properties.Settings.Default.HidePump4Border ?
+                                //    Visibility.Collapsed : Visibility.Visible;
+
+                                Pump4TargetBorder.Visibility = Visibility.Collapsed;
+                            }
+                            else
+                            {
+                                // If ellipse10 is not active, keep the default content
+                                Pump4Content.Content = "Pump4← ";
+                                Pump4TargetBorder.Visibility = Visibility.Visible;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating Pump4 based on Turbidity: {ex.Message}",
+                               "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Ellipse20_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -282,6 +331,8 @@ namespace WpfApp1
                     }
                 }
             }
+
+            UpdatePump4BasedOnTurbidity();
         }
 
         // Yardımcı metod: Belirli bir türdeki tüm görsel çocukları bulur
@@ -573,6 +624,7 @@ namespace WpfApp1
                 return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
             }
 
+
             // Normal ellipse tıklama olayını çağır
             Ellipse_MouseLeftButtonDown(sender, e);
         }
@@ -626,24 +678,50 @@ namespace WpfApp1
                 pump3Border.Visibility = Properties.Settings.Default.HidePump3Border ?
                     Visibility.Collapsed : Visibility.Visible;
             }
+            if (FindName("Pump4TargetBorder") is Border pump4Border)
+            {
+                pump4Border.Visibility = Properties.Settings.Default.HidePump4Border ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
+
+            // Also update Pump4 based on turbidity
+            UpdatePump4BasedOnTurbidity();
         }
 
         private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // Eğer ilgili ayarlar değiştiyse border görünürlüklerini güncelle
             if (e.PropertyName == "HidePump1Border" ||
-                e.PropertyName == "HidePump2Border" ||
-                e.PropertyName == "HidePump3Border" ||
-                e.PropertyName == "EditPump1Feature" ||
-                e.PropertyName == "EditPump2Feature" ||
-                e.PropertyName == "EditPump3Feature")
+                  e.PropertyName == "HidePump2Border" ||
+                  e.PropertyName == "HidePump3Border" ||
+                  e.PropertyName == "HidePump4Border" ||
+                  e.PropertyName == "EditPump1Feature" ||
+                  e.PropertyName == "EditPump2Feature" ||
+                  e.PropertyName == "EditPump3Feature" ||
+                  e.PropertyName == "EditPump4Feature")
             {
                 UpdateBorderVisibilities();
             }
         }
 
+        private void ellipse23_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // After handling the ellipse click, update the Pump4 content
+            UpdatePump4BasedOnTurbidity();
+            if (Pump4TargetBorder.Visibility == Visibility.Collapsed)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Redox selection is required. Please go to EditRedox settings and select an option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else
+            {
+                Ellipse_MouseLeftButtonDown(sender, e);
+            }
 
-
-
+        }
     }
 }

@@ -169,9 +169,10 @@
 
         <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="800" Margin="0,185,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
             <Grid x:Name="Pump4">
-                <Label Content="Pump4 ← " HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="65,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
+                <Label x:Name="Pump4Content" Content="Pump4 ← " HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="65,0,0,0" VerticalAlignment="Center" Width="180" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="Pump4Value" Content="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="245,0,0,0" Width="66" VerticalAlignment="Center"/>
-                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                <Border HorizontalAlignment="Left" Margin="359,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"
+                        x:Name="Pump4TargetBorder" Visibility="Visible">
                     <TextBox x:Name="Pump4Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
@@ -363,7 +364,7 @@
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,140,244,274">
                             <Canvas x:Name="canvas23" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
-                                         x:Name="ellipse23" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                                         x:Name="ellipse23" MouseLeftButtonDown="ellipse23_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/editt.png" Width="30" Height="30" Margin="197,140,94,274"

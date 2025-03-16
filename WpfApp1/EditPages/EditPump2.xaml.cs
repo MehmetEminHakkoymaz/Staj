@@ -34,6 +34,19 @@ namespace WpfApp1.EditPages
             try
             {
                 LoadSettings();
+
+                // If pH is set to Acid or Base->Acid, ensure Feed is not checked
+                if (Properties.Settings.Default.LastSelectedpHCascadeItem == "Base" ||
+                    Properties.Settings.Default.LastSelectedpHCascadeItem == "Base->Acid")
+                {
+                    if (Feed.IsChecked == true)
+                    {
+                        Feed.IsChecked = false;
+                        Base.IsChecked = true;
+                        Properties.Settings.Default.EditPump1Feature = "Base";
+                        Properties.Settings.Default.Save();
+                    }
+                }
                 // Başlangıçta seçilen özelliğe göre HidePump1Border'ı ayarla
                 if (Base.IsChecked == true)
                 {
@@ -199,6 +212,27 @@ namespace WpfApp1.EditPages
             {
                 var clickedButton = sender as ToggleButton;
                 if (clickedButton == null) return;
+
+                // Check if Feed button is clicked while LastSelectedpHCascadeItem is "Acid" or "Base->Acid"
+                if (clickedButton == Feed &&
+                    (Properties.Settings.Default.LastSelectedpHCascadeItem == "Base" ||
+                     Properties.Settings.Default.LastSelectedpHCascadeItem == "Base->Acid"))
+                {
+                    // Prevent selection
+                    clickedButton.IsChecked = false;
+
+                    // Show error message
+                    MessageBox.Show("Feed özelliği seçilemez çünkü pH ayarında Base veya Base->Acid seçilmiş durumda.",
+                                   "Özellik Kısıtlaması", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                    // Make sure Acid is checked
+                    if (Base != null)
+                    {
+                        Base.IsChecked = true;
+                    }
+
+                    return;
+                }
 
                 // Ensure dictionaries are initialized
                 if (tubeTypeButtons == null || featureButtons == null || displayCountUnitButtons == null)

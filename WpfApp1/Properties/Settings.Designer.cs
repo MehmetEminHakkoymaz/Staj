@@ -1390,5 +1390,17 @@ namespace WpfApp1.Properties {
                 this["HidePump3Border"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HidePump4Border {
+            get {
+                return ((bool)(this["HidePump4Border"]));
+            }
+            set {
+                this["HidePump4Border"] = value;
+            }
+        }
     }
 }

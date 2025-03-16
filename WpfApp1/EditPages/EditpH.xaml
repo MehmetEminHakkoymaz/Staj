@@ -27,10 +27,10 @@
         <Grid>
             <Border CornerRadius="5" Background="#FFE7ECEF" BorderBrush="Gray" BorderThickness="1" Margin="224,96,351,443" Height="45">
                 <ComboBox x:Name="contentComboBox" FontSize="25" FontWeight="Regular" Margin="1,1,1,1" Padding="0,0,0,0" VerticalContentAlignment="Center">
-                    <ComboBoxItem Content="None" FontSize="25" FontWeight="Regular"/>
-                    <ComboBoxItem Content="Base" FontSize="25" FontWeight="Regular"/>
-                    <ComboBoxItem Content="Acid" FontWeight="Regular" FontSize="25"/>
-                    <ComboBoxItem Content="Base->Acid" FontWeight="Regular" FontSize="25"/>
+                    <ComboBoxItem x:Name="None" Content="None" FontSize="25" FontWeight="Regular"/>
+                    <ComboBoxItem x:Name="Base"  Content="Base" FontSize="25" FontWeight="Regular"/>
+                    <ComboBoxItem x:Name="Acid"  Content="Acid" FontWeight="Regular" FontSize="25"/>
+                    <ComboBoxItem x:Name="BaseAcid"  Content="Base->Acid" FontWeight="Regular" FontSize="25"/>
                 </ComboBox>
             </Border>
             <ContentControl x:Name="contentArea" HorizontalAlignment="Left" Margin="224,147,0,357" Width="750" Height="80">

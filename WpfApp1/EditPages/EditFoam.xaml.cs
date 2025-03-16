@@ -296,7 +296,10 @@ namespace WpfApp1.EditPages
             {
                 // Seçili modu kaydet
                 if (None.IsChecked == true)
+                {
                     Properties.Settings.Default.FoamSelectedMode = "None";
+                    Properties.Settings.Default.EditPump3Feature = "Feed";
+                }
                 else if (AntiFoam.IsChecked == true)
                 {
                     Properties.Settings.Default.FoamSelectedMode = "AntiFoam";
