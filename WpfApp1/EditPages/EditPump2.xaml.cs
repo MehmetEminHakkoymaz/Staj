@@ -36,26 +36,26 @@ namespace WpfApp1.EditPages
                 LoadSettings();
 
                 // If pH is set to Acid or Base->Acid, ensure Feed is not checked
-                if (Properties.Settings.Default.LastSelectedpHCascadeItem == "Base" ||
-                    Properties.Settings.Default.LastSelectedpHCascadeItem == "Base->Acid")
+                if (Properties.Settings.Default.EditpHCascade == 1 ||
+                    Properties.Settings.Default.EditpHCascade == 3)
                 {
                     if (Feed.IsChecked == true)
                     {
                         Feed.IsChecked = false;
                         Base.IsChecked = true;
-                        Properties.Settings.Default.EditPump1Feature = "Base";
+                        Properties.Settings.Default.EditPump2Feature = 0;
                         Properties.Settings.Default.Save();
                     }
                 }
                 // Başlangıçta seçilen özelliğe göre HidePump1Border'ı ayarla
                 if (Base.IsChecked == true)
                 {
-                    Properties.Settings.Default.HidePump1Border = true;
+                    Properties.Settings.Default.Pump1TargetBorder = 1;
                     Properties.Settings.Default.Save();
                 }
                 else if (Feed.IsChecked == true)
                 {
-                    Properties.Settings.Default.HidePump1Border = false;
+                    Properties.Settings.Default.Pump1TargetBorder = 0;
                     Properties.Settings.Default.Save();
                 }
             }
@@ -215,8 +215,8 @@ namespace WpfApp1.EditPages
 
                 // Check if Feed button is clicked while LastSelectedpHCascadeItem is "Acid" or "Base->Acid"
                 if (clickedButton == Feed &&
-                    (Properties.Settings.Default.LastSelectedpHCascadeItem == "Base" ||
-                     Properties.Settings.Default.LastSelectedpHCascadeItem == "Base->Acid"))
+                    (Properties.Settings.Default.EditpHCascade == 1 ||
+                     Properties.Settings.Default.EditpHCascade ==3))
                 {
                     // Prevent selection
                     clickedButton.IsChecked = false;
@@ -247,13 +247,13 @@ namespace WpfApp1.EditPages
                 // Acid butonunun seçilmesini kontrol et ve HidePump1Border'ı ayarla
                 if (clickedButton == Base && clickedButton.IsChecked == true)
                 {
-                    Properties.Settings.Default.HidePump2Border = true;
+                    Properties.Settings.Default.Pump2TargetBorder = 1;
                     Properties.Settings.Default.Save(); // Değişikliği kaydet
                 }
                 else if (clickedButton == Feed && clickedButton.IsChecked == true && featureButtons.ContainsValue(clickedButton))
                 {
                     // Feed seçildiğinde HidePump1Border'ı false yap
-                    Properties.Settings.Default.HidePump2Border = false;
+                    Properties.Settings.Default.Pump2TargetBorder = 0;
                     Properties.Settings.Default.Save(); // Değişikliği kaydet
                 }
             }

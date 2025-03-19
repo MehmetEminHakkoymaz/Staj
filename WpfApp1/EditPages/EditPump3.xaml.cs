@@ -11,9 +11,14 @@ namespace WpfApp1.EditPages
     public partial class EditPump3 : Window
     {
         private DispatcherTimer clockTimer;
-        private Dictionary<string, ToggleButton> tubeTypeButtons;
-        private Dictionary<string, ToggleButton> featureButtons;
-        private Dictionary<string, ToggleButton> displayCountUnitButtons;
+        private Dictionary<int, ToggleButton> tubeTypeButtons;
+        private Dictionary<int, ToggleButton> featureButtons;
+        private Dictionary<int, ToggleButton> displayCountUnitButtons;
+
+        // Dictionaries to map indices to string values for settings
+        private Dictionary<int, string> tubeTypeValues;
+        private Dictionary<int, string> featureValues;
+        private Dictionary<int, string> displayCountUnitValues;
 
         public EditPump3()
         {
@@ -38,12 +43,12 @@ namespace WpfApp1.EditPages
                 // Başlangıçta seçilen özelliğe göre HidePump1Border'ı ayarla
                 if (Foam.IsChecked == true)
                 {
-                    Properties.Settings.Default.HidePump1Border = true;
+                    Properties.Settings.Default.Pump3TargetBorder = 1;
                     Properties.Settings.Default.Save();
                 }
                 else if (Feed.IsChecked == true)
                 {
-                    Properties.Settings.Default.HidePump1Border = false;
+                    Properties.Settings.Default.Pump3TargetBorder = 0;
                     Properties.Settings.Default.Save();
                 }
             }
@@ -57,25 +62,49 @@ namespace WpfApp1.EditPages
         {
             try
             {
+                // Initialize mapping dictionaries first
+                tubeTypeValues = new Dictionary<int, string>
+                    {
+                        { 0, "#13" },
+                        { 1, "#14" },
+                        { 2, "#19" },
+                        { 3, "#16" },
+                        { 4, "#25" },
+                        { 5, "#17" },
+                        { 6, "#18" }
+                    };
+
+                featureValues = new Dictionary<int, string>
+                    {
+                        { 0, "Foam" },
+                        { 1, "Feed" }
+                    };
+
+                displayCountUnitValues = new Dictionary<int, string>
+                    {
+                        { 0, "Count" },
+                        { 1, "-ml" }
+                    };
+
                 // TUBE TYPE buttons
-                tubeTypeButtons = new Dictionary<string, ToggleButton>();
-                AddToButtonDictionary(tubeTypeButtons, "#13", Button13);
-                AddToButtonDictionary(tubeTypeButtons, "#14", Button14);
-                AddToButtonDictionary(tubeTypeButtons, "#19", Button19);
-                AddToButtonDictionary(tubeTypeButtons, "#16", Button16);
-                AddToButtonDictionary(tubeTypeButtons, "#25", Button25);
-                AddToButtonDictionary(tubeTypeButtons, "#17", Button17);
-                AddToButtonDictionary(tubeTypeButtons, "#18", Button18);
+                tubeTypeButtons = new Dictionary<int, ToggleButton>();
+                AddToButtonDictionary(tubeTypeButtons, 0, Button13);
+                AddToButtonDictionary(tubeTypeButtons, 1, Button14);
+                AddToButtonDictionary(tubeTypeButtons, 2, Button19);
+                AddToButtonDictionary(tubeTypeButtons, 3, Button16);
+                AddToButtonDictionary(tubeTypeButtons, 4, Button25);
+                AddToButtonDictionary(tubeTypeButtons, 5, Button17);
+                AddToButtonDictionary(tubeTypeButtons, 6, Button18);
 
                 // FEATURE buttons
-                featureButtons = new Dictionary<string, ToggleButton>();
-                AddToButtonDictionary(featureButtons, "Foam", Foam);
-                AddToButtonDictionary(featureButtons, "Feed", Feed);
+                featureButtons = new Dictionary<int, ToggleButton>();
+                AddToButtonDictionary(featureButtons, 0, Foam);
+                AddToButtonDictionary(featureButtons, 1, Feed);
 
                 // DISPLAY COUNT UNIT buttons
-                displayCountUnitButtons = new Dictionary<string, ToggleButton>();
-                AddToButtonDictionary(displayCountUnitButtons, "Count", Count);
-                AddToButtonDictionary(displayCountUnitButtons, "-ml", ml);
+                displayCountUnitButtons = new Dictionary<int, ToggleButton>();
+                AddToButtonDictionary(displayCountUnitButtons, 0, Count);
+                AddToButtonDictionary(displayCountUnitButtons, 1, ml);
             }
             catch (Exception ex)
             {
@@ -83,7 +112,7 @@ namespace WpfApp1.EditPages
             }
         }
 
-        private void AddToButtonDictionary(Dictionary<string, ToggleButton> dictionary, string key, ToggleButton button)
+        private void AddToButtonDictionary(Dictionary<int, ToggleButton> dictionary, int key, ToggleButton button)
         {
             if (button != null)
             {
@@ -93,13 +122,17 @@ namespace WpfApp1.EditPages
 
         private void LoadSettings()
         {
-            LoadButtonGroupSettings(tubeTypeButtons, Properties.Settings.Default.EditPump3TubeType, Button13);
-            LoadButtonGroupSettings(featureButtons, Properties.Settings.Default.EditPump3Feature, Foam);
-            LoadButtonGroupSettings(displayCountUnitButtons, Properties.Settings.Default.EditPump3DisplayCountUnit, ml);
+            int tubeTypeIndex = (int)Properties.Settings.Default.EditPump3TubeType;
+            int featureIndex = (int)Properties.Settings.Default.EditPump3Feature;
+            int displayCountUnitIndex = (int)Properties.Settings.Default.EditPump3DisplayCountUnit;
+
+            LoadButtonGroupSettings(tubeTypeButtons, tubeTypeIndex, Button13);
+            LoadButtonGroupSettings(featureButtons, featureIndex, Foam);
+            LoadButtonGroupSettings(displayCountUnitButtons, displayCountUnitIndex, ml);
         }
 
-        private void LoadButtonGroupSettings(Dictionary<string, ToggleButton> buttonDictionary,
-                                             string savedSetting,
+        private void LoadButtonGroupSettings(Dictionary<int, ToggleButton> buttonDictionary,
+                                             int savedIndex,
                                              ToggleButton defaultButton)
         {
             try
@@ -111,7 +144,7 @@ namespace WpfApp1.EditPages
                 }
 
                 // Set the saved or default button
-                if (!string.IsNullOrEmpty(savedSetting) && buttonDictionary.TryGetValue(savedSetting, out var button))
+                if (buttonDictionary.TryGetValue(savedIndex, out var button))
                 {
                     button.IsChecked = true;
                 }
@@ -141,10 +174,10 @@ namespace WpfApp1.EditPages
             }
         }
 
-        private string GetSelectedButtonKey(Dictionary<string, ToggleButton> buttonDictionary)
+        private double GetSelectedButtonKey(Dictionary<int, ToggleButton> buttonDictionary)
         {
             var selectedButton = buttonDictionary.FirstOrDefault(x => x.Value?.IsChecked == true);
-            return selectedButton.Key ?? "";
+            return selectedButton.Key;
         }
 
         private void HandleButtonToggle(object sender, RoutedEventArgs e)
@@ -155,7 +188,7 @@ namespace WpfApp1.EditPages
                 if (clickedButton == null) return;
 
                 // Check if the Foam button is clicked and FoamSelectedMode is None
-                if (clickedButton == Foam && Properties.Settings.Default.FoamSelectedMode == "None")
+                if (clickedButton == Foam && Properties.Settings.Default.EditFoamCascade == 0)
                 {
                     // Prevent selection
                     clickedButton.IsChecked = false;
@@ -179,13 +212,13 @@ namespace WpfApp1.EditPages
                 // Foam butonunun seçilmesini kontrol et ve HidePump3Border'ı ayarla
                 if (clickedButton == Foam && clickedButton.IsChecked == true)
                 {
-                    Properties.Settings.Default.HidePump3Border = true;
+                    Properties.Settings.Default.Pump3TargetBorder = 1;
                     Properties.Settings.Default.Save(); // Değişikliği kaydet
                 }
                 else if (clickedButton == Feed && clickedButton.IsChecked == true && featureButtons.ContainsValue(clickedButton))
                 {
                     // Feed seçildiğinde HidePump3Border'ı false yap
-                    Properties.Settings.Default.HidePump3Border = false;
+                    Properties.Settings.Default.Pump3TargetBorder = 0;
                     Properties.Settings.Default.Save(); // Değişikliği kaydet
                 }
             }
@@ -195,7 +228,7 @@ namespace WpfApp1.EditPages
             }
         }
 
-        private bool HandleButtonInGroup(ToggleButton clickedButton, Dictionary<string, ToggleButton> buttonGroup)
+        private bool HandleButtonInGroup(ToggleButton clickedButton, Dictionary<int, ToggleButton> buttonGroup)
         {
             if (buttonGroup == null) return false;
 
@@ -234,7 +267,7 @@ namespace WpfApp1.EditPages
             }
         }
 
-        private void EnsureOneButtonChecked(ToggleButton clickedButton, Dictionary<string, ToggleButton> buttonGroup)
+        private void EnsureOneButtonChecked(ToggleButton clickedButton, Dictionary<int, ToggleButton> buttonGroup)
         {
             if (buttonGroup == null) return;
 

@@ -25,7 +25,7 @@
         <Label Content="EDIT FOAM" Width="200" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,30,0,0" FontSize="25" FontWeight="Regular" Opacity="0.7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Rectangle  Height="1" Fill="Black" Margin="0,79,0,504" Opacity="0.3"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,100,0,400">
-            <ToggleButton x:Name="None" Width="133" Height="50" Content="None" FontSize="20" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+            <ToggleButton x:Name="None" Width="133" Height="50" Content="None" FontSize="20" Checked="HandleButtonToggle">
                 <ToggleButton.Template>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
                         <Grid>
@@ -45,7 +45,7 @@
                 </ToggleButton.Template>
             </ToggleButton>
 
-            <ToggleButton x:Name="AntiFoam" Width="133" Height="50" Content="AntiFoam" FontSize="20" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+            <ToggleButton x:Name="AntiFoam" Width="133" Height="50" Content="AntiFoam" FontSize="20" Checked="HandleButtonToggle" >
                 <ToggleButton.Template>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
                         <Grid>
@@ -66,7 +66,7 @@
 
             </ToggleButton>
 
-            <ToggleButton x:Name="Level" Width="133" Height="50" Content="Level" FontSize="20" Checked="HandleButtonToggle" Unchecked="ToggleButton_Unchecked">
+            <ToggleButton x:Name="Level" Width="133" Height="50" Content="Level" FontSize="20" Checked="HandleButtonToggle" >
                 <ToggleButton.Template>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
                         <Grid>

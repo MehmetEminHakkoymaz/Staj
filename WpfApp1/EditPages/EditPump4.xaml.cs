@@ -23,16 +23,16 @@ namespace WpfApp1.EditPages
             try
             {
                 // TurbiditySelectedCascade ve EditPump4Feature'ı senkronize et
-                if (Properties.Settings.Default.TurbiditySelectedCascade == "Feed" &&
-                    Properties.Settings.Default.EditPump4Feature != "Turbidity")
+                if (Properties.Settings.Default.EditTurbidityCascade == 1 &&
+                    Properties.Settings.Default.EditPump4Feature != 2)
                 {
-                    Properties.Settings.Default.EditPump4Feature = "Turbidity";
+                    Properties.Settings.Default.EditPump4Feature = 2;
                     Properties.Settings.Default.Save();
                 }
-                else if (Properties.Settings.Default.TurbiditySelectedCascade != "Feed" &&
-                         Properties.Settings.Default.EditPump4Feature == "Turbidity")
+                else if (Properties.Settings.Default.EditTurbidityCascade != 1 &&
+                         Properties.Settings.Default.EditPump4Feature == 2)
                 {
-                    Properties.Settings.Default.EditPump4Feature = "Feed";
+                    Properties.Settings.Default.EditPump4Feature = 1;
                     Properties.Settings.Default.Save();
                 }
             }
@@ -66,31 +66,32 @@ namespace WpfApp1.EditPages
                 foreach (var btn in tubeTypeButtons.Values) btn.IsChecked = false;
                 foreach (var btn in featureButtons.Values) btn.IsChecked = false;
                 foreach (var btn in displayCountUnitButtons.Values) btn.IsChecked = false;
-        
+
                 // TubeType ayarlarını yükle
-                if (!string.IsNullOrEmpty(Properties.Settings.Default.EditPump4TubeType) && 
-                    tubeTypeButtons.TryGetValue(Properties.Settings.Default.EditPump4TubeType, out var tubeButton))
+                double tubeType = Properties.Settings.Default.EditPump4TubeType;
+                switch (tubeType)
                 {
-                    tubeButton.IsChecked = true;
+                    case 0: Button13.IsChecked = true; break;
+                    case 1: Button14.IsChecked = true; break;
+                    case 2: Button19.IsChecked = true; break;
+                    case 3: Button16.IsChecked = true; break;
+                    case 4: Button25.IsChecked = true; break;
+                    case 5: Button17.IsChecked = true; break;
+                    case 6: Button18.IsChecked = true; break;
+                    default: Button13.IsChecked = true; break;
                 }
-                else if (Button13 != null)
-                {
-                    Button13.IsChecked = true;
-                }
-        
+
                 // DisplayCountUnit ayarlarını yükle
-                if (!string.IsNullOrEmpty(Properties.Settings.Default.EditPump4DisplayCountUnit) && 
-                    displayCountUnitButtons.TryGetValue(Properties.Settings.Default.EditPump4DisplayCountUnit, out var displayButton))
+                double displayUnit = Properties.Settings.Default.EditPump4DisplayCountUnit;
+                switch (displayUnit)
                 {
-                    displayButton.IsChecked = true;
+                    case 0: Count.IsChecked = true; break;
+                    case 1: ml.IsChecked = true; break;
+                    default: ml.IsChecked = true; break; // varsayılan
                 }
-                else if (ml != null)
-                {
-                    ml.IsChecked = true;
-                }
-        
+
                 // Feature ayarlarını yükle - hiç mesaj göstermeden
-                if (Properties.Settings.Default.TurbiditySelectedCascade == "Feed")
+                if (Properties.Settings.Default.EditTurbidityCascade == 1)
                 {
                     // Feed modunda sadece Turbidity geçerli
                     if (Turbidity != null) Turbidity.IsChecked = true;
@@ -99,18 +100,27 @@ namespace WpfApp1.EditPages
                 else
                 {
                     // TurbiditySelectedCascade Feed değilse
-                    string feature = Properties.Settings.Default.EditPump4Feature;
-                    if (!string.IsNullOrEmpty(feature) && feature != "Turbidity" && 
-                        featureButtons.TryGetValue(feature, out var featureButton))
+                    double feature = Properties.Settings.Default.EditPump4Feature;
+                    switch (feature)
                     {
-                        featureButton.IsChecked = true;
-                        lastValidFeatureSelection = feature;
-                    }
-                    else
-                    {
-                        // Varsayılan Feed
-                        if (Feed != null) Feed.IsChecked = true;
-                        lastValidFeatureSelection = "Feed";
+                        case 0: // Balance Feed
+                            if (BalanceFeed != null) BalanceFeed.IsChecked = true;
+                            lastValidFeatureSelection = "Balance Feed";
+                            break;
+                        case 1: // Feed
+                            if (Feed != null) Feed.IsChecked = true;
+                            lastValidFeatureSelection = "Feed";
+                            break;
+                        case 2: // Turbidity (bu durumda geçersiz, çünkü TurbiditySelectedCascade != 1)
+                            // Varsayılan Feed
+                            if (Feed != null) Feed.IsChecked = true;
+                            lastValidFeatureSelection = "Feed";
+                            break;
+                        default:
+                            // Varsayılan Feed
+                            if (Feed != null) Feed.IsChecked = true;
+                            lastValidFeatureSelection = "Feed";
+                            break;
                     }
                 }
             }
@@ -124,7 +134,7 @@ namespace WpfApp1.EditPages
                 Button13.IsChecked = true;
                 ml.IsChecked = true;
         
-                if (Properties.Settings.Default.TurbiditySelectedCascade == "Feed")
+                if (Properties.Settings.Default.EditTurbidityCascade == 1)
                     Turbidity.IsChecked = true;
                 else
                     Feed.IsChecked = true;
@@ -171,12 +181,12 @@ namespace WpfApp1.EditPages
             }
         }
 
-        private void LoadSettings()
-        {
-            LoadButtonGroupSettings(tubeTypeButtons, Properties.Settings.Default.EditPump4TubeType, Button13);
-            LoadButtonGroupSettings(featureButtons, Properties.Settings.Default.EditPump4Feature, BalanceFeed);
-            LoadButtonGroupSettings(displayCountUnitButtons, Properties.Settings.Default.EditPump4DisplayCountUnit, ml);
-        }
+        //private void LoadSettings()
+        //{
+        //    LoadButtonGroupSettings(tubeTypeButtons, Properties.Settings.Default.EditPump4TubeType, Button13);
+        //    LoadButtonGroupSettings(featureButtons, Properties.Settings.Default.EditPump4Feature, BalanceFeed);
+        //    LoadButtonGroupSettings(displayCountUnitButtons, Properties.Settings.Default.EditPump4DisplayCountUnit, ml);
+        //}
 
         private void LoadButtonGroupSettings(Dictionary<string, ToggleButton> buttonDictionary,
                                              string savedSetting,
@@ -196,25 +206,25 @@ namespace WpfApp1.EditPages
                     // İlgili buton featureButtons'da ve geçersiz bir düğme ise, seçilmemeli
                     if (buttonDictionary == featureButtons)
                     {
-                        if (button == Turbidity && Properties.Settings.Default.TurbiditySelectedCascade != "Feed")
+                        if (button == Turbidity && Properties.Settings.Default.EditTurbidityCascade != 1)
                         {
                             // Turbidity seçilemez çünkü TurbiditySelectedCascade "Feed" değil
                             if (defaultButton != null && defaultButton != Turbidity)
                             {
                                 defaultButton.IsChecked = true;
                             }
-                            else if (Feed != null && Properties.Settings.Default.TurbiditySelectedCascade != "Feed")
+                            else if (Feed != null && Properties.Settings.Default.EditTurbidityCascade != 1)
                             {
                                 Feed.IsChecked = true;
                             }
-                            else if (BalanceFeed != null && Properties.Settings.Default.TurbiditySelectedCascade != "Feed")
+                            else if (BalanceFeed != null && Properties.Settings.Default.EditTurbidityCascade != 1)
                             {
                                 BalanceFeed.IsChecked = true;
                             }
                             return;
                         }
                         else if ((button == BalanceFeed || button == Feed) &&
-                                 Properties.Settings.Default.TurbiditySelectedCascade == "Feed")
+                                 Properties.Settings.Default.EditTurbidityCascade == 1)
                         {
                             // Balance Feed veya Feed seçilemez çünkü TurbiditySelectedCascade "Feed"
                             if (Turbidity != null)
@@ -232,7 +242,7 @@ namespace WpfApp1.EditPages
                     // Varsayılan düğmeyi kontrol edin
                     if (buttonDictionary == featureButtons)
                     {
-                        if (defaultButton == Turbidity && Properties.Settings.Default.TurbiditySelectedCascade != "Feed")
+                        if (defaultButton == Turbidity && Properties.Settings.Default.EditTurbidityCascade != 1)
                         {
                             // Turbidity seçilemez, Feed veya Balance Feed'e geç
                             if (Feed != null)
@@ -246,7 +256,7 @@ namespace WpfApp1.EditPages
                             return;
                         }
                         else if ((defaultButton == BalanceFeed || defaultButton == Feed) &&
-                                 Properties.Settings.Default.TurbiditySelectedCascade == "Feed")
+                                 Properties.Settings.Default.EditTurbidityCascade == 1)
                         {
                             // Balance Feed veya Feed seçilemez, Turbidity'e geç
                             if (Turbidity != null)
@@ -270,15 +280,29 @@ namespace WpfApp1.EditPages
         {
             try
             {
-                Properties.Settings.Default.EditPump4TubeType = GetSelectedButtonKey(tubeTypeButtons);
-                Properties.Settings.Default.EditPump4Feature = GetSelectedButtonKey(featureButtons);
-                Properties.Settings.Default.EditPump4DisplayCountUnit = GetSelectedButtonKey(displayCountUnitButtons);
+                // Her şey zaten HandleButtonToggle'da ayarlandı
+                // Sadece tekrar kaydetmek için
                 Properties.Settings.Default.Save();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving settings: {ex.Message}");
             }
+        }
+        private double GetFeatureValue()
+        {
+            if (BalanceFeed?.IsChecked == true) return 0;
+            if (Feed?.IsChecked == true) return 1;
+            if (Turbidity?.IsChecked == true) return 2;
+            return 0; // varsayılan değer
+        }
+
+        // DisplayCount değerini almak için yardımcı metod
+        private double GetDisplayCountValue()
+        {
+            if (Count?.IsChecked == true) return 0;
+            if (ml?.IsChecked == true) return 1;
+            return 0; // varsayılan değer
         }
 
         private string GetSelectedButtonKey(Dictionary<string, ToggleButton> buttonDictionary)
@@ -300,10 +324,57 @@ namespace WpfApp1.EditPages
                     InitializeButtonDictionaries();
                 }
 
-                // Ensure lastValidFeatureSelection is initialized
+                // TubeType buttons handling
+                if (tubeTypeButtons.ContainsValue(clickedButton))
+                {
+                    // Tıklanan butonun değerini belirle
+                    if (clickedButton == Button13) Properties.Settings.Default.EditPump4TubeType = 0;
+                    else if (clickedButton == Button14) Properties.Settings.Default.EditPump4TubeType = 1;
+                    else if (clickedButton == Button19) Properties.Settings.Default.EditPump4TubeType = 2;
+                    else if (clickedButton == Button16) Properties.Settings.Default.EditPump4TubeType = 3;
+                    else if (clickedButton == Button25) Properties.Settings.Default.EditPump4TubeType = 4;
+                    else if (clickedButton == Button17) Properties.Settings.Default.EditPump4TubeType = 5;
+                    else if (clickedButton == Button18) Properties.Settings.Default.EditPump4TubeType = 6;
+
+                    Properties.Settings.Default.Save();
+                }
+
+                // Feature buttons handling - direct update of setting
+                if (featureButtons.ContainsValue(clickedButton))
+                {
+                    if (clickedButton == BalanceFeed && Properties.Settings.Default.EditTurbidityCascade != 1)
+                    {
+                        Properties.Settings.Default.EditPump4Feature = 0;
+                        Properties.Settings.Default.Save();
+                    }
+                    else if (clickedButton == Feed && Properties.Settings.Default.EditTurbidityCascade != 1)
+                    {
+                        Properties.Settings.Default.EditPump4Feature = 1;
+                        Properties.Settings.Default.Save();
+                    }
+                    else if (clickedButton == Turbidity && Properties.Settings.Default.EditTurbidityCascade == 1)
+                    {
+                        Properties.Settings.Default.EditPump4Feature = 2;
+                        Properties.Settings.Default.Save();
+                    }
+                }
+
+                // DisplayCount buttons handling
+                if (displayCountUnitButtons.ContainsValue(clickedButton))
+                {
+                    if (clickedButton == Count) Properties.Settings.Default.EditPump4DisplayCountUnit = 0;
+                    else if (clickedButton == ml) Properties.Settings.Default.EditPump4DisplayCountUnit = 1;
+
+                    Properties.Settings.Default.Save();
+                }
+
+                // Remaining code (validation logic) stays the same
+                // ...
+
+                // Continue with existing code...
                 if (string.IsNullOrEmpty(lastValidFeatureSelection))
                 {
-                    lastValidFeatureSelection = Properties.Settings.Default.TurbiditySelectedCascade == "Feed"
+                    lastValidFeatureSelection = Properties.Settings.Default.EditTurbidityCascade == 1
                         ? "Turbidity"
                         : "Feed";
                 }
@@ -312,7 +383,7 @@ namespace WpfApp1.EditPages
                 if (clickedButton == Turbidity)
                 {
                     // Check if TurbiditySelectedCascade is set to "Feed"
-                    if (Properties.Settings.Default.TurbiditySelectedCascade != "Feed")
+                    if (Properties.Settings.Default.EditTurbidityCascade != 1)
                     {
                         // Prevent the Turbidity button from being checked
                         clickedButton.IsChecked = false;
@@ -332,7 +403,7 @@ namespace WpfApp1.EditPages
                 else if (clickedButton == BalanceFeed || clickedButton == Feed)
                 {
                     // Check if TurbiditySelectedCascade is set to "Feed"
-                    if (Properties.Settings.Default.TurbiditySelectedCascade == "Feed")
+                    if (Properties.Settings.Default.EditTurbidityCascade == 1)
                     {
                         // Prevent the button from being checked
                         clickedButton.IsChecked = false;
@@ -385,7 +456,7 @@ namespace WpfApp1.EditPages
                 }
 
                 // TurbiditySelectedCascade değerine göre geçerli düğmeyi belirle
-                if (Properties.Settings.Default.TurbiditySelectedCascade == "Feed")
+                if (Properties.Settings.Default.EditTurbidityCascade == 1)
                 {
                     // TurbiditySelectedCascade "Feed" ise sadece Turbidity geçerlidir
                     if (Turbidity != null)
@@ -419,7 +490,7 @@ namespace WpfApp1.EditPages
                 MessageBox.Show($"Error restoring selection: {ex.Message}");
 
                 // Hata durumunda varsayılan olarak geri dön
-                if (Properties.Settings.Default.TurbiditySelectedCascade == "Feed" && Turbidity != null)
+                if (Properties.Settings.Default.EditTurbidityCascade == 1 && Turbidity != null)
                 {
                     Turbidity.IsChecked = true;
                     lastValidFeatureSelection = "Turbidity";
@@ -459,12 +530,12 @@ namespace WpfApp1.EditPages
                 if (clickedButton == Turbidity)
                 {
                     // Only check if valid
-                    clickedButton.IsChecked = Properties.Settings.Default.TurbiditySelectedCascade == "Feed";
+                    clickedButton.IsChecked = Properties.Settings.Default.EditTurbidityCascade == 1;
                 }
                 else if (clickedButton == BalanceFeed || clickedButton == Feed)
                 {
                     // Only check if valid
-                    clickedButton.IsChecked = Properties.Settings.Default.TurbiditySelectedCascade != "Feed";
+                    clickedButton.IsChecked = Properties.Settings.Default.EditTurbidityCascade != 1;
                 }
                 else
                 {
@@ -489,9 +560,9 @@ namespace WpfApp1.EditPages
                 if (clickedButton == null) return;
 
                 // Geçersiz ayarlara sahip düğmelerin işaretlerinin kaldırılmasına izin ver
-                if ((clickedButton == Turbidity && Properties.Settings.Default.TurbiditySelectedCascade != "Feed") ||
+                if ((clickedButton == Turbidity && Properties.Settings.Default.EditTurbidityCascade != 1) ||
                     ((clickedButton == BalanceFeed || clickedButton == Feed) &&
-                     Properties.Settings.Default.TurbiditySelectedCascade == "Feed"))
+                     Properties.Settings.Default.EditTurbidityCascade == 1))
                 {
                     return;
                 }
@@ -541,7 +612,7 @@ namespace WpfApp1.EditPages
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
             // Validate Turbidity selection
-            if (Turbidity.IsChecked == true && Properties.Settings.Default.TurbiditySelectedCascade != "Feed")
+            if (Turbidity.IsChecked == true && Properties.Settings.Default.EditTurbidityCascade != 1)
             {
                 MessageBox.Show("To select Turbidity feature, the TurbiditySelectedCascade must be set to 'Feed' in EditTurbidity settings.",
                              "Configuration Required",
@@ -553,7 +624,7 @@ namespace WpfApp1.EditPages
 
             // Validate Balance Feed and Feed selections
             if ((BalanceFeed.IsChecked == true || Feed.IsChecked == true) &&
-                Properties.Settings.Default.TurbiditySelectedCascade == "Feed")
+                Properties.Settings.Default.EditTurbidityCascade == 1)
             {
                 MessageBox.Show("To select Balance Feed or Feed feature, the TurbiditySelectedCascade must not be set to 'Feed' in EditTurbidity settings.",
                              "Configuration Required",

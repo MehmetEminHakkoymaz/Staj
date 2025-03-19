@@ -318,7 +318,7 @@
                     </Border>
                 </ControlTemplate>
             </Button.Template>
-            <TextBlock Text="OPEN AUTO FILL/EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
+            <TextBlock Text="SETTINGS AUTO FILL/EMPTY" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold"/>
         </Button>
 
         <Grid x:Name="RightGrid" Width="341" Height="448" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,-325,0">

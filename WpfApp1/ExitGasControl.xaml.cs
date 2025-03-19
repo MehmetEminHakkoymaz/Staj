@@ -216,6 +216,8 @@ namespace WpfApp1
         {
             CheckEllipsePositionAndSetButtonVisibility(ellipse14, conditionalButtonTurbidity);
             CheckEllipsePositionAndSetButtonVisibility(ellipse15, conditionalButtonBalance);
+
+
         }
 
         public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)

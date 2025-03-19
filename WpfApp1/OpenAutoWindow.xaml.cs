@@ -48,16 +48,16 @@ namespace WpfApp1
         {
             try
             {
-                // Kaydedilen değerleri TextBox'lara yükle
-                Pump1Fill.Text = Properties.Settings.Default.Pump1FillValue.ToString(CultureInfo.CurrentCulture);
-                Pump2Fill.Text = Properties.Settings.Default.Pump2FillValue.ToString(CultureInfo.CurrentCulture);
-                Pump3Fill.Text = Properties.Settings.Default.Pump3FillValue.ToString(CultureInfo.CurrentCulture);
-                Pump4Fill.Text = Properties.Settings.Default.Pump4FillValue.ToString(CultureInfo.CurrentCulture);
+                // Kaydedilen değerleri TextBox'lara yükle - Changed to use AutoPump properties
+                Pump1Fill.Text = Properties.Settings.Default.AutoPump1Fill.ToString(CultureInfo.CurrentCulture);
+                Pump2Fill.Text = Properties.Settings.Default.AutoPump2Fill.ToString(CultureInfo.CurrentCulture);
+                Pump3Fill.Text = Properties.Settings.Default.AutoPump3Fill.ToString(CultureInfo.CurrentCulture);
+                Pump4Fill.Text = Properties.Settings.Default.AutoPump4Fill.ToString(CultureInfo.CurrentCulture);
 
-                Pump1Empty.Text = Properties.Settings.Default.Pump1EmptyValue.ToString(CultureInfo.CurrentCulture);
-                Pump2Empty.Text = Properties.Settings.Default.Pump2EmptyValue.ToString(CultureInfo.CurrentCulture);
-                Pump3Empty.Text = Properties.Settings.Default.Pump3EmptyValue.ToString(CultureInfo.CurrentCulture);
-                Pump4Empty.Text = Properties.Settings.Default.Pump4EmptyValue.ToString(CultureInfo.CurrentCulture);
+                Pump1Empty.Text = Properties.Settings.Default.AutoPump1Empty.ToString(CultureInfo.CurrentCulture);
+                Pump2Empty.Text = Properties.Settings.Default.AutoPump2Empty.ToString(CultureInfo.CurrentCulture);
+                Pump3Empty.Text = Properties.Settings.Default.AutoPump3Empty.ToString(CultureInfo.CurrentCulture);
+                Pump4Empty.Text = Properties.Settings.Default.AutoPump4Empty.ToString(CultureInfo.CurrentCulture);
             }
             catch (Exception ex)
             {
@@ -69,31 +69,31 @@ namespace WpfApp1
         {
             try
             {
-                // Fill değerlerini kaydet
+                // Fill değerlerini kaydet - Changed to use AutoPump properties
                 if (double.TryParse(Pump1Fill.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double p1Fill))
-                    Properties.Settings.Default.Pump1FillValue = p1Fill;
+                    Properties.Settings.Default.AutoPump1Fill = p1Fill;
 
                 if (double.TryParse(Pump2Fill.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double p2Fill))
-                    Properties.Settings.Default.Pump2FillValue = p2Fill;
+                    Properties.Settings.Default.AutoPump2Fill = p2Fill;
 
                 if (double.TryParse(Pump3Fill.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double p3Fill))
-                    Properties.Settings.Default.Pump3FillValue = p3Fill;
+                    Properties.Settings.Default.AutoPump3Fill = p3Fill;
 
                 if (double.TryParse(Pump4Fill.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double p4Fill))
-                    Properties.Settings.Default.Pump4FillValue = p4Fill;
+                    Properties.Settings.Default.AutoPump4Fill = p4Fill;
 
-                // Empty değerlerini kaydet
+                // Empty değerlerini kaydet - Changed to use AutoPump properties
                 if (double.TryParse(Pump1Empty.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double p1Empty))
-                    Properties.Settings.Default.Pump1EmptyValue = p1Empty;
+                    Properties.Settings.Default.AutoPump1Empty = p1Empty;
 
                 if (double.TryParse(Pump2Empty.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double p2Empty))
-                    Properties.Settings.Default.Pump2EmptyValue = p2Empty;
+                    Properties.Settings.Default.AutoPump2Empty = p2Empty;
 
                 if (double.TryParse(Pump3Empty.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double p3Empty))
-                    Properties.Settings.Default.Pump3EmptyValue = p3Empty;
+                    Properties.Settings.Default.AutoPump3Empty = p3Empty;
 
                 if (double.TryParse(Pump4Empty.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double p4Empty))
-                    Properties.Settings.Default.Pump4EmptyValue = p4Empty;
+                    Properties.Settings.Default.AutoPump4Empty = p4Empty;
 
                 // Değişiklikleri kaydet
                 Properties.Settings.Default.Save();

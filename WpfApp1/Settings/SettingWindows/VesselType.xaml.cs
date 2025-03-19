@@ -30,7 +30,7 @@ namespace WpfApp1.Settings.SettingWindows
         private void LoadSavedSelection()
         {
             // Kaydedilen seçimi yükle
-            string savedVessel = Properties.Settings.Default.SelectedVesselType;
+            double savedVessel = Properties.Settings.Default.SelectedVesselType;
 
             // Tüm butonları önce false yap
             ml500.IsChecked = false;
@@ -41,21 +41,21 @@ namespace WpfApp1.Settings.SettingWindows
             // Kaydedilen seçimi uygula
             switch (savedVessel)
             {
-                case "500ml":
+                case 0:
                     ml500.IsChecked = true;
                     break;
-                case "1L":
+                case 1:
                     L1.IsChecked = true;
                     break;
-                case "2L":
+                case 2:
                     L2.IsChecked = true;
                     break;
-                case "3L":
+                case 3:
                     L3.IsChecked = true;
                     break;
                 default:
-                    // Varsayılan olarak 500ml seçili olsun
-                    L3.IsChecked = true;
+                    // Varsayılan olarak 3L seçili olsun
+                    L2.IsChecked = true;
                     break;
             }
         }
@@ -81,11 +81,11 @@ namespace WpfApp1.Settings.SettingWindows
             }
 
             // Seçilen değeri kaydet
-            string selectedValue = "";
-            if (checkedButton == ml500) selectedValue = "500ml";
-            else if (checkedButton == L1) selectedValue = "1L";
-            else if (checkedButton == L2) selectedValue = "2L";
-            else if (checkedButton == L3) selectedValue = "3L";
+            double selectedValue = 3; // Default to 3L
+            if (checkedButton == ml500) selectedValue = 0;
+            else if (checkedButton == L1) selectedValue = 1;
+            else if (checkedButton == L2) selectedValue = 2;
+            else if (checkedButton == L3) selectedValue = 3;
 
             Properties.Settings.Default.SelectedVesselType = selectedValue;
             Properties.Settings.Default.Save();

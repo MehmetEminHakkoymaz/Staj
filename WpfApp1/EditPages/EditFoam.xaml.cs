@@ -55,24 +55,29 @@ namespace WpfApp1.EditPages
         }
         private void LoadLastSelectedMode()
         {
-            string lastSelectedMode = Properties.Settings.Default.FoamSelectedMode;
+            // EditFoamCascade değerini al (0=None, 1=AntiFoam, 2=Level)
+            double cascadeValue = Properties.Settings.Default.EditFoamCascade;
+            string selectedMode;
 
-            // Toggle butonlar arasında bir döngü yap ve son seçilen modu bul
-            foreach (var button in new[] { None, AntiFoam, Level })
+            // Değeri string moda dönüştür
+            switch ((int)cascadeValue)
             {
-                if (button.Name == lastSelectedMode)
-                {
-                    button.IsChecked = true;
-                    LoadContent(button.Name); // İlgili içeriği yükle
+                case 1:
+                    selectedMode = "AntiFoam";
+                    AntiFoam.IsChecked = true;
                     break;
-                }
+                case 2:
+                    selectedMode = "Level";
+                    Level.IsChecked = true;
+                    break;
+                default: // 0 ve diğer durumlar
+                    selectedMode = "None";
+                    None.IsChecked = true;
+                    break;
             }
 
-            // Eğer seçilen mod bulunamazsa varsayılan olarak None seç
-            if (string.IsNullOrEmpty(lastSelectedMode) || lastSelectedMode == "None")
-            {
-                None.IsChecked = true;
-            }
+            // İçeriği yükle
+            LoadContent(selectedMode);
         }
 
         private void LoadContent(string mode)
@@ -82,8 +87,6 @@ namespace WpfApp1.EditPages
             {
                 case "AntiFoam":
                     ParametersContent.ContentTemplate = (DataTemplate)ParametersContent.Resources["AntiFoamTemplate"];
-
-                    // ParametersContent'in içeriği oluşturulduktan sonra TextBox'ları bul ve değerleri yükle
                     ParametersContent.ApplyTemplate();
 
                     var antiFoamContent = ParametersContent.ContentTemplate.LoadContent() as FrameworkElement;
@@ -92,28 +95,25 @@ namespace WpfApp1.EditPages
                         var doseTimeBox = FindChild<TextBox>(antiFoamContent, "AntiFoamDoseTime");
                         if (doseTimeBox != null)
                         {
-                            doseTimeBox.Text = Properties.Settings.Default.AntiFoamDoseTime.ToString(CultureInfo.CurrentCulture);
+                            doseTimeBox.Text = Properties.Settings.Default.EditFoamDoseTime.ToString(CultureInfo.CurrentCulture);
                             doseTimeBox.GotFocus += TextBox_GotFocus;
                             doseTimeBox.PreviewTextInput += TextBox_PreviewTextInput;
-                            doseTimeBox.TextChanged += TextBox_TextChanged;
                         }
 
                         var waitTimeBox = FindChild<TextBox>(antiFoamContent, "AntiFoamWaitTime");
                         if (waitTimeBox != null)
                         {
-                            waitTimeBox.Text = Properties.Settings.Default.AntiFoamWaitTime.ToString(CultureInfo.CurrentCulture);
+                            waitTimeBox.Text = Properties.Settings.Default.EditFoamWaitTime.ToString(CultureInfo.CurrentCulture);
                             waitTimeBox.GotFocus += TextBox_GotFocus;
                             waitTimeBox.PreviewTextInput += TextBox_PreviewTextInput;
-                            waitTimeBox.TextChanged += TextBox_TextChanged;
                         }
 
                         var alarmTimeBox = FindChild<TextBox>(antiFoamContent, "AntiFoamAlarmTime");
                         if (alarmTimeBox != null)
                         {
-                            alarmTimeBox.Text = Properties.Settings.Default.AntiFoamAlarmTime.ToString(CultureInfo.CurrentCulture);
+                            alarmTimeBox.Text = Properties.Settings.Default.EditFoamAlarmTime.ToString(CultureInfo.CurrentCulture);
                             alarmTimeBox.GotFocus += TextBox_GotFocus;
                             alarmTimeBox.PreviewTextInput += TextBox_PreviewTextInput;
-                            alarmTimeBox.TextChanged += TextBox_TextChanged;
                         }
 
                         ParametersContent.Content = antiFoamContent;
@@ -122,8 +122,6 @@ namespace WpfApp1.EditPages
 
                 case "Level":
                     ParametersContent.ContentTemplate = (DataTemplate)ParametersContent.Resources["LevelTemplate"];
-
-                    // ParametersContent'in içeriği oluşturulduktan sonra TextBox'ları bul ve değerleri yükle
                     ParametersContent.ApplyTemplate();
 
                     var levelContent = ParametersContent.ContentTemplate.LoadContent() as FrameworkElement;
@@ -132,28 +130,25 @@ namespace WpfApp1.EditPages
                         var doseTimeBox = FindChild<TextBox>(levelContent, "LevelDoseTime");
                         if (doseTimeBox != null)
                         {
-                            doseTimeBox.Text = Properties.Settings.Default.LevelDoseTime.ToString(CultureInfo.CurrentCulture);
+                            doseTimeBox.Text = Properties.Settings.Default.EditFoamDoseTime.ToString(CultureInfo.CurrentCulture);
                             doseTimeBox.GotFocus += TextBox_GotFocus;
                             doseTimeBox.PreviewTextInput += TextBox_PreviewTextInput;
-                            doseTimeBox.TextChanged += TextBox_TextChanged;
                         }
 
                         var waitTimeBox = FindChild<TextBox>(levelContent, "LevelWaitTime");
                         if (waitTimeBox != null)
                         {
-                            waitTimeBox.Text = Properties.Settings.Default.LevelWaitTime.ToString(CultureInfo.CurrentCulture);
+                            waitTimeBox.Text = Properties.Settings.Default.EditFoamWaitTime.ToString(CultureInfo.CurrentCulture);
                             waitTimeBox.GotFocus += TextBox_GotFocus;
                             waitTimeBox.PreviewTextInput += TextBox_PreviewTextInput;
-                            waitTimeBox.TextChanged += TextBox_TextChanged;
                         }
 
                         var alarmTimeBox = FindChild<TextBox>(levelContent, "LevelAlarmTime");
                         if (alarmTimeBox != null)
                         {
-                            alarmTimeBox.Text = Properties.Settings.Default.LevelAlarmTime.ToString(CultureInfo.CurrentCulture);
+                            alarmTimeBox.Text = Properties.Settings.Default.EditFoamAlarmTime.ToString(CultureInfo.CurrentCulture);
                             alarmTimeBox.GotFocus += TextBox_GotFocus;
                             alarmTimeBox.PreviewTextInput += TextBox_PreviewTextInput;
-                            alarmTimeBox.TextChanged += TextBox_TextChanged;
                         }
 
                         ParametersContent.Content = levelContent;
@@ -173,20 +168,21 @@ namespace WpfApp1.EditPages
         {
             try
             {
-                // Kaydedilmiş modu yükle
-                string savedMode = Properties.Settings.Default.FoamSelectedMode;
-                switch (savedMode)
+                // EditFoamCascade değerine göre doğru içeriği yükle
+                double cascadeValue = Properties.Settings.Default.EditFoamCascade;
+
+                switch ((int)cascadeValue)
                 {
-                    case "None":
+                    case 0:
                         None.IsChecked = true;
                         break;
-                    case "AntiFoam":
+                    case 1:
                         AntiFoam.IsChecked = true;
-                        LoadAntiFoamValues();
+                        LoadFoamValues("AntiFoam");
                         break;
-                    case "Level":
+                    case 2:
                         Level.IsChecked = true;
-                        LoadLevelValues();
+                        LoadFoamValues("Level");
                         break;
                 }
             }
@@ -196,119 +192,27 @@ namespace WpfApp1.EditPages
             }
         }
 
-        private void LoadAntiFoamValues()
-        {
-            try
-            {
-                if (ParametersContent.ContentTemplate == null)
-                {
-                    ParametersContent.ContentTemplate = (DataTemplate)ParametersContent.Resources["AntiFoamTemplate"];
-                }
-
-                var content = ParametersContent.ContentTemplate.LoadContent() as FrameworkElement;
-                if (content != null)
-                {
-                    ParametersContent.Content = content;  // ContentTemplate'i ayarla
-
-                    // Visual tree oluştuktan sonra kontrolleri bul ve event'leri bağla
-                    Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
-                    {
-                        var doseTime = FindChild<TextBox>(ParametersContent, "AntiFoamDoseTime");
-                        var waitTime = FindChild<TextBox>(ParametersContent, "AntiFoamWaitTime");
-                        var alarmTime = FindChild<TextBox>(ParametersContent, "AntiFoamAlarmTime");
-
-                        if (doseTime != null)
-                        {
-                            doseTime.GotFocus += TextBox_GotFocus;
-                            doseTime.Text = Properties.Settings.Default.AntiFoamDoseTime.ToString();
-                        }
-                        if (waitTime != null)
-                        {
-                            waitTime.GotFocus += TextBox_GotFocus;
-                            waitTime.Text = Properties.Settings.Default.AntiFoamWaitTime.ToString();
-                        }
-                        if (alarmTime != null)
-                        {
-                            alarmTime.GotFocus += TextBox_GotFocus;
-                            alarmTime.Text = Properties.Settings.Default.AntiFoamAlarmTime.ToString();
-                        }
-                    }));
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading AntiFoam values: {ex.Message}");
-            }
-        }
-
-        private void LoadLevelValues()
-        {
-            try
-            {
-                if (ParametersContent.ContentTemplate == null)
-                {
-                    ParametersContent.ContentTemplate = (DataTemplate)ParametersContent.Resources["LevelTemplate"];
-                }
-
-                var content = ParametersContent.ContentTemplate.LoadContent() as FrameworkElement;
-                if (content != null)
-                {
-                    ParametersContent.Content = null;
-                    ParametersContent.Content = content;
-
-                    Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
-                    {
-                        var doseTime = FindChild<TextBox>(ParametersContent, "LevelDoseTime");
-                        var waitTime = FindChild<TextBox>(ParametersContent, "LevelWaitTime");
-                        var alarmTime = FindChild<TextBox>(ParametersContent, "LevelAlarmTime");
-
-                        if (doseTime != null)
-                        {
-                            doseTime.Clear();
-                            doseTime.Text = Properties.Settings.Default.LevelDoseTime.ToString();
-                            doseTime.GotFocus += TextBox_GotFocus;  // Event handler'ı ekle
-                        }
-                        if (waitTime != null)
-                        {
-                            waitTime.Clear();
-                            waitTime.Text = Properties.Settings.Default.LevelWaitTime.ToString();
-                            waitTime.GotFocus += TextBox_GotFocus;  // Event handler'ı ekle
-                        }
-                        if (alarmTime != null)
-                        {
-                            alarmTime.Clear();
-                            alarmTime.Text = Properties.Settings.Default.LevelAlarmTime.ToString();
-                            alarmTime.GotFocus += TextBox_GotFocus;  // Event handler'ı ekle
-                        }
-                    }));
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading Level values: {ex.Message}");
-            }
-        }
 
 
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Seçili modu kaydet
+                // Seçili moda göre EditFoamCascade değerini ayarla
                 if (None.IsChecked == true)
                 {
-                    Properties.Settings.Default.FoamSelectedMode = "None";
-                    Properties.Settings.Default.EditPump3Feature = "Feed";
+                    Properties.Settings.Default.EditFoamCascade = 0;
+                    Properties.Settings.Default.EditPump3Feature = 1; // EditPump3Feature double tipinde
                 }
                 else if (AntiFoam.IsChecked == true)
                 {
-                    Properties.Settings.Default.FoamSelectedMode = "AntiFoam";
-                    SaveAntiFoamValues();
+                    Properties.Settings.Default.EditFoamCascade = 1;
+                    SaveFoamValues("AntiFoam");
                 }
                 else if (Level.IsChecked == true)
                 {
-                    Properties.Settings.Default.FoamSelectedMode = "Level";
-                    SaveLevelValues();
+                    Properties.Settings.Default.EditFoamCascade = 2;
+                    SaveFoamValues("Level");
                 }
 
                 Properties.Settings.Default.Save();
@@ -320,75 +224,6 @@ namespace WpfApp1.EditPages
             }
         }
 
-        private void SaveAntiFoamValues()
-        {
-            try
-            {
-                var container = VisualTreeHelper.GetChild(ParametersContent, 0) as FrameworkElement;
-                if (container != null)
-                {
-                    var doseTime = FindChild<TextBox>(container, "AntiFoamDoseTime");
-                    var waitTime = FindChild<TextBox>(container, "AntiFoamWaitTime");
-                    var alarmTime = FindChild<TextBox>(container, "AntiFoamAlarmTime");
-
-                    // int.TryParse yerine double.TryParse kullanın
-                    if (doseTime != null && double.TryParse(doseTime.Text, NumberStyles.Any,
-                        CultureInfo.CurrentCulture, out double doseVal))
-                    {
-                        Properties.Settings.Default.AntiFoamDoseTime = doseVal;
-                    }
-                    if (waitTime != null && double.TryParse(waitTime.Text, NumberStyles.Any,
-                        CultureInfo.CurrentCulture, out double waitVal))
-                    {
-                        Properties.Settings.Default.AntiFoamWaitTime = waitVal;
-                    }
-                    if (alarmTime != null && double.TryParse(alarmTime.Text, NumberStyles.Any,
-                        CultureInfo.CurrentCulture, out double alarmVal))
-                    {
-                        Properties.Settings.Default.AntiFoamAlarmTime = alarmVal;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving AntiFoam values: {ex.Message}");
-            }
-        }
-
-        private void SaveLevelValues()
-        {
-            try
-            {
-                var container = VisualTreeHelper.GetChild(ParametersContent, 0) as FrameworkElement;
-                if (container != null)
-                {
-                    var doseTime = FindChild<TextBox>(container, "LevelDoseTime");
-                    var waitTime = FindChild<TextBox>(container, "LevelWaitTime");
-                    var alarmTime = FindChild<TextBox>(container, "LevelAlarmTime");
-
-                    // int.TryParse yerine double.TryParse kullanın
-                    if (doseTime != null && double.TryParse(doseTime.Text, NumberStyles.Any,
-                        CultureInfo.CurrentCulture, out double doseVal))
-                    {
-                        Properties.Settings.Default.LevelDoseTime = doseVal;
-                    }
-                    if (waitTime != null && double.TryParse(waitTime.Text, NumberStyles.Any,
-                        CultureInfo.CurrentCulture, out double waitVal))
-                    {
-                        Properties.Settings.Default.LevelWaitTime = waitVal;
-                    }
-                    if (alarmTime != null && double.TryParse(alarmTime.Text, NumberStyles.Any,
-                        CultureInfo.CurrentCulture, out double alarmVal))
-                    {
-                        Properties.Settings.Default.LevelAlarmTime = alarmVal;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving Level values: {ex.Message}");
-            }
-        }
         // LogicalTreeHelper için yardımcı extension metod
         private static IEnumerable<T> FindLogicalChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
@@ -427,8 +262,19 @@ namespace WpfApp1.EditPages
                 // Seçilen düğmenin adını al
                 string selectedMode = toggleButton.Name;
 
-                // Seçilen modu kaydet
-                Properties.Settings.Default.FoamSelectedMode = selectedMode;
+                // EditFoamCascade değerini seçilen moda göre ayarla
+                switch (selectedMode)
+                {
+                    case "None":
+                        Properties.Settings.Default.EditFoamCascade = 0;
+                        break;
+                    case "AntiFoam":
+                        Properties.Settings.Default.EditFoamCascade = 1;
+                        break;
+                    case "Level":
+                        Properties.Settings.Default.EditFoamCascade = 2;
+                        break;
+                }
 
                 // İlgili içeriği yükle
                 LoadContent(selectedMode);
@@ -464,14 +310,7 @@ namespace WpfApp1.EditPages
 
             return foundChild;
         }
-        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            // Eğer tüm butonlar unchecked ise, varsayılan olarak None'ı seç
-            if (!None.IsChecked.Value && !AntiFoam.IsChecked.Value && !Level.IsChecked.Value)
-            {
-                None.IsChecked = true;
-            }
-        }
+
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             // Sadece rakam, nokta ve virgüle izin ver
@@ -488,13 +327,7 @@ namespace WpfApp1.EditPages
 
             e.Handled = !isValid;
         }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (sender is TextBox textBox)
-            {
-                SaveTextBoxValue(textBox);
-            }
-        }
+
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             activeTextBox = sender as TextBox;
@@ -520,44 +353,6 @@ namespace WpfApp1.EditPages
             }
         }
 
-        private void SaveTextBoxValue(TextBox textBox)
-        {
-            try
-            {
-                string normalizedText = textBox.Text.Replace(',', '.');
-
-                if (double.TryParse(normalizedText, NumberStyles.Any,
-                                  CultureInfo.InvariantCulture, out double value))
-                {
-                    // TextBox'ın adına göre değeri ilgili ayara kaydet
-                    switch (textBox.Name)
-                    {
-                        case "AntiFoamDoseTime":
-                            Properties.Settings.Default.AntiFoamDoseTime = value;
-                            break;
-                        case "AntiFoamWaitTime":
-                            Properties.Settings.Default.AntiFoamWaitTime = value;
-                            break;
-                        case "AntiFoamAlarmTime":
-                            Properties.Settings.Default.AntiFoamAlarmTime = value;
-                            break;
-                        case "LevelDoseTime":
-                            Properties.Settings.Default.LevelDoseTime = value;
-                            break;
-                        case "LevelWaitTime":
-                            Properties.Settings.Default.LevelWaitTime = value;
-                            break;
-                        case "LevelAlarmTime":
-                            Properties.Settings.Default.LevelAlarmTime = value;
-                            break;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving value: {ex.Message}");
-            }
-        }
         private void KeyPadControl_ValueSelected(object sender, string value)
         {
             if (activeTextBox != null)
@@ -599,6 +394,89 @@ namespace WpfApp1.EditPages
                 }
 
                 KeypadPopup.IsOpen = false;
+            }
+        }
+
+        private void LoadFoamValues(string mode)
+        {
+            try
+            {
+                string templateName = mode == "AntiFoam" ? "AntiFoamTemplate" : "LevelTemplate";
+                string prefix = mode == "AntiFoam" ? "AntiFoam" : "Level";
+
+                if (ParametersContent.ContentTemplate == null)
+                {
+                    ParametersContent.ContentTemplate = (DataTemplate)ParametersContent.Resources[templateName];
+                }
+
+                var content = ParametersContent.ContentTemplate.LoadContent() as FrameworkElement;
+                if (content != null)
+                {
+                    ParametersContent.Content = content;
+
+                    Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
+                    {
+                        var doseTime = FindChild<TextBox>(ParametersContent, $"{prefix}DoseTime");
+                        var waitTime = FindChild<TextBox>(ParametersContent, $"{prefix}WaitTime");
+                        var alarmTime = FindChild<TextBox>(ParametersContent, $"{prefix}AlarmTime");
+
+                        if (doseTime != null)
+                        {
+                            doseTime.GotFocus += TextBox_GotFocus;
+                            doseTime.Text = Properties.Settings.Default.EditFoamDoseTime.ToString();
+                        }
+                        if (waitTime != null)
+                        {
+                            waitTime.GotFocus += TextBox_GotFocus;
+                            waitTime.Text = Properties.Settings.Default.EditFoamWaitTime.ToString();
+                        }
+                        if (alarmTime != null)
+                        {
+                            alarmTime.GotFocus += TextBox_GotFocus;
+                            alarmTime.Text = Properties.Settings.Default.EditFoamAlarmTime.ToString();
+                        }
+                    }));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading {mode} values: {ex.Message}");
+            }
+        }
+
+        private void SaveFoamValues(string mode)
+        {
+            try
+            {
+                var container = VisualTreeHelper.GetChild(ParametersContent, 0) as FrameworkElement;
+                if (container != null)
+                {
+                    string prefix = mode == "AntiFoam" ? "AntiFoam" : "Level";
+
+                    var doseTime = FindChild<TextBox>(container, $"{prefix}DoseTime");
+                    var waitTime = FindChild<TextBox>(container, $"{prefix}WaitTime");
+                    var alarmTime = FindChild<TextBox>(container, $"{prefix}AlarmTime");
+
+                    if (doseTime != null && double.TryParse(doseTime.Text, NumberStyles.Any,
+                        CultureInfo.CurrentCulture, out double doseVal))
+                    {
+                        Properties.Settings.Default.EditFoamDoseTime = doseVal;
+                    }
+                    if (waitTime != null && double.TryParse(waitTime.Text, NumberStyles.Any,
+                        CultureInfo.CurrentCulture, out double waitVal))
+                    {
+                        Properties.Settings.Default.EditFoamWaitTime = waitVal;
+                    }
+                    if (alarmTime != null && double.TryParse(alarmTime.Text, NumberStyles.Any,
+                        CultureInfo.CurrentCulture, out double alarmVal))
+                    {
+                        Properties.Settings.Default.EditFoamAlarmTime = alarmVal;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving {mode} values: {ex.Message}");
             }
         }
 

@@ -463,21 +463,23 @@ namespace WpfApp1
         {
             if (FindName("AirFlowTargetBorder") is Border airFlowBorder)
             {
-                airFlowBorder.Visibility = Properties.Settings.Default.HideAirFlowBorder ?
-                    Visibility.Collapsed : Visibility.Visible;
+                // AirFlowTargetBorder=0 ise visible, AirFlowTargetBorder=1 ise collapsed
+                airFlowBorder.Visibility = Properties.Settings.Default.AirFlowTargetBorder == 0 ?
+                    Visibility.Visible : Visibility.Collapsed;
             }
 
             if (FindName("Gas2FlowTargetBorder") is Border gas2FlowBorder)
             {
-                gas2FlowBorder.Visibility = Properties.Settings.Default.HideGas2FlowBorder ?
-                    Visibility.Collapsed : Visibility.Visible;
+                // Gas2TargetBorder=0 ise visible, Gas2TargetBorder=1 ise collapsed
+                gas2FlowBorder.Visibility = Properties.Settings.Default.Gas2TargetBorder == 0 ?
+                    Visibility.Visible : Visibility.Collapsed;
             }
         }
 
         private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // Eğer ilgili ayarlar değiştiyse border görünürlüklerini güncelle
-            if (e.PropertyName == "HideAirFlowBorder")
+            if (e.PropertyName == "AirFlowTargetBorder" || e.PropertyName == "Gas2TargetBorder")
             {
                 UpdateBorderVisibilities();
             }
@@ -506,7 +508,7 @@ namespace WpfApp1
         private void ellipse12_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
-            if (Properties.Settings.Default.RedoxSelectedCascade == "AirFlow")
+            if (Properties.Settings.Default.EditRedoxCascade == 2)
             {
                 // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
                 MessageBox.Show("pO2 cascade selection is required. Please go to EditpO2 settings and select a cascade option.",
@@ -523,7 +525,7 @@ namespace WpfApp1
         private void ellipse13_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
-            if (Properties.Settings.Default.RedoxSelectedCascade == "Gas2")
+            if (Properties.Settings.Default.EditRedoxCascade == 1)
             {
                 // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
                 MessageBox.Show("pO2 cascade selection is required. Please go to EditpO2 settings and select a cascade option.",
@@ -533,7 +535,7 @@ namespace WpfApp1
                 return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
             }
 
-            if (Properties.Settings.Default.RedoxSelectedCascade == "TotalFlow")
+            if (Properties.Settings.Default.EditRedoxCascade == 3)
             {
                 // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
                 MessageBox.Show("pO2 cascade selection is required. Please go to EditpO2 settings and select a cascade option.",
@@ -553,7 +555,7 @@ namespace WpfApp1
         }
         private void ellipse10_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (Properties.Settings.Default.TurbiditySelectedCascade == "None")
+            if (Properties.Settings.Default.EditTurbidityCascade == 0)
             {
                 // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
                 MessageBox.Show("Turbidity selection is required. Please go to EditTurbidity settings and select an option.",

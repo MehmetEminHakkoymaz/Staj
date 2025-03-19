@@ -18,9 +18,6 @@ using System.Reflection.Metadata;
 
 namespace WpfApp1.EditPages
 {
-    /// <summary>
-    /// Interaction logic for EditpH.xaml
-    /// </summary>
     public partial class EditpH : Window
     {
         private DispatcherTimer clockTimer;
@@ -51,13 +48,13 @@ namespace WpfApp1.EditPages
             this.Topmost = true;
         }
 
-        #region Initialization Methods
+        // 1. InitializeTextBoxLimits metodunu güncelleme
         private Dictionary<string, (double Min, double Max)> InitializeTextBoxLimits()
         {
             return new Dictionary<string, (double Min, double Max)>
             {
-                { "pHBaseBase", (0, 14) },
-                { "pHAcidAcid", (0, 14) },
+                { "pHBaseBase", (0, 14) },     // TextBox adları değişmediği için bunları korumamız gerekiyor
+                { "pHAcidAcid", (0, 14) },     // Çünkü XAML'da bu adlarla tanımlanmışlar
                 { "pHBaseAcidBase", (0, 14) },
                 { "pHBaseAcidAcid", (0, 14) },
                 { "pHP", (0, 1000) },
@@ -73,13 +70,13 @@ namespace WpfApp1.EditPages
         {
             try
             {
-                // PID değerlerini ayarla
-                pHP.Text = Properties.Settings.Default.pHP.ToString(CultureInfo.CurrentCulture);
-                pHI.Text = Properties.Settings.Default.pHI.ToString(CultureInfo.CurrentCulture);
-                pHILimit.Text = Properties.Settings.Default.pHILimit.ToString(CultureInfo.CurrentCulture);
-                pHDeadband.Text = Properties.Settings.Default.pHDeadband.ToString(CultureInfo.CurrentCulture);
-                pHNegFactor.Text = Properties.Settings.Default.pHNegFactor.ToString(CultureInfo.CurrentCulture);
-                pHEvalTime.Text = Properties.Settings.Default.pHEvalTime.ToString(CultureInfo.CurrentCulture);
+                // PID değerlerini ayarla - using EditpH variables
+                pHP.Text = Properties.Settings.Default.EditpHP.ToString(CultureInfo.CurrentCulture);
+                pHI.Text = Properties.Settings.Default.EditpHI.ToString(CultureInfo.CurrentCulture);
+                pHILimit.Text = Properties.Settings.Default.EditpHILimit.ToString(CultureInfo.CurrentCulture);
+                pHDeadband.Text = Properties.Settings.Default.EditpHDeadband.ToString(CultureInfo.CurrentCulture);
+                pHNegFactor.Text = Properties.Settings.Default.EditpHNegFactor.ToString(CultureInfo.CurrentCulture);
+                pHEvalTime.Text = Properties.Settings.Default.EditpHEvalTime.ToString(CultureInfo.CurrentCulture);
 
                 // PID TextBox'larına event'leri bağla
                 RegisterPIDTextBoxEvents();
@@ -131,33 +128,36 @@ namespace WpfApp1.EditPages
         {
             try
             {
-                // En son seçilen cascade değerini oku
-                string lastSelected = Properties.Settings.Default.LastSelectedpHCascadeItem;
+                // Cascade değerini sayısal değerden oku
+                double cascadeValue = Properties.Settings.Default.EditpHCascade;
 
-                if (!string.IsNullOrEmpty(lastSelected))
+                // Sayısal değere göre ComboBox'ta öğeyi seç
+                switch (cascadeValue)
                 {
-                    // ComboBox'ta bu değeri bul ve seç
-                    foreach (ComboBoxItem item in contentComboBox.Items)
-                    {
-                        if (item.Content.ToString() == lastSelected)
-                        {
-                            contentComboBox.SelectedItem = item;
-                            return; // İşlem tamamlandı
-                        }
-                    }
+                    case 0: // None
+                        contentComboBox.SelectedIndex = 0;
+                        break;
+                    case 1: // Base
+                        contentComboBox.SelectedIndex = 1;
+                        break;
+                    case 2: // Acid
+                        contentComboBox.SelectedIndex = 2;
+                        break;
+                    case 3: // Base->Acid
+                        contentComboBox.SelectedIndex = 3;
+                        break;
+                    default:
+                        contentComboBox.SelectedIndex = 0; // Varsayılan olarak None seç
+                        break;
                 }
-
-                // Eğer son seçim bulunamadı veya yoksa, varsayılan olarak ilk öğeyi seç
-                contentComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading last selected cascade: {ex.Message}");
-                // Hata durumunda da varsayılan seçimi yap
+                // Hata durumunda varsayılan seçimi yap
                 contentComboBox.SelectedIndex = 0;
             }
         }
-        #endregion
 
         #region Event Handlers
         private void ClockTimer_Tick(object sender, EventArgs e)
@@ -185,31 +185,39 @@ namespace WpfApp1.EditPages
                 if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
                 {
                     string selectedContent = selectedItem.Content.ToString();
-                    Properties.Settings.Default.LastSelectedpHCascadeItem = selectedContent;
 
-                    // Check again if "Acid" is selected to ensure settings are set
-                    if (selectedContent == "Acid")
+                    // Seçili içeriğe göre sayısal değeri ayarla
+                    switch (selectedContent)
                     {
-                        Properties.Settings.Default.HidePump1Border = true;
-                        Properties.Settings.Default.EditPump1Feature = "Acid";
-                    }
-                    if (selectedContent == "Base")
-                    {
-                        Properties.Settings.Default.HidePump2Border = true;
-                        Properties.Settings.Default.EditPump2Feature = "Base";
-                    }
-
-                    if (selectedContent == "Base->Acid")
-                    {
-                        Properties.Settings.Default.HidePump1Border = true;
-                        Properties.Settings.Default.EditPump1Feature = "Acid";
-                        Properties.Settings.Default.HidePump2Border = true;
-                        Properties.Settings.Default.EditPump2Feature = "Base";
+                        case "None":
+                            Properties.Settings.Default.EditpHCascade = 0;
+                            break;
+                        case "Base":
+                            Properties.Settings.Default.EditpHCascade = 1;
+                            // HidePump2Border yerine Pump2TargetBorder kullan
+                            Properties.Settings.Default.Pump2TargetBorder = 1; // Collapsed olması için 1
+                            Properties.Settings.Default.EditPump2Feature = 0;
+                            break;
+                        case "Acid":
+                            Properties.Settings.Default.EditpHCascade = 2;
+                            // HidePump1Border yerine Pump1TargetBorder kullan
+                            Properties.Settings.Default.Pump1TargetBorder = 1; // Collapsed olması için 1
+                            Properties.Settings.Default.EditPump1Feature = 0;
+                            break;
+                        case "Base->Acid":
+                            Properties.Settings.Default.EditpHCascade = 3;
+                            // HidePump1Border yerine Pump1TargetBorder kullan
+                            Properties.Settings.Default.Pump1TargetBorder = 1; // Collapsed olması için 1
+                            Properties.Settings.Default.EditPump1Feature = 0;
+                            // HidePump2Border yerine Pump2TargetBorder kullan
+                            Properties.Settings.Default.Pump2TargetBorder = 1; // Collapsed olması için 1
+                            Properties.Settings.Default.EditPump2Feature = 0;
+                            break;
                     }
                 }
 
                 SaveCurrentValues();
-                SavePIDSettings(); // Bu metot eklenmeli
+                SavePIDSettings();
                 Properties.Settings.Default.Save();
                 this.Close();
             }
@@ -225,37 +233,37 @@ namespace WpfApp1.EditPages
                 // P değeri
                 if (double.TryParse(pHP.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pValue))
                 {
-                    Properties.Settings.Default.pHP = pValue;
+                    Properties.Settings.Default.EditpHP = pValue;
                 }
 
                 // I değeri
                 if (double.TryParse(pHI.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double iValue))
                 {
-                    Properties.Settings.Default.pHI = iValue;
+                    Properties.Settings.Default.EditpHI = iValue;
                 }
 
                 // ILimit değeri
                 if (double.TryParse(pHILimit.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double iLimitValue))
                 {
-                    Properties.Settings.Default.pHILimit = iLimitValue;
+                    Properties.Settings.Default.EditpHILimit = iLimitValue;
                 }
 
                 // Deadband değeri
                 if (double.TryParse(pHDeadband.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double deadbandValue))
                 {
-                    Properties.Settings.Default.pHDeadband = deadbandValue;
+                    Properties.Settings.Default.EditpHDeadband = deadbandValue;
                 }
 
                 // Negfactor değeri
                 if (double.TryParse(pHNegFactor.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double negfactorValue))
                 {
-                    Properties.Settings.Default.pHNegFactor = negfactorValue;
+                    Properties.Settings.Default.EditpHNegFactor = negfactorValue;
                 }
 
                 // EvalTime değeri
                 if (double.TryParse(pHEvalTime.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double evalTimeValue))
                 {
-                    Properties.Settings.Default.pHEvalTime = evalTimeValue;
+                    Properties.Settings.Default.EditpHEvalTime = evalTimeValue;
                 }
             }
             catch (Exception ex)
@@ -263,41 +271,49 @@ namespace WpfApp1.EditPages
                 MessageBox.Show($"Error saving PID settings: {ex.Message}");
             }
         }
-        private void EditpH_Loaded(object sender, RoutedEventArgs e)
+private void EditpH_Loaded(object sender, RoutedEventArgs e)
+{
+    try
+    {
+        // Cascade değerine göre ayarları yap
+        double cascadeValue = Properties.Settings.Default.EditpHCascade;
+
+        switch (cascadeValue)
         {
-            try
-            {
-                string savedCascade = Properties.Settings.Default.pHSelectedCascade;
-                contentComboBox.SelectedValue = savedCascade;
-
-                // If saved cascade is "Acid", set corresponding settings
-                if (savedCascade == "Acid" || Properties.Settings.Default.LastSelectedpHCascadeItem == "Acid")
-                {
-                    Properties.Settings.Default.HidePump1Border = true;
-                    Properties.Settings.Default.EditPump1Feature = "Acid";
-                    Properties.Settings.Default.Save();
-                }
-                if (savedCascade == "Base" || Properties.Settings.Default.LastSelectedpHCascadeItem == "Base")
-                {
-                    Properties.Settings.Default.HidePump2Border = true;
-                    Properties.Settings.Default.EditPump2Feature = "Base";
-                    Properties.Settings.Default.Save();
-                }
-                if (savedCascade == "Base->Acid" || Properties.Settings.Default.LastSelectedpHCascadeItem == "Base->Acid")
-                {
-                    Properties.Settings.Default.HidePump1Border = true;
-                    Properties.Settings.Default.EditPump1Feature = "Acid";
-                    Properties.Settings.Default.HidePump2Border = true;
-                    Properties.Settings.Default.EditPump2Feature = "Base";
-                    Properties.Settings.Default.Save();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading saved settings: {ex.Message}");
-            }
+            case 1: // Base
+                contentComboBox.SelectedIndex = 1;
+                // HidePump2Border yerine Pump2TargetBorder kullan
+                Properties.Settings.Default.Pump2TargetBorder = 1; // Collapsed olması için 1
+                Properties.Settings.Default.EditPump2Feature = 0;
+                Properties.Settings.Default.Save();
+                break;
+            case 2: // Acid
+                contentComboBox.SelectedIndex = 2;
+                // HidePump1Border yerine Pump1TargetBorder kullan
+                Properties.Settings.Default.Pump1TargetBorder = 1; // Collapsed olması için 1
+                Properties.Settings.Default.EditPump1Feature = 0;
+                Properties.Settings.Default.Save();
+                break;
+            case 3: // Base->Acid
+                contentComboBox.SelectedIndex = 3;
+                // HidePump1Border yerine Pump1TargetBorder kullan
+                Properties.Settings.Default.Pump1TargetBorder = 1; // Collapsed olması için 1
+                Properties.Settings.Default.EditPump1Feature = 0;
+                // HidePump2Border yerine Pump2TargetBorder kullan
+                Properties.Settings.Default.Pump2TargetBorder = 1; // Collapsed olması için 1
+                Properties.Settings.Default.EditPump2Feature = 0;
+                Properties.Settings.Default.Save();
+                break;
+            default: // None veya geçersiz değer
+                contentComboBox.SelectedIndex = 0;
+                break;
         }
-
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show($"Error loading saved settings: {ex.Message}");
+    }
+}
         private void InitializeComboBox()
         {
             // ComboBox'a SelectionChanged event'ini ekle
@@ -307,36 +323,45 @@ namespace WpfApp1.EditPages
             contentComboBox.SelectedIndex = 0;
         }
 
+        // 8. ContentComboBox_SelectionChanged metodunda TextBox'lara atanan değerleri güncelleme
         private void ContentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
             {
                 string content = selectedItem.Content.ToString();
-                Properties.Settings.Default.pHSelectedCascade = content;
 
-                // Check if "Acid" is selected and set corresponding settings
-                if (content == "Acid")
+                // Cascade değerini içeriğe göre ayarla
+                switch (content)
                 {
-                    Properties.Settings.Default.HidePump1Border = true;
-                    Properties.Settings.Default.EditPump1Feature = "Acid";
-                    Properties.Settings.Default.Save(); // Save changes immediately
+                    case "None":
+                        Properties.Settings.Default.EditpHCascade = 0;
+                        break;
+                    case "Base":
+                        Properties.Settings.Default.EditpHCascade = 1;
+                        // HidePump2Border yerine Pump2TargetBorder kullan
+                        Properties.Settings.Default.Pump2TargetBorder = 1; // Collapsed olması için 1
+                        Properties.Settings.Default.EditPump2Feature = 0;
+                        break;
+                    case "Acid":
+                        Properties.Settings.Default.EditpHCascade = 2;
+                        // HidePump1Border yerine Pump1TargetBorder kullan
+                        Properties.Settings.Default.Pump1TargetBorder = 1; // Collapsed olması için 1
+                        Properties.Settings.Default.EditPump1Feature = 0;
+                        break;
+                    case "Base->Acid":
+                        Properties.Settings.Default.EditpHCascade = 3;
+                        // HidePump1Border yerine Pump1TargetBorder kullan
+                        Properties.Settings.Default.Pump1TargetBorder = 1; // Collapsed olması için 1
+                        Properties.Settings.Default.EditPump1Feature = 0;
+                        // HidePump2Border yerine Pump2TargetBorder kullan
+                        Properties.Settings.Default.Pump2TargetBorder = 1; // Collapsed olması için 1
+                                                                           // Bu kısımda string yerine numeric değer kullanılmalı
+                        Properties.Settings.Default.EditPump2Feature = 0;
+                        break;
                 }
 
-                if (content == "Base")
-                {
-                    Properties.Settings.Default.HidePump2Border = true;
-                    Properties.Settings.Default.EditPump2Feature = "Base";
-                    Properties.Settings.Default.Save(); // Save changes immediately
-                }
+                Properties.Settings.Default.Save(); // Değişiklikleri hemen kaydet
 
-                if (content == "Base->Acid")
-                {
-                    Properties.Settings.Default.HidePump1Border = true;
-                    Properties.Settings.Default.EditPump1Feature = "Acid";
-                    Properties.Settings.Default.HidePump2Border = true;
-                    Properties.Settings.Default.EditPump2Feature = "Base";
-                    Properties.Settings.Default.Save(); // Save changes immediately
-                }
                 contentArea.Content = null;
                 contentArea.ContentTemplate = null;
 
@@ -354,7 +379,7 @@ namespace WpfApp1.EditPages
                             if (textBox != null)
                             {
                                 textBox.GotFocus += TextBox_GotFocus;
-                                textBox.Text = Properties.Settings.Default.pHBaseBase.ToString();
+                                textBox.Text = Properties.Settings.Default.EditpHBase.ToString();
                             }
                             contentArea.Content = baseContent;
                         }
@@ -368,7 +393,7 @@ namespace WpfApp1.EditPages
                             if (textBox != null)
                             {
                                 textBox.GotFocus += TextBox_GotFocus;
-                                textBox.Text = Properties.Settings.Default.pHAcidAcid.ToString();
+                                textBox.Text = Properties.Settings.Default.EditpHAcid.ToString();
                             }
                             contentArea.Content = acidContent;
                         }
@@ -382,13 +407,13 @@ namespace WpfApp1.EditPages
                             if (textBoxBase != null)
                             {
                                 textBoxBase.GotFocus += TextBox_GotFocus;
-                                textBoxBase.Text = Properties.Settings.Default.pHBaseAcidBase.ToString();
+                                textBoxBase.Text = Properties.Settings.Default.EditpHBase.ToString();
                             }
                             var textBoxAcid = FindChild<TextBox>(baseAcidContent, "pHBaseAcidAcid");
                             if (textBoxAcid != null)
                             {
                                 textBoxAcid.GotFocus += TextBox_GotFocus;
-                                textBoxAcid.Text = Properties.Settings.Default.pHBaseAcidAcid.ToString();
+                                textBoxAcid.Text = Properties.Settings.Default.EditpHAcid.ToString();
                             }
                             contentArea.Content = baseAcidContent;
                         }
@@ -397,6 +422,7 @@ namespace WpfApp1.EditPages
             }
         }
 
+        // 2. LoadBaseValues metodunu güncelleme
         private void LoadBaseValues()
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
@@ -404,23 +430,25 @@ namespace WpfApp1.EditPages
                 var basee = FindChild<TextBox>(contentArea, "pHBaseBase");
                 if (basee != null)
                 {
-                    basee.Text = Properties.Settings.Default.pHBaseBase.ToString();
+                    basee.Text = Properties.Settings.Default.EditpHBase.ToString();
                     basee.PreviewTextInput += TextBox_PreviewTextInput;
                     basee.TextChanged += TextBox_TextChanged;
                 }
             }));
         }
 
+        // 3. SaveBaseValues metodunu güncelleme
         private void SaveBaseValues()
         {
             var basee = FindChild<TextBox>(contentArea, "pHBaseBase");
             if (basee != null && double.TryParse(basee.Text, NumberStyles.Any,
                 CultureInfo.CurrentCulture, out double baseValue))
             {
-                Properties.Settings.Default.pHBaseBase = baseValue;
+                Properties.Settings.Default.EditpHBase = baseValue;
             }
         }
 
+        // 4. LoadAcidValues metodunu güncelleme
         private void LoadAcidValues()
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
@@ -428,22 +456,24 @@ namespace WpfApp1.EditPages
                 var acid = FindChild<TextBox>(contentArea, "pHAcidAcid");
                 if (acid != null)
                 {
-                    acid.Text = Properties.Settings.Default.pHAcidAcid.ToString();
+                    acid.Text = Properties.Settings.Default.EditpHAcid.ToString();
                     acid.PreviewTextInput += TextBox_PreviewTextInput;
                     acid.TextChanged += TextBox_TextChanged;
                 }
             }));
         }
 
+        // 5. SaveAcidValues metodunu güncelleme
         private void SaveAcidValues()
         {
             var acid = FindChild<TextBox>(contentArea, "pHAcidAcid");
             if (acid != null && double.TryParse(acid.Text, NumberStyles.Any,
                 CultureInfo.CurrentCulture, out double acidValue))
             {
-                Properties.Settings.Default.pHAcidAcid = acidValue;
+                Properties.Settings.Default.EditpHAcid = acidValue;
             }
         }
+        // 6. LoadBaseAcidValues metodunu güncelleme
         private void LoadBaseAcidValues()
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
@@ -451,34 +481,35 @@ namespace WpfApp1.EditPages
                 var basee = FindChild<TextBox>(contentArea, "pHBaseAcidBase");
                 if (basee != null)
                 {
-                    basee.Text = Properties.Settings.Default.pHBaseAcidBase.ToString();
+                    basee.Text = Properties.Settings.Default.EditpHBase.ToString();
                     basee.PreviewTextInput += TextBox_PreviewTextInput;
                     basee.TextChanged += TextBox_TextChanged;
                 }
                 var acid = FindChild<TextBox>(contentArea, "pHBaseAcidAcid");
                 if (acid != null)
                 {
-                    acid.Text = Properties.Settings.Default.pHBaseAcidAcid.ToString();
+                    acid.Text = Properties.Settings.Default.EditpHAcid.ToString();
                     acid.PreviewTextInput += TextBox_PreviewTextInput;
                     acid.TextChanged += TextBox_TextChanged;
                 }
             }));
         }
 
+        // 7. SaveBaseAcidValues metodunu güncelleme
         private void SaveBaseAcidValues()
         {
             var basee = FindChild<TextBox>(contentArea, "pHBaseAcidBase");
             if (basee != null && double.TryParse(basee.Text, NumberStyles.Any,
                 CultureInfo.CurrentCulture, out double baseValue))
             {
-                Properties.Settings.Default.pHBaseAcidBase = baseValue;
+                Properties.Settings.Default.EditpHBase = baseValue;
             }
 
             var acid = FindChild<TextBox>(contentArea, "pHBaseAcidAcid");
             if (acid != null && double.TryParse(acid.Text, NumberStyles.Any,
                 CultureInfo.CurrentCulture, out double acidValue))
             {
-                Properties.Settings.Default.pHBaseAcidAcid = acidValue;
+                Properties.Settings.Default.EditpHAcid = acidValue;
             }
         }
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -529,17 +560,27 @@ namespace WpfApp1.EditPages
             if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
             {
                 string content = selectedItem.Content.ToString();
-                Properties.Settings.Default.pHSelectedCascade = content;
 
+                // String olarak pHSelectedCascade değerini artık kullanmıyoruz
+                // Properties.Settings.Default.pHSelectedCascade = content;
+
+                // Bu değer zaten ContentComboBox_SelectionChanged metodunda ayarlandı
+                // ama burada da doğru değeri korumak için ayarlıyoruz
                 switch (content)
                 {
+                    case "None":
+                        Properties.Settings.Default.EditpHCascade = 0;
+                        break;
                     case "Base":
+                        Properties.Settings.Default.EditpHCascade = 1;
                         SaveBaseValues();
                         break;
                     case "Acid":
+                        Properties.Settings.Default.EditpHCascade = 2;
                         SaveAcidValues();
                         break;
                     case "Base->Acid":
+                        Properties.Settings.Default.EditpHCascade = 3;
                         SaveBaseAcidValues();
                         break;
                 }

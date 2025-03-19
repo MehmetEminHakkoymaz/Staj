@@ -603,7 +603,7 @@ namespace WpfApp1
                 values["Username"] = _currentUser?.Username;
                 values["DateTime"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 values["ElapsedTime"] = clockTextBlock?.Text;
-                values["VesselType"] = Properties.Settings.Default.SelectedVesselType;
+                values["VesselType"] = Properties.Settings.Default.SelectedVesselType.ToString();
                 values["TemperatureValue"] = mainControl?.TemperatureValue?.Content?.ToString();
                 values["TemperatureTarget"] = mainControl?.TemperatureTarget?.Text;
                 values["StirrerValue"] = mainControl?.StirrerValue?.Content?.ToString();

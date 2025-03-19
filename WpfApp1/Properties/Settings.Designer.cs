@@ -25,6 +25,2226 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double StartButton {
+            get {
+                return ((double)(this["StartButton"]));
+            }
+            set {
+                this["StartButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TemperatureConditionalButton {
+            get {
+                return ((double)(this["TemperatureConditionalButton"]));
+            }
+            set {
+                this["TemperatureConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TemperatureTargetBorder {
+            get {
+                return ((double)(this["TemperatureTargetBorder"]));
+            }
+            set {
+                this["TemperatureTargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TemperatureTarget {
+            get {
+                return ((double)(this["TemperatureTarget"]));
+            }
+            set {
+                this["TemperatureTarget"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TemperatureEllipse {
+            get {
+                return ((double)(this["TemperatureEllipse"]));
+            }
+            set {
+                this["TemperatureEllipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double StirrerConditionalButton {
+            get {
+                return ((double)(this["StirrerConditionalButton"]));
+            }
+            set {
+                this["StirrerConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double StirrerTargetBorder {
+            get {
+                return ((double)(this["StirrerTargetBorder"]));
+            }
+            set {
+                this["StirrerTargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double StirrerTarget {
+            get {
+                return ((double)(this["StirrerTarget"]));
+            }
+            set {
+                this["StirrerTarget"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double StirrerEllipse {
+            get {
+                return ((double)(this["StirrerEllipse"]));
+            }
+            set {
+                this["StirrerEllipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pHConditionalButton {
+            get {
+                return ((double)(this["pHConditionalButton"]));
+            }
+            set {
+                this["pHConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pHTargetBorder {
+            get {
+                return ((double)(this["pHTargetBorder"]));
+            }
+            set {
+                this["pHTargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pHTarget {
+            get {
+                return ((double)(this["pHTarget"]));
+            }
+            set {
+                this["pHTarget"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pHEllipse {
+            get {
+                return ((double)(this["pHEllipse"]));
+            }
+            set {
+                this["pHEllipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpHCascade {
+            get {
+                return ((double)(this["EditpHCascade"]));
+            }
+            set {
+                this["EditpHCascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpHBase {
+            get {
+                return ((double)(this["EditpHBase"]));
+            }
+            set {
+                this["EditpHBase"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpHAcid {
+            get {
+                return ((double)(this["EditpHAcid"]));
+            }
+            set {
+                this["EditpHAcid"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpHP {
+            get {
+                return ((double)(this["EditpHP"]));
+            }
+            set {
+                this["EditpHP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpHI {
+            get {
+                return ((double)(this["EditpHI"]));
+            }
+            set {
+                this["EditpHI"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpHILimit {
+            get {
+                return ((double)(this["EditpHILimit"]));
+            }
+            set {
+                this["EditpHILimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpHDeadband {
+            get {
+                return ((double)(this["EditpHDeadband"]));
+            }
+            set {
+                this["EditpHDeadband"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpHNegFactor {
+            get {
+                return ((double)(this["EditpHNegFactor"]));
+            }
+            set {
+                this["EditpHNegFactor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpHEvalTime {
+            get {
+                return ((double)(this["EditpHEvalTime"]));
+            }
+            set {
+                this["EditpHEvalTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pO2ConditionalButton {
+            get {
+                return ((double)(this["pO2ConditionalButton"]));
+            }
+            set {
+                this["pO2ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pO2ConditionalButtonVisibility {
+            get {
+                return ((double)(this["pO2ConditionalButtonVisibility"]));
+            }
+            set {
+                this["pO2ConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pO2TargetBorder {
+            get {
+                return ((double)(this["pO2TargetBorder"]));
+            }
+            set {
+                this["pO2TargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pO2Target {
+            get {
+                return ((double)(this["pO2Target"]));
+            }
+            set {
+                this["pO2Target"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pO2Ellipse {
+            get {
+                return ((double)(this["pO2Ellipse"]));
+            }
+            set {
+                this["pO2Ellipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpO2Cascade {
+            get {
+                return ((double)(this["EditpO2Cascade"]));
+            }
+            set {
+                this["EditpO2Cascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpO2Stirrer {
+            get {
+                return ((double)(this["EditpO2Stirrer"]));
+            }
+            set {
+                this["EditpO2Stirrer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpO2TotalFlow {
+            get {
+                return ((double)(this["EditpO2TotalFlow"]));
+            }
+            set {
+                this["EditpO2TotalFlow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpO2GasMix {
+            get {
+                return ((double)(this["EditpO2GasMix"]));
+            }
+            set {
+                this["EditpO2GasMix"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpO2P {
+            get {
+                return ((double)(this["EditpO2P"]));
+            }
+            set {
+                this["EditpO2P"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpO2I {
+            get {
+                return ((double)(this["EditpO2I"]));
+            }
+            set {
+                this["EditpO2I"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpO2ILimit {
+            get {
+                return ((double)(this["EditpO2ILimit"]));
+            }
+            set {
+                this["EditpO2ILimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpO2Deadband {
+            get {
+                return ((double)(this["EditpO2Deadband"]));
+            }
+            set {
+                this["EditpO2Deadband"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpO2NegFactor {
+            get {
+                return ((double)(this["EditpO2NegFactor"]));
+            }
+            set {
+                this["EditpO2NegFactor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditpO2EvalTime {
+            get {
+                return ((double)(this["EditpO2EvalTime"]));
+            }
+            set {
+                this["EditpO2EvalTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double FoamConditionalButton {
+            get {
+                return ((double)(this["FoamConditionalButton"]));
+            }
+            set {
+                this["FoamConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double FoamTargetBorder {
+            get {
+                return ((double)(this["FoamTargetBorder"]));
+            }
+            set {
+                this["FoamTargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double FoamTarget {
+            get {
+                return ((double)(this["FoamTarget"]));
+            }
+            set {
+                this["FoamTarget"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double FoamEllipse {
+            get {
+                return ((double)(this["FoamEllipse"]));
+            }
+            set {
+                this["FoamEllipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditFoamCascade {
+            get {
+                return ((double)(this["EditFoamCascade"]));
+            }
+            set {
+                this["EditFoamCascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditFoamDoseTime {
+            get {
+                return ((double)(this["EditFoamDoseTime"]));
+            }
+            set {
+                this["EditFoamDoseTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditFoamWaitTime {
+            get {
+                return ((double)(this["EditFoamWaitTime"]));
+            }
+            set {
+                this["EditFoamWaitTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditFoamAlarmTime {
+            get {
+                return ((double)(this["EditFoamAlarmTime"]));
+            }
+            set {
+                this["EditFoamAlarmTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxConditionalButton {
+            get {
+                return ((double)(this["RedoxConditionalButton"]));
+            }
+            set {
+                this["RedoxConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxTargetBorder {
+            get {
+                return ((double)(this["RedoxTargetBorder"]));
+            }
+            set {
+                this["RedoxTargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxTarget {
+            get {
+                return ((double)(this["RedoxTarget"]));
+            }
+            set {
+                this["RedoxTarget"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxEllipse {
+            get {
+                return ((double)(this["RedoxEllipse"]));
+            }
+            set {
+                this["RedoxEllipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditRedoxCascade {
+            get {
+                return ((double)(this["EditRedoxCascade"]));
+            }
+            set {
+                this["EditRedoxCascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditRedoxGas2 {
+            get {
+                return ((double)(this["EditRedoxGas2"]));
+            }
+            set {
+                this["EditRedoxGas2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditRedoxAirFlow {
+            get {
+                return ((double)(this["EditRedoxAirFlow"]));
+            }
+            set {
+                this["EditRedoxAirFlow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditRedoxTotalFlow {
+            get {
+                return ((double)(this["EditRedoxTotalFlow"]));
+            }
+            set {
+                this["EditRedoxTotalFlow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditRedoxP {
+            get {
+                return ((double)(this["EditRedoxP"]));
+            }
+            set {
+                this["EditRedoxP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditRedoxI {
+            get {
+                return ((double)(this["EditRedoxI"]));
+            }
+            set {
+                this["EditRedoxI"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditRedoxILimit {
+            get {
+                return ((double)(this["EditRedoxILimit"]));
+            }
+            set {
+                this["EditRedoxILimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditRedoxDeadband {
+            get {
+                return ((double)(this["EditRedoxDeadband"]));
+            }
+            set {
+                this["EditRedoxDeadband"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditRedoxNegFactor {
+            get {
+                return ((double)(this["EditRedoxNegFactor"]));
+            }
+            set {
+                this["EditRedoxNegFactor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditRedoxEvalTime {
+            get {
+                return ((double)(this["EditRedoxEvalTime"]));
+            }
+            set {
+                this["EditRedoxEvalTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityConditionalButton {
+            get {
+                return ((double)(this["TurbidityConditionalButton"]));
+            }
+            set {
+                this["TurbidityConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityTargetBorder {
+            get {
+                return ((double)(this["TurbidityTargetBorder"]));
+            }
+            set {
+                this["TurbidityTargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityTarget {
+            get {
+                return ((double)(this["TurbidityTarget"]));
+            }
+            set {
+                this["TurbidityTarget"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityEllipse {
+            get {
+                return ((double)(this["TurbidityEllipse"]));
+            }
+            set {
+                this["TurbidityEllipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditTurbidityCascade {
+            get {
+                return ((double)(this["EditTurbidityCascade"]));
+            }
+            set {
+                this["EditTurbidityCascade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditTurbidityFeed {
+            get {
+                return ((double)(this["EditTurbidityFeed"]));
+            }
+            set {
+                this["EditTurbidityFeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditTurbidityHarvesting {
+            get {
+                return ((double)(this["EditTurbidityHarvesting"]));
+            }
+            set {
+                this["EditTurbidityHarvesting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditTurbidityInoculate {
+            get {
+                return ((double)(this["EditTurbidityInoculate"]));
+            }
+            set {
+                this["EditTurbidityInoculate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double BalanceConditionalButton {
+            get {
+                return ((double)(this["BalanceConditionalButton"]));
+            }
+            set {
+                this["BalanceConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double BalanceTargetBorder {
+            get {
+                return ((double)(this["BalanceTargetBorder"]));
+            }
+            set {
+                this["BalanceTargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double BalanceTarget {
+            get {
+                return ((double)(this["BalanceTarget"]));
+            }
+            set {
+                this["BalanceTarget"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double BalanceEllipse {
+            get {
+                return ((double)(this["BalanceEllipse"]));
+            }
+            set {
+                this["BalanceEllipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AirFlowConditionalButton {
+            get {
+                return ((double)(this["AirFlowConditionalButton"]));
+            }
+            set {
+                this["AirFlowConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AirFlowTargetBorder {
+            get {
+                return ((double)(this["AirFlowTargetBorder"]));
+            }
+            set {
+                this["AirFlowTargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AirFlowTarget {
+            get {
+                return ((double)(this["AirFlowTarget"]));
+            }
+            set {
+                this["AirFlowTarget"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AirFlowEllipse {
+            get {
+                return ((double)(this["AirFlowEllipse"]));
+            }
+            set {
+                this["AirFlowEllipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Gas2ConditionalButton {
+            get {
+                return ((double)(this["Gas2ConditionalButton"]));
+            }
+            set {
+                this["Gas2ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Gas2TargetBorder {
+            get {
+                return ((double)(this["Gas2TargetBorder"]));
+            }
+            set {
+                this["Gas2TargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Gas2Target {
+            get {
+                return ((double)(this["Gas2Target"]));
+            }
+            set {
+                this["Gas2Target"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Gas2Ellipse {
+            get {
+                return ((double)(this["Gas2Ellipse"]));
+            }
+            set {
+                this["Gas2Ellipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double ExitGasO2ConditionalButton {
+            get {
+                return ((double)(this["ExitGasO2ConditionalButton"]));
+            }
+            set {
+                this["ExitGasO2ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double ExitGasO2TargetBorder {
+            get {
+                return ((double)(this["ExitGasO2TargetBorder"]));
+            }
+            set {
+                this["ExitGasO2TargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double ExitGasO2Target {
+            get {
+                return ((double)(this["ExitGasO2Target"]));
+            }
+            set {
+                this["ExitGasO2Target"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double ExitGasO2Ellipse {
+            get {
+                return ((double)(this["ExitGasO2Ellipse"]));
+            }
+            set {
+                this["ExitGasO2Ellipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double ExitGasCO2ConditionalButton {
+            get {
+                return ((double)(this["ExitGasCO2ConditionalButton"]));
+            }
+            set {
+                this["ExitGasCO2ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double ExitGasCO2TargetBorder {
+            get {
+                return ((double)(this["ExitGasCO2TargetBorder"]));
+            }
+            set {
+                this["ExitGasCO2TargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double ExitGasCO2Target {
+            get {
+                return ((double)(this["ExitGasCO2Target"]));
+            }
+            set {
+                this["ExitGasCO2Target"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double ExitGasCO2Ellipse {
+            get {
+                return ((double)(this["ExitGasCO2Ellipse"]));
+            }
+            set {
+                this["ExitGasCO2Ellipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump1ConditionalButton {
+            get {
+                return ((double)(this["Pump1ConditionalButton"]));
+            }
+            set {
+                this["Pump1ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump1TargetBorder {
+            get {
+                return ((double)(this["Pump1TargetBorder"]));
+            }
+            set {
+                this["Pump1TargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump1Target {
+            get {
+                return ((double)(this["Pump1Target"]));
+            }
+            set {
+                this["Pump1Target"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump1Ellipse {
+            get {
+                return ((double)(this["Pump1Ellipse"]));
+            }
+            set {
+                this["Pump1Ellipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump1Fill {
+            get {
+                return ((double)(this["Pump1Fill"]));
+            }
+            set {
+                this["Pump1Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump1Empty {
+            get {
+                return ((double)(this["Pump1Empty"]));
+            }
+            set {
+                this["Pump1Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump1Value {
+            get {
+                return ((double)(this["EditPump1Value"]));
+            }
+            set {
+                this["EditPump1Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump1TubeType {
+            get {
+                return ((double)(this["EditPump1TubeType"]));
+            }
+            set {
+                this["EditPump1TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump1Feature {
+            get {
+                return ((double)(this["EditPump1Feature"]));
+            }
+            set {
+                this["EditPump1Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump1DisplayCountUnit {
+            get {
+                return ((double)(this["EditPump1DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump1DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump2ConditionalButton {
+            get {
+                return ((double)(this["Pump2ConditionalButton"]));
+            }
+            set {
+                this["Pump2ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump2TargetBorder {
+            get {
+                return ((double)(this["Pump2TargetBorder"]));
+            }
+            set {
+                this["Pump2TargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump2Target {
+            get {
+                return ((double)(this["Pump2Target"]));
+            }
+            set {
+                this["Pump2Target"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump2Ellipse {
+            get {
+                return ((double)(this["Pump2Ellipse"]));
+            }
+            set {
+                this["Pump2Ellipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump2Fill {
+            get {
+                return ((double)(this["Pump2Fill"]));
+            }
+            set {
+                this["Pump2Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump2Empty {
+            get {
+                return ((double)(this["Pump2Empty"]));
+            }
+            set {
+                this["Pump2Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump2Value {
+            get {
+                return ((double)(this["EditPump2Value"]));
+            }
+            set {
+                this["EditPump2Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump2TubeType {
+            get {
+                return ((double)(this["EditPump2TubeType"]));
+            }
+            set {
+                this["EditPump2TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump2Feature {
+            get {
+                return ((double)(this["EditPump2Feature"]));
+            }
+            set {
+                this["EditPump2Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump2DisplayCountUnit {
+            get {
+                return ((double)(this["EditPump2DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump2DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump3ConditionalButton {
+            get {
+                return ((double)(this["Pump3ConditionalButton"]));
+            }
+            set {
+                this["Pump3ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump3TargetBorder {
+            get {
+                return ((double)(this["Pump3TargetBorder"]));
+            }
+            set {
+                this["Pump3TargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump3Target {
+            get {
+                return ((double)(this["Pump3Target"]));
+            }
+            set {
+                this["Pump3Target"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump3Ellipse {
+            get {
+                return ((double)(this["Pump3Ellipse"]));
+            }
+            set {
+                this["Pump3Ellipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump3Fill {
+            get {
+                return ((double)(this["Pump3Fill"]));
+            }
+            set {
+                this["Pump3Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump3Empty {
+            get {
+                return ((double)(this["Pump3Empty"]));
+            }
+            set {
+                this["Pump3Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump3Value {
+            get {
+                return ((double)(this["EditPump3Value"]));
+            }
+            set {
+                this["EditPump3Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump3TubeType {
+            get {
+                return ((double)(this["EditPump3TubeType"]));
+            }
+            set {
+                this["EditPump3TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump3Feature {
+            get {
+                return ((double)(this["EditPump3Feature"]));
+            }
+            set {
+                this["EditPump3Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump3DisplayCountUnit {
+            get {
+                return ((double)(this["EditPump3DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump3DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump4ConditionalButton {
+            get {
+                return ((double)(this["Pump4ConditionalButton"]));
+            }
+            set {
+                this["Pump4ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump4TargetBorder {
+            get {
+                return ((double)(this["Pump4TargetBorder"]));
+            }
+            set {
+                this["Pump4TargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump4Target {
+            get {
+                return ((double)(this["Pump4Target"]));
+            }
+            set {
+                this["Pump4Target"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump4Ellipse {
+            get {
+                return ((double)(this["Pump4Ellipse"]));
+            }
+            set {
+                this["Pump4Ellipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump4Fill {
+            get {
+                return ((double)(this["Pump4Fill"]));
+            }
+            set {
+                this["Pump4Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump4Empty {
+            get {
+                return ((double)(this["Pump4Empty"]));
+            }
+            set {
+                this["Pump4Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump4Value {
+            get {
+                return ((double)(this["EditPump4Value"]));
+            }
+            set {
+                this["EditPump4Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump4TubeType {
+            get {
+                return ((double)(this["EditPump4TubeType"]));
+            }
+            set {
+                this["EditPump4TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump4Feature {
+            get {
+                return ((double)(this["EditPump4Feature"]));
+            }
+            set {
+                this["EditPump4Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump4DisplayCountUnit {
+            get {
+                return ((double)(this["EditPump4DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump4DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump5ConditionalButton {
+            get {
+                return ((double)(this["Pump5ConditionalButton"]));
+            }
+            set {
+                this["Pump5ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump5TargetBorder {
+            get {
+                return ((double)(this["Pump5TargetBorder"]));
+            }
+            set {
+                this["Pump5TargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump5Target {
+            get {
+                return ((double)(this["Pump5Target"]));
+            }
+            set {
+                this["Pump5Target"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump5Ellipse {
+            get {
+                return ((double)(this["Pump5Ellipse"]));
+            }
+            set {
+                this["Pump5Ellipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump5Fill {
+            get {
+                return ((double)(this["Pump5Fill"]));
+            }
+            set {
+                this["Pump5Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump5Empty {
+            get {
+                return ((double)(this["Pump5Empty"]));
+            }
+            set {
+                this["Pump5Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump5Value {
+            get {
+                return ((double)(this["EditPump5Value"]));
+            }
+            set {
+                this["EditPump5Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump5TubeType {
+            get {
+                return ((double)(this["EditPump5TubeType"]));
+            }
+            set {
+                this["EditPump5TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump5Feature {
+            get {
+                return ((double)(this["EditPump5Feature"]));
+            }
+            set {
+                this["EditPump5Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump5DisplayCountUnit {
+            get {
+                return ((double)(this["EditPump5DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump5DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump6ConditionalButton {
+            get {
+                return ((double)(this["Pump6ConditionalButton"]));
+            }
+            set {
+                this["Pump6ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump6TargetBorder {
+            get {
+                return ((double)(this["Pump6TargetBorder"]));
+            }
+            set {
+                this["Pump6TargetBorder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump6Target {
+            get {
+                return ((double)(this["Pump6Target"]));
+            }
+            set {
+                this["Pump6Target"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump6Ellipse {
+            get {
+                return ((double)(this["Pump6Ellipse"]));
+            }
+            set {
+                this["Pump6Ellipse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump6Fill {
+            get {
+                return ((double)(this["Pump6Fill"]));
+            }
+            set {
+                this["Pump6Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump6Empty {
+            get {
+                return ((double)(this["Pump6Empty"]));
+            }
+            set {
+                this["Pump6Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump6Value {
+            get {
+                return ((double)(this["EditPump6Value"]));
+            }
+            set {
+                this["EditPump6Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump6TubeType {
+            get {
+                return ((double)(this["EditPump6TubeType"]));
+            }
+            set {
+                this["EditPump6TubeType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump6Feature {
+            get {
+                return ((double)(this["EditPump6Feature"]));
+            }
+            set {
+                this["EditPump6Feature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump6DisplayCountUnit {
+            get {
+                return ((double)(this["EditPump6DisplayCountUnit"]));
+            }
+            set {
+                this["EditPump6DisplayCountUnit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump1Fill {
+            get {
+                return ((double)(this["AutoPump1Fill"]));
+            }
+            set {
+                this["AutoPump1Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump2Fill {
+            get {
+                return ((double)(this["AutoPump2Fill"]));
+            }
+            set {
+                this["AutoPump2Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump3Fill {
+            get {
+                return ((double)(this["AutoPump3Fill"]));
+            }
+            set {
+                this["AutoPump3Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump4Fill {
+            get {
+                return ((double)(this["AutoPump4Fill"]));
+            }
+            set {
+                this["AutoPump4Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump5Fill {
+            get {
+                return ((double)(this["AutoPump5Fill"]));
+            }
+            set {
+                this["AutoPump5Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump6Fill {
+            get {
+                return ((double)(this["AutoPump6Fill"]));
+            }
+            set {
+                this["AutoPump6Fill"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump1Empty {
+            get {
+                return ((double)(this["AutoPump1Empty"]));
+            }
+            set {
+                this["AutoPump1Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump2Empty {
+            get {
+                return ((double)(this["AutoPump2Empty"]));
+            }
+            set {
+                this["AutoPump2Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump3Empty {
+            get {
+                return ((double)(this["AutoPump3Empty"]));
+            }
+            set {
+                this["AutoPump3Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump4Empty {
+            get {
+                return ((double)(this["AutoPump4Empty"]));
+            }
+            set {
+                this["AutoPump4Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump5Empty {
+            get {
+                return ((double)(this["AutoPump5Empty"]));
+            }
+            set {
+                this["AutoPump5Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AutoPump6Empty {
+            get {
+                return ((double)(this["AutoPump6Empty"]));
+            }
+            set {
+                this["AutoPump6Empty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TemperatureValue {
+            get {
+                return ((double)(this["TemperatureValue"]));
+            }
+            set {
+                this["TemperatureValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double StirrerValue {
+            get {
+                return ((double)(this["StirrerValue"]));
+            }
+            set {
+                this["StirrerValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pHValue {
+            get {
+                return ((double)(this["pHValue"]));
+            }
+            set {
+                this["pHValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pHTemperatureValue {
+            get {
+                return ((double)(this["pHTemperatureValue"]));
+            }
+            set {
+                this["pHTemperatureValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pO2Value {
+            get {
+                return ((double)(this["pO2Value"]));
+            }
+            set {
+                this["pO2Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pO2TemperatureValue {
+            get {
+                return ((double)(this["pO2TemperatureValue"]));
+            }
+            set {
+                this["pO2TemperatureValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double FoamValue {
+            get {
+                return ((double)(this["FoamValue"]));
+            }
+            set {
+                this["FoamValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxValue {
+            get {
+                return ((double)(this["RedoxValue"]));
+            }
+            set {
+                this["RedoxValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxTemperatureValue {
+            get {
+                return ((double)(this["RedoxTemperatureValue"]));
+            }
+            set {
+                this["RedoxTemperatureValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityValue {
+            get {
+                return ((double)(this["TurbidityValue"]));
+            }
+            set {
+                this["TurbidityValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityTemperatureValue {
+            get {
+                return ((double)(this["TurbidityTemperatureValue"]));
+            }
+            set {
+                this["TurbidityTemperatureValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double BalanceValue {
+            get {
+                return ((double)(this["BalanceValue"]));
+            }
+            set {
+                this["BalanceValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AirFlowValue {
+            get {
+                return ((double)(this["AirFlowValue"]));
+            }
+            set {
+                this["AirFlowValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Gas2Value {
+            get {
+                return ((double)(this["Gas2Value"]));
+            }
+            set {
+                this["Gas2Value"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump1Value1 {
+            get {
+                return ((double)(this["EditPump1Value1"]));
+            }
+            set {
+                this["EditPump1Value1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump2Value1 {
+            get {
+                return ((double)(this["EditPump2Value1"]));
+            }
+            set {
+                this["EditPump2Value1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump3Value1 {
+            get {
+                return ((double)(this["EditPump3Value1"]));
+            }
+            set {
+                this["EditPump3Value1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump4Value1 {
+            get {
+                return ((double)(this["EditPump4Value1"]));
+            }
+            set {
+                this["EditPump4Value1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump5Value1 {
+            get {
+                return ((double)(this["EditPump5Value1"]));
+            }
+            set {
+                this["EditPump5Value1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump6Value1 {
+            get {
+                return ((double)(this["EditPump6Value1"]));
+            }
+            set {
+                this["EditPump6Value1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump1TotalValue {
+            get {
+                return ((double)(this["EditPump1TotalValue"]));
+            }
+            set {
+                this["EditPump1TotalValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump2TotalValue {
+            get {
+                return ((double)(this["EditPump2TotalValue"]));
+            }
+            set {
+                this["EditPump2TotalValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump3TotalValue {
+            get {
+                return ((double)(this["EditPump3TotalValue"]));
+            }
+            set {
+                this["EditPump3TotalValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump4TotalValue {
+            get {
+                return ((double)(this["EditPump4TotalValue"]));
+            }
+            set {
+                this["EditPump4TotalValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump5TotalValue {
+            get {
+                return ((double)(this["EditPump5TotalValue"]));
+            }
+            set {
+                this["EditPump5TotalValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double EditPump6TotalValue {
+            get {
+                return ((double)(this["EditPump6TotalValue"]));
+            }
+            set {
+                this["EditPump6TotalValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ConnectionType {
             get {
@@ -97,10 +2317,10 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("L2")]
-        public string SelectedVesselType {
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double SelectedVesselType {
             get {
-                return ((string)(this["SelectedVesselType"]));
+                return ((double)(this["SelectedVesselType"]));
             }
             set {
                 this["SelectedVesselType"] = value;
@@ -121,490 +2341,10 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("None")]
-        public string FoamSelectedMode {
-            get {
-                return ((string)(this["FoamSelectedMode"]));
-            }
-            set {
-                this["FoamSelectedMode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double AntiFoamDoseTime {
+        public string Pump1TargetValue {
             get {
-                return ((double)(this["AntiFoamDoseTime"]));
-            }
-            set {
-                this["AntiFoamDoseTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double AntiFoamWaitTime {
-            get {
-                return ((double)(this["AntiFoamWaitTime"]));
-            }
-            set {
-                this["AntiFoamWaitTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double AntiFoamAlarmTime {
-            get {
-                return ((double)(this["AntiFoamAlarmTime"]));
-            }
-            set {
-                this["AntiFoamAlarmTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double LevelDoseTime {
-            get {
-                return ((double)(this["LevelDoseTime"]));
-            }
-            set {
-                this["LevelDoseTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double LevelWaitTime {
-            get {
-                return ((double)(this["LevelWaitTime"]));
-            }
-            set {
-                this["LevelWaitTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double LevelAlarmTime {
-            get {
-                return ((double)(this["LevelAlarmTime"]));
-            }
-            set {
-                this["LevelAlarmTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("None")]
-        public string pO2SelectedCascade {
-            get {
-                return ((string)(this["pO2SelectedCascade"]));
-            }
-            set {
-                this["pO2SelectedCascade"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1400")]
-        public double pO2StirrerRPM {
-            get {
-                return ((double)(this["pO2StirrerRPM"]));
-            }
-            set {
-                this["pO2StirrerRPM"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4000")]
-        public double pO2TotalFlowTotalFlow {
-            get {
-                return ((double)(this["pO2TotalFlowTotalFlow"]));
-            }
-            set {
-                this["pO2TotalFlowTotalFlow"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public double pO2GasMixGasMix {
-            get {
-                return ((double)(this["pO2GasMixGasMix"]));
-            }
-            set {
-                this["pO2GasMixGasMix"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1400")]
-        public double pO2StirrerTotalFlowRPM {
-            get {
-                return ((double)(this["pO2StirrerTotalFlowRPM"]));
-            }
-            set {
-                this["pO2StirrerTotalFlowRPM"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4000")]
-        public double pO2StirrerTotalFlowTotalFlow {
-            get {
-                return ((double)(this["pO2StirrerTotalFlowTotalFlow"]));
-            }
-            set {
-                this["pO2StirrerTotalFlowTotalFlow"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1400")]
-        public double pO2StirrerGasMixRPM {
-            get {
-                return ((double)(this["pO2StirrerGasMixRPM"]));
-            }
-            set {
-                this["pO2StirrerGasMixRPM"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public double pO2StirrerGasMixGasMix {
-            get {
-                return ((double)(this["pO2StirrerGasMixGasMix"]));
-            }
-            set {
-                this["pO2StirrerGasMixGasMix"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1400")]
-        public double pO2StirrerTotalFlowGasMixRPM {
-            get {
-                return ((double)(this["pO2StirrerTotalFlowGasMixRPM"]));
-            }
-            set {
-                this["pO2StirrerTotalFlowGasMixRPM"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4000")]
-        public double pO2StirrerTotalFlowGasMixTotalFlow {
-            get {
-                return ((double)(this["pO2StirrerTotalFlowGasMixTotalFlow"]));
-            }
-            set {
-                this["pO2StirrerTotalFlowGasMixTotalFlow"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public double pO2StirrerTotalFlowGasMixGasMix {
-            get {
-                return ((double)(this["pO2StirrerTotalFlowGasMixGasMix"]));
-            }
-            set {
-                this["pO2StirrerTotalFlowGasMixGasMix"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double pHBaseBase {
-            get {
-                return ((double)(this["pHBaseBase"]));
-            }
-            set {
-                this["pHBaseBase"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double pHAcidAcid {
-            get {
-                return ((double)(this["pHAcidAcid"]));
-            }
-            set {
-                this["pHAcidAcid"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double pHBaseAcidBase {
-            get {
-                return ((double)(this["pHBaseAcidBase"]));
-            }
-            set {
-                this["pHBaseAcidBase"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double pHBaseAcidAcid {
-            get {
-                return ((double)(this["pHBaseAcidAcid"]));
-            }
-            set {
-                this["pHBaseAcidAcid"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("None")]
-        public string pHSelectedCascade {
-            get {
-                return ((string)(this["pHSelectedCascade"]));
-            }
-            set {
-                this["pHSelectedCascade"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastSelectedpO2Cascade {
-            get {
-                return ((string)(this["LastSelectedpO2Cascade"]));
-            }
-            set {
-                this["LastSelectedpO2Cascade"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastSelectedpO2CascadeItem {
-            get {
-                return ((string)(this["LastSelectedpO2CascadeItem"]));
-            }
-            set {
-                this["LastSelectedpO2CascadeItem"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public double pO2P {
-            get {
-                return ((double)(this["pO2P"]));
-            }
-            set {
-                this["pO2P"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
-        public double pO2I {
-            get {
-                return ((double)(this["pO2I"]));
-            }
-            set {
-                this["pO2I"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("70")]
-        public double pO2ILimit {
-            get {
-                return ((double)(this["pO2ILimit"]));
-            }
-            set {
-                this["pO2ILimit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public double pO2Deadband {
-            get {
-                return ((double)(this["pO2Deadband"]));
-            }
-            set {
-                this["pO2Deadband"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public double pO2Negfactor {
-            get {
-                return ((double)(this["pO2Negfactor"]));
-            }
-            set {
-                this["pO2Negfactor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60")]
-        public double pO2EvalTime {
-            get {
-                return ((double)(this["pO2EvalTime"]));
-            }
-            set {
-                this["pO2EvalTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HideStirrerBorder {
-            get {
-                return ((bool)(this["HideStirrerBorder"]));
-            }
-            set {
-                this["HideStirrerBorder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HideAirFlowBorder {
-            get {
-                return ((bool)(this["HideAirFlowBorder"]));
-            }
-            set {
-                this["HideAirFlowBorder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastSelectedpHCascadeItem {
-            get {
-                return ((string)(this["LastSelectedpHCascadeItem"]));
-            }
-            set {
-                this["LastSelectedpHCascadeItem"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
-        public double pHP {
-            get {
-                return ((double)(this["pHP"]));
-            }
-            set {
-                this["pHP"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("25")]
-        public double pHI {
-            get {
-                return ((double)(this["pHI"]));
-            }
-            set {
-                this["pHI"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public double pHILimit {
-            get {
-                return ((double)(this["pHILimit"]));
-            }
-            set {
-                this["pHILimit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public double pHDeadband {
-            get {
-                return ((double)(this["pHDeadband"]));
-            }
-            set {
-                this["pHDeadband"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60")]
-        public double pHNegFactor {
-            get {
-                return ((double)(this["pHNegFactor"]));
-            }
-            set {
-                this["pHNegFactor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
-        public double pHEvalTime {
-            get {
-                return ((double)(this["pHEvalTime"]));
-            }
-            set {
-                this["pHEvalTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump1TargetValue {
-            get {
-                return ((double)(this["Pump1TargetValue"]));
+                return ((string)(this["Pump1TargetValue"]));
             }
             set {
                 this["Pump1TargetValue"] = value;
@@ -614,9 +2354,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump2TargetValue {
+        public string Pump2TargetValue {
             get {
-                return ((double)(this["Pump2TargetValue"]));
+                return ((string)(this["Pump2TargetValue"]));
             }
             set {
                 this["Pump2TargetValue"] = value;
@@ -626,9 +2366,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump3TargetValue {
+        public string Pump3TargetValue {
             get {
-                return ((double)(this["Pump3TargetValue"]));
+                return ((string)(this["Pump3TargetValue"]));
             }
             set {
                 this["Pump3TargetValue"] = value;
@@ -638,9 +2378,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump4TargetValue {
+        public string Pump4TargetValue {
             get {
-                return ((double)(this["Pump4TargetValue"]));
+                return ((string)(this["Pump4TargetValue"]));
             }
             set {
                 this["Pump4TargetValue"] = value;
@@ -650,9 +2390,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump5TargetValue {
+        public string Pump5TargetValue {
             get {
-                return ((double)(this["Pump5TargetValue"]));
+                return ((string)(this["Pump5TargetValue"]));
             }
             set {
                 this["Pump5TargetValue"] = value;
@@ -662,9 +2402,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump6TargetValue {
+        public string Pump6TargetValue {
             get {
-                return ((double)(this["Pump6TargetValue"]));
+                return ((string)(this["Pump6TargetValue"]));
             }
             set {
                 this["Pump6TargetValue"] = value;
@@ -674,9 +2414,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump1FillValue {
+        public string Pump1FillValue {
             get {
-                return ((double)(this["Pump1FillValue"]));
+                return ((string)(this["Pump1FillValue"]));
             }
             set {
                 this["Pump1FillValue"] = value;
@@ -686,9 +2426,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump2FillValue {
+        public string Pump2FillValue {
             get {
-                return ((double)(this["Pump2FillValue"]));
+                return ((string)(this["Pump2FillValue"]));
             }
             set {
                 this["Pump2FillValue"] = value;
@@ -698,9 +2438,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump3FillValue {
+        public string Pump3FillValue {
             get {
-                return ((double)(this["Pump3FillValue"]));
+                return ((string)(this["Pump3FillValue"]));
             }
             set {
                 this["Pump3FillValue"] = value;
@@ -710,9 +2450,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump4FillValue {
+        public string Pump4FillValue {
             get {
-                return ((double)(this["Pump4FillValue"]));
+                return ((string)(this["Pump4FillValue"]));
             }
             set {
                 this["Pump4FillValue"] = value;
@@ -722,9 +2462,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump1EmptyValue {
+        public string Pump1EmptyValue {
             get {
-                return ((double)(this["Pump1EmptyValue"]));
+                return ((string)(this["Pump1EmptyValue"]));
             }
             set {
                 this["Pump1EmptyValue"] = value;
@@ -734,9 +2474,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump2EmptyValue {
+        public string Pump2EmptyValue {
             get {
-                return ((double)(this["Pump2EmptyValue"]));
+                return ((string)(this["Pump2EmptyValue"]));
             }
             set {
                 this["Pump2EmptyValue"] = value;
@@ -746,9 +2486,9 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump3EmptyValue {
+        public string Pump3EmptyValue {
             get {
-                return ((double)(this["Pump3EmptyValue"]));
+                return ((string)(this["Pump3EmptyValue"]));
             }
             set {
                 this["Pump3EmptyValue"] = value;
@@ -758,648 +2498,12 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double Pump4EmptyValue {
+        public string Pump4EmptyValue {
             get {
-                return ((double)(this["Pump4EmptyValue"]));
+                return ((string)(this["Pump4EmptyValue"]));
             }
             set {
                 this["Pump4EmptyValue"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int FoamLevel {
-            get {
-                return ((int)(this["FoamLevel"]));
-            }
-            set {
-                this["FoamLevel"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double RedoxP {
-            get {
-                return ((double)(this["RedoxP"]));
-            }
-            set {
-                this["RedoxP"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double RedoxI {
-            get {
-                return ((double)(this["RedoxI"]));
-            }
-            set {
-                this["RedoxI"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double RedoxILimit {
-            get {
-                return ((double)(this["RedoxILimit"]));
-            }
-            set {
-                this["RedoxILimit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double RedoxDeadband {
-            get {
-                return ((double)(this["RedoxDeadband"]));
-            }
-            set {
-                this["RedoxDeadband"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double RedoxNegfactor {
-            get {
-                return ((double)(this["RedoxNegfactor"]));
-            }
-            set {
-                this["RedoxNegfactor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double RedoxEvalTime {
-            get {
-                return ((double)(this["RedoxEvalTime"]));
-            }
-            set {
-                this["RedoxEvalTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastSelectedRedoxCascadeItem {
-            get {
-                return ((string)(this["LastSelectedRedoxCascadeItem"]));
-            }
-            set {
-                this["LastSelectedRedoxCascadeItem"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string RedoxSelectedCascade {
-            get {
-                return ((string)(this["RedoxSelectedCascade"]));
-            }
-            set {
-                this["RedoxSelectedCascade"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastSelectedRedoxCascade {
-            get {
-                return ((string)(this["LastSelectedRedoxCascade"]));
-            }
-            set {
-                this["LastSelectedRedoxCascade"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HideGas2FlowBorder {
-            get {
-                return ((bool)(this["HideGas2FlowBorder"]));
-            }
-            set {
-                this["HideGas2FlowBorder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double RedoxGas2N2 {
-            get {
-                return ((double)(this["RedoxGas2N2"]));
-            }
-            set {
-                this["RedoxGas2N2"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double RedoxAirFlowAir {
-            get {
-                return ((double)(this["RedoxAirFlowAir"]));
-            }
-            set {
-                this["RedoxAirFlowAir"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double RedoxTotalFlowTotalFlow {
-            get {
-                return ((double)(this["RedoxTotalFlowTotalFlow"]));
-            }
-            set {
-                this["RedoxTotalFlowTotalFlow"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double TurbidityP {
-            get {
-                return ((double)(this["TurbidityP"]));
-            }
-            set {
-                this["TurbidityP"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double TurbidityI {
-            get {
-                return ((double)(this["TurbidityI"]));
-            }
-            set {
-                this["TurbidityI"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double TurbidityILimit {
-            get {
-                return ((double)(this["TurbidityILimit"]));
-            }
-            set {
-                this["TurbidityILimit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double TurbidityDeadband {
-            get {
-                return ((double)(this["TurbidityDeadband"]));
-            }
-            set {
-                this["TurbidityDeadband"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double TurbidityNegfactor {
-            get {
-                return ((double)(this["TurbidityNegfactor"]));
-            }
-            set {
-                this["TurbidityNegfactor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double TurbidityEvalTime {
-            get {
-                return ((double)(this["TurbidityEvalTime"]));
-            }
-            set {
-                this["TurbidityEvalTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastSelectedTurbidityCascadeItem {
-            get {
-                return ((string)(this["LastSelectedTurbidityCascadeItem"]));
-            }
-            set {
-                this["LastSelectedTurbidityCascadeItem"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TurbiditySelectedCascade {
-            get {
-                return ((string)(this["TurbiditySelectedCascade"]));
-            }
-            set {
-                this["TurbiditySelectedCascade"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("200")]
-        public double TurbidityHarvestingInoculateHarvesting {
-            get {
-                return ((double)(this["TurbidityHarvestingInoculateHarvesting"]));
-            }
-            set {
-                this["TurbidityHarvestingInoculateHarvesting"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
-        public double TurbidityFeedml {
-            get {
-                return ((double)(this["TurbidityFeedml"]));
-            }
-            set {
-                this["TurbidityFeedml"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("200")]
-        public double TurbidityHarvestingInoculateInoculate {
-            get {
-                return ((double)(this["TurbidityHarvestingInoculateInoculate"]));
-            }
-            set {
-                this["TurbidityHarvestingInoculateInoculate"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
-        public string EditPump3TubeType {
-            get {
-                return ((string)(this["EditPump3TubeType"]));
-            }
-            set {
-                this["EditPump3TubeType"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string EditPump3Feature {
-            get {
-                return ((string)(this["EditPump3Feature"]));
-            }
-            set {
-                this["EditPump3Feature"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
-        public string EditPump3DisplayCountUnit {
-            get {
-                return ((string)(this["EditPump3DisplayCountUnit"]));
-            }
-            set {
-                this["EditPump3DisplayCountUnit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int EditPump3Value {
-            get {
-                return ((int)(this["EditPump3Value"]));
-            }
-            set {
-                this["EditPump3Value"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
-        public string EditPump4TubeType {
-            get {
-                return ((string)(this["EditPump4TubeType"]));
-            }
-            set {
-                this["EditPump4TubeType"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Feed")]
-        public string EditPump4Feature {
-            get {
-                return ((string)(this["EditPump4Feature"]));
-            }
-            set {
-                this["EditPump4Feature"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
-        public string EditPump4DisplayCountUnit {
-            get {
-                return ((string)(this["EditPump4DisplayCountUnit"]));
-            }
-            set {
-                this["EditPump4DisplayCountUnit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int EditPump4Value {
-            get {
-                return ((int)(this["EditPump4Value"]));
-            }
-            set {
-                this["EditPump4Value"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
-        public string EditPump1TubeType {
-            get {
-                return ((string)(this["EditPump1TubeType"]));
-            }
-            set {
-                this["EditPump1TubeType"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Acid")]
-        public string EditPump1Feature {
-            get {
-                return ((string)(this["EditPump1Feature"]));
-            }
-            set {
-                this["EditPump1Feature"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
-        public string EditPump1DisplayCountUnit {
-            get {
-                return ((string)(this["EditPump1DisplayCountUnit"]));
-            }
-            set {
-                this["EditPump1DisplayCountUnit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int EditPump1Value {
-            get {
-                return ((int)(this["EditPump1Value"]));
-            }
-            set {
-                this["EditPump1Value"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
-        public string EditPump2TubeType {
-            get {
-                return ((string)(this["EditPump2TubeType"]));
-            }
-            set {
-                this["EditPump2TubeType"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string EditPump2Feature {
-            get {
-                return ((string)(this["EditPump2Feature"]));
-            }
-            set {
-                this["EditPump2Feature"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
-        public string EditPump2DisplayCountUnit {
-            get {
-                return ((string)(this["EditPump2DisplayCountUnit"]));
-            }
-            set {
-                this["EditPump2DisplayCountUnit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int EditPump2Value {
-            get {
-                return ((int)(this["EditPump2Value"]));
-            }
-            set {
-                this["EditPump2Value"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
-        public string EditPump5TubeType {
-            get {
-                return ((string)(this["EditPump5TubeType"]));
-            }
-            set {
-                this["EditPump5TubeType"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Feed")]
-        public string EditPump5Feature {
-            get {
-                return ((string)(this["EditPump5Feature"]));
-            }
-            set {
-                this["EditPump5Feature"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
-        public string EditPump5DisplayCountUnit {
-            get {
-                return ((string)(this["EditPump5DisplayCountUnit"]));
-            }
-            set {
-                this["EditPump5DisplayCountUnit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int EditPump5Value {
-            get {
-                return ((int)(this["EditPump5Value"]));
-            }
-            set {
-                this["EditPump5Value"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#13")]
-        public string EditPump6TubeType {
-            get {
-                return ((string)(this["EditPump6TubeType"]));
-            }
-            set {
-                this["EditPump6TubeType"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Feed")]
-        public string EditPump6Feature {
-            get {
-                return ((string)(this["EditPump6Feature"]));
-            }
-            set {
-                this["EditPump6Feature"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-ml")]
-        public string EditPump6DisplayCountUnit {
-            get {
-                return ((string)(this["EditPump6DisplayCountUnit"]));
-            }
-            set {
-                this["EditPump6DisplayCountUnit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int EditPump6Value {
-            get {
-                return ((int)(this["EditPump6Value"]));
-            }
-            set {
-                this["EditPump6Value"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HidePump1Border {
-            get {
-                return ((bool)(this["HidePump1Border"]));
-            }
-            set {
-                this["HidePump1Border"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HidePump2Border {
-            get {
-                return ((bool)(this["HidePump2Border"]));
-            }
-            set {
-                this["HidePump2Border"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HidePump3Border {
-            get {
-                return ((bool)(this["HidePump3Border"]));
-            }
-            set {
-                this["HidePump3Border"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HidePump4Border {
-            get {
-                return ((bool)(this["HidePump4Border"]));
-            }
-            set {
-                this["HidePump4Border"] = value;
             }
         }
     }

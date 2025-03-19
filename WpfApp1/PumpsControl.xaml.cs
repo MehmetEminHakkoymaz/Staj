@@ -452,18 +452,18 @@ namespace WpfApp1
             MainWindow.Pump4EmptyButtonPressDuration = pressDuration.TotalSeconds;
         }
 
-        // Kayıtlı değerleri yüklemek için yeni bir metot ekleyin
+        // Change the LoadTargetValues method to use PumpXTarget instead of PumpXTargetValue
         private void LoadTargetValues()
         {
             try
             {
                 // Kaydedilmiş değerleri TextBox'lara yükle
-                Pump1Target.Text = Properties.Settings.Default.Pump1TargetValue.ToString(CultureInfo.CurrentCulture);
-                Pump2Target.Text = Properties.Settings.Default.Pump2TargetValue.ToString(CultureInfo.CurrentCulture);
-                Pump3Target.Text = Properties.Settings.Default.Pump3TargetValue.ToString(CultureInfo.CurrentCulture);
-                Pump4Target.Text = Properties.Settings.Default.Pump4TargetValue.ToString(CultureInfo.CurrentCulture);
-                Pump5Target.Text = Properties.Settings.Default.Pump5TargetValue.ToString(CultureInfo.CurrentCulture);
-                Pump6Target.Text = Properties.Settings.Default.Pump6TargetValue.ToString(CultureInfo.CurrentCulture);
+                Pump1Target.Text = Properties.Settings.Default.Pump1Target.ToString(CultureInfo.CurrentCulture);
+                Pump2Target.Text = Properties.Settings.Default.Pump2Target.ToString(CultureInfo.CurrentCulture);
+                Pump3Target.Text = Properties.Settings.Default.Pump3Target.ToString(CultureInfo.CurrentCulture);
+                Pump4Target.Text = Properties.Settings.Default.Pump4Target.ToString(CultureInfo.CurrentCulture);
+                Pump5Target.Text = Properties.Settings.Default.Pump5Target.ToString(CultureInfo.CurrentCulture);
+                Pump6Target.Text = Properties.Settings.Default.Pump6Target.ToString(CultureInfo.CurrentCulture);
             }
             catch (Exception ex)
             {
@@ -472,29 +472,29 @@ namespace WpfApp1
         }
 
 
-        // Değerleri kaydetmek için yeni bir metot ekleyin
+        // Change the SaveTargetValues method to use PumpXTarget instead of PumpXTargetValue
         private void SaveTargetValues()
         {
             try
             {
                 // TextBox değerlerini ayarlara kaydet
                 if (double.TryParse(Pump1Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump1Value))
-                    Properties.Settings.Default.Pump1TargetValue = pump1Value;
+                    Properties.Settings.Default.Pump1Target = pump1Value;
 
                 if (double.TryParse(Pump2Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump2Value))
-                    Properties.Settings.Default.Pump2TargetValue = pump2Value;
+                    Properties.Settings.Default.Pump2Target = pump2Value;
 
                 if (double.TryParse(Pump3Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump3Value))
-                    Properties.Settings.Default.Pump3TargetValue = pump3Value;
+                    Properties.Settings.Default.Pump3Target = pump3Value;
 
                 if (double.TryParse(Pump4Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump4Value))
-                    Properties.Settings.Default.Pump4TargetValue = pump4Value;
+                    Properties.Settings.Default.Pump4Target = pump4Value;
 
                 if (double.TryParse(Pump5Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump5Value))
-                    Properties.Settings.Default.Pump5TargetValue = pump5Value;
+                    Properties.Settings.Default.Pump5Target = pump5Value;
 
                 if (double.TryParse(Pump6Target.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out double pump6Value))
-                    Properties.Settings.Default.Pump6TargetValue = pump6Value;
+                    Properties.Settings.Default.Pump6Target = pump6Value;
 
                 // Değişiklikleri kaydet
                 Properties.Settings.Default.Save();
@@ -614,7 +614,7 @@ namespace WpfApp1
 
         private void ellipse20_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (Properties.Settings.Default.EditPump1Feature == "Acid")
+            if (Properties.Settings.Default.EditPump1Feature == 0)
             {
                 // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
                 MessageBox.Show("Redox selection is required. Please go to EditRedox settings and select an option.",
@@ -631,7 +631,7 @@ namespace WpfApp1
 
         private void ellipse21_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (Properties.Settings.Default.EditPump2Feature == "Base")
+            if (Properties.Settings.Default.EditPump2Feature == 0)
             {
                 // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
                 MessageBox.Show("Redox selection is required. Please go to EditRedox settings and select an option.",
@@ -647,7 +647,7 @@ namespace WpfApp1
 
         private void ellipse22_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (Properties.Settings.Default.EditPump3Feature == "Foam")
+            if (Properties.Settings.Default.EditPump3Feature == 0)
             {
                 // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
                 MessageBox.Show("Redox selection is required. Please go to EditRedox settings and select an option.",
@@ -665,22 +665,22 @@ namespace WpfApp1
         {
             if (FindName("Pump1TargetBorder") is Border pump1Border)
             {
-                pump1Border.Visibility = Properties.Settings.Default.HidePump1Border ?
+                pump1Border.Visibility = Properties.Settings.Default.Pump1TargetBorder == 1 ?
                     Visibility.Collapsed : Visibility.Visible;
             }
             if (FindName("Pump2TargetBorder") is Border pump2Border)
             {
-                pump2Border.Visibility = Properties.Settings.Default.HidePump2Border ?
+                pump2Border.Visibility = Properties.Settings.Default.Pump2TargetBorder == 1 ?
                     Visibility.Collapsed : Visibility.Visible;
             }
             if (FindName("Pump3TargetBorder") is Border pump3Border)
             {
-                pump3Border.Visibility = Properties.Settings.Default.HidePump3Border ?
+                pump3Border.Visibility = Properties.Settings.Default.Pump3TargetBorder == 1 ?
                     Visibility.Collapsed : Visibility.Visible;
             }
             if (FindName("Pump4TargetBorder") is Border pump4Border)
             {
-                pump4Border.Visibility = Properties.Settings.Default.HidePump4Border ?
+                pump4Border.Visibility = Properties.Settings.Default.Pump4TargetBorder == 1 ?
                     Visibility.Collapsed : Visibility.Visible;
             }
 

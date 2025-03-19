@@ -140,9 +140,19 @@ namespace WpfApp1.EditPages
         {
             try
             {
-                Properties.Settings.Default.EditPump6TubeType = GetSelectedButtonKey(tubeTypeButtons);
-                Properties.Settings.Default.EditPump6Feature = GetSelectedButtonKey(featureButtons);
-                Properties.Settings.Default.EditPump6DisplayCountUnit = GetSelectedButtonKey(displayCountUnitButtons);
+                //BU KISIM SİKTİR EDİLDİ BENİM TARAFIMDAN ZATEN İLK SÜRÜMDE DE OLMAYACAK BU KISMA SONRA BAK
+                //BU KISIM SİKTİR EDİLDİ BENİM TARAFIMDAN ZATEN İLK SÜRÜMDE DE OLMAYACAK BU KISMA SONRA BAK
+                //BU KISIM SİKTİR EDİLDİ BENİM TARAFIMDAN ZATEN İLK SÜRÜMDE DE OLMAYACAK BU KISMA SONRA BAK
+                //BU KISIM SİKTİR EDİLDİ BENİM TARAFIMDAN ZATEN İLK SÜRÜMDE DE OLMAYACAK BU KISMA SONRA BAK
+                //BU KISIM SİKTİR EDİLDİ BENİM TARAFIMDAN ZATEN İLK SÜRÜMDE DE OLMAYACAK BU KISMA SONRA BAK
+                //BU KISIM SİKTİR EDİLDİ BENİM TARAFIMDAN ZATEN İLK SÜRÜMDE DE OLMAYACAK BU KISMA SONRA BAK
+                //BU KISIM SİKTİR EDİLDİ BENİM TARAFIMDAN ZATEN İLK SÜRÜMDE DE OLMAYACAK BU KISMA SONRA BAK
+                //BU KISIM SİKTİR EDİLDİ BENİM TARAFIMDAN ZATEN İLK SÜRÜMDE DE OLMAYACAK BU KISMA SONRA BAK
+                //BU KISIM SİKTİR EDİLDİ BENİM TARAFIMDAN ZATEN İLK SÜRÜMDE DE OLMAYACAK BU KISMA SONRA BAK
+
+                //Properties.Settings.Default.EditPump6TubeType = GetSelectedButtonKey(tubeTypeButtons);
+                //Properties.Settings.Default.EditPump6Feature = GetSelectedButtonKey(featureButtons);
+                //Properties.Settings.Default.EditPump6DisplayCountUnit = GetSelectedButtonKey(displayCountUnitButtons);
                 Properties.Settings.Default.Save();
             }
             catch (Exception ex)

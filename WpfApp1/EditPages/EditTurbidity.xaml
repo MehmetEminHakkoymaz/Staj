@@ -101,7 +101,7 @@
             </ContentControl>
         </Grid>
 
-        <Border CornerRadius="10">
+        <!--<Border CornerRadius="10">
             <Grid Height="225" Width="750" Margin="224,233,50,126">
                 <Label Width="419" Height="30" Margin="18,8,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
                        Content="PID SETTING OF THE Turbidity CASCADE" FontSize="25" Opacity="0.5" Padding="0,0,0,0" />
@@ -158,7 +158,7 @@
                 </Button>
 
             </Grid>
-        </Border>
+        </Border>-->
         <Grid Height="108" VerticalAlignment="Bottom">
             <Border Background="#AF0101" Margin="0,0,0,0" Height="1" VerticalAlignment="Top"/>
             <Button Width="200" Height="50" Margin="0,0,80,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Ok_Button_Click">

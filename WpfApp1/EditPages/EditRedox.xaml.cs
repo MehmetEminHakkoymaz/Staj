@@ -33,12 +33,12 @@ namespace WpfApp1.EditPages
             try
             {
                 var culture = System.Globalization.CultureInfo.CurrentCulture;
-                RedoxP.Text = Properties.Settings.Default.RedoxP.ToString(culture);
-                RedoxI.Text = Properties.Settings.Default.RedoxI.ToString(culture);
-                RedoxILimit.Text = Properties.Settings.Default.RedoxILimit.ToString(culture);
-                RedoxDeadband.Text = Properties.Settings.Default.RedoxDeadband.ToString(culture);
-                RedoxNegfactor.Text = Properties.Settings.Default.RedoxNegfactor.ToString(culture);
-                RedoxEvalTime.Text = Properties.Settings.Default.RedoxEvalTime.ToString(culture);
+                RedoxP.Text = Properties.Settings.Default.EditRedoxP.ToString(culture);
+                RedoxI.Text = Properties.Settings.Default.EditRedoxI.ToString(culture);
+                RedoxILimit.Text = Properties.Settings.Default.EditRedoxILimit.ToString(culture);
+                RedoxDeadband.Text = Properties.Settings.Default.EditRedoxDeadband.ToString(culture);
+                RedoxNegfactor.Text = Properties.Settings.Default.EditRedoxNegFactor.ToString(culture);
+                RedoxEvalTime.Text = Properties.Settings.Default.EditRedoxEvalTime.ToString(culture);
                 RegisterPIDTextBoxEvents();
             }
             catch (Exception ex)
@@ -75,19 +75,28 @@ namespace WpfApp1.EditPages
         {
             try
             {
-                string lastSelected = Properties.Settings.Default.LastSelectedRedoxCascadeItem;
-                if (!string.IsNullOrEmpty(lastSelected))
+                // String yerine EditRedoxCascade değerini kullan
+                double cascadeValue = Properties.Settings.Default.EditRedoxCascade;
+
+                // Cascade değerine göre ComboBox seçimini ayarla
+                switch (cascadeValue)
                 {
-                    foreach (ComboBoxItem item in contentComboBox.Items)
-                    {
-                        if (item.Content.ToString() == lastSelected)
-                        {
-                            contentComboBox.SelectedItem = item;
-                            return;
-                        }
-                    }
+                    case 0: // None
+                        contentComboBox.SelectedIndex = 0;
+                        break;
+                    case 1: // Gas2
+                        contentComboBox.SelectedIndex = 1;
+                        break;
+                    case 2: // AirFlow
+                        contentComboBox.SelectedIndex = 2;
+                        break;
+                    case 3: // TotalFlow
+                        contentComboBox.SelectedIndex = 3;
+                        break;
+                    default:
+                        contentComboBox.SelectedIndex = 0; // Varsayılan olarak None seç
+                        break;
                 }
-                contentComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -100,22 +109,32 @@ namespace WpfApp1.EditPages
             if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
             {
                 string content = selectedItem.Content.ToString();
-                Properties.Settings.Default.RedoxSelectedCascade = content;
+
+                // RedoxSelectedCascade yerine EditRedoxCascade kullan
                 switch (content)
                 {
+                    case "None":
+                        Properties.Settings.Default.EditRedoxCascade = 0;
+                        Properties.Settings.Default.AirFlowTargetBorder = 0;
+                        Properties.Settings.Default.Gas2TargetBorder = 0;
+                        break;
                     case "Gas2":
-                        Properties.Settings.Default.HideAirFlowBorder = false;
-                        Properties.Settings.Default.HideGas2FlowBorder = true;
+                        Properties.Settings.Default.EditRedoxCascade = 1;
+                        Properties.Settings.Default.AirFlowTargetBorder = 0;
+                        Properties.Settings.Default.Gas2TargetBorder = 1;
                         break;
                     case "AirFlow":
-                        Properties.Settings.Default.HideAirFlowBorder = true;
-                        Properties.Settings.Default.HideGas2FlowBorder = false;
+                        Properties.Settings.Default.EditRedoxCascade = 2;
+                        Properties.Settings.Default.AirFlowTargetBorder = 1;
+                        Properties.Settings.Default.Gas2TargetBorder = 0;
                         break;
                     case "TotalFlow":
-                        Properties.Settings.Default.HideAirFlowBorder = false;
-                        Properties.Settings.Default.HideGas2FlowBorder = true;
+                        Properties.Settings.Default.EditRedoxCascade = 3;
+                        Properties.Settings.Default.AirFlowTargetBorder = 0;
+                        Properties.Settings.Default.Gas2TargetBorder = 1;
                         break;
                 }
+
                 Properties.Settings.Default.Save();
                 contentArea.Content = null;
                 contentArea.ContentTemplate = null;
@@ -210,24 +229,38 @@ namespace WpfApp1.EditPages
                 if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
                 {
                     string content = selectedItem.Content.ToString();
-                    Properties.Settings.Default.LastSelectedRedoxCascadeItem = content;
-                    Properties.Settings.Default.RedoxSelectedCascade = content;
+
+                    // LastSelectedRedoxCascadeItem ve RedoxSelectedCascade yerine EditRedoxCascade kullan
                     switch (content)
                     {
+                        case "None":
+                            Properties.Settings.Default.EditRedoxCascade = 0;
+                            Properties.Settings.Default.RedoxEllipse = 0;
+                            Properties.Settings.Default.RedoxTargetBorder = 1;
+                            Properties.Settings.Default.AirFlowTargetBorder = 0;
+                            Properties.Settings.Default.Gas2TargetBorder = 0;
+                            break;
                         case "Gas2":
-                            Properties.Settings.Default.HideAirFlowBorder = false;
-                            Properties.Settings.Default.HideGas2FlowBorder = true;
+                            Properties.Settings.Default.EditRedoxCascade = 1;
+                            Properties.Settings.Default.RedoxTargetBorder = 0;
+                            Properties.Settings.Default.AirFlowTargetBorder = 0;
+                            Properties.Settings.Default.Gas2TargetBorder = 1;
                             break;
                         case "AirFlow":
-                            Properties.Settings.Default.HideAirFlowBorder = true;
-                            Properties.Settings.Default.HideGas2FlowBorder = false;
+                            Properties.Settings.Default.EditRedoxCascade = 2;
+                            Properties.Settings.Default.RedoxTargetBorder = 0;
+                            Properties.Settings.Default.AirFlowTargetBorder = 1;
+                            Properties.Settings.Default.Gas2TargetBorder = 0;
                             break;
                         case "TotalFlow":
-                            Properties.Settings.Default.HideAirFlowBorder = false;
-                            Properties.Settings.Default.HideGas2FlowBorder = true;
+                            Properties.Settings.Default.EditRedoxCascade = 3;
+                            Properties.Settings.Default.RedoxTargetBorder = 0;
+                            Properties.Settings.Default.AirFlowTargetBorder = 0;
+                            Properties.Settings.Default.Gas2TargetBorder = 1;
                             break;
                     }
                 }
+
                 SaveCurrentValues();
                 SavePIDSettings();
                 Properties.Settings.Default.Save();
@@ -244,27 +277,27 @@ namespace WpfApp1.EditPages
             {
                 if (double.TryParse(RedoxP.Text, out double pValue))
                 {
-                    Properties.Settings.Default.RedoxP = pValue;
+                    Properties.Settings.Default.EditRedoxP = pValue;
                 }
                 if (double.TryParse(RedoxI.Text, out double iValue))
                 {
-                    Properties.Settings.Default.RedoxI = iValue;
+                    Properties.Settings.Default.EditRedoxI = iValue;
                 }
                 if (double.TryParse(RedoxILimit.Text, out double iLimitValue))
                 {
-                    Properties.Settings.Default.RedoxILimit = iLimitValue;
+                    Properties.Settings.Default.EditRedoxILimit = iLimitValue;
                 }
                 if (double.TryParse(RedoxDeadband.Text, out double deadbandValue))
                 {
-                    Properties.Settings.Default.RedoxDeadband = deadbandValue;
+                    Properties.Settings.Default.EditRedoxDeadband = deadbandValue;
                 }
                 if (double.TryParse(RedoxNegfactor.Text, out double negfactorValue))
                 {
-                    Properties.Settings.Default.RedoxNegfactor = negfactorValue;
+                    Properties.Settings.Default.EditRedoxNegFactor = negfactorValue;
                 }
                 if (double.TryParse(RedoxEvalTime.Text, out double evalTimeValue))
                 {
-                    Properties.Settings.Default.RedoxEvalTime = evalTimeValue;
+                    Properties.Settings.Default.EditRedoxEvalTime = evalTimeValue;
                 }
             }
             catch (Exception ex)
@@ -310,13 +343,13 @@ namespace WpfApp1.EditPages
             switch (templateName)
             {
                 case "Gas2":
-                    SetupTextBox(content, "RedoxGas2N2", Properties.Settings.Default.RedoxGas2N2);
+                    SetupTextBox(content, "RedoxGas2N2", Properties.Settings.Default.EditRedoxGas2); // Değiştirildi
                     break;
                 case "AirFlow":
-                    SetupTextBox(content, "RedoxAirFlowAir", Properties.Settings.Default.RedoxAirFlowAir);
+                    SetupTextBox(content, "RedoxAirFlowAir", Properties.Settings.Default.EditRedoxAirFlow); // Değiştirildi
                     break;
                 case "TotalFlow":
-                    SetupTextBox(content, "RedoxTotalFlowTotalFlow", Properties.Settings.Default.RedoxTotalFlowTotalFlow);
+                    SetupTextBox(content, "RedoxTotalFlowTotalFlow", Properties.Settings.Default.EditRedoxTotalFlow); // Değiştirildi
                     break;
             }
         }
@@ -341,18 +374,23 @@ namespace WpfApp1.EditPages
             if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
             {
                 string content = selectedItem.Content.ToString();
-                Properties.Settings.Default.RedoxSelectedCascade = content;
 
                 switch (content)
                 {
+                    case "None":
+                        Properties.Settings.Default.EditRedoxCascade = 0;
+                        break;
                     case "Gas2":
-                        SaveValue("RedoxGas2N2", "RedoxGas2N2");
+                        Properties.Settings.Default.EditRedoxCascade = 1;
+                        SaveValue("RedoxGas2N2", "EditRedoxGas2"); // Değiştirildi
                         break;
                     case "AirFlow":
-                        SaveValue("RedoxAirFlowAir", "RedoxAirFlowAir");
+                        Properties.Settings.Default.EditRedoxCascade = 2;
+                        SaveValue("RedoxAirFlowAir", "EditRedoxAirFlow"); // Değiştirildi
                         break;
                     case "TotalFlow":
-                        SaveValue("RedoxTotalFlowTotalFlow", "RedoxTotalFlowTotalFlow");
+                        Properties.Settings.Default.EditRedoxCascade = 3;
+                        SaveValue("RedoxTotalFlowTotalFlow", "EditRedoxTotalFlow"); // Değiştirildi
                         break;
                 }
             }
@@ -365,10 +403,26 @@ namespace WpfApp1.EditPages
                 System.Globalization.CultureInfo.CurrentCulture,
                 out double value))
             {
-                var property = Properties.Settings.Default.GetType().GetProperty(settingsProperty);
-                if (property != null)
+                // Eski ve yeni değişken adlarının eşleştirmesi
+                switch (controlName)
                 {
-                    property.SetValue(Properties.Settings.Default, value);
+                    case "RedoxGas2N2":
+                        Properties.Settings.Default.EditRedoxGas2 = value;
+                        break;
+                    case "RedoxAirFlowAir":
+                        Properties.Settings.Default.EditRedoxAirFlow = value;
+                        break;
+                    case "RedoxTotalFlowTotalFlow":
+                        Properties.Settings.Default.EditRedoxTotalFlow = value;
+                        break;
+                    default:
+                        // Varsayılan davranış - eskisi gibi reflection kullan
+                        var property = Properties.Settings.Default.GetType().GetProperty(settingsProperty);
+                        if (property != null)
+                        {
+                            property.SetValue(Properties.Settings.Default, value);
+                        }
+                        break;
                 }
             }
         }

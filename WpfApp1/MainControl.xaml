@@ -26,8 +26,8 @@
                        VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="TemperatureValue" Content="5" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" 
                        FontSize="20" Opacity="0.7"/>
-                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" 
-                        BorderThickness="1">
+                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"
+                        x:Name="TemperatureTargetBorder" Visibility="Visible">
                     <TextBox x:Name="TemperatureTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
@@ -44,14 +44,15 @@
                 </Button>
             </Grid>
         </Border>
+        
         <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,95,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
             <Grid x:Name="Stirrer">
                 <Label Content="Stirrer" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0"
                        VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>                
                 <Label Content="4" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" 
                        x:Name="StirrerValue" Opacity="0.7"/>
-                <Border x:Name="StirrerTargetBorder" HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" 
-                        BorderBrush="Gray" BorderThickness="1" Visibility="Visible">
+                <Border  HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5"  BorderBrush="Gray" BorderThickness="1"
+                        x:Name="StirrerTargetBorder" Visibility="Visible">
                     <TextBox x:Name="StirrerTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="15,60"/>
                 </Border>
@@ -76,7 +77,8 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="pH" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="pHValue" Content="3" HorizontalAlignment="Left" Margin="101,0,0,0" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Opacity="0.7"/>
-                <Border HorizontalAlignment="Left" Margin="315,6,0,5" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Grid.Column="1">
+                <Border HorizontalAlignment="Left" Margin="315,6,0,5" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Grid.Column="1"
+                        x:Name="pHTargetBorder" Visibility="Visible">
                     <TextBox x:Name="pHTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,1000"/>
                 </Border>
@@ -119,7 +121,8 @@
             <Grid x:Name="pO2">
                 <Label Content="pO2" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="pO2Value" Content="2" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
-                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"
+                        x:Name="pO2TargetBorder" Visibility="Visible">
                     <TextBox x:Name="pO2Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,1000"/>
                 </Border>
@@ -144,7 +147,7 @@
                     <TextBlock Text="°C" FontSize="16" VerticalAlignment="Center" Margin="2,0,0,0"/>
                 </StackPanel>
                 <Button x:Name="conditionalButtonpO2" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                        Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                        Visibility="Collapsed" Click="conditionalButtonpO2_Click" Background="#FFAF0101">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -286,8 +289,8 @@
                        VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="RedoxValue" Content="9" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" 
                        FontSize="20" Opacity="0.7"/>
-                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" 
-                        BorderThickness="1">
+                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"
+                        x:Name="RedoxTargetBorder" Visibility="Visible">
                     <TextBox x:Name="RedoxTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" 
                              Background="Transparent" BorderThickness="0" TextAlignment="Center" Padding="0" FontSize="20" 
                              Opacity="0.7" Tag="0,1000"/>
@@ -333,7 +336,8 @@
                     <Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,5,244,409">
                             <Canvas x:Name="canvas1" Width="66.87" Height="30">
-                                <Ellipse x:Name="ellipse1" Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3"/>
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3"
+                                         x:Name="ellipse1"/>
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,5,21,409"/>
@@ -343,7 +347,7 @@
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="11,50,243,364">
                             <Canvas x:Name="canvas2" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
-                                         x:Name="ellipse2" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                                         x:Name="ellipse2" />
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,50,21,364"/>
@@ -364,8 +368,8 @@
                     <Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,140,244,274">
                             <Canvas x:Name="canvas4" Width="66.87" Height="30">
-                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" x:Name="ellipse4"
-                                         MouseLeftButtonDown="ellipse4_MouseDown"/>
+                                <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
+                                         x:Name="ellipse4" MouseLeftButtonDown="ellipse4_MouseDown"/>
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/target.png" Width="30" Height="30" Margin="122,140,169,274"/>

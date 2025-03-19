@@ -21,7 +21,7 @@ namespace WpfApp1.EditPages
             contentComboBox.SelectionChanged += ContentComboBox_SelectionChanged;
             KeypadControl.ValueSelected += KeyPadControl_ValueSelected;
             LoadLastSelectedCascade();
-            LoadPIDSettings();
+            //LoadPIDSettings();
             UpdateUIForVesselType(); // Add this line to update UI based on vessel type
 
             WindowState = WindowState.Maximized;
@@ -29,39 +29,7 @@ namespace WpfApp1.EditPages
             ResizeMode = ResizeMode.NoResize;
             Topmost = true;
         }
-        private void LoadPIDSettings()
-        {
-            try
-            {
-                var culture = System.Globalization.CultureInfo.CurrentCulture;
-                TurbidityP.Text = Properties.Settings.Default.TurbidityP.ToString(culture);
-                TurbidityI.Text = Properties.Settings.Default.TurbidityI.ToString(culture);
-                TurbidityILimit.Text = Properties.Settings.Default.TurbidityILimit.ToString(culture);
-                TurbidityDeadband.Text = Properties.Settings.Default.TurbidityDeadband.ToString(culture);
-                TurbidityNegfactor.Text = Properties.Settings.Default.TurbidityNegfactor.ToString(culture);
-                TurbidityEvalTime.Text = Properties.Settings.Default.TurbidityEvalTime.ToString(culture);
-                RegisterPIDTextBoxEvents();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading PID settings: {ex.Message}");
-            }
-        }
-        private void RegisterPIDTextBoxEvents()
-        {
-            TurbidityP.PreviewTextInput += TextBox_PreviewTextInput;
-            TurbidityI.PreviewTextInput += TextBox_PreviewTextInput;
-            TurbidityILimit.PreviewTextInput += TextBox_PreviewTextInput;
-            TurbidityDeadband.PreviewTextInput += TextBox_PreviewTextInput;
-            TurbidityNegfactor.PreviewTextInput += TextBox_PreviewTextInput;
-            TurbidityEvalTime.PreviewTextInput += TextBox_PreviewTextInput;
-            TurbidityP.TextChanged += TextBox_TextChanged;
-            TurbidityI.TextChanged += TextBox_TextChanged;
-            TurbidityILimit.TextChanged += TextBox_TextChanged;
-            TurbidityDeadband.TextChanged += TextBox_TextChanged;
-            TurbidityNegfactor.TextChanged += TextBox_TextChanged;
-            TurbidityEvalTime.TextChanged += TextBox_TextChanged;
-        }
+
         private DispatcherTimer InitializeClock()
         {
             var timer = new DispatcherTimer
@@ -76,16 +44,21 @@ namespace WpfApp1.EditPages
         {
             try
             {
-                string lastSelected = Properties.Settings.Default.LastSelectedTurbidityCascadeItem;
-                if (!string.IsNullOrEmpty(lastSelected))
+                double cascadeValue = Properties.Settings.Default.EditTurbidityCascade;
+                string selectedItem = cascadeValue switch
                 {
-                    foreach (ComboBoxItem item in contentComboBox.Items)
+                    0 => "None",
+                    1 => "Feed",
+                    2 => "Harvesting->Inoculate",
+                    _ => "None" // Default to None for any other values
+                };
+
+                foreach (ComboBoxItem item in contentComboBox.Items)
+                {
+                    if (item.Content.ToString() == selectedItem)
                     {
-                        if (item.Content.ToString() == lastSelected)
-                        {
-                            contentComboBox.SelectedItem = item;
-                            return;
-                        }
+                        contentComboBox.SelectedItem = item;
+                        return;
                     }
                 }
                 contentComboBox.SelectedIndex = 0;
@@ -96,66 +69,39 @@ namespace WpfApp1.EditPages
                 contentComboBox.SelectedIndex = 0;
             }
         }
-        //private void ContentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
-        //    {
-        //        string content = selectedItem.Content.ToString();
-        //        Properties.Settings.Default.TurbiditySelectedCascade = content;
 
-        //        // Otomatik olarak EditPump4Feature'ı ayarla
-        //        if (content == "Feed")
-        //        {
-        //            Properties.Settings.Default.EditPump4Feature = "Turbidity";
-        //        }
-        //        else if (content == "None")
-        //        {
-        //            Properties.Settings.Default.EditPump4Feature = "Feed";
-        //        }
-
-        //        switch (content)
-        //        {
-        //            case "Harvesting->Inoculate":
-        //                Properties.Settings.Default.TurbiditySelectedCascade = "None";
-        //                Properties.Settings.Default.EditPump4Feature = "Feed";
-        //                LoadLastSelectedCascade();
-        //                MessageBox.Show("To use Harvesting->Inoculate mode, an external peristaltic pump must be attached.",
-        //                              "Configuration Required",
-        //                              MessageBoxButton.OK,
-        //                              MessageBoxImage.Warning);
-        //                return;
-        //        }
-
-        //        Properties.Settings.Default.Save();
-        //        contentArea.Content = null;
-        //        contentArea.ContentTemplate = null;
-        //        ApplyTemplate(content);
-        //    }
-        //}
         private void ContentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
             {
                 string content = selectedItem.Content.ToString();
-                Properties.Settings.Default.TurbiditySelectedCascade = content;
+                double cascadeValue = content switch
+                {
+                    "None" => 0,
+                    "Feed" => 1,
+                    "Harvesting->Inoculate" => 2,
+                    _ => 0 // Default to None for any other values
+                };
+
+                Properties.Settings.Default.EditTurbidityCascade = cascadeValue;
 
                 // EditPump4Feature ayarını HEMEN güncelle ve kaydet
                 if (content == "Feed")
                 {
-                    Properties.Settings.Default.EditPump4Feature = "Turbidity";
+                    Properties.Settings.Default.EditPump4Feature = 2;
                 }
                 else
                 {
                     // Feed değilse, Turbidity özelliğini kullanamaz
-                    if (Properties.Settings.Default.EditPump4Feature == "Turbidity")
-                        Properties.Settings.Default.EditPump4Feature = "Feed";
+                    if (Properties.Settings.Default.EditPump4Feature == 2)
+                        Properties.Settings.Default.EditPump4Feature = 1;
                 }
 
                 // Harvesting->Inoculate kontrolü
                 if (content == "Harvesting->Inoculate")
                 {
-                    Properties.Settings.Default.TurbiditySelectedCascade = "None";
-                    Properties.Settings.Default.EditPump4Feature = "Feed";
+                    Properties.Settings.Default.EditTurbidityCascade = 0; // Set to None (0)
+                    Properties.Settings.Default.EditPump4Feature = 1;
                     LoadLastSelectedCascade();
                     MessageBox.Show("To use Harvesting->Inoculate mode, an external peristaltic pump must be attached.",
                                   "Configuration Required",
@@ -313,37 +259,7 @@ namespace WpfApp1.EditPages
         {
             this.Close();
         }
-        //private void Ok_Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
-        //        {
-        //            string content = selectedItem.Content.ToString();
-        //            Properties.Settings.Default.LastSelectedTurbidityCascadeItem = content;
-        //            Properties.Settings.Default.TurbiditySelectedCascade = content;
 
-        //            // None seçildiğinde EditPump4Feature'ı Feed olarak ayarla
-        //            if (content == "None")
-        //            {
-        //                Properties.Settings.Default.EditPump4Feature = "Feed";
-        //            }
-        //            // Feed seçildiğinde de EditPump4Feature'ı Turbidity olarak ayarla
-        //            else if (content == "Feed")
-        //            {
-        //                Properties.Settings.Default.EditPump4Feature = "Turbidity";
-        //            }
-        //        }
-        //        SaveCurrentValues();
-        //        SavePIDSettings();
-        //        Properties.Settings.Default.Save();
-        //        this.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error saving settings: {ex.Message}");
-        //    }
-        //}
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -351,22 +267,29 @@ namespace WpfApp1.EditPages
                 if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
                 {
                     string content = selectedItem.Content.ToString();
-                    Properties.Settings.Default.LastSelectedTurbidityCascadeItem = content;
-                    Properties.Settings.Default.TurbiditySelectedCascade = content;
+                    double cascadeValue = content switch
+                    {
+                        "None" => 0,
+                        "Feed" => 1,
+                        "Harvesting->Inoculate" => 2,
+                        _ => 0 // Default to None for any other values
+                    };
+
+                    Properties.Settings.Default.EditTurbidityCascade = cascadeValue;
 
                     // EditPump4Feature ayarını güncelle - bu kritik!
                     if (content == "None" || content == "Harvesting->Inoculate")
                     {
-                        Properties.Settings.Default.EditPump4Feature = "Feed";
+                        Properties.Settings.Default.EditPump4Feature = 1;
                     }
                     else if (content == "Feed")
                     {
-                        Properties.Settings.Default.EditPump4Feature = "Turbidity";
+                        Properties.Settings.Default.EditPump4Feature = 2;
                     }
                 }
 
                 SaveCurrentValues();
-                SavePIDSettings();
+                //SavePIDSettings();
                 Properties.Settings.Default.Save();
 
                 // Ayarları derhal kaydet ve EditPump4 için senkronize et
@@ -391,40 +314,7 @@ namespace WpfApp1.EditPages
             }
         }
 
-        private void SavePIDSettings()
-        {
-            try
-            {
-                if (double.TryParse(TurbidityP.Text, out double pValue))
-                {
-                    Properties.Settings.Default.TurbidityP = pValue;
-                }
-                if (double.TryParse(TurbidityI.Text, out double iValue))
-                {
-                    Properties.Settings.Default.TurbidityI = iValue;
-                }
-                if (double.TryParse(TurbidityILimit.Text, out double iLimitValue))
-                {
-                    Properties.Settings.Default.TurbidityILimit = iLimitValue;
-                }
-                if (double.TryParse(TurbidityDeadband.Text, out double deadbandValue))
-                {
-                    Properties.Settings.Default.TurbidityDeadband = deadbandValue;
-                }
-                if (double.TryParse(TurbidityNegfactor.Text, out double negfactorValue))
-                {
-                    Properties.Settings.Default.TurbidityNegfactor = negfactorValue;
-                }
-                if (double.TryParse(TurbidityEvalTime.Text, out double evalTimeValue))
-                {
-                    Properties.Settings.Default.TurbidityEvalTime = evalTimeValue;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving PID settings: {ex.Message}");
-            }
-        }
+
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !int.TryParse(e.Text, out _);
@@ -465,14 +355,14 @@ namespace WpfApp1.EditPages
             switch (templateName)
             {
                 case "Feed":
-                    SetupTextBox(content, "TurbidityFeedml", Properties.Settings.Default.TurbidityFeedml);
-
+                    SetupTextBox(content, "TurbidityFeedml", Properties.Settings.Default.EditTurbidityFeed);
                     break;
+
                 case "Harvesting->Inoculate":
-                    //SetupTextBox(content, "TurbidityHarvestingInoculateHarvesting", Properties.Settings.Default.TurbidityHarvestingInoculateHarvesting);
-                    //SetupTextBox(content, "TurbidityHarvestingInoculateInoculate", Properties.Settings.Default.TurbidityHarvestingInoculateInoculate);
-                    var harvestingTextBox = SetupTextBox(content, "TurbidityHarvestingInoculateHarvesting", Properties.Settings.Default.TurbidityHarvestingInoculateHarvesting);
-                    var inoculateTextBox = SetupTextBox(content, "TurbidityHarvestingInoculateInoculate", Properties.Settings.Default.TurbidityHarvestingInoculateInoculate);
+                    var harvestingTextBox = SetupTextBox(content, "TurbidityHarvestingInoculateHarvesting",
+                                                       Properties.Settings.Default.EditTurbidityHarvesting);
+                    var inoculateTextBox = SetupTextBox(content, "TurbidityHarvestingInoculateInoculate",
+                                                      Properties.Settings.Default.EditTurbidityInoculate);
 
                     // Add TextChanged event handlers for both TextBoxes
                     if (harvestingTextBox != null)
@@ -505,27 +395,35 @@ namespace WpfApp1.EditPages
             if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
             {
                 string content = selectedItem.Content.ToString();
-                Properties.Settings.Default.TurbiditySelectedCascade = content;
+                double cascadeValue = content switch
+                {
+                    "None" => 0,
+                    "Feed" => 1,
+                    "Harvesting->Inoculate" => 2,
+                    _ => 0 // Default to None for any other values
+                };
+
+                Properties.Settings.Default.EditTurbidityCascade = cascadeValue;
 
                 // None seçildiğinde EditPump4Feature'ı Feed olarak ayarla
                 if (content == "None")
                 {
-                    Properties.Settings.Default.EditPump4Feature = "Feed";
+                    Properties.Settings.Default.EditPump4Feature = 1;
                 }
                 // Feed seçildiğinde de EditPump4Feature'ı Turbidity olarak ayarla
                 else if (content == "Feed")
                 {
-                    Properties.Settings.Default.EditPump4Feature = "Turbidity";
+                    Properties.Settings.Default.EditPump4Feature = 2;
                 }
 
                 switch (content)
                 {
                     case "Feed":
-                        SaveValue("TurbidityFeedml", "TurbidityFeedml");
+                        SaveValue("TurbidityFeedml", "EditTurbidityFeed");
                         break;
                     case "Harvesting->Inoculate":
-                        SaveValue("TurbidityHarvestingInoculateHarvesting", "TurbidityHarvestingInoculateHarvesting");
-                        SaveValue("TurbidityHarvestingInoculateInoculate", "TurbidityHarvestingInoculateInoculate");
+                        SaveValue("TurbidityHarvestingInoculateHarvesting", "EditTurbidityHarvesting");
+                        SaveValue("TurbidityHarvestingInoculateInoculate", "EditTurbidityInoculate");
                         break;
                 }
             }
@@ -581,19 +479,11 @@ namespace WpfApp1.EditPages
             }
             return foundChild;
         }
-        private void ResetPIDButton_Click(object sender, RoutedEventArgs e)
-        {
-            TurbidityP.Text = "50";
-            TurbidityI.Text = "25";
-            TurbidityILimit.Text = "50";
-            TurbidityDeadband.Text = "5";
-            TurbidityNegfactor.Text = "100";
-            TurbidityEvalTime.Text = "60";
-        }
+
         private void UpdateUIForVesselType()
         {
-            // Get the current vessel type from settings
-            string vesselType = Properties.Settings.Default.SelectedVesselType;
+            // Get the current vessel type from settings as double
+            double vesselType = Properties.Settings.Default.SelectedVesselType;
 
             // Update the template setup method to handle vessel type specifics
             if (contentComboBox.SelectedItem is ComboBoxItem selectedItem)
@@ -605,85 +495,58 @@ namespace WpfApp1.EditPages
 
         private void UpdateTemplateForVesselType(FrameworkElement content)
         {
-            string vesselType = Properties.Settings.Default.SelectedVesselType;
+            // Get vessel type as double (0=500ml, 1=1L, 2=2L, 3=3L)
+            double vesselType = Properties.Settings.Default.SelectedVesselType;
 
             // Find the label and textbox only in the Feed template
             var mlLabel = FindChild<Label>(content, "ml");
             var feedTextBox = FindChild<TextBox>(content, "TurbidityFeedml");
 
-            if (vesselType == "500ml")
-            {
-                // Update for 500ml vessel type
-                if (mlLabel != null)
-                {
-                    mlLabel.Content = "(MAX 500ml)";
-                }
+            int maxVolume = 3000; // Default to 3L
 
-                if (feedTextBox != null)
-                {
-                    feedTextBox.Tag = "0,500";
-                    // Make sure the value doesn't exceed the new maximum
-                    if (double.TryParse(feedTextBox.Text, out double currentValue) && currentValue > 500)
-                    {
-                        feedTextBox.Text = "500";
-                    }
-                }
+            switch (vesselType)
+            {
+                case 0: // 500ml
+                    maxVolume = 500;
+                    if (mlLabel != null)
+                        mlLabel.Content = "(MAX 500ml)";
+                    break;
+                case 1: // 1L
+                    maxVolume = 1000;
+                    if (mlLabel != null)
+                        mlLabel.Content = "(MAX 1000ml)";
+                    break;
+                case 2: // 2L
+                    maxVolume = 2000;
+                    if (mlLabel != null)
+                        mlLabel.Content = "(MAX 2000ml)";
+                    break;
+                case 3: // 3L
+                    maxVolume = 3000;
+                    if (mlLabel != null)
+                        mlLabel.Content = "(MAX 3000ml)";
+                    break;
+                default: // Default to 3L
+                    maxVolume = 3000;
+                    if (mlLabel != null)
+                        mlLabel.Content = "(MAX 3000ml)";
+                    break;
             }
-            else if (vesselType == "1L")
-            {
-                // Update for 500ml vessel type
-                if (mlLabel != null)
-                {
-                    mlLabel.Content = "(MAX 1000ml)";
-                }
 
-                if (feedTextBox != null)
-                {
-                    feedTextBox.Tag = "0,1000";
-                    // Make sure the value doesn't exceed the new maximum
-                    if (double.TryParse(feedTextBox.Text, out double currentValue) && currentValue > 500)
-                    {
-                        feedTextBox.Text = "1000";
-                    }
-                }
-            }
-            else if (vesselType == "2L")
+            // Update the textbox tag and ensure value doesn't exceed maximum
+            if (feedTextBox != null)
             {
-                // Update for 500ml vessel type
-                if (mlLabel != null)
-                {
-                    mlLabel.Content = "(MAX 2000ml)";
-                }
+                feedTextBox.Tag = $"0,{maxVolume}";
 
-                if (feedTextBox != null)
+                // Make sure the value doesn't exceed the new maximum
+                if (double.TryParse(feedTextBox.Text, out double currentValue) && currentValue > maxVolume)
                 {
-                    feedTextBox.Tag = "0,2000";
-                    // Make sure the value doesn't exceed the new maximum
-                    if (double.TryParse(feedTextBox.Text, out double currentValue) && currentValue > 500)
-                    {
-                        feedTextBox.Text = "2000";
-                    }
-                }
-            }
-            else if (vesselType == "3L")
-            {
-                // Update for 500ml vessel type
-                if (mlLabel != null)
-                {
-                    mlLabel.Content = "(MAX 3000ml)";
-                }
-
-                if (feedTextBox != null)
-                {
-                    feedTextBox.Tag = "0,3000";
-                    // Make sure the value doesn't exceed the new maximum
-                    if (double.TryParse(feedTextBox.Text, out double currentValue) && currentValue > 500)
-                    {
-                        feedTextBox.Text = "3000";
-                    }
+                    feedTextBox.Text = maxVolume.ToString(System.Globalization.CultureInfo.CurrentCulture);
                 }
             }
         }
+
+
         private bool isUpdatingInoculateText = false;
 
         private void HarvestingInoculate_TextChanged(object sender, TextChangedEventArgs e)

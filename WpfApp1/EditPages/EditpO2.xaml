@@ -33,7 +33,6 @@
                     <ComboBoxItem Content="GasMix" FontWeight="Regular" FontSize="25"/>
                     <ComboBoxItem Content="Stirrer->TotalFlow" FontWeight="Regular" FontSize="25"/>
                     <ComboBoxItem Content="Stirrer->GasMix" FontWeight="Regular" FontSize="25"/>
-                    <!--<ComboBoxItem Content="Stirrer->TotalFlow->GasMix" FontWeight="Regular" FontSize="25"/>-->
                 </ComboBox>
             </Border>
             <ContentControl x:Name="contentArea" HorizontalAlignment="Left" Margin="224,147,0,357" Width="750" Height="80">
