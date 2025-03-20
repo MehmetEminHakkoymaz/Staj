@@ -50,6 +50,18 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TemperatureConditionalButtonVisibility {
+            get {
+                return ((double)(this["TemperatureConditionalButtonVisibility"]));
+            }
+            set {
+                this["TemperatureConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double TemperatureTargetBorder {
             get {
                 return ((double)(this["TemperatureTargetBorder"]));
@@ -98,6 +110,18 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double StirrerConditionalButtonVisibility {
+            get {
+                return ((double)(this["StirrerConditionalButtonVisibility"]));
+            }
+            set {
+                this["StirrerConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double StirrerTargetBorder {
             get {
                 return ((double)(this["StirrerTargetBorder"]));
@@ -140,6 +164,18 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["pHConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double pHConditionalButtonVisibility {
+            get {
+                return ((double)(this["pHConditionalButtonVisibility"]));
+            }
+            set {
+                this["pHConditionalButtonVisibility"] = value;
             }
         }
         
@@ -482,6 +518,18 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double FoamConditionalButtonVisibility {
+            get {
+                return ((double)(this["FoamConditionalButtonVisibility"]));
+            }
+            set {
+                this["FoamConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double FoamTargetBorder {
             get {
                 return ((double)(this["FoamTargetBorder"]));
@@ -572,6 +620,18 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["RedoxConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double RedoxConditionalButtonVisibility {
+            get {
+                return ((double)(this["RedoxConditionalButtonVisibility"]));
+            }
+            set {
+                this["RedoxConditionalButtonVisibility"] = value;
             }
         }
         
@@ -746,6 +806,18 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TurbidityConditionalButtonVisibility {
+            get {
+                return ((double)(this["TurbidityConditionalButtonVisibility"]));
+            }
+            set {
+                this["TurbidityConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double TurbidityTargetBorder {
             get {
                 return ((double)(this["TurbidityTargetBorder"]));
@@ -842,6 +914,18 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double BalanceConditionalButtonVisibility {
+            get {
+                return ((double)(this["BalanceConditionalButtonVisibility"]));
+            }
+            set {
+                this["BalanceConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double BalanceTargetBorder {
             get {
                 return ((double)(this["BalanceTargetBorder"]));
@@ -884,6 +968,18 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["AirFlowConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AirFlowConditionalButtonVisibility {
+            get {
+                return ((double)(this["AirFlowConditionalButtonVisibility"]));
+            }
+            set {
+                this["AirFlowConditionalButtonVisibility"] = value;
             }
         }
         
@@ -938,6 +1034,18 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Gas2ConditionalButtonVisibility {
+            get {
+                return ((double)(this["Gas2ConditionalButtonVisibility"]));
+            }
+            set {
+                this["Gas2ConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double Gas2TargetBorder {
             get {
                 return ((double)(this["Gas2TargetBorder"]));
@@ -980,6 +1088,18 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["ExitGasO2ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double ExitGasO2ConditionalButtonVisibility {
+            get {
+                return ((double)(this["ExitGasO2ConditionalButtonVisibility"]));
+            }
+            set {
+                this["ExitGasO2ConditionalButtonVisibility"] = value;
             }
         }
         
@@ -1034,6 +1154,18 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double ExitGasCO2ConditionalButtonVisibility {
+            get {
+                return ((double)(this["ExitGasCO2ConditionalButtonVisibility"]));
+            }
+            set {
+                this["ExitGasCO2ConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double ExitGasCO2TargetBorder {
             get {
                 return ((double)(this["ExitGasCO2TargetBorder"]));
@@ -1076,6 +1208,18 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["Pump1ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump1ConditionalButtonVisibility {
+            get {
+                return ((double)(this["Pump1ConditionalButtonVisibility"]));
+            }
+            set {
+                this["Pump1ConditionalButtonVisibility"] = value;
             }
         }
         
@@ -1202,6 +1346,18 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump2ConditionalButtonVisibility {
+            get {
+                return ((double)(this["Pump2ConditionalButtonVisibility"]));
+            }
+            set {
+                this["Pump2ConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double Pump2TargetBorder {
             get {
                 return ((double)(this["Pump2TargetBorder"]));
@@ -1316,6 +1472,18 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["Pump3ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump3ConditionalButtonVisibility {
+            get {
+                return ((double)(this["Pump3ConditionalButtonVisibility"]));
+            }
+            set {
+                this["Pump3ConditionalButtonVisibility"] = value;
             }
         }
         
@@ -1442,6 +1610,18 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump4ConditionalButtonVisibility {
+            get {
+                return ((double)(this["Pump4ConditionalButtonVisibility"]));
+            }
+            set {
+                this["Pump4ConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double Pump4TargetBorder {
             get {
                 return ((double)(this["Pump4TargetBorder"]));
@@ -1562,6 +1742,18 @@ namespace WpfApp1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump5ConditionalButtonVisibility {
+            get {
+                return ((double)(this["Pump5ConditionalButtonVisibility"]));
+            }
+            set {
+                this["Pump5ConditionalButtonVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double Pump5TargetBorder {
             get {
                 return ((double)(this["Pump5TargetBorder"]));
@@ -1676,6 +1868,18 @@ namespace WpfApp1.Properties {
             }
             set {
                 this["Pump6ConditionalButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Pump6ConditionalButtonVisibility {
+            get {
+                return ((double)(this["Pump6ConditionalButtonVisibility"]));
+            }
+            set {
+                this["Pump6ConditionalButtonVisibility"] = value;
             }
         }
         
@@ -1981,7 +2185,7 @@ namespace WpfApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public double pO2Value {
             get {
                 return ((double)(this["pO2Value"]));

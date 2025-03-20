@@ -223,12 +223,12 @@
 
         <Border HorizontalAlignment="Left"  Height="50" VerticalAlignment="Top" Width="266" Margin="0,300,0,0" BorderBrush="#FFD6D6D6" 
                 BorderThickness="2,2,2,2">
-            <Grid x:Name="MainRedux">
+            <Grid x:Name="MainRedox">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Redux" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
+                <Label Content="Redox" VerticalAlignment="Center" FontSize="20" Opacity="0.7" Grid.Column="1" Margin="55,0,0,0"/>
             </Grid>
         </Border>
 
@@ -702,8 +702,8 @@
                 </CheckBox.Template>
             </CheckBox>
 
-            <!--Redux-->
-            <CheckBox Tag="262144" x:Name="Redux" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" 
+            <!--Redox-->
+            <CheckBox Tag="262144" x:Name="Redox" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0" Width="40" 
                       Height="40" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">

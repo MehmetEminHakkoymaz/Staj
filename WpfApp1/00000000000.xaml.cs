@@ -161,5 +161,10 @@ namespace WpfApp1
         {
             ClockTextBlock.Text = DateTime.Now.ToString("HH : mm : ss");
         }
+
+
     }
+
+
+
 }

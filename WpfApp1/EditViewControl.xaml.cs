@@ -187,7 +187,7 @@ namespace WpfApp1
                     int value = 131072;
                     TotalManager.Instance.AddToTotal(value);
                 }
-                else if(checkBox.Name == "Redux")
+                else if(checkBox.Name == "Redox")
                 {
                     int value = 262144;
                     TotalManager.Instance.AddToTotal(value);
@@ -341,7 +341,7 @@ namespace WpfApp1
                     int value = 131072;
                     TotalManager.Instance.SubToTotal(value);
                 }
-                else if (checkBox.Name == "Redux")
+                else if (checkBox.Name == "Redox")
                 {
                     int value = 262144;
                     TotalManager.Instance.SubToTotal(value);

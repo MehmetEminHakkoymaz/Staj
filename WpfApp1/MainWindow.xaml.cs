@@ -499,6 +499,36 @@ namespace WpfApp1
 
         private void FirstStartButton_Click(object sender, RoutedEventArgs e)
         {
+            // Check if at least one parameter is enabled (value equals 1)
+            bool atLeastOneEnabled =
+                Properties.Settings.Default.TemperatureEllipse == 1 ||
+                Properties.Settings.Default.StirrerEllipse == 1 ||
+                Properties.Settings.Default.pHEllipse == 1 ||
+                Properties.Settings.Default.pO2Ellipse == 1 ||
+                Properties.Settings.Default.FoamEllipse == 1 ||
+                Properties.Settings.Default.RedoxEllipse == 1 ||
+                Properties.Settings.Default.TurbidityEllipse == 1 ||
+                Properties.Settings.Default.BalanceEllipse == 1 ||
+                Properties.Settings.Default.AirFlowEllipse == 1 ||
+                Properties.Settings.Default.Gas2Ellipse == 1 ||
+                Properties.Settings.Default.ExitGasO2Ellipse == 1 ||
+                Properties.Settings.Default.ExitGasCO2Ellipse == 1 ||
+                Properties.Settings.Default.Pump1Ellipse == 1 ||
+                Properties.Settings.Default.Pump2Ellipse == 1 ||
+                Properties.Settings.Default.Pump3Ellipse == 1 ||
+                Properties.Settings.Default.Pump4Ellipse == 1 ||
+                Properties.Settings.Default.Pump5Ellipse == 1 ||
+                Properties.Settings.Default.Pump6Ellipse == 1;
+
+            // If no parameter is enabled, show error message and return
+            if (!atLeastOneEnabled)
+            {
+                MessageBox.Show("En az bir parametre aktif edilmelidir.",
+                    "Ayar Hatası", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            Properties.Settings.Default.StartButton = 1;
             //DATABASE BAĞLANTISI GİRİŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞ
             // Tablo adını al
             var dialog = new TableNameDialog();
@@ -526,24 +556,16 @@ namespace WpfApp1
             logTimer.Start();
             //DATABASE BAĞLANTISI ÇIKIŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞ
 
-
-
-
-
             FirstStartButton.Visibility = Visibility.Collapsed;
             StartButton.Visibility = Visibility.Visible;
             StartButton.Opacity = 0.5;
             StartButton.IsEnabled = false;
 
             // Main sayfası kontrolleri
-            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse1, mainControl.conditionalButton);
+            mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse1, mainControl.conditionalButtonTemperature);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse2, mainControl.conditionalButtonStirrer);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse3, mainControl.conditionalButtonpH);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse4, mainControl.conditionalButtonpO2);
-            //mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse5, mainControl.conditionalButtonGas1);
-            //mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse6, mainControl.conditionalButtonGas2);
-            //mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse7, mainControl.conditionalButtonGas3);
-            //mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse8, mainControl.conditionalButtonGas4);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse9, mainControl.conditionalButtonFoam);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse19, mainControl.conditionalButtonRedox);
         }
@@ -575,6 +597,30 @@ namespace WpfApp1
             {
                 Console.WriteLine("LogTimer is null!"); // Debug log
             }
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+            //BURAYA BAKKKKKKKK
+
+            Properties.Settings.Default.StartButton = 2;
 
             StartButton.Visibility = Visibility.Collapsed;
             StopButton.Visibility = Visibility.Visible;
@@ -791,7 +837,7 @@ namespace WpfApp1
         {
             // Sadece görünür olan butonların yeşil olup olmadığını kontrol et
             if (AreVisibleButtonsGreen(
-                mainControl.conditionalButton,
+                mainControl.conditionalButtonTemperature,
                 mainControl.conditionalButtonStirrer,
                 mainControl.conditionalButtonpH,
                 mainControl.conditionalButtonpO2,
@@ -863,6 +909,32 @@ namespace WpfApp1
                 StopButton.Visibility = Visibility.Collapsed;
                 FirstStartButton.Visibility = Visibility.Visible;
                 SampleButton.Visibility = Visibility.Collapsed;
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                Properties.Settings.Default.StartButton = 0;
+                Properties.Settings.Default.TemperatureConditionalButton = 0;
+                Properties.Settings.Default.StirrerConditionalButton = 0;
+                Properties.Settings.Default.pHConditionalButton = 0;
+                Properties.Settings.Default.pO2ConditionalButton = 0;
+                Properties.Settings.Default.FoamConditionalButton = 0;
+                Properties.Settings.Default.RedoxConditionalButton = 0;
+                Properties.Settings.Default.TemperatureEllipse = 0;
+                Properties.Settings.Default.StirrerEllipse = 0;
+                Properties.Settings.Default.pHEllipse = 0;
+                Properties.Settings.Default.pO2Ellipse = 0;
+                Properties.Settings.Default.FoamEllipse = 0;
+                Properties.Settings.Default.RedoxEllipse = 0;
+                mainControl.CheckComparisonTimer();
+                Properties.Settings.Default.Save();
+
             }
             catch (Exception ex)
             {
@@ -934,6 +1006,20 @@ namespace WpfApp1
 
             if (result == MessageBoxResult.Yes)
             {
+                Properties.Settings.Default.StartButton = 0;
+                Properties.Settings.Default.TemperatureConditionalButton = 0;
+                Properties.Settings.Default.StirrerConditionalButton = 0;
+                Properties.Settings.Default.pHConditionalButton = 0;
+                Properties.Settings.Default.pO2ConditionalButton = 0;
+                Properties.Settings.Default.FoamConditionalButton = 0;
+                Properties.Settings.Default.RedoxConditionalButton = 0;
+                Properties.Settings.Default.TemperatureEllipse = 0;
+                Properties.Settings.Default.StirrerEllipse = 0;
+                Properties.Settings.Default.pHEllipse = 0;
+                Properties.Settings.Default.pO2Ellipse = 0;
+                Properties.Settings.Default.FoamEllipse = 0;
+                Properties.Settings.Default.RedoxEllipse = 0;
+                Properties.Settings.Default.Save();
                 CloseApplication();
             }
         }

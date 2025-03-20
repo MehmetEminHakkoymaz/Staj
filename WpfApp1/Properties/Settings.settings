@@ -8,6 +8,9 @@
     <Setting Name="TemperatureConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+	  <Setting Name="TemperatureConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
     <Setting Name="TemperatureTargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
@@ -17,10 +20,15 @@
     <Setting Name="TemperatureEllipse" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+	  
     <Setting Name="StirrerConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="StirrerTargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="StirrerConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="StirrerTargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="StirrerTarget" Type="System.Double" Scope="User">
@@ -29,10 +37,14 @@
     <Setting Name="StirrerEllipse" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+	  
     <Setting Name="pHConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="pHTargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="pHConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+	  <Setting Name="pHTargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="pHTarget" Type="System.Double" Scope="User">
@@ -116,7 +128,11 @@
     <Setting Name="FoamConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="FoamTargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="FoamConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="FoamTargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="FoamTarget" Type="System.Double" Scope="User">
@@ -140,7 +156,11 @@
     <Setting Name="RedoxConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="RedoxTargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="RedoxConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="RedoxTargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="RedoxTarget" Type="System.Double" Scope="User">
@@ -182,7 +202,11 @@
     <Setting Name="TurbidityConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="TurbidityTargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="TurbidityConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="TurbidityTargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="TurbidityTarget" Type="System.Double" Scope="User">
@@ -206,7 +230,11 @@
     <Setting Name="BalanceConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="BalanceTargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="BalanceConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="BalanceTargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="BalanceTarget" Type="System.Double" Scope="User">
@@ -218,7 +246,11 @@
     <Setting Name="AirFlowConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="AirFlowTargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="AirFlowConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="AirFlowTargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="AirFlowTarget" Type="System.Double" Scope="User">
@@ -230,7 +262,11 @@
     <Setting Name="Gas2ConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Gas2TargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="Gas2ConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="Gas2TargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Gas2Target" Type="System.Double" Scope="User">
@@ -242,7 +278,11 @@
     <Setting Name="ExitGasO2ConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="ExitGasO2TargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="ExitGasO2ConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="ExitGasO2TargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ExitGasO2Target" Type="System.Double" Scope="User">
@@ -254,7 +294,11 @@
     <Setting Name="ExitGasCO2ConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="ExitGasCO2TargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="ExitGasCO2ConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="ExitGasCO2TargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ExitGasCO2Target" Type="System.Double" Scope="User">
@@ -266,7 +310,11 @@
     <Setting Name="Pump1ConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Pump1TargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="Pump1ConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="Pump1TargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Pump1Target" Type="System.Double" Scope="User">
@@ -296,7 +344,11 @@
     <Setting Name="Pump2ConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Pump2TargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="Pump2ConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="Pump2TargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Pump2Target" Type="System.Double" Scope="User">
@@ -326,7 +378,11 @@
     <Setting Name="Pump3ConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Pump3TargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="Pump3ConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="Pump3TargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Pump3Target" Type="System.Double" Scope="User">
@@ -356,7 +412,11 @@
     <Setting Name="Pump4ConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Pump4TargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="Pump4ConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="Pump4TargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Pump4Target" Type="System.Double" Scope="User">
@@ -386,7 +446,11 @@
     <Setting Name="Pump5ConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Pump5TargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="Pump5ConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="Pump5TargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Pump5Target" Type="System.Double" Scope="User">
@@ -416,7 +480,11 @@
     <Setting Name="Pump6ConditionalButton" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Pump6TargetBorder" Type="System.Double" Scope="User">
+	  <Setting Name="Pump6ConditionalButtonVisibility" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">0</Value>
+	  </Setting>
+
+	  <Setting Name="Pump6TargetBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Pump6Target" Type="System.Double" Scope="User">
@@ -492,7 +560,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="pO2Value" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="pO2TemperatureValue" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
