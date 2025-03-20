@@ -53,7 +53,7 @@
                 <Border  HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5"  BorderBrush="Gray" BorderThickness="1"
                         x:Name="StirrerTargetBorder" Visibility="Visible">
                     <TextBox x:Name="StirrerTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
-                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="15,60"/>
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,60"/>
                 </Border>
                 <Button x:Name="conditionalButtonStirrer" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                         Visibility="Collapsed" Click="conditionalButtonStirrer_Click" Background="#FFAF0101">
@@ -257,10 +257,15 @@
             <Grid x:Name="Foam">
                 <Label Content="Foam" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" 
                        VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
-                <Label x:Name="AboveFoam" Content="Foam is above expected level" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" 
-                       FontSize="20" Opacity="0.7" Visibility="Collapsed" Foreground="IndianRed"/>
-                <Label x:Name="UnderFoam" Content="Foam at expected level" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" 
-                       FontSize="20" Opacity="0.7" Visibility="Visible" />
+                <Label x:Name="AboveFoam" Content="Foam is above expected level" HorizontalAlignment="Left" Margin="208,0,0,0" VerticalAlignment="Center" 
+                       FontSize="20" Opacity="0.7" Visibility="Visible" Foreground="IndianRed"/>
+                <Label x:Name="UnderFoam" Content="Foam at expected level" HorizontalAlignment="Left" Margin="236,0,0,0" VerticalAlignment="Center" 
+                       FontSize="20" Opacity="0.7" Visibility="Collapsed" />
+                <Label x:Name="AntiFoam" Content="AntiFoam" HorizontalAlignment="Left" Margin="561,0,0,0" VerticalAlignment="Center" 
+                       FontSize="20" Opacity="0.7" Visibility="Collapsed" />
+                <Label x:Name="Level" Content="Level" HorizontalAlignment="Left" Margin="581,0,0,0" VerticalAlignment="Center" 
+                       FontSize="20" Opacity="0.7" Visibility="Collapsed" />
+
                 <!--<Label x:Name="FoamValue" Content="9" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" 
                        FontSize="20" Opacity="0.7"/>
                 <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" 

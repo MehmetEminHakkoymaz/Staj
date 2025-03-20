@@ -30,7 +30,7 @@ namespace WpfApp1
             InitializeComponent();
             this.mainWindow = mainWindow;
 
-            // conditionalButtonTemperature düğmesinin başlangıç görünürlüğünü ve rengini ayarla
+            //conditionalButtonTemperature düğmesinin başlangıç görünürlüğünü ve rengini ayarla
             if (Properties.Settings.Default.TemperatureEllipse == 1 &&
                 Properties.Settings.Default.StartButton == 1 &&
                 Properties.Settings.Default.TemperatureConditionalButtonVisibility == 1)
@@ -251,7 +251,7 @@ namespace WpfApp1
             // Settings değişikliklerini dinle
             Properties.Settings.Default.PropertyChanged += Settings_PropertyChanged;
             UpdateBorderVisibilities();
-            //CompareGas2Values();
+
         }
 
         private double currentTemperature;
@@ -750,16 +750,7 @@ namespace WpfApp1
 
 
 
-        private bool ParseRange(string tag, out int min, out int max)
-        {
-            var parts = tag.Split(',');
-            if (parts.Length == 2 && int.TryParse(parts[0], out min) && int.TryParse(parts[1], out max))
-            {
-                return true;
-            }
-            min = max = 0;
-            return false;
-        }
+
 
 
         private void UpdateBorderVisibilities()
@@ -1255,13 +1246,15 @@ namespace WpfApp1
                 e.PropertyName == "StartButton" ||
                 e.PropertyName == "FoamValue" ||
                 e.PropertyName == "StartButton" ||
+                e.PropertyName == "EditFoamCascade" ||
                 e.PropertyName == "TemperatureConditionalButtonVisibility" ||
                 e.PropertyName == "StirrerConditionalButtonVisibility" ||
                 e.PropertyName == "pHConditionalButtonVisibility" ||
                 e.PropertyName == "pO2ConditionalButtonVisibility" ||
                 e.PropertyName == "FoamConditionalButtonVisibility" ||
-                e.PropertyName == "pO2ConditionalButtonVisibility")  // Bu satırları ekledik
+                e.PropertyName == "RedoxConditionalButtonVisibility")  // Bu satırları ekledik
             {
+                LoadTextBoxValues();
                 CheckComparisonTimer();
                 UpdateBorderVisibilities();
                 CheckEllipsePositionAndSetButtonVisibility(ellipse1, conditionalButtonTemperature);
@@ -1824,7 +1817,7 @@ namespace WpfApp1
                 DoubleAnimation animation = new DoubleAnimation
                 {
                     To = targetLeft,
-                    Duration = TimeSpan.FromSeconds(0.5),
+                    Duration = TimeSpan.FromSeconds(0.2),
                     FillBehavior = FillBehavior.Stop
                 };
 
@@ -1897,7 +1890,7 @@ namespace WpfApp1
                 DoubleAnimation animation = new DoubleAnimation
                 {
                     To = targetLeft,
-                    Duration = TimeSpan.FromSeconds(0.5),
+                    Duration = TimeSpan.FromSeconds(0.2),
                     FillBehavior = FillBehavior.Stop
                 };
 
@@ -2360,18 +2353,23 @@ namespace WpfApp1
                     button.Visibility = Visibility.Collapsed;
                 }
             }
-            else
-            {
-                // Diğer tüm butonlar için normal kontrolü uygula
-                if (ellipseRightPosition > canvasWidth / 2 && mainWindow.FirstStartButton.Visibility == Visibility.Collapsed)
-                {
-                    button.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    button.Visibility = Visibility.Collapsed;
-                }
-            }
+            //DENİYORUM BİRŞEYLER BURADA BUNA SONRA BAKACAĞIM
+
+
+
+
+            //else
+            //{
+            //    // Diğer tüm butonlar için normal kontrolü uygula
+            //    if (ellipseRightPosition > canvasWidth / 2 && mainWindow.FirstStartButton.Visibility == Visibility.Collapsed)
+            //    {
+            //        button.Visibility = Visibility.Visible;
+            //    }
+            //    else
+            //    {
+            //        button.Visibility = Visibility.Collapsed;
+            //    }
+            //}
         }
 
         //TEXBOX AKTARMA VE ÇEKME MAKARASI
@@ -2392,17 +2390,61 @@ namespace WpfApp1
                 if (TemperatureTarget != null)
                     TemperatureTarget.Text = Properties.Settings.Default.TemperatureTarget.ToString();
 
+                if (TemperatureValue != null)
+                    TemperatureValue.Content = Properties.Settings.Default.TemperatureValue.ToString();
+
                 if (StirrerTarget != null)
                     StirrerTarget.Text = Properties.Settings.Default.StirrerTarget.ToString();
+
+                if (StirrerValue != null)
+                    StirrerValue.Content = Properties.Settings.Default.StirrerValue.ToString();
 
                 if (pHTarget != null)
                     pHTarget.Text = Properties.Settings.Default.pHTarget.ToString();
 
+                if (pHValue != null)
+                    pHValue.Content = Properties.Settings.Default.pHValue.ToString();
+
                 if (pO2Target != null)
                     pO2Target.Text = Properties.Settings.Default.pO2Target.ToString();
 
+                if (pO2Value != null)
+                    pO2Value.Content = Properties.Settings.Default.pO2Value.ToString();
+
+                if (Properties.Settings.Default.FoamValue == 0)
+                {
+                    UnderFoam.Visibility = Visibility.Visible;
+                    AboveFoam.Visibility = Visibility.Collapsed;
+                }
+
+                if (Properties.Settings.Default.FoamValue == 1)
+                {
+                    UnderFoam.Visibility = Visibility.Collapsed;
+                    AboveFoam.Visibility = Visibility.Visible;
+                }
+
+                if (Properties.Settings.Default.EditFoamCascade == 0)
+                {
+                    AntiFoam.Visibility = Visibility.Collapsed;
+                    Level.Visibility = Visibility.Collapsed;
+                }
+                if (Properties.Settings.Default.EditFoamCascade == 1)
+                {
+                    AntiFoam.Visibility = Visibility.Visible;
+                    Level.Visibility = Visibility.Collapsed;
+                }
+                if (Properties.Settings.Default.EditFoamCascade == 2)
+                {
+                    AntiFoam.Visibility = Visibility.Collapsed;
+                    Level.Visibility = Visibility.Visible;
+                }
+
                 if (RedoxTarget != null)
                     RedoxTarget.Text = Properties.Settings.Default.RedoxTarget.ToString();
+
+                if (RedoxValue != null)
+                    RedoxValue.Content = Properties.Settings.Default.RedoxValue.ToString();
+
             }
             catch (Exception ex)
             {
@@ -2497,23 +2539,53 @@ namespace WpfApp1
         {
             if (activeTextBox != null)
             {
-                if (activeTextBox.Tag is string tag && ParseRange(tag, out int min, out int max))
+                if (activeTextBox.Tag is string tag && ParseRange(tag, out double min, out double max))
                 {
-                    if (int.TryParse(value, out int intValue) && intValue >= min && intValue <= max)
+                    string normalizedValue = value.Replace(',', '.');
+                    if (double.TryParse(normalizedValue, System.Globalization.NumberStyles.Any,
+                                       System.Globalization.CultureInfo.InvariantCulture, out double doubleValue))
                     {
-                        activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
-
-                        // Save the value to Settings.settings
-                        SaveTextBoxValue(activeTextBox);
+                        if (doubleValue >= min && doubleValue <= max)
+                        {
+                            // Set the value
+                            activeTextBox.Text = doubleValue.ToString(System.Globalization.CultureInfo.CurrentCulture);
+                        }
+                        else
+                        {
+                            KeypadPopup.IsOpen = true;
+                            MessageBox.Show($"Please enter a value between {min} and {max}.",
+                                           "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
                     }
                     else
                     {
-                        KeypadPopup.IsOpen = false; // Hata durumunda KeyPad'i tekrar aç
-
-                        MessageBox.Show($"Please enter a value between {min} and {max}.", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        KeypadPopup.IsOpen = true;
+                        MessageBox.Show("Please enter a valid number.",
+                                       "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
+                else
+                {
+                    activeTextBox.Text = value;
+                }
             }
+        }
+        private bool ParseRange(string tag, out double min, out double max)
+        {
+            min = max = 0;
+            if (string.IsNullOrEmpty(tag)) return false;
+
+            var parts = tag.Split(',');
+            if (parts.Length == 2 &&
+                double.TryParse(parts[0], System.Globalization.NumberStyles.Any,
+                              System.Globalization.CultureInfo.InvariantCulture, out min) &&
+                double.TryParse(parts[1], System.Globalization.NumberStyles.Any,
+                              System.Globalization.CultureInfo.InvariantCulture, out max))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         //CONDİTİONALBUTTON OLAYLARI

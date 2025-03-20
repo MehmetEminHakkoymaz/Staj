@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Label = System.Windows.Controls.Label;
 
 
 namespace WpfApp1
@@ -286,25 +288,25 @@ namespace WpfApp1
 
             borders = new List<Border> 
             {
-                Redox,
-                Gas5Flow,
-                Gas4Flow,
-                Gas3Flow,
-                ExitBalance,
-                ExitTurbidity,
-                Gas2Flow,
-                AirFlow,
-                Balance,
-                Turbidity,
-                Foam,
-                Gas4,
-                Gas3,
-                Gas2,
-                Gas1,
-                pO2,
-                pH,
-                Stirrer,
-                Temperature
+                RedoxB,
+                Gas5FlowB,
+                Gas4FlowB,
+                Gas3FlowB,
+                ExitBalanceB,
+                ExitTurbidityB,
+                Gas2FlowB,
+                AirFlowB,
+                BalanceB,
+                TurbidityB,
+                FoamB,
+                Gas4B,
+                Gas3B,
+                Gas2B,
+                Gas1B,
+                pO2B,
+                pHB,
+                StirrerB,
+                TemperatureB
             };
 
             ellipses = new List<Ellipse> 
@@ -322,7 +324,7 @@ namespace WpfApp1
                 ellipse9,
                 ellipse8,
                 ellipse7,
-                ellipse6,    
+                ellipse6,
                 ellipse5,
                 ellipse4,
                 ellipse3,
@@ -355,6 +357,7 @@ namespace WpfApp1
             //int total = TotalManager.Instance.Total;
             string totalAsBinary = TotalManager.Instance.GetTotalAsBinary();
 
+            //KALKABİLİR
             UpdateVisibilityBasedOnBinary();
 
             updateTimer = new DispatcherTimer();
@@ -639,7 +642,6 @@ namespace WpfApp1
                 OnPropertyChanged(nameof(IsHighFoamLevel));
             }
         }
-
         private TextBox? activeTextBox = null;
         private TextBox? currentTextBox = null;
         private DispatcherTimer comparisonTimer = new DispatcherTimer();
@@ -658,35 +660,80 @@ namespace WpfApp1
         }
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox? focusedTextBox = sender as TextBox;
+            TextBox focusedTextBox = sender as TextBox;
             if (focusedTextBox != null)
             {
                 // TextBox'ın ebeveyninin ebeveynini bul (Grid varsayıyoruz)
-                DependencyObject? parent = VisualTreeHelper.GetParent(focusedTextBox);
-                DependencyObject? grandParent = parent != null ? VisualTreeHelper.GetParent(parent) : null;
-                Grid? parentGrid = grandParent as Grid;
+                DependencyObject parent = VisualTreeHelper.GetParent(focusedTextBox);
+                DependencyObject grandParent = parent != null ? VisualTreeHelper.GetParent(parent) : null;
+                Grid parentGrid = grandParent as Grid;
+                activeTextBox = sender as TextBox; // Odaklanan TextBox'ı aktif olarak ayarla
                 if (parentGrid != null)
                 {
                     // Grid içindeki ilk Label'ı bul
-                    Label? firstLabel = parentGrid.Children.OfType<Label>().FirstOrDefault();
+                    Label firstLabel = parentGrid.Children.OfType<Label>().FirstOrDefault();
                     if (firstLabel != null)
                     {
                         // Label'ın içeriğini al
-                        string labelContent = firstLabel.Content?.ToString() ?? string.Empty;
+                        string labelContent = firstLabel.Content.ToString();
                         // KeyPad'e label içeriğini gönder
-                        activeTextBox = sender as TextBox;
                         KeypadPopup.IsOpen = true;
                         KeypadControl.SetLabelContent(labelContent);
                     }
                 }
             }
         }
-        private void KeyPadControl_ValueSelected(object? sender, string value)
+        private void KeyPadControl_ValueSelected(object sender, string value)
         {
             if (activeTextBox != null)
             {
-                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
+                if (activeTextBox.Tag is string tag && ParseRange(tag, out double min, out double max))
+                {
+                    string normalizedValue = value.Replace(',', '.');
+                    if (double.TryParse(normalizedValue, System.Globalization.NumberStyles.Any,
+                                       System.Globalization.CultureInfo.InvariantCulture, out double doubleValue))
+                    {
+                        if (doubleValue >= min && doubleValue <= max)
+                        {
+                            // Set the value
+                            activeTextBox.Text = doubleValue.ToString(System.Globalization.CultureInfo.CurrentCulture);
+                        }
+                        else
+                        {
+                            KeypadPopup.IsOpen = true;
+                            MessageBox.Show($"Please enter a value between {min} and {max}.",
+                                           "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                    else
+                    {
+                        KeypadPopup.IsOpen = true;
+                        MessageBox.Show("Please enter a valid number.",
+                                       "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+                else
+                {
+                    activeTextBox.Text = value;
+                }
             }
+        }
+        private bool ParseRange(string tag, out double min, out double max)
+        {
+            min = max = 0;
+            if (string.IsNullOrEmpty(tag)) return false;
+
+            var parts = tag.Split(',');
+            if (parts.Length == 2 &&
+                double.TryParse(parts[0], System.Globalization.NumberStyles.Any,
+                              System.Globalization.CultureInfo.InvariantCulture, out min) &&
+                double.TryParse(parts[1], System.Globalization.NumberStyles.Any,
+                              System.Globalization.CultureInfo.InvariantCulture, out max))
+            {
+                return true;
+            }
+
+            return false;
         }
         protected void OnPropertyChanged(string name)
         {
@@ -839,6 +886,40 @@ namespace WpfApp1
                 }
             }
         }
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                SaveTextBoxValue(textBox);
+            }
+        }
+        public void CheckComparisonTimer()
+        {
+            if (Properties.Settings.Default.StartButton == 0)
+            {
+                comparisonTimer.Stop();
+
+            }
+            //if (Properties.Settings.Default.StartButton == 1)
+            //{
+            //    comparisonTimer.Start();
+
+            //}
+        }
+        //private void ConditionalButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //UpdateVisibility();
+        //    // Zamanlayıcıyı başlatmadan önce, tıklanan butonu belirle
+        //    Button? clickedButton = sender as Button;
+        //    if (clickedButton != null)
+        //    {
+        //        // Tıklanan butonun Tag'inde ilişkili Grid'i saklayın (XAML'de veya başka bir yerde ayarlanmalıdır)
+        //        clickedButton.Tag = clickedButton.Parent as Grid;
+        //    }
+
+        //    // Zamanlayıcıyı başlat
+        //    comparisonTimer.Start();
+        //}
 
 
 
@@ -852,6 +933,748 @@ namespace WpfApp1
             var editpHWindow = new WpfApp1.EditPages.EditpH();
             editpHWindow.Show();
         }
+
+
+
+
+
+
+        private void UpdateBorderVisibilities()
+        {
+            // Stirrer border görünürlüğünü güncelle
+            if (FindName("StirrerTargetBorder") is Border stirrerBorder)
+            {
+                stirrerBorder.Visibility = Properties.Settings.Default.StirrerTargetBorder == 1 ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
+
+            // Gas1 border görünürlüğünü güncelle
+            if (FindName("Gas1TargetBorder") is Border gas1Border)
+            {
+                gas1Border.Visibility = Properties.Settings.Default.AirFlowTargetBorder == 1 ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
+            if (FindName("pO2TargetBorder") is Border pO2Border)
+            {
+                pO2Border.Visibility = Properties.Settings.Default.pO2TargetBorder == 1 ?
+                    Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+        private void UpdateTimer_Tickk(object sender, EventArgs e)
+        {
+            //KALKABİLİR
+            UpdateVisibilityBasedOnBinary();
+        }
+        //KALKABİLİR
+        private void UpdateVisibilityBasedOnBinary()
+        {
+            //MessageBox.Show("UpdateVisibilityBasedOnBinary called"); // Metodun çağrıldığını doğrulamak için
+
+            string binaryString = TotalManager.Instance.GetTotalAsBinary().PadLeft(borders.Count, '0');
+
+            for (int i = 0; i < binaryString.Length; i++)
+            {
+                if (binaryString[i] == '1')
+                {
+                    if (i < borders.Count)
+                    {
+                        borders[i].Visibility = Visibility.Visible;
+                    }
+                    if (i < grids.Count)
+                    {
+                        grids[i].Visibility = Visibility.Visible;
+                    }
+                }
+                else
+                {
+                    if (i < borders.Count)
+                    {
+                        borders[i].Visibility = Visibility.Collapsed;
+                    }
+                    if (i < grids.Count)
+                    {
+                        grids[i].Visibility = Visibility.Collapsed;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void conditionalButtonTemperature_Click(object sender, RoutedEventArgs e)
+        {
+            // Tıklanan butonu belirle
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                // Butonun Tag'ine Temperature Grid'ini atayın
+                clickedButton.Tag = Temperature;
+
+                // Butonu kırmızı yap (varsayılan renk)
+                clickedButton.Background = new SolidColorBrush(Colors.Red);
+                Properties.Settings.Default.TemperatureConditionalButton = 0; // Kırmızı için 0
+                Properties.Settings.Default.Save();
+            }
+
+            // Zamanlayıcıyı başlat veya devam ettir
+            comparisonTimer.Start();
+        }
+
+        private void conditionalButtonStirrer_Click(object sender, RoutedEventArgs e)
+        {
+            // Tıklanan butonu belirle
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                // Butonun Tag'ine Stirrer Grid'ini atayın
+                clickedButton.Tag = Stirrer;
+
+                // Butonu kırmızı yap (varsayılan renk)
+                clickedButton.Background = new SolidColorBrush(Colors.Red);
+                Properties.Settings.Default.StirrerConditionalButton = 0; // Kırmızı için 0
+                Properties.Settings.Default.Save();
+            }
+
+            // Zamanlayıcıyı başlat veya devam ettir
+            comparisonTimer.Start();
+        }
+
+        private void conditionalButtonpH_Click(object sender, RoutedEventArgs e)
+        {
+            // Tıklanan butonu belirle
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                // Butonun Tag'ine pH Grid'ini atayın
+                clickedButton.Tag = pH;
+
+                // Butonu kırmızı yap (varsayılan renk)
+                clickedButton.Background = new SolidColorBrush(Colors.Red);
+                Properties.Settings.Default.pHConditionalButton = 0; // Kırmızı için 0
+                Properties.Settings.Default.Save();
+            }
+
+            // Zamanlayıcıyı başlat veya devam ettir
+            comparisonTimer.Start();
+        }
+
+        private void conditionalButtonpO2_Click(object sender, RoutedEventArgs e)
+        {
+            // Tıklanan butonu belirle
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                // Butonun Tag'ine pO2 Grid'ini atayın
+                clickedButton.Tag = pO2;
+
+                // Butonu kırmızı yap (varsayılan renk)
+                clickedButton.Background = new SolidColorBrush(Colors.Red);
+                Properties.Settings.Default.pO2ConditionalButton = 0; // Kırmızı için 0
+                Properties.Settings.Default.Save();
+            }
+
+            // Zamanlayıcıyı başlat veya devam ettir
+            comparisonTimer.Start();
+        }
+
+        private void conditionalButtonFoam_Click(object sender, RoutedEventArgs e)
+        {
+            // Tıklanan butonu belirle
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                // Butonun Tag'ine Foam Grid'ini atayın
+                clickedButton.Tag = Foam;
+
+                // Butonu kırmızı yap (varsayılan renk)
+                clickedButton.Background = new SolidColorBrush(Colors.Red);
+                Properties.Settings.Default.FoamConditionalButton = 0; // Kırmızı için 0
+                Properties.Settings.Default.Save();
+            }
+
+            // Zamanlayıcıyı başlat veya devam ettir
+            comparisonTimer.Start();
+        }
+
+        private void conditionalButtonRedox_Click(object sender, RoutedEventArgs e)
+        {
+            // Tıklanan butonu belirle
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                // Butonun Tag'ine Redox Grid'ini atayın
+                clickedButton.Tag = Redox;
+
+                // Butonu kırmızı yap (varsayılan renk)
+                clickedButton.Background = new SolidColorBrush(Colors.Red);
+                Properties.Settings.Default.RedoxConditionalButton = 0; // Kırmızı için 0
+                Properties.Settings.Default.Save();
+            }
+
+            // Zamanlayıcıyı başlat veya devam ettir
+            comparisonTimer.Start();
+        }
+
+        private void conditionalButtonTurbidity_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonBalance_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonAirFlow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonGas2Flow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonExitTurbidity_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonExitBalance_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonGas1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonGas2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonGas3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonGas4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonGas3Flow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonGas4Flow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void conditionalButtonGas5Flow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        //private void conditionalButtonTurbidity_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void ellipse1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Properties.Settings.Default.EditRedoxCascade == 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("deneme ses 1-2",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else if (Properties.Settings.Default.StartButton != 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Sadece hazırlık aşamasında ayarlar yapılabilir.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse1'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else
+            {
+                // Canvas'ı bul
+                Canvas parentCanvas = ellipse1.Parent as Canvas;
+                if (parentCanvas == null) return;
+
+                double canvasWidth = parentCanvas.ActualWidth;
+                double ellipseWidth = ellipse1.ActualWidth;
+                double maxRight = canvasWidth - ellipseWidth - 12; // 12 = 6 (sol boşluk) + 6 (sağ boşluk)
+                double targetLeft = Canvas.GetLeft(ellipse1) == 6 ? maxRight : 6; // Yuvarlağın hedef pozisyonu
+
+                DoubleAnimation animation = new DoubleAnimation
+                {
+                    To = targetLeft,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    FillBehavior = FillBehavior.Stop
+                };
+
+                animation.Completed += (s, a) =>
+                {
+                    Canvas.SetLeft(ellipse1, targetLeft); // Animasyon tamamlandığında yuvarlağın pozisyonunu güncelle
+
+                    if (targetLeft == maxRight)
+                    {
+                        ellipse1.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFAF0101")); // Sağdaysa kırmızı yap
+                                                                                                                   // Ellipse açıldığında pO2Ellipse'i 1 yap
+                        Properties.Settings.Default.TemperatureEllipse = 1;
+                        Properties.Settings.Default.TemperatureConditionalButtonVisibility = 1;
+                    }
+                    else
+                    {
+                        ellipse1.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFE7ECEF")); // Soldaysa gri yap
+                                                                                                                   // Ellipse kapandığında pO2Ellipse'i 0 yap
+                        Properties.Settings.Default.TemperatureEllipse = 0;
+                        Properties.Settings.Default.TemperatureConditionalButtonVisibility = 0;
+                    }
+
+                    // Ayarları kaydet
+                    Properties.Settings.Default.Save();
+
+                    // Ellipse'in rengi değiştikten sonra butonun görünürlüğünü kontrol et
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse1, conditionalButtonTemperature);
+
+                    // FavouritesControl'daki ilgili ellipse'i güncelle
+                    mainWindow.favouritesControl.UpdateEllipsePosition(ellipse1.Name, targetLeft);
+                    // FavouritesControl'daki ilgili conditionalButton'ı güncelle
+                    mainWindow.favouritesControl.UpdateConditionalButtonVisibility(ellipse1.Name, targetLeft);
+                };
+                ellipse1.BeginAnimation(Canvas.LeftProperty, animation);
+            }
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+
+        private void ellipse2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Properties.Settings.Default.EditRedoxCascade == 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("deneme ses 1-2",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse2'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else if (Properties.Settings.Default.StartButton != 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Sadece hazırlık aşamasında ayarlar yapılabilir.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse2'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else
+            {
+                // Canvas'ı bul
+                Canvas parentCanvas = ellipse2.Parent as Canvas;
+                if (parentCanvas == null) return;
+
+                double canvasWidth = parentCanvas.ActualWidth;
+                double ellipseWidth = ellipse2.ActualWidth;
+                double maxRight = canvasWidth - ellipseWidth - 12; // 12 = 6 (sol boşluk) + 6 (sağ boşluk)
+                double targetLeft = Canvas.GetLeft(ellipse2) == 6 ? maxRight : 6; // Yuvarlağın hedef pozisyonu
+
+                DoubleAnimation animation = new DoubleAnimation
+                {
+                    To = targetLeft,
+                    Duration = TimeSpan.FromSeconds(0.2),
+                    FillBehavior = FillBehavior.Stop
+                };
+
+                animation.Completed += (s, a) =>
+                {
+                    Canvas.SetLeft(ellipse2, targetLeft); // Animasyon tamamlandığında yuvarlağın pozisyonunu güncelle
+
+                    if (targetLeft == maxRight)
+                    {
+                        ellipse2.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFAF0101")); // Sağdaysa kırmızı yap
+                                                                                                                   // Ellipse açıldığında pO2Ellipse'i 1 yap
+                        Properties.Settings.Default.StirrerEllipse = 1;
+                        Properties.Settings.Default.StirrerConditionalButtonVisibility = 1;
+                    }
+                    else
+                    {
+                        ellipse2.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFE7ECEF")); // Soldaysa gri yap
+                                                                                                                   // Ellipse kapandığında pO2Ellipse'i 0 yap
+                        Properties.Settings.Default.StirrerEllipse = 0;
+                        Properties.Settings.Default.StirrerConditionalButtonVisibility = 0;
+                    }
+
+                    // Ayarları kaydet
+                    Properties.Settings.Default.Save();
+
+                    // Ellipse'in rengi değiştikten sonra butonun görünürlüğünü kontrol et
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse2, conditionalButtonStirrer);
+
+                    // FavouritesControl'daki ilgili ellipse'i güncelle
+                    mainWindow.favouritesControl.UpdateEllipsePosition(ellipse2.Name, targetLeft);
+                    // FavouritesControl'daki ilgili conditionalButton'ı güncelle
+                    mainWindow.favouritesControl.UpdateConditionalButtonVisibility(ellipse2.Name, targetLeft);
+                };
+
+                ellipse2.BeginAnimation(Canvas.LeftProperty, animation);
+
+            }
+
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+
+        private void ellipse3_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
+            if (Properties.Settings.Default.EditpHCascade == 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("pH cascade selection is required. Please go to EditpH settings and select a cascade option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else if (Properties.Settings.Default.StartButton != 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Sadece hazırlık aşamasında ayarlar yapılabilir.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse3'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else
+            {
+                // Canvas'ı bul
+                Canvas parentCanvas = ellipse3.Parent as Canvas;
+                if (parentCanvas == null) return;
+
+                double canvasWidth = parentCanvas.ActualWidth;
+                double ellipseWidth = ellipse3.ActualWidth;
+                double maxRight = canvasWidth - ellipseWidth - 12; // 12 = 6 (sol boşluk) + 6 (sağ boşluk)
+                double targetLeft = Canvas.GetLeft(ellipse3) == 6 ? maxRight : 6; // Yuvarlağın hedef pozisyonu
+
+                DoubleAnimation animation = new DoubleAnimation
+                {
+                    To = targetLeft,
+                    Duration = TimeSpan.FromSeconds(0.5),
+                    FillBehavior = FillBehavior.Stop
+                };
+
+                animation.Completed += (s, a) =>
+                {
+                    Canvas.SetLeft(ellipse3, targetLeft); // Animasyon tamamlandığında yuvarlağın pozisyonunu güncelle
+
+                    if (targetLeft == maxRight)
+                    {
+                        ellipse3.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFAF0101")); // Sağdaysa kırmızı yap
+                                                                                                                   // Ellipse açıldığında pO2Ellipse'i 1 yap
+                        Properties.Settings.Default.pHEllipse = 1;
+                        Properties.Settings.Default.pHConditionalButtonVisibility = 1;
+                    }
+                    else
+                    {
+                        ellipse3.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFE7ECEF")); // Soldaysa gri yap
+                                                                                                                   // Ellipse kapandığında pO2Ellipse'i 0 yap
+                        Properties.Settings.Default.pHEllipse = 0;
+                        Properties.Settings.Default.pHConditionalButtonVisibility = 0;
+                    }
+
+                    // Ayarları kaydet
+                    Properties.Settings.Default.Save();
+
+                    // Ellipse'in rengi değiştikten sonra butonun görünürlüğünü kontrol et
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse3, conditionalButtonpH);
+
+                    // FavouritesControl'daki ilgili ellipse'i güncelle
+                    mainWindow.favouritesControl.UpdateEllipsePosition(ellipse3.Name, targetLeft);
+                    // FavouritesControl'daki ilgili conditionalButton'ı güncelle
+                    mainWindow.favouritesControl.UpdateConditionalButtonVisibility(ellipse3.Name, targetLeft);
+                };
+
+                ellipse3.BeginAnimation(Canvas.LeftProperty, animation);
+
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+
+        private void ellipse4_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
+            if (Properties.Settings.Default.EditpO2Cascade == 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("pO2 cascade selection is required. Please go to EditpO2 settings and select a cascade option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else if (Properties.Settings.Default.StartButton != 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Sadece hazırlık aşamasında ayarlar yapılabilir.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else
+            {
+                // Canvas'ı bul
+                Canvas parentCanvas = ellipse4.Parent as Canvas;
+                if (parentCanvas == null) return;
+
+                double canvasWidth = parentCanvas.ActualWidth;
+                double ellipseWidth = ellipse4.ActualWidth;
+                double maxRight = canvasWidth - ellipseWidth - 12; // 12 = 6 (sol boşluk) + 6 (sağ boşluk)
+                double targetLeft = Canvas.GetLeft(ellipse4) == 6 ? maxRight : 6; // Yuvarlağın hedef pozisyonu
+
+                DoubleAnimation animation = new DoubleAnimation
+                {
+                    To = targetLeft,
+                    Duration = TimeSpan.FromSeconds(0.5),
+                    FillBehavior = FillBehavior.Stop
+                };
+
+                animation.Completed += (s, a) =>
+                {
+                    Canvas.SetLeft(ellipse4, targetLeft); // Animasyon tamamlandığında yuvarlağın pozisyonunu güncelle
+
+                    if (targetLeft == maxRight)
+                    {
+                        ellipse4.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFAF0101")); // Sağdaysa kırmızı yap
+                                                                                                                   // Ellipse açıldığında pO2Ellipse'i 1 yap
+                        Properties.Settings.Default.pO2Ellipse = 1;
+                        Properties.Settings.Default.pO2ConditionalButtonVisibility = 1;
+                    }
+                    else
+                    {
+                        ellipse4.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFE7ECEF")); // Soldaysa gri yap
+                                                                                                                   // Ellipse kapandığında pO2Ellipse'i 0 yap
+                        Properties.Settings.Default.pO2Ellipse = 0;
+                        Properties.Settings.Default.pO2ConditionalButtonVisibility = 0;
+                    }
+
+                    // Ayarları kaydet
+                    Properties.Settings.Default.Save();
+
+                    // Ellipse'in rengi değiştikten sonra butonun görünürlüğünü kontrol et
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse4, conditionalButtonpO2);
+
+                    // FavouritesControl'daki ilgili ellipse'i güncelle
+                    mainWindow.favouritesControl.UpdateEllipsePosition(ellipse4.Name, targetLeft);
+                    // FavouritesControl'daki ilgili conditionalButton'ı güncelle
+                    mainWindow.favouritesControl.UpdateConditionalButtonVisibility(ellipse4.Name, targetLeft);
+                };
+
+                ellipse4.BeginAnimation(Canvas.LeftProperty, animation);
+
+            }
+            // Canvas'ı bul
+        }
+
+        private void ellipse9_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
+            if (Properties.Settings.Default.EditFoamCascade == 0) // 0 = None
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Foam selection is required. Please go to EditFoam settings and select an option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+
+            else if (Properties.Settings.Default.StartButton != 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Sadece hazırlık aşamasında ayarlar yapılabilir.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse9'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else
+            {
+                // Canvas'ı bul
+                Canvas parentCanvas = ellipse9.Parent as Canvas;
+                if (parentCanvas == null) return;
+
+                double canvasWidth = parentCanvas.ActualWidth;
+                double ellipseWidth = ellipse9.ActualWidth;
+                double maxRight = canvasWidth - ellipseWidth - 12; // 12 = 6 (sol boşluk) + 6 (sağ boşluk)
+                double targetLeft = Canvas.GetLeft(ellipse9) == 6 ? maxRight : 6; // Yuvarlağın hedef pozisyonu
+
+                DoubleAnimation animation = new DoubleAnimation
+                {
+                    To = targetLeft,
+                    Duration = TimeSpan.FromSeconds(0.5),
+                    FillBehavior = FillBehavior.Stop
+                };
+
+                animation.Completed += (s, a) =>
+                {
+                    Canvas.SetLeft(ellipse9, targetLeft); // Animasyon tamamlandığında yuvarlağın pozisyonunu güncelle
+
+                    if (targetLeft == maxRight)
+                    {
+                        ellipse9.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFAF0101")); // Sağdaysa kırmızı yap
+                                                                                                                   // Ellipse açıldığında pO2Ellipse'i 1 yap
+                        Properties.Settings.Default.FoamEllipse = 1;
+                        Properties.Settings.Default.FoamConditionalButtonVisibility = 1;
+                    }
+                    else
+                    {
+                        ellipse9.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFE7ECEF")); // Soldaysa gri yap
+                                                                                                                   // Ellipse kapandığında pO2Ellipse'i 0 yap
+                        Properties.Settings.Default.FoamEllipse = 0;
+                        Properties.Settings.Default.FoamConditionalButtonVisibility = 0;
+                    }
+
+                    // Ayarları kaydet
+                    Properties.Settings.Default.Save();
+
+                    // Ellipse'in rengi değiştikten sonra butonun görünürlüğünü kontrol et
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse9, conditionalButtonFoam);
+
+                    // FavouritesControl'daki ilgili ellipse'i güncelle
+                    mainWindow.favouritesControl.UpdateEllipsePosition(ellipse9.Name, targetLeft);
+                    // FavouritesControl'daki ilgili conditionalButton'ı güncelle
+                    mainWindow.favouritesControl.UpdateConditionalButtonVisibility(ellipse9.Name, targetLeft);
+                };
+
+                ellipse9.BeginAnimation(Canvas.LeftProperty, animation);
+
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+
+        private void ellipse19_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Önce Properties.Settings.Default'tan cascade değerini kontrol edin
+            if (Properties.Settings.Default.EditRedoxCascade == 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Redox selection is required. Please go to EditRedox settings and select an option.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else if (Properties.Settings.Default.StartButton != 0)
+            {
+                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+                MessageBox.Show("Sadece hazırlık aşamasında ayarlar yapılabilir.",
+                              "Configuration Required",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Warning);
+                return; // Ellipse19'ün durumunu değiştirmeden fonksiyonu sonlandır
+            }
+            else
+            {
+                // Canvas'ı bul
+                Canvas parentCanvas = ellipse19.Parent as Canvas;
+                if (parentCanvas == null) return;
+
+                double canvasWidth = parentCanvas.ActualWidth;
+                double ellipseWidth = ellipse19.ActualWidth;
+                double maxRight = canvasWidth - ellipseWidth - 12; // 12 = 6 (sol boşluk) + 6 (sağ boşluk)
+                double targetLeft = Canvas.GetLeft(ellipse19) == 6 ? maxRight : 6; // Yuvarlağın hedef pozisyonu
+
+                DoubleAnimation animation = new DoubleAnimation
+                {
+                    To = targetLeft,
+                    Duration = TimeSpan.FromSeconds(0.5),
+                    FillBehavior = FillBehavior.Stop
+                };
+
+                animation.Completed += (s, a) =>
+                {
+                    Canvas.SetLeft(ellipse19, targetLeft); // Animasyon tamamlandığında yuvarlağın pozisyonunu güncelle
+
+                    if (targetLeft == maxRight)
+                    {
+                        ellipse19.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFAF0101")); // Sağdaysa kırmızı yap
+                                                                                                                    // Ellipse açıldığında pO2Ellipse'i 1 yap
+                        Properties.Settings.Default.RedoxEllipse = 1;
+                        Properties.Settings.Default.RedoxConditionalButtonVisibility = 1;
+                    }
+                    else
+                    {
+                        ellipse19.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFE7ECEF")); // Soldaysa gri yap
+                                                                                                                    // Ellipse kapandığında pO2Ellipse'i 0 yap
+                        Properties.Settings.Default.RedoxEllipse = 0;
+                        Properties.Settings.Default.RedoxConditionalButtonVisibility = 0;
+                    }
+
+                    // Ayarları kaydet
+                    Properties.Settings.Default.Save();
+
+                    // Ellipse'in rengi değiştikten sonra butonun görünürlüğünü kontrol et
+                    CheckEllipsePositionAndSetButtonVisibility(ellipse19, conditionalButtonRedox);
+
+                    // FavouritesControl'daki ilgili ellipse'i güncelle
+                    mainWindow.favouritesControl.UpdateEllipsePosition(ellipse19.Name, targetLeft);
+                    // FavouritesControl'daki ilgili conditionalButton'ı güncelle
+                    mainWindow.favouritesControl.UpdateConditionalButtonVisibility(ellipse19.Name, targetLeft);
+                };
+
+                ellipse19.BeginAnimation(Canvas.LeftProperty, animation);
+
+            }
+
+            // Normal ellipse tıklama olayını çağır
+            Ellipse_MouseLeftButtonDown(sender, e);
+        }
+
+
+
 
 
 
@@ -1201,519 +2024,6 @@ namespace WpfApp1
             UpdateFoamLevelStatus();
 
         }
-
-
-
-        private void UpdateBorderVisibilities()
-        {
-            // Stirrer border görünürlüğünü güncelle
-            if (FindName("StirrerTargetBorder") is Border stirrerBorder)
-            {
-                stirrerBorder.Visibility = Properties.Settings.Default.StirrerTargetBorder == 1 ?
-                    Visibility.Collapsed : Visibility.Visible;
-            }
-
-            // Gas1 border görünürlüğünü güncelle
-            if (FindName("Gas1TargetBorder") is Border gas1Border)
-            {
-                gas1Border.Visibility = Properties.Settings.Default.AirFlowTargetBorder == 1 ?
-                    Visibility.Collapsed : Visibility.Visible;
-            }
-            if (FindName("pO2TargetBorder") is Border pO2Border)
-            {
-                pO2Border.Visibility = Properties.Settings.Default.pO2TargetBorder == 1 ?
-                    Visibility.Collapsed : Visibility.Visible;
-            }
-        }
-        private void UpdateTimer_Tickk(object sender, EventArgs e)
-        {
-            UpdateVisibilityBasedOnBinary();
-        }
-        private void UpdateVisibilityBasedOnBinary()
-        {
-            //MessageBox.Show("UpdateVisibilityBasedOnBinary called"); // Metodun çağrıldığını doğrulamak için
-
-            string binaryString = TotalManager.Instance.GetTotalAsBinary().PadLeft(borders.Count, '0');
-
-            for (int i = 0; i < binaryString.Length; i++)
-            {
-                if (binaryString[i] == '1')
-                {
-                    if (i < borders.Count)
-                    {
-                        borders[i].Visibility = Visibility.Visible;
-                    }
-                    if (i < grids.Count)
-                    {
-                        grids[i].Visibility = Visibility.Visible;
-                    }
-                }
-                else
-                {
-                    if (i < borders.Count)
-                    {
-                        borders[i].Visibility = Visibility.Collapsed;
-                    }
-                    if (i < grids.Count)
-                    {
-                        grids[i].Visibility = Visibility.Collapsed;
-                    }
-                }
-            }
-        }
-
-
-
-
-
-        private void LoadTextBoxValues()
-        {
-            try
-            {
-                // Load values from Settings.settings for each TextBox
-                if (TemperatureTarget != null)
-                    TemperatureTarget.Text = Properties.Settings.Default.TemperatureTarget.ToString();
-
-                if (StirrerTarget != null)
-                    StirrerTarget.Text = Properties.Settings.Default.StirrerTarget.ToString();
-
-                if (pHTarget != null)
-                    pHTarget.Text = Properties.Settings.Default.pHTarget.ToString();
-
-                if (pO2Target != null)
-                    pO2Target.Text = Properties.Settings.Default.pO2Target.ToString();
-
-                if (RedoxTarget != null)
-                    RedoxTarget.Text = Properties.Settings.Default.RedoxTarget.ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading text box values: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)
-        {
-            // Ellipse'in parent'ını Canvas olarak al
-            Canvas parentCanvas = ellipse.Parent as Canvas;
-            if (parentCanvas == null) return;
-
-            double canvasWidth = parentCanvas.ActualWidth; // Canvas'ın gerçek genişliğini kullan
-            double ellipseRightPosition = Canvas.GetLeft(ellipse) + ellipse.Width; // Ellipse'in sağ kenarının konumu
-
-            // Eğer bu conditional Button Temperature için ise özel kontrol uygula
-            if (button == conditionalButtonTemperature)
-            {
-                // Sadece TemperatureEllipse == 1 ve StartButton == 1 ise görünür yap
-                if (Properties.Settings.Default.TemperatureEllipse == 1 &&
-                    Properties.Settings.Default.StartButton == 1 &&
-                    Properties.Settings.Default.TemperatureConditionalButtonVisibility == 1)
-                {
-                    button.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    button.Visibility = Visibility.Collapsed;
-                }
-            }
-            // Eğer bu conditional Button Stirrer için ise özel kontrol uygula
-            if (button == conditionalButtonStirrer)
-            {
-                // Sadece StirrerEllipse == 1 ve StartButton == 1 ise görünür yap
-                if (Properties.Settings.Default.StirrerEllipse == 1 &&
-                    Properties.Settings.Default.StartButton == 1 &&
-                    Properties.Settings.Default.StirrerConditionalButtonVisibility == 1)
-                {
-                    button.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    button.Visibility = Visibility.Collapsed;
-                }
-            }
-            // Eğer bu conditional Button pH için ise özel kontrol uygula
-            if (button == conditionalButtonpH)
-            {
-                // Sadece pHEllipse == 1 ve StartButton == 1 ise görünür yap
-                if (Properties.Settings.Default.pHEllipse == 1 &&
-                    Properties.Settings.Default.StartButton == 1 &&
-                    Properties.Settings.Default.pHConditionalButtonVisibility == 1)
-                {
-                    button.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    button.Visibility = Visibility.Collapsed;
-                }
-            }
-            // Eğer bu conditional Button pO2 için ise özel kontrol uygula
-            if (button == conditionalButtonpO2)
-            {
-                // Sadece pO2Ellipse == 1 ve StartButton == 1 ise görünür yap
-                if (Properties.Settings.Default.pO2Ellipse == 1 &&
-                    Properties.Settings.Default.StartButton == 1 &&
-                    Properties.Settings.Default.pO2ConditionalButtonVisibility == 1)
-                {
-                    button.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    button.Visibility = Visibility.Collapsed;
-                }
-            }
-            // Eğer bu conditional Button Foam için ise özel kontrol uygula
-            if (button == conditionalButtonFoam)
-            {
-                // Sadece FoamEllipse == 1 ve StartButton == 1 ise görünür yap
-                if (Properties.Settings.Default.FoamEllipse == 1 &&
-                    Properties.Settings.Default.StartButton == 1 &&
-                    Properties.Settings.Default.FoamConditionalButtonVisibility == 1)
-                {
-                    button.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    button.Visibility = Visibility.Collapsed;
-                }
-            }
-            // Eğer bu conditional Button Redox için ise özel kontrol uygula
-            if (button == conditionalButtonRedox)
-            {
-                // Sadece RedoxEllipse == 1 ve StartButton == 1 ise görünür yap
-                if (Properties.Settings.Default.RedoxEllipse == 1 &&
-                    Properties.Settings.Default.StartButton == 1 &&
-                    Properties.Settings.Default.RedoxConditionalButtonVisibility == 1)
-                {
-                    button.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    button.Visibility = Visibility.Collapsed;
-                }
-            }
-            else
-            {
-                // Diğer tüm butonlar için normal kontrolü uygula
-                if (ellipseRightPosition > canvasWidth / 2 && mainWindow.FirstStartButton.Visibility == Visibility.Collapsed)
-                {
-                    button.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    button.Visibility = Visibility.Collapsed;
-                }
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private void conditionalButtonTemperature_Click(object sender, RoutedEventArgs e)
-        {
-            // Tıklanan butonu belirle
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                // Butonun Tag'ine Temperature Grid'ini atayın
-                clickedButton.Tag = Temperature;
-
-                // Butonu kırmızı yap (varsayılan renk)
-                clickedButton.Background = new SolidColorBrush(Colors.Red);
-                Properties.Settings.Default.TemperatureConditionalButton = 0; // Kırmızı için 0
-                Properties.Settings.Default.Save();
-            }
-
-            // Zamanlayıcıyı başlat veya devam ettir
-            comparisonTimer.Start();
-        }
-
-        private void conditionalButtonStirrer_Click(object sender, RoutedEventArgs e)
-        {
-            // Tıklanan butonu belirle
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                // Butonun Tag'ine Stirrer Grid'ini atayın
-                clickedButton.Tag = Stirrer;
-
-                // Butonu kırmızı yap (varsayılan renk)
-                clickedButton.Background = new SolidColorBrush(Colors.Red);
-                Properties.Settings.Default.StirrerConditionalButton = 0; // Kırmızı için 0
-                Properties.Settings.Default.Save();
-            }
-
-            // Zamanlayıcıyı başlat veya devam ettir
-            comparisonTimer.Start();
-        }
-
-        private void conditionalButtonpH_Click(object sender, RoutedEventArgs e)
-        {
-            // Tıklanan butonu belirle
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                // Butonun Tag'ine pH Grid'ini atayın
-                clickedButton.Tag = pH;
-
-                // Butonu kırmızı yap (varsayılan renk)
-                clickedButton.Background = new SolidColorBrush(Colors.Red);
-                Properties.Settings.Default.pHConditionalButton = 0; // Kırmızı için 0
-                Properties.Settings.Default.Save();
-            }
-
-            // Zamanlayıcıyı başlat veya devam ettir
-            comparisonTimer.Start();
-        }
-
-        private void conditionalButtonpO2_Click(object sender, RoutedEventArgs e)
-        {
-            // Tıklanan butonu belirle
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                // Butonun Tag'ine pO2 Grid'ini atayın
-                clickedButton.Tag = pO2;
-
-                // Butonu kırmızı yap (varsayılan renk)
-                clickedButton.Background = new SolidColorBrush(Colors.Red);
-                Properties.Settings.Default.pO2ConditionalButton = 0; // Kırmızı için 0
-                Properties.Settings.Default.Save();
-            }
-
-            // Zamanlayıcıyı başlat veya devam ettir
-            comparisonTimer.Start();
-        }
-
-        private void conditionalButtonFoam_Click(object sender, RoutedEventArgs e)
-        {
-            // Tıklanan butonu belirle
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                // Butonun Tag'ine Foam Grid'ini atayın
-                clickedButton.Tag = Foam;
-
-                // Butonu kırmızı yap (varsayılan renk)
-                clickedButton.Background = new SolidColorBrush(Colors.Red);
-                Properties.Settings.Default.FoamConditionalButton = 0; // Kırmızı için 0
-                Properties.Settings.Default.Save();
-            }
-
-            // Zamanlayıcıyı başlat veya devam ettir
-            comparisonTimer.Start();
-        }
-
-        private void conditionalButtonRedox_Click(object sender, RoutedEventArgs e)
-        {
-            // Tıklanan butonu belirle
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                // Butonun Tag'ine Redox Grid'ini atayın
-                clickedButton.Tag = Redox;
-
-                // Butonu kırmızı yap (varsayılan renk)
-                clickedButton.Background = new SolidColorBrush(Colors.Red);
-                Properties.Settings.Default.RedoxConditionalButton = 0; // Kırmızı için 0
-                Properties.Settings.Default.Save();
-            }
-
-            // Zamanlayıcıyı başlat veya devam ettir
-            comparisonTimer.Start();
-        }
-
-        private void ConditionalButton_Click(object sender, RoutedEventArgs e)
-        {
-            //UpdateVisibility();
-            // Zamanlayıcıyı başlatmadan önce, tıklanan butonu belirle
-            Button? clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                // Tıklanan butonun Tag'inde ilişkili Grid'i saklayın (XAML'de veya başka bir yerde ayarlanmalıdır)
-                clickedButton.Tag = clickedButton.Parent as Grid;
-            }
-
-            // Zamanlayıcıyı başlat
-            comparisonTimer.Start();
-        }
-
-        private void ComparisonTimer_Tick(object? sender, EventArgs e)
-        {
-            // Tüm butonları kontrol et
-            foreach (Button button in FindVisualChildren<Button>(this))
-            {
-                if (button.Tag is Grid parentGrid)
-                {
-                    // Grid içindeki ikinci Label'ı bul
-                    var secondLabel = parentGrid.Children.OfType<Label>().ElementAtOrDefault(1);
-                    // Grid içindeki TextBox'ı bul
-                    var textBox = parentGrid.Children.OfType<Border>().FirstOrDefault()?.Child as TextBox;
-
-                    if (secondLabel != null && textBox != null)
-                    {
-                        // Label ve TextBox içindeki değerleri karşılaştır
-                        if (secondLabel.Content?.ToString() == textBox.Text)
-                        {
-                            // Değerler aynıysa butonun arka planını yeşil yap
-                            button.Background = new SolidColorBrush(Colors.Green);
-                        }
-                        else
-                        {
-                            // Değerler farklıysa butonun arka planını sarı yap
-                            button.Background = new SolidColorBrush(Colors.Yellow);
-                        }
-                    }
-                }
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private void ellipse1_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-        private void ellipse2_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-        private void ellipse3_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-        private void ellipse4_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-        private void ellipse9_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-        private void ellipse19_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void RegisterTextChangedEvents()
-        {
-            if (pO2Target != null)
-                pO2Target.TextChanged += TextBox_TextChanged;
-
-            if (TemperatureTarget != null)
-                TemperatureTarget.TextChanged += TextBox_TextChanged;
-
-            if (StirrerTarget != null)
-                StirrerTarget.TextChanged += TextBox_TextChanged;
-
-            if (pHTarget != null)
-                pHTarget.TextChanged += TextBox_TextChanged;
-
-            if (RedoxTarget != null)
-                RedoxTarget.TextChanged += TextBox_TextChanged;
-        }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (sender is TextBox textBox)
-            {
-                SaveTextBoxValue(textBox);
-            }
-        }
-        private void SaveTextBoxValue(TextBox textBox)
-        {
-            try
-            {
-                if (textBox == null) return;
-
-                // Handle different TextBoxes
-                if (textBox == pO2Target)
-                {
-                    if (double.TryParse(textBox.Text, out double value))
-                    {
-                        Properties.Settings.Default.pO2Target = value;
-                        Properties.Settings.Default.Save();
-                    }
-                }
-                else if (textBox == TemperatureTarget)
-                {
-                    if (double.TryParse(textBox.Text, out double value))
-                    {
-                        Properties.Settings.Default.TemperatureTarget = value;
-                        Properties.Settings.Default.Save();
-                    }
-                }
-                else if (textBox == StirrerTarget)
-                {
-                    if (double.TryParse(textBox.Text, out double value))
-                    {
-                        Properties.Settings.Default.StirrerTarget = value;
-                        Properties.Settings.Default.Save();
-                    }
-                }
-                else if (textBox == pHTarget)
-                {
-                    if (double.TryParse(textBox.Text, out double value))
-                    {
-                        Properties.Settings.Default.pHTarget = value;
-                        Properties.Settings.Default.Save();
-                    }
-                }
-                else if (textBox == RedoxTarget)
-                {
-                    if (double.TryParse(textBox.Text, out double value))
-                    {
-                        Properties.Settings.Default.RedoxTarget = value;
-                        Properties.Settings.Default.Save();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving text box value: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-        public void CheckComparisonTimer()
-        {
-            if (Properties.Settings.Default.StartButton == 0)
-            {
-                comparisonTimer.Stop();
-
-            }
-            //if (Properties.Settings.Default.StartButton == 1)
-            //{
-            //    comparisonTimer.Start();
-
-            //}
-        }
-
         private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // When TemperatureTarget changes in Settings, update the TextBox
@@ -1784,6 +2094,7 @@ namespace WpfApp1
                 e.PropertyName == "StartButton" ||
                 e.PropertyName == "FoamValue" ||
                 e.PropertyName == "StartButton" ||
+                e.PropertyName == "EditFoamCascade" ||
                 e.PropertyName == "TemperatureConditionalButtonVisibility" ||
                 e.PropertyName == "StirrerConditionalButtonVisibility" ||
                 e.PropertyName == "pHConditionalButtonVisibility" ||
@@ -1791,6 +2102,7 @@ namespace WpfApp1
                 e.PropertyName == "FoamConditionalButtonVisibility" ||
                 e.PropertyName == "pO2ConditionalButtonVisibility")  // Bu satırları ekledik
             {
+                LoadTextBoxValues();
                 CheckComparisonTimer();
                 UpdateBorderVisibilities();
                 CheckEllipsePositionAndSetButtonVisibility(ellipse1, conditionalButtonTemperature);
@@ -2298,6 +2610,485 @@ namespace WpfApp1
                 UpdateFoamLevelStatus();
             }
         }
+        public void CheckEllipsePositionAndSetButtonVisibility(Ellipse ellipse, Button button)
+        {
+            // Ellipse'in parent'ını Canvas olarak al
+            Canvas parentCanvas = ellipse.Parent as Canvas;
+            if (parentCanvas == null) return;
+
+            double canvasWidth = parentCanvas.ActualWidth; // Canvas'ın gerçek genişliğini kullan
+            double ellipseRightPosition = Canvas.GetLeft(ellipse) + ellipse.Width; // Ellipse'in sağ kenarının konumu
+
+            // Eğer bu conditional Button Temperature için ise özel kontrol uygula
+            if (button == conditionalButtonTemperature)
+            {
+                // Sadece TemperatureEllipse == 1 ve StartButton == 1 ise görünür yap
+                if (Properties.Settings.Default.TemperatureEllipse == 1 &&
+                    Properties.Settings.Default.StartButton == 1 &&
+                    Properties.Settings.Default.TemperatureConditionalButtonVisibility == 1)
+                {
+                    button.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    button.Visibility = Visibility.Collapsed;
+                }
+            }
+            // Eğer bu conditional Button Stirrer için ise özel kontrol uygula
+            if (button == conditionalButtonStirrer)
+            {
+                // Sadece StirrerEllipse == 1 ve StartButton == 1 ise görünür yap
+                if (Properties.Settings.Default.StirrerEllipse == 1 &&
+                    Properties.Settings.Default.StartButton == 1 &&
+                    Properties.Settings.Default.StirrerConditionalButtonVisibility == 1)
+                {
+                    button.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    button.Visibility = Visibility.Collapsed;
+                }
+            }
+            // Eğer bu conditional Button pH için ise özel kontrol uygula
+            if (button == conditionalButtonpH)
+            {
+                // Sadece pHEllipse == 1 ve StartButton == 1 ise görünür yap
+                if (Properties.Settings.Default.pHEllipse == 1 &&
+                    Properties.Settings.Default.StartButton == 1 &&
+                    Properties.Settings.Default.pHConditionalButtonVisibility == 1)
+                {
+                    button.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    button.Visibility = Visibility.Collapsed;
+                }
+            }
+            // Eğer bu conditional Button pO2 için ise özel kontrol uygula
+            if (button == conditionalButtonpO2)
+            {
+                // Sadece pO2Ellipse == 1 ve StartButton == 1 ise görünür yap
+                if (Properties.Settings.Default.pO2Ellipse == 1 &&
+                    Properties.Settings.Default.StartButton == 1 &&
+                    Properties.Settings.Default.pO2ConditionalButtonVisibility == 1)
+                {
+                    button.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    button.Visibility = Visibility.Collapsed;
+                }
+            }
+            // Eğer bu conditional Button Foam için ise özel kontrol uygula
+            if (button == conditionalButtonFoam)
+            {
+                // Sadece FoamEllipse == 1 ve StartButton == 1 ise görünür yap
+                if (Properties.Settings.Default.FoamEllipse == 1 &&
+                    Properties.Settings.Default.StartButton == 1 &&
+                    Properties.Settings.Default.FoamConditionalButtonVisibility == 1)
+                {
+                    button.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    button.Visibility = Visibility.Collapsed;
+                }
+            }
+            // Eğer bu conditional Button Redox için ise özel kontrol uygula
+            if (button == conditionalButtonRedox)
+            {
+                // Sadece RedoxEllipse == 1 ve StartButton == 1 ise görünür yap
+                if (Properties.Settings.Default.RedoxEllipse == 1 &&
+                    Properties.Settings.Default.StartButton == 1 &&
+                    Properties.Settings.Default.RedoxConditionalButtonVisibility == 1)
+                {
+                    button.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    button.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                // Diğer tüm butonlar için normal kontrolü uygula
+                if (ellipseRightPosition > canvasWidth / 2 && mainWindow.FirstStartButton.Visibility == Visibility.Collapsed)
+                {
+                    button.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    button.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+        private void LoadTextBoxValues()
+        {
+            try
+            {
+                // Load values from Settings.settings for each TextBox
+                if (TemperatureTarget != null)
+                    TemperatureTarget.Text = Properties.Settings.Default.TemperatureTarget.ToString();
+
+                if (TemperatureValue != null)
+                    TemperatureValue.Content = Properties.Settings.Default.TemperatureValue.ToString();
+
+                if (StirrerTarget != null)
+                    StirrerTarget.Text = Properties.Settings.Default.StirrerTarget.ToString();
+
+                if (StirrerValue != null)
+                    StirrerValue.Content = Properties.Settings.Default.StirrerValue.ToString();
+
+                if (pHTarget != null)
+                    pHTarget.Text = Properties.Settings.Default.pHTarget.ToString();
+
+                if (pHValue != null)
+                    pHValue.Content = Properties.Settings.Default.pHValue.ToString();
+
+                if (pO2Target != null)
+                    pO2Target.Text = Properties.Settings.Default.pO2Target.ToString();
+
+                if (pO2Value != null)
+                    pO2Value.Content = Properties.Settings.Default.pO2Value.ToString();
+
+                if (Properties.Settings.Default.FoamValue == 0)
+                {
+                    UnderFoam.Visibility = Visibility.Visible;
+                    AboveFoam.Visibility = Visibility.Collapsed;
+                }
+
+                if (Properties.Settings.Default.FoamValue == 1)
+                {
+                    UnderFoam.Visibility = Visibility.Collapsed;
+                    AboveFoam.Visibility = Visibility.Visible;
+                }
+
+                if (Properties.Settings.Default.EditFoamCascade == 0)
+                {
+                    AntiFoam.Visibility = Visibility.Collapsed;
+                    Level.Visibility = Visibility.Collapsed;
+                }
+                if (Properties.Settings.Default.EditFoamCascade == 1)
+                {
+                    AntiFoam.Visibility = Visibility.Visible;
+                    Level.Visibility = Visibility.Collapsed;
+                }
+                if (Properties.Settings.Default.EditFoamCascade == 2)
+                {
+                    AntiFoam.Visibility = Visibility.Collapsed;
+                    Level.Visibility = Visibility.Visible;
+                }
+
+                if (RedoxTarget != null)
+                    RedoxTarget.Text = Properties.Settings.Default.RedoxTarget.ToString();
+
+                if (RedoxValue != null)
+                    RedoxValue.Content = Properties.Settings.Default.RedoxValue.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading text box values: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void SaveTextBoxValue(TextBox textBox)
+        {
+            try
+            {
+                if (textBox == null) return;
+
+                // Handle different TextBoxes
+                if (textBox == pO2Target)
+                {
+                    if (double.TryParse(textBox.Text, out double value))
+                    {
+                        Properties.Settings.Default.pO2Target = value;
+                        Properties.Settings.Default.Save();
+                    }
+                }
+                else if (textBox == TemperatureTarget)
+                {
+                    if (double.TryParse(textBox.Text, out double value))
+                    {
+                        Properties.Settings.Default.TemperatureTarget = value;
+                        Properties.Settings.Default.Save();
+                    }
+                }
+                else if (textBox == StirrerTarget)
+                {
+                    if (double.TryParse(textBox.Text, out double value))
+                    {
+                        Properties.Settings.Default.StirrerTarget = value;
+                        Properties.Settings.Default.Save();
+                    }
+                }
+                else if (textBox == pHTarget)
+                {
+                    if (double.TryParse(textBox.Text, out double value))
+                    {
+                        Properties.Settings.Default.pHTarget = value;
+                        Properties.Settings.Default.Save();
+                    }
+                }
+                else if (textBox == RedoxTarget)
+                {
+                    if (double.TryParse(textBox.Text, out double value))
+                    {
+                        Properties.Settings.Default.RedoxTarget = value;
+                        Properties.Settings.Default.Save();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving text box value: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void RegisterTextChangedEvents()
+        {
+            if (pO2Target != null)
+                pO2Target.TextChanged += TextBox_TextChanged;
+
+            if (TemperatureTarget != null)
+                TemperatureTarget.TextChanged += TextBox_TextChanged;
+
+            if (StirrerTarget != null)
+                StirrerTarget.TextChanged += TextBox_TextChanged;
+
+            if (pHTarget != null)
+                pHTarget.TextChanged += TextBox_TextChanged;
+
+            if (RedoxTarget != null)
+                RedoxTarget.TextChanged += TextBox_TextChanged;
+        }
+        private void ComparisonTimer_Tick(object sender, EventArgs e)
+        {
+
+            // Tüm butonları kontrol et
+            foreach (Button button in FindVisualChildren<Button>(this))
+            {
+                if (button.Tag is Grid parentGrid)
+                {
+                    // Özel olarak conditionalButtonTemperature düğmesini kontrol et
+                    if (button == conditionalButtonTemperature)
+                    {
+                        // TemperatureValue ve pO2Target değerlerini Settings.settings'den al
+                        double TemperatureValue = Properties.Settings.Default.TemperatureValue;
+                        double TemperatureTarget = Properties.Settings.Default.TemperatureTarget;
+
+                        // Değerleri karşılaştır
+                        double difference = Math.Abs(TemperatureValue - TemperatureTarget);
+
+                        if (difference < 1)
+                        {
+                            // Değerler arasındaki fark 1'den az ise butonun arka planını yeşil yap
+                            button.Background = new SolidColorBrush(Colors.Green);
+                            Properties.Settings.Default.TemperatureConditionalButton = 2; // Yeşil için 2
+                        }
+                        else
+                        {
+                            // Değerler farklıysa butonun arka planını sarı yap
+                            button.Background = new SolidColorBrush(Colors.Yellow);
+                            Properties.Settings.Default.TemperatureConditionalButton = 1; // Sarı için 1
+                        }
+
+                        // Settings'i kaydet
+                        Properties.Settings.Default.Save();
+                    }
+
+
+
+                    // Özel olarak conditionalButtonStirrer düğmesini kontrol et
+                    if (button == conditionalButtonStirrer)
+                    {
+                        // StirrerValue ve StirrerTarget değerlerini Settings.settings'den al
+                        double StirrerValue = Properties.Settings.Default.StirrerValue;
+                        double StirrerTarget = Properties.Settings.Default.StirrerTarget;
+
+                        // Değerleri karşılaştır
+                        double difference = Math.Abs(StirrerValue - StirrerTarget);
+
+                        if (difference < 1)
+                        {
+                            // Değerler arasındaki fark 1'den az ise butonun arka planını yeşil yap
+                            button.Background = new SolidColorBrush(Colors.Green);
+                            Properties.Settings.Default.StirrerConditionalButton = 2; // Yeşil için 2
+                        }
+                        else
+                        {
+                            // Değerler farklıysa butonun arka planını sarı yap
+                            button.Background = new SolidColorBrush(Colors.Yellow);
+                            Properties.Settings.Default.StirrerConditionalButton = 1; // Sarı için 1
+                        }
+
+                        // Settings'i kaydet
+                        Properties.Settings.Default.Save();
+                    }
+
+
+
+
+                    // Özel olarak conditionalButtonpH düğmesini kontrol et
+                    if (button == conditionalButtonpH)
+                    {
+                        // pHValue ve pHTarget değerlerini Settings.settings'den al
+                        double pHValue = Properties.Settings.Default.pHValue;
+                        double pHTarget = Properties.Settings.Default.pHTarget;
+
+                        // Değerleri karşılaştır
+                        double difference = Math.Abs(pHValue - pHTarget);
+
+                        if (difference < 1)
+                        {
+                            // Değerler arasındaki fark 1'den az ise butonun arka planını yeşil yap
+                            button.Background = new SolidColorBrush(Colors.Green);
+                            Properties.Settings.Default.pHConditionalButton = 2; // Yeşil için 2
+                        }
+                        else
+                        {
+                            // Değerler farklıysa butonun arka planını sarı yap
+                            button.Background = new SolidColorBrush(Colors.Yellow);
+                            Properties.Settings.Default.pHConditionalButton = 1; // Sarı için 1
+                        }
+
+                        // Settings'i kaydet
+                        Properties.Settings.Default.Save();
+                    }
+
+
+
+
+                    // Özel olarak conditionalButtonFoam düğmesini kontrol et
+                    //if (button == conditionalButtonFoam)
+                    //{
+                    //    // FoamValue ve FoamTarget değerlerini Settings.settings'den al
+                    //    double FoamValue = Properties.Settings.Default.FoamValue;
+                    //    double FoamTarget = Properties.Settings.Default.FoamTarget;
+
+                    //    // Değerleri karşılaştır
+                    //    double difference = Math.Abs(FoamValue - FoamTarget);
+
+                    //    if (difference < 1)
+                    //    {
+                    //        // Değerler arasındaki fark 1'den az ise butonun arka planını yeşil yap
+                    //        button.Background = new SolidColorBrush(Colors.Green);
+                    //        Properties.Settings.Default.FoamConditionalButton = 2; // Yeşil için 2
+                    //    }
+                    //    else
+                    //    {
+                    //        // Değerler farklıysa butonun arka planını sarı yap
+                    //        button.Background = new SolidColorBrush(Colors.Yellow);
+                    //        Properties.Settings.Default.FoamConditionalButton = 1; // Sarı için 1
+                    //    }
+
+                    //    // Settings'i kaydet
+                    //    Properties.Settings.Default.Save();
+                    //}
+
+
+                    if (button == conditionalButtonpO2)
+                    {
+                        // pO2Value ve pO2Target değerlerini Settings.settings'den al
+                        double pO2Value = Properties.Settings.Default.pO2Value;
+                        double pO2Target = Properties.Settings.Default.pO2Target;
+
+                        // Değerleri karşılaştır
+                        double difference = Math.Abs(pO2Value - pO2Target);
+
+                        if (difference < 1)
+                        {
+                            // Değerler arasındaki fark 1'den az ise butonun arka planını yeşil yap
+                            button.Background = new SolidColorBrush(Colors.Green);
+                            Properties.Settings.Default.pO2ConditionalButton = 2; // Yeşil için 2
+                        }
+                        else
+                        {
+                            // Değerler farklıysa butonun arka planını sarı yap
+                            button.Background = new SolidColorBrush(Colors.Yellow);
+                            Properties.Settings.Default.pO2ConditionalButton = 1; // Sarı için 1
+                        }
+
+                        // Settings'i kaydet
+                        Properties.Settings.Default.Save();
+                    }
+
+
+                    // Özel olarak conditionalButtonRedox düğmesini kontrol et
+                    if (button == conditionalButtonRedox)
+                    {
+                        // RedoxValue ve RedoxTarget değerlerini Settings.settings'den al
+                        double RedoxValue = Properties.Settings.Default.RedoxValue;
+                        double RedoxTarget = Properties.Settings.Default.RedoxTarget;
+
+                        // Değerleri karşılaştır
+                        double difference = Math.Abs(RedoxValue - RedoxTarget);
+
+                        if (difference < 1)
+                        {
+                            // Değerler arasındaki fark 1'den az ise butonun arka planını yeşil yap
+                            button.Background = new SolidColorBrush(Colors.Green);
+                            Properties.Settings.Default.RedoxConditionalButton = 2; // Yeşil için 2
+                        }
+                        else
+                        {
+                            // Değerler farklıysa butonun arka planını sarı yap
+                            button.Background = new SolidColorBrush(Colors.Yellow);
+                            Properties.Settings.Default.RedoxConditionalButton = 1; // Sarı için 1
+                        }
+
+                        // Settings'i kaydet
+                        Properties.Settings.Default.Save();
+                    }
+                }
+            }
+            TemperatureValue.Content = Properties.Settings.Default.TemperatureValue.ToString();
+            StirrerValue.Content = Properties.Settings.Default.StirrerValue.ToString();
+            pHValue.Content = Properties.Settings.Default.pHValue.ToString();
+            pO2Value.Content = Properties.Settings.Default.pO2Value.ToString();
+            //FoamValue.Content = Properties.Settings.Default.FoamValue.ToString();
+            RedoxValue.Content = Properties.Settings.Default.RedoxValue.ToString();
+            if (Properties.Settings.Default.StartButton == 0)
+            {
+                comparisonTimer.Stop();
+
+            }
+        }
+
+
+
+
+
+
+
+        //private void ComparisonTimer_Tick(object? sender, EventArgs e)
+        //{
+        //    // Tüm butonları kontrol et
+        //    foreach (Button button in FindVisualChildren<Button>(this))
+        //    {
+        //        if (button.Tag is Grid parentGrid)
+        //        {
+        //            // Grid içindeki ikinci Label'ı bul
+        //            var secondLabel = parentGrid.Children.OfType<Label>().ElementAtOrDefault(1);
+        //            // Grid içindeki TextBox'ı bul
+        //            var textBox = parentGrid.Children.OfType<Border>().FirstOrDefault()?.Child as TextBox;
+
+        //            if (secondLabel != null && textBox != null)
+        //            {
+        //                // Label ve TextBox içindeki değerleri karşılaştır
+        //                if (secondLabel.Content?.ToString() == textBox.Text)
+        //                {
+        //                    // Değerler aynıysa butonun arka planını yeşil yap
+        //                    button.Background = new SolidColorBrush(Colors.Green);
+        //                }
+        //                else
+        //                {
+        //                    // Değerler farklıysa butonun arka planını sarı yap
+        //                    button.Background = new SolidColorBrush(Colors.Yellow);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
     }
 }

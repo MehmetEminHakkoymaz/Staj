@@ -31,6 +31,58 @@ namespace WpfApp1
             comparisonTimer.Interval = TimeSpan.FromSeconds(1); // 1 saniyelik aralıklarla
             comparisonTimer.Tick += ComparisonTimer_Tick; // Zamanlayıcı olayı
         }
+        private void KeyPadControl_ValueSelected(object sender, string value)
+        {
+            if (activeTextBox != null)
+            {
+                if (activeTextBox.Tag is string tag && ParseRange(tag, out double min, out double max))
+                {
+                    string normalizedValue = value.Replace(',', '.');
+                    if (double.TryParse(normalizedValue, System.Globalization.NumberStyles.Any,
+                                       System.Globalization.CultureInfo.InvariantCulture, out double doubleValue))
+                    {
+                        if (doubleValue >= min && doubleValue <= max)
+                        {
+                            // Set the value
+                            activeTextBox.Text = doubleValue.ToString(System.Globalization.CultureInfo.CurrentCulture);
+                        }
+                        else
+                        {
+                            KeypadPopup.IsOpen = true;
+                            MessageBox.Show($"Please enter a value between {min} and {max}.",
+                                           "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                    else
+                    {
+                        KeypadPopup.IsOpen = true;
+                        MessageBox.Show("Please enter a valid number.",
+                                       "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+                else
+                {
+                    activeTextBox.Text = value;
+                }
+            }
+        }
+        private bool ParseRange(string tag, out double min, out double max)
+        {
+            min = max = 0;
+            if (string.IsNullOrEmpty(tag)) return false;
+
+            var parts = tag.Split(',');
+            if (parts.Length == 2 &&
+                double.TryParse(parts[0], System.Globalization.NumberStyles.Any,
+                              System.Globalization.CultureInfo.InvariantCulture, out min) &&
+                double.TryParse(parts[1], System.Globalization.NumberStyles.Any,
+                              System.Globalization.CultureInfo.InvariantCulture, out max))
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -57,6 +109,25 @@ namespace WpfApp1
                 }
             }
         }
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
 
         private TextBox activeTextBox = null;
 
@@ -64,13 +135,6 @@ namespace WpfApp1
 
         private DispatcherTimer comparisonTimer = new DispatcherTimer();
 
-        private void KeyPadControl_ValueSelected(object sender, string value)
-        {
-            if (activeTextBox != null)
-            {
-                activeTextBox.Text = value; // KeyPad'den gelen değeri aktif TextBox'a atayın
-            }
-        }
 
         private void ToggleRightGridButton_Click(object sender, RoutedEventArgs e)
         {
@@ -285,25 +349,6 @@ namespace WpfApp1
             }
         }
 
-        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
-        {
-            if (depObj != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
-
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
-                    {
-                        yield return childOfChild;
-                    }
-                }
-            }
-        }
 
 
     }

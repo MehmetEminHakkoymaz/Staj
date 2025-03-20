@@ -33,6 +33,37 @@ namespace WpfApp1
             //Saat İçin Gerekli Yapı
             StartClock();
 
+            ////conditionalButtonGas2 düğmesinin başlangıç görünürlüğünü ve rengini ayarla
+            //if (Properties.Settings.Default.Gas2Ellipse == 1 &&
+            //    Properties.Settings.Default.StartButton == 1 &&
+            //    Properties.Settings.Default.Gas2ConditionalButtonVisibility == 1)
+            //{
+            //    conditionalButtonGas2.Visibility = Visibility.Visible;
+
+            //    // Butonun rengini Settings'e göre ayarla
+            //    switch (Properties.Settings.Default.Gas2ConditionalButton)
+            //    {
+            //        case 0: // Kırmızı
+            //            conditionalButtonGas2.Background = new SolidColorBrush(Colors.Red);
+            //            break;
+            //        case 1: // Sarı
+            //            conditionalButtonGas2.Background = new SolidColorBrush(Colors.Yellow);
+            //            break;
+            //        case 2: // Yeşil
+            //            conditionalButtonGas2.Background = new SolidColorBrush(Colors.Green);
+            //            break;
+            //        default:
+            //            conditionalButtonGas2.Background = new SolidColorBrush(Colors.Red);
+            //            break;
+            //    }
+            //}
+            //else
+            //{
+            //    conditionalButtonGas2.Visibility = Visibility.Collapsed;
+            //}
+
+
+
         }
 
 
@@ -75,6 +106,7 @@ namespace WpfApp1
                 TopGrid.BeginAnimation(MarginProperty, marginAnimation);
             }
         }
+        
         private Image CreateArrowImage(string imagePath)
         {
             return new Image
@@ -86,6 +118,7 @@ namespace WpfApp1
 
 
 
+        
         private void ToggleRightGridButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button)
@@ -157,10 +190,19 @@ namespace WpfApp1
             timer.Start();
         }
 
+        
         private void Timer_Tick(object sender, EventArgs e)
         {
             ClockTextBlock.Text = DateTime.Now.ToString("HH : mm : ss");
         }
+
+
+
+
+
+
+
+
 
 
     }

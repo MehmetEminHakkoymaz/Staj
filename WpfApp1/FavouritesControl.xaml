@@ -20,9 +20,31 @@
             </Grid>
 
             <StackPanel x:Name="GridsContainer" Orientation="Vertical" Margin="0,50,0,0">
-                <Border x:Name="Temperature"  Height="45" Width="819" 
+                <Border x:Name="TemperatureB"  Height="45" Width="819" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="Temperature">
+                        <Label Content="Temperature" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0"
+                       VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
+                        <Label x:Name="TemperatureValue" Content="5" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" 
+                       FontSize="20" Opacity="0.7"/>
+                        <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"
+                        x:Name="TemperatureTargetBorder" Visibility="Visible">
+                            <TextBox x:Name="TemperatureTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                             TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
+                        </Border>
+                        <Button x:Name="conditionalButtonTemperature" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                        Visibility="Collapsed" Click="conditionalButtonTemperature_Click" Background="#FFAF0101">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <TextBlock/>
+                        </Button>
+                    </Grid>
+                    <!--<Grid>
                         <Label Content="Temperature" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" 
                                VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="TemperatureValue" Content="5" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" 
@@ -32,8 +54,7 @@
                             <TextBox x:Name="TemperatureTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
-                        <Button x:Name="conditionalButtonTemperature" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" 
-                                VerticalAlignment="Center" 
+                        <Button x:Name="conditionalButtonTemperature" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                                 Visibility="Collapsed" Click="conditionalButtonTemperature_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
@@ -44,14 +65,14 @@
                             </Button.Template>
                             <TextBlock/>
                         </Button>
-                    </Grid>
+                    </Grid>-->
                 </Border>
-                <Border x:Name="Stirrer" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="StirrerB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="Stirrer">
                         <Label Content="Stirrer" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" 
                            Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
-                        <Label Content="4" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
+                        <Label x:Name="StirrerValue" Content="4" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="StirrerTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
@@ -69,15 +90,15 @@
                         </Button>
                     </Grid>
                 </Border>
-                <Border x:Name="pH" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="pHB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="pH">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="230*"/>
                             <ColumnDefinition Width="581*"/>
                         </Grid.ColumnDefinitions>
                         <Label Content="pH" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
-                        <Label Content="3" HorizontalAlignment="Left" Margin="101,0,0,0" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Opacity="0.7"/>
+                        <Label x:Name="pHValue" Content="3" HorizontalAlignment="Left" Margin="101,0,0,0" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="315,6,0,5" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Grid.Column="1">
                             <TextBox x:Name="pHTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
@@ -117,11 +138,11 @@
                         </Button>
                     </Grid>
                 </Border>
-                <Border x:Name="pO2" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="pO2B" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid  x:Name="pO2">
                         <Label Content="pO2" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
-                        <Label Content="2" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
+                        <Label x:Name="pO2Value" Content="2" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
                             <TextBox x:Name="pO2Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
@@ -159,9 +180,9 @@
                         </Button>
                     </Grid>
                 </Border>
-                <Border x:Name="Gas1" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="Gas1B" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="Gas1">
                         <Label Content="Gas1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label Content="1" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -169,7 +190,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas1" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonGas1_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -181,9 +202,9 @@
                         </Button>
                     </Grid>
                 </Border>
-                <Border x:Name="Gas2" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="Gas2B" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="Gas2">
                         <Label Content="Gas2" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label Content="6" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -191,7 +212,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas2" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonGas2_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -203,9 +224,9 @@
                         </Button>
                     </Grid>
                 </Border>
-                <Border x:Name="Gas3" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="Gas3B" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="Gas3">
                         <Label Content="Gas3" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label Content="7" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -213,7 +234,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas3" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonGas3_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -225,9 +246,9 @@
                         </Button>
                     </Grid>
                 </Border>
-                <Border x:Name="Gas4" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="Gas4B" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="Gas4">
                         <Label Content="Gas4" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label Content="8" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -235,7 +256,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas4" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonGas4_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -247,15 +268,19 @@
                         </Button>
                     </Grid>
                 </Border>
-                <Border x:Name="Foam" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="FoamB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="Foam">
                         <Label Content="Foam" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" 
                                VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="AboveFoam" Content="Foam is above expected level" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" 
                        FontSize="20" Opacity="0.7" Visibility="Collapsed" Foreground="IndianRed"/>
                         <Label x:Name="UnderFoam" Content="Foam at expected level" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" 
                        FontSize="20" Opacity="0.7" Visibility="Visible" />
+                        <Label x:Name="AntiFoam" Content="AntiFoam" HorizontalAlignment="Left" Margin="561,0,0,0" VerticalAlignment="Center" 
+                       FontSize="20" Opacity="0.7" Visibility="Collapsed" />
+                        <Label x:Name="Level" Content="Level" HorizontalAlignment="Left" Margin="581,0,0,0" VerticalAlignment="Center" 
+                       FontSize="20" Opacity="0.7" Visibility="Collapsed" />
                         <Button x:Name="conditionalButtonFoam" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
                             Visibility="Collapsed" Click="conditionalButtonFoam_Click" Background="#FFAF0101">
                             <Button.Template>
@@ -269,9 +294,9 @@
                         </Button>
                     </Grid>
                 </Border>
-                <Border x:Name="Turbidity" HorizontalAlignment="Center"  Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="TurbidityB" HorizontalAlignment="Center"  Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="Turbidity">
                         <Label Content="Turbidity" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="TurbidityValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -300,7 +325,7 @@
                         </StackPanel>
 
                         <Button x:Name="conditionalButtonTurbidity" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonTurbidity_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -313,9 +338,9 @@
 
                     </Grid>
                 </Border>
-                <Border x:Name="Balance" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="BalanceB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="Balance">
                         <Label Content="Balance" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="BalanceValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -323,7 +348,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonBalance" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonBalance_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -336,9 +361,9 @@
 
                     </Grid>
                 </Border>
-                <Border x:Name="AirFlow" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="AirFlowB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid  x:Name="AirFlow">
                         <Label Content="AirFlow" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="AirFlowValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -346,7 +371,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonAirFlow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonAirFlow_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -359,9 +384,9 @@
 
                     </Grid>
                 </Border>
-                <Border x:Name="Gas2Flow" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="Gas2FlowB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid x:Name="Gas2Flow">
                         <Label Content="Gas2Flow" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="Gas2FlowValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -369,7 +394,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas2Flow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonGas2Flow_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -382,9 +407,9 @@
 
                     </Grid>
                 </Border>
-                <Border x:Name="ExitTurbidity" HorizontalAlignment="Center"  Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="ExitTurbidityB" HorizontalAlignment="Center"  Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid  x:Name="ExitTurbidity">
                         <Label Content="Exit Gas O₂" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Center" 
                            Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="ExitTurbidityValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
@@ -393,7 +418,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonExitTurbidity" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonExitTurbidity_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -406,9 +431,9 @@
 
                     </Grid>
                 </Border>
-                <Border x:Name="ExitBalance" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="ExitBalanceB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid  x:Name="ExitBalance">
                         <Label Content="Exit Gas CO₂" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" 
                            Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="ExitBalanceValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
@@ -417,7 +442,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonExitBalance" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonExitBalance_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -430,9 +455,9 @@
 
                     </Grid>
                 </Border>
-                <Border x:Name="Gas3Flow" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="Gas3FlowB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid  x:Name="Gas3Flow">
                         <Label Content="Gas3Flow" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="Gas3FlowValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -440,7 +465,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas3Flow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonGas3Flow_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -453,9 +478,9 @@
 
                     </Grid>
                 </Border>
-                <Border x:Name="Gas4Flow" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="Gas4FlowB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid  x:Name="Gas4Flow">
                         <Label Content="Gas4Flow" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="Gas4FlowValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -463,7 +488,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas4Flow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonGas4Flow_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -476,9 +501,9 @@
 
                     </Grid>
                 </Border>
-                <Border x:Name="Gas5Flow" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="Gas5FlowB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid  x:Name="Gas5Flow">
                         <Label Content="Gas5Flow" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="Gas5FlowValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
                         <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
@@ -486,7 +511,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                         </Border>
                         <Button x:Name="conditionalButtonGas5Flow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                            Visibility="Collapsed" Click="conditionalButtonGas5Flow_Click" Background="#FFAF0101">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -499,9 +524,9 @@
 
                     </Grid>
                 </Border>
-                <Border x:Name="Redox" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
+                <Border x:Name="RedoxB" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="819" Margin="0" 
                         BorderBrush="#FFD6D6D6" BorderThickness="1" Visibility="Collapsed">
-                    <Grid>
+                    <Grid  x:Name="Redox">
                         <Label Content="Redox" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center"
                                Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                         <Label x:Name="RedoxValue" Content="" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"/>
@@ -532,9 +557,9 @@
                         </StackPanel>
 
                         <Button x:Name="conditionalButtonRedox" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                            Visibility="Collapsed" Click="conditionalButtonRedox_Click" Background="#FFAF0101">
+                        Visibility="Collapsed" Click="conditionalButtonRedox_Click" Background="#FFAF0101">
                             <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
+                                <ControlTemplate TargetType="Button">
                                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>

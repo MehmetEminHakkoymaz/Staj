@@ -204,7 +204,7 @@ namespace WpfApp1
                 extendedControl.TurbidityValue.Content = incommingWords[10];
                 extendedControl.BalanceValue.Content = incommingWords[11];
                 extendedControl.AirFlowValue.Content = incommingWords[12];
-                extendedControl.Gas2FlowValue.Content = incommingWords[13];
+                extendedControl.Gas2Value.Content = incommingWords[13];
                 exitGasControl.ExitTurbidityValue.Content = incommingWords[14];
                 exitGasControl.ExitBalanceValue.Content = incommingWords[15];
                 pumpsControl.Pump1Value.Content = incommingWords[16];
@@ -245,7 +245,7 @@ namespace WpfApp1
             sendingWords += ",";
             sendingWords += extendedControl.AirFlowTarget.Text;
             sendingWords += ",";
-            sendingWords += extendedControl.Gas2FlowTarget.Text;
+            sendingWords += extendedControl.Gas2Target.Text;
             sendingWords += ",";
             sendingWords += exitGasControl.ExitTurbidityTarget.Text;
             sendingWords += ",";
@@ -568,6 +568,11 @@ namespace WpfApp1
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse4, mainControl.conditionalButtonpO2);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse9, mainControl.conditionalButtonFoam);
             mainControl.CheckEllipsePositionAndSetButtonVisibility(mainControl.ellipse19, mainControl.conditionalButtonRedox);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse10, extendedControl.conditionalButtonTurbidity);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse11, extendedControl.conditionalButtonBalance);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse12, extendedControl.conditionalButtonAirFlow);
+            extendedControl.CheckEllipsePositionAndSetButtonVisibility(extendedControl.ellipse13, extendedControl.conditionalButtonGas2);
+
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -621,12 +626,109 @@ namespace WpfApp1
             //BURAYA BAKKKKKKKK
 
             Properties.Settings.Default.StartButton = 2;
+            //Properties.Settings.Default.TemperatureConditionalButtonVisibility = 0;
+            //Properties.Settings.Default.StirrerConditionalButtonVisibility = 0;
+            //Properties.Settings.Default.pHConditionalButtonVisibility = 0;
+            //Properties.Settings.Default.pO2ConditionalButtonVisibility = 0;
+            //Properties.Settings.Default.FoamConditionalButtonVisibility = 0;
+            //Properties.Settings.Default.RedoxConditionalButtonVisibility = 0;
+            Properties.Settings.Default.Save();
+            mainControl.CheckComparisonTimer();
 
             StartButton.Visibility = Visibility.Collapsed;
             StopButton.Visibility = Visibility.Visible;
             SampleButton.Visibility = Visibility.Visible;
         }
 
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Timer'ları durdur
+                timer?.Stop();
+
+                if (logTimer != null && logTimer.IsEnabled)
+                {
+                    // Son bir kayıt al
+                    LogTimer_Tick(null, null);
+                    logTimer.Stop();
+                }
+
+                // Mevcut çalışma süresini TimeSpan'e çevir
+                if (TimeSpan.TryParse(clockTextBlock.Text, out TimeSpan currentTime))
+                {
+                    // Settings'den mevcut toplam süreyi al
+                    TimeSpan totalTime = Properties.Settings.Default.TotalWorkTime;
+
+                    // Yeni süreyi ekle
+                    totalTime = totalTime.Add(currentTime);
+
+                    // Settings'e kaydet
+                    Properties.Settings.Default.TotalWorkTime = totalTime;
+                    Properties.Settings.Default.Save();
+
+                    // SystemInfo'yu güncelle
+                    var settingsWindow = SettingsWindow.Instance;
+                    if (settingsWindow?.SystemInfoControl != null)
+                    {
+                        settingsWindow.SystemInfoControl.TotalWorkHours.Text =
+                            $"{totalTime.Days}d {totalTime.Hours}h {totalTime.Minutes}m {totalTime.Seconds}s";
+                    }
+                }
+
+                // Sayacı sıfırla
+                time = TimeSpan.Zero;
+                clockTextBlock.Text = "00:00:00";
+
+                // Sample sayacını sıfırla
+                sampleCount = 1;
+                SampleButtonText.Text = "1.Sample";
+
+                // Görünürlükleri güncelle
+                StopButton.Visibility = Visibility.Collapsed;
+                FirstStartButton.Visibility = Visibility.Visible;
+                SampleButton.Visibility = Visibility.Collapsed;
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                //BURAYA BAKKKKKKKK
+                Properties.Settings.Default.StartButton = 0;
+                Properties.Settings.Default.TemperatureConditionalButton = 0;
+                Properties.Settings.Default.StirrerConditionalButton = 0;
+                Properties.Settings.Default.pHConditionalButton = 0;
+                Properties.Settings.Default.pO2ConditionalButton = 0;
+                Properties.Settings.Default.FoamConditionalButton = 0;
+                Properties.Settings.Default.RedoxConditionalButton = 0;
+                Properties.Settings.Default.TurbidityConditionalButton = 0;
+                Properties.Settings.Default.BalanceConditionalButton = 0;
+                Properties.Settings.Default.AirFlowConditionalButton = 0;
+                Properties.Settings.Default.Gas2ConditionalButton = 0;
+
+                Properties.Settings.Default.TemperatureEllipse = 0;
+                Properties.Settings.Default.StirrerEllipse = 0;
+                Properties.Settings.Default.pHEllipse = 0;
+                Properties.Settings.Default.pO2Ellipse = 0;
+                Properties.Settings.Default.FoamEllipse = 0;
+                Properties.Settings.Default.RedoxEllipse = 0;
+                Properties.Settings.Default.TurbidityEllipse = 0;
+                Properties.Settings.Default.BalanceEllipse = 0;
+                Properties.Settings.Default.AirFlowEllipse = 0;
+                Properties.Settings.Default.Gas2Ellipse = 0;
+                mainControl.CheckComparisonTimer();
+                Properties.Settings.Default.Save();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving total work time: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
 
 
@@ -676,8 +778,8 @@ namespace WpfApp1
                 values["BalanceTarget"] = extendedControl?.BalanceTarget?.Text;
                 values["AirFlowValue"] = extendedControl?.AirFlowValue?.Content?.ToString();
                 values["AirFlowTarget"] = extendedControl?.AirFlowTarget?.Text;
-                values["Gas2FlowValue"] = extendedControl?.Gas2FlowValue?.Content?.ToString();
-                values["Gas2FlowTarget"] = extendedControl?.Gas2FlowTarget?.Text;
+                values["Gas2FlowValue"] = extendedControl?.Gas2Value?.Content?.ToString();
+                values["Gas2FlowTarget"] = extendedControl?.Gas2Target?.Text;
                 //values["Gas3FlowValue"] = extendedControl?.Gas3FlowValue?.Content?.ToString();
                 //values["Gas3FlowTarget"] = extendedControl?.Gas3FlowTarget?.Text;
                 //values["Gas4FlowValue"] = extendedControl?.Gas4FlowValue?.Content?.ToString();
@@ -768,8 +870,8 @@ namespace WpfApp1
                 AddValue("BalanceTarget", extendedControl?.BalanceTarget?.Text);
                 AddValue("AirFlowValue", extendedControl?.AirFlowValue?.Content);
                 AddValue("AirFlowTarget", extendedControl?.AirFlowTarget?.Text);
-                AddValue("Gas2FlowValue", extendedControl?.Gas2FlowValue?.Content);
-                AddValue("Gas2FlowTarget", extendedControl?.Gas2FlowTarget?.Text);
+                AddValue("Gas2FlowValue", extendedControl?.Gas2Value?.Content);
+                AddValue("Gas2FlowTarget", extendedControl?.Gas2Target?.Text);
                 //AddValue("Gas3FlowValue", extendedControl?.Gas3FlowValue?.Content);
                 //AddValue("Gas3FlowTarget", extendedControl?.Gas3FlowTarget?.Text);
                 //AddValue("Gas4FlowValue", extendedControl?.Gas4FlowValue?.Content);
@@ -849,7 +951,7 @@ namespace WpfApp1
                 extendedControl.conditionalButtonTurbidity,
                 extendedControl.conditionalButtonBalance,
                 extendedControl.conditionalButtonAirFlow,
-                extendedControl.conditionalButtonGas2Flow,
+                extendedControl.conditionalButtonGas2,
                 //extendedControl.conditionalButtonGas3Flow,
                 //extendedControl.conditionalButtonGas4Flow,
                 //extendedControl.conditionalButtonGas5Flow,
@@ -861,86 +963,6 @@ namespace WpfApp1
             }
         }
 
-        private void StopButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                // Timer'ları durdur
-                timer?.Stop();
-
-                if (logTimer != null && logTimer.IsEnabled)
-                {
-                    // Son bir kayıt al
-                    LogTimer_Tick(null, null);
-                    logTimer.Stop();
-                }
-
-                // Mevcut çalışma süresini TimeSpan'e çevir
-                if (TimeSpan.TryParse(clockTextBlock.Text, out TimeSpan currentTime))
-                {
-                    // Settings'den mevcut toplam süreyi al
-                    TimeSpan totalTime = Properties.Settings.Default.TotalWorkTime;
-
-                    // Yeni süreyi ekle
-                    totalTime = totalTime.Add(currentTime);
-
-                    // Settings'e kaydet
-                    Properties.Settings.Default.TotalWorkTime = totalTime;
-                    Properties.Settings.Default.Save();
-
-                    // SystemInfo'yu güncelle
-                    var settingsWindow = SettingsWindow.Instance;
-                    if (settingsWindow?.SystemInfoControl != null)
-                    {
-                        settingsWindow.SystemInfoControl.TotalWorkHours.Text =
-                            $"{totalTime.Days}d {totalTime.Hours}h {totalTime.Minutes}m {totalTime.Seconds}s";
-                    }
-                }
-
-                // Sayacı sıfırla
-                time = TimeSpan.Zero;
-                clockTextBlock.Text = "00:00:00";
-
-                // Sample sayacını sıfırla
-                sampleCount = 1;
-                SampleButtonText.Text = "1.Sample";
-
-                // Görünürlükleri güncelle
-                StopButton.Visibility = Visibility.Collapsed;
-                FirstStartButton.Visibility = Visibility.Visible;
-                SampleButton.Visibility = Visibility.Collapsed;
-                //BURAYA BAKKKKKKKK
-                //BURAYA BAKKKKKKKK
-                //BURAYA BAKKKKKKKK
-                //BURAYA BAKKKKKKKK
-                //BURAYA BAKKKKKKKK
-                //BURAYA BAKKKKKKKK
-                //BURAYA BAKKKKKKKK
-                //BURAYA BAKKKKKKKK
-                //BURAYA BAKKKKKKKK
-                //BURAYA BAKKKKKKKK
-                Properties.Settings.Default.StartButton = 0;
-                Properties.Settings.Default.TemperatureConditionalButton = 0;
-                Properties.Settings.Default.StirrerConditionalButton = 0;
-                Properties.Settings.Default.pHConditionalButton = 0;
-                Properties.Settings.Default.pO2ConditionalButton = 0;
-                Properties.Settings.Default.FoamConditionalButton = 0;
-                Properties.Settings.Default.RedoxConditionalButton = 0;
-                Properties.Settings.Default.TemperatureEllipse = 0;
-                Properties.Settings.Default.StirrerEllipse = 0;
-                Properties.Settings.Default.pHEllipse = 0;
-                Properties.Settings.Default.pO2Ellipse = 0;
-                Properties.Settings.Default.FoamEllipse = 0;
-                Properties.Settings.Default.RedoxEllipse = 0;
-                mainControl.CheckComparisonTimer();
-                Properties.Settings.Default.Save();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving total work time: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
 
 
         private void Admin_Button_Click(object sender, RoutedEventArgs e)
@@ -1013,12 +1035,21 @@ namespace WpfApp1
                 Properties.Settings.Default.pO2ConditionalButton = 0;
                 Properties.Settings.Default.FoamConditionalButton = 0;
                 Properties.Settings.Default.RedoxConditionalButton = 0;
+                Properties.Settings.Default.TurbidityConditionalButton = 0;
+                Properties.Settings.Default.BalanceConditionalButton = 0;
+                Properties.Settings.Default.AirFlowConditionalButton = 0;
+                Properties.Settings.Default.Gas2ConditionalButton = 0;
+
                 Properties.Settings.Default.TemperatureEllipse = 0;
                 Properties.Settings.Default.StirrerEllipse = 0;
                 Properties.Settings.Default.pHEllipse = 0;
                 Properties.Settings.Default.pO2Ellipse = 0;
                 Properties.Settings.Default.FoamEllipse = 0;
                 Properties.Settings.Default.RedoxEllipse = 0;
+                Properties.Settings.Default.TurbidityEllipse = 0;
+                Properties.Settings.Default.BalanceEllipse = 0;
+                Properties.Settings.Default.AirFlowEllipse = 0;
+                Properties.Settings.Default.Gas2Ellipse = 0;
                 Properties.Settings.Default.Save();
                 CloseApplication();
             }

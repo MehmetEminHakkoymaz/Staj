@@ -23,8 +23,8 @@
                        VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="TurbidityValue" Content="6" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" 
                        FontSize="20" Opacity="0.7"/>
-                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" 
-                        BorderThickness="1">
+                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"
+                         x:Name="TurbidityTargetBorder" Visibility="Visible">
                     <TextBox x:Name="TurbidityTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,1000"/>
                 </Border>
@@ -49,7 +49,7 @@
                     <TextBlock Text="°C" FontSize="16" VerticalAlignment="Center" Margin="2,0,0,0"/>
                 </StackPanel>
                 <Button x:Name="conditionalButtonTurbidity" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                        Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                        Visibility="Collapsed" Click="conditionalButtonTurbidity_Click" Background="#FFAF0101">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -66,12 +66,13 @@
             <Grid x:Name="Balance">
                 <Label Content="Balance" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0" VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
                 <Label x:Name="BalanceValue" Content="2" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center" FontSize="20" Opacity="0.7"/>
-                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                <Border HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"
+                         x:Name="BalanceTargetBorder" Visibility="Visible">
                     <TextBox x:Name="BalanceTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
                 <Button x:Name="conditionalButtonBalance" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                        Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                        Visibility="Collapsed" Click="conditionalButtonBalance_Click" Background="#FFAF0101">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -93,7 +94,7 @@
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100"/>
                 </Border>
                 <Button x:Name="conditionalButtonAirFlow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                        Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                        Visibility="Collapsed" Click="conditionalButtonAirFlow_Click" Background="#FFAF0101">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -106,10 +107,10 @@
             </Grid>
         </Border>
         <Border HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="815" Margin="0,185,0,0" BorderBrush="#FFD6D6D6" BorderThickness="2,2,2,2">
-            <Grid x:Name="Gas2Flow">
+            <Grid x:Name="Gas2">
                 <Label Content="Gas2" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="84,0,0,0"
                        VerticalAlignment="Center" Width="121" Height="24" FontSize="20" Padding="0,0,0,0"/>
-                <Label x:Name="Gas2FlowValue" Content="3" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"
+                <Label x:Name="Gas2Value" Content="3" HorizontalAlignment="Left" Margin="331,0,0,0" VerticalAlignment="Center"
                        FontSize="20" Opacity="0.7">
                     <Label.Style>
                         <Style TargetType="Label">
@@ -121,12 +122,12 @@
                         </Style>
                     </Label.Style>
                 </Label>
-                <Border x:Name="Gas2FlowTargetBorder" HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Visibility="Visible">
-                    <TextBox x:Name="Gas2FlowTarget" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
+                <Border x:Name="Gas2TargetBorder" HorizontalAlignment="Left" Margin="545,0,0,0" Width="127" Height="30" CornerRadius="5" BorderBrush="Gray" BorderThickness="1" Visibility="Visible">
+                    <TextBox x:Name="Gas2Target" GotFocus="TextBox_GotFocus" TextWrapping="Wrap" Text="" Background="Transparent" BorderThickness="0" 
                              TextAlignment="Center" Padding="0" FontSize="20" Opacity="0.7" Tag="0,100" TextChanged="Gas2Target_TextChanged"/>
                 </Border>
-                <Button x:Name="conditionalButtonGas2Flow" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                        Visibility="Collapsed" Click="ConditionalButton_Click" Background="#FFAF0101">
+                <Button x:Name="conditionalButtonGas2" Width="30" Height="30" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                        Visibility="Collapsed" Click="conditionalButtonGas2_Click" Background="#FFAF0101">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -221,7 +222,7 @@
                 <Grid>
                     <Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,5,244,409">
-                            <Canvas x:Name="canvas1" Width="66.87" Height="30">
+                            <Canvas x:Name="canvas10" Width="66.87" Height="30">
                                 <Ellipse x:Name="ellipse10" Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" 
                                          Canvas.Top="3" MouseLeftButtonDown="ellipse10_MouseLeftButtonDown"/>
                             </Canvas>
@@ -234,16 +235,16 @@
                     <Grid/>
                     <Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="11,50,243,364">
-                            <Canvas x:Name="canvas2" Width="66.87" Height="30">
+                            <Canvas x:Name="canvas11" Width="66.87" Height="30">
                                 <Ellipse Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
-                                         x:Name="ellipse11" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown"/>
+                                         x:Name="ellipse11" MouseLeftButtonDown="ellipse11_MouseLeftButtonDown"/>
                             </Canvas>
                         </Border>
                         <Image Source="pack://application:,,,/WpfApp1;component/images/infoo.png" Width="30" Height="30" Margin="270,50,21,364"/>
                     </Grid>
                     <Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,95,244,319">
-                            <Canvas x:Name="canvas3" Width="66.87" Height="30">
+                            <Canvas x:Name="canvas12" Width="66.87" Height="30">
                                 <Ellipse x:Name="ellipse12" Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3" 
                                          MouseLeftButtonDown="ellipse12_MouseLeftButtonDown"/>
                             </Canvas>
@@ -253,7 +254,7 @@
 
                     <Grid>
                         <Border Width="66.87" Height="30" CornerRadius="15" Background="Transparent" BorderBrush="Black" BorderThickness="1" Margin="10,140,244,274">
-                            <Canvas x:Name="canvas4" Width="66.87" Height="30">
+                            <Canvas x:Name="canvas13" Width="66.87" Height="30">
                                 <Ellipse x:Name="ellipse13" Width="20" Height="20" Fill="Transparent" Stroke="#D6D6D6" StrokeThickness="1" Canvas.Left="6" Canvas.Top="3"
                                          MouseLeftButtonDown="ellipse13_MouseLeftButtonDown"/>
                             </Canvas>
