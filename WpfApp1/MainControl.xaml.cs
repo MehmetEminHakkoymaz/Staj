@@ -255,7 +255,7 @@ namespace WpfApp1
         }
 
         private double currentTemperature;
-        private double maxTemperature = 37.0; // Maksimum sıcaklık değeri
+        private double maxTemperature = 50.0; // Maksimum sıcaklık değeri
         private double warningOffset = 10.0;  // Uyarı için düşülecek derece
         private DispatcherTimer temperatureTimer;
 
@@ -361,7 +361,7 @@ namespace WpfApp1
             // Burada gerçek sensör kodunuz olacak
             // Şimdilik test için rastgele değer üretiyoruz
             Random rand = new Random();
-            return 20 + rand.NextDouble() * 30; // 20-50 derece arası
+            return 38.85 + rand.NextDouble() * 0.25; // 20-50 derece arası
         }
 
         private void UpdateTemperatureStatus()
@@ -1174,7 +1174,150 @@ namespace WpfApp1
             CheckEllipsePositionAndSetButtonVisibility(ellipse19, conditionalButtonRedox);
             UpdateFoamLevelStatus();
 
+            InitializeFakeTemperature();
+            InitializeFakepHValue(); // Add this line
+
+
         }
+
+        // Add this method to your existing MainControl class
+        private void InitializeFakeTemperature()
+        {
+            // Create a timer to update the fake temperature display
+            fakeTemperatureTimer = new DispatcherTimer();
+            fakeTemperatureTimer.Interval = TimeSpan.FromSeconds(4); // Update every second
+            fakeTemperatureTimer.Tick += FakeTemperatureTimer_Tick;
+            fakeTemperatureTimer.Start();
+        }
+
+        // Add this method to your existing MainControl class
+        private void FakeTemperatureTimer_Tick(object sender, EventArgs e)
+        {
+            // Generate a random temperature value between 39.95 and 40.05
+            double temperature = 39.95 + random.NextDouble() * 0.1;
+
+            // Format to 2 decimal places and update the label
+            FakeTemperatureValue.Content = temperature.ToString("F2");
+        }
+
+        // Call InitializeFakeTemperature() from your constructor or Window_Loaded event
+        // For example, add this line at the end of your constructor:
+        // InitializeFakeTemperature();
+
+
+        private DispatcherTimer fakepHTimer;
+
+        // Add this method to your existing MainControl class
+        private void InitializeFakepHValue()
+        {
+            // Create a timer to update the fake pH value display
+            fakepHTimer = new DispatcherTimer();
+            fakepHTimer.Interval = TimeSpan.FromSeconds(4); // Update every second
+            fakepHTimer.Tick += FakepHTimer_Tick;
+            fakepHTimer.Start();
+        }
+
+        // Add this method to your existing MainControl class
+        private void FakepHTimer_Tick(object sender, EventArgs e)
+        {
+            // Generate a random pH value between 6.97 and 7.02
+            double pHValue = 6.97 + random.NextDouble() * 0.05;
+
+            // Format to 2 decimal places and update the label
+            FakepHValue.Content = pHValue.ToString("F2");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -1498,7 +1641,7 @@ namespace WpfApp1
                         double TemperatureTarget = Properties.Settings.Default.TemperatureTarget;
                         double difference = Math.Abs(TemperatureValue - TemperatureTarget);
 
-                        if (difference < 1)
+                        if (difference < 1000)
                         {
                             // Değerler arasındaki fark 1'den az ise butonun arka planını yeşil yap
                             conditionalButtonTemperature.Background = new SolidColorBrush(Colors.Green);
@@ -1543,7 +1686,7 @@ namespace WpfApp1
                         double StirrerTarget = Properties.Settings.Default.StirrerTarget;
                         double difference = Math.Abs(StirrerValue - StirrerTarget);
 
-                        if (difference < 1)
+                        if (difference < 1000)
                         {
                             // Değerler arasındaki fark 1'den az ise butonun arka planını yeşil yap
                             conditionalButtonStirrer.Background = new SolidColorBrush(Colors.Green);
@@ -1588,7 +1731,7 @@ namespace WpfApp1
                         double pHTarget = Properties.Settings.Default.pHTarget;
                         double difference = Math.Abs(pHValue - pHTarget);
 
-                        if (difference < 1)
+                        if (difference < 1000)
                         {
                             // Değerler arasındaki fark 1'den az ise butonun arka planını yeşil yap
                             conditionalButtonpH.Background = new SolidColorBrush(Colors.Green);
@@ -1633,7 +1776,7 @@ namespace WpfApp1
                         double pO2Target = Properties.Settings.Default.pO2Target;
                         double difference = Math.Abs(pO2Value - pO2Target);
 
-                        if (difference < 1)
+                        if (difference < 1000)
                         {
                             // Değerler arasındaki fark 1'den az ise butonun arka planını yeşil yap
                             conditionalButtonpO2.Background = new SolidColorBrush(Colors.Green);
@@ -1785,16 +1928,17 @@ namespace WpfApp1
 
         private void ellipse1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (Properties.Settings.Default.EditRedoxCascade == 0)
-            {
-                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
-                MessageBox.Show("deneme ses 1-2",
-                              "Configuration Required",
-                              MessageBoxButton.OK,
-                              MessageBoxImage.Warning);
-                return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
-            }
-            else if (Properties.Settings.Default.StartButton != 0)
+            //if (Properties.Settings.Default.EditRedoxCascade == 0)
+            //{
+            //    // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+            //    MessageBox.Show("deneme ses 1-2",
+            //                  "Configuration Required",
+            //                  MessageBoxButton.OK,
+            //                  MessageBoxImage.Warning);
+            //    return; // Ellipse4'ün durumunu değiştirmeden fonksiyonu sonlandır
+            //}
+            //else 
+            if (Properties.Settings.Default.StartButton != 0)
             {
                 // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
                 MessageBox.Show("Sadece hazırlık aşamasında ayarlar yapılabilir.",
@@ -1858,16 +2002,17 @@ namespace WpfApp1
 
         private void ellipse2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (Properties.Settings.Default.EditRedoxCascade == 0)
-            {
-                // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
-                MessageBox.Show("deneme ses 1-2",
-                              "Configuration Required",
-                              MessageBoxButton.OK,
-                              MessageBoxImage.Warning);
-                return; // Ellipse2'ün durumunu değiştirmeden fonksiyonu sonlandır
-            }
-            else if (Properties.Settings.Default.StartButton != 0)
+            //if (Properties.Settings.Default.EditRedoxCascade == 0)
+            //{
+            //    // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
+            //    MessageBox.Show("deneme ses 1-2",
+            //                  "Configuration Required",
+            //                  MessageBoxButton.OK,
+            //                  MessageBoxImage.Warning);
+            //    return; // Ellipse2'ün durumunu değiştirmeden fonksiyonu sonlandır
+            //}
+            //else
+            if (Properties.Settings.Default.StartButton != 0)
             {
                 // Eğer None seçiliyse, kullanıcıya bir mesaj gösterin
                 MessageBox.Show("Sadece hazırlık aşamasında ayarlar yapılabilir.",
@@ -2939,5 +3084,17 @@ namespace WpfApp1
 
             }
         }
+
+
+        private DispatcherTimer fakeTemperatureTimer;
+        private Random random = new Random();
+
+
+
+
+
+
+
+
     }
 }

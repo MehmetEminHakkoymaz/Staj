@@ -331,6 +331,15 @@ namespace WpfApp1
                     }
                 }
             }
+            if (Properties.Settings.Default.StartButton ==2)
+            {
+                conditionalButtonPump1.Visibility = Visibility.Collapsed;
+                conditionalButtonPump2.Visibility = Visibility.Collapsed;
+                conditionalButtonPump3.Visibility = Visibility.Collapsed;
+                conditionalButtonPump4.Visibility = Visibility.Collapsed;
+                conditionalButtonPump5.Visibility = Visibility.Collapsed;
+                conditionalButtonPump6.Visibility = Visibility.Collapsed;
+            }
 
             UpdatePump4BasedOnTurbidity();
         }

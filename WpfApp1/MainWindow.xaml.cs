@@ -720,6 +720,10 @@ namespace WpfApp1
                 Properties.Settings.Default.BalanceEllipse = 0;
                 Properties.Settings.Default.AirFlowEllipse = 0;
                 Properties.Settings.Default.Gas2Ellipse = 0;
+
+
+
+                
                 mainControl.CheckComparisonTimer();
                 Properties.Settings.Default.Save();
 

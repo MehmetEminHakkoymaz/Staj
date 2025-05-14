@@ -202,16 +202,23 @@ namespace WpfApp1.EditPages
                 if (None.IsChecked == true)
                 {
                     Properties.Settings.Default.EditFoamCascade = 0;
-                    Properties.Settings.Default.EditPump3Feature = 1; // EditPump3Feature double tipinde
+                    Properties.Settings.Default.EditPump3Feature = 1;
+                    Properties.Settings.Default.Pump3TargetBorder = 0;
+                    Properties.Settings.Default.Save();
+                    // EditPump3Feature double tipinde
                 }
                 else if (AntiFoam.IsChecked == true)
                 {
                     Properties.Settings.Default.EditFoamCascade = 1;
+                    Properties.Settings.Default.Pump3TargetBorder = 1;
+                    Properties.Settings.Default.Save();
                     SaveFoamValues("AntiFoam");
                 }
                 else if (Level.IsChecked == true)
                 {
                     Properties.Settings.Default.EditFoamCascade = 2;
+                    Properties.Settings.Default.Pump3TargetBorder = 1;
+                    Properties.Settings.Default.Save();
                     SaveFoamValues("Level");
                 }
 

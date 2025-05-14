@@ -1901,7 +1901,7 @@ namespace WpfApp1
 
 
         private double turbidityCurrentBalance;
-        private double maxBalance = 37.0;
+        private double maxBalance = 45.0;
         private double warningOffset = 10.0;
         private DispatcherTimer BalanceTimer;
 
@@ -1978,7 +1978,7 @@ namespace WpfApp1
             // Gerçek sensör kodunuz buraya gelecek
             // Şimdilik test için rastgele değer üretiyoruz
             Random rand = new Random();
-            return 20 + rand.NextDouble() * 30; // 20-50 derece arası
+            return 38.85 + rand.NextDouble() * 0.25; // 20-50 derece arası
         }
 
         private void UpdateTurbidityBalanceStatus()
